@@ -1,0 +1,47 @@
+\documentclass[10pt,oneside,a4paper]{article}
+\usepackage{hyperref, amsmath, amsthm, amssymb, ragged2e, graphicx, array, booktabs, tabularx, tocloft, listings, xcolor}
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+\hypersetup{
+	colorlinks=true,   % Abilita il colore dei link (senza box intorno)
+	linkcolor=blue,    % Colore per i link interni (come quelli nell'indice)
+	urlcolor=red,      % Colore per i link URL esterni
+	filecolor=magenta, % Colore per i link ai file locali
+	citecolor=green,   % Colore per i riferimenti bibliografici
+	pdfborder={0 0 0}  % Disabilita i bordi intorno ai link
+}
+\definecolor{lightgray}{rgb}{0.83, 0.83, 0.83}
+\lstdefinestyle{pseudocodice}{
+	language=SQL,
+	basicstyle=\ttfamily\footnotesize,  % Font di base
+	keywordstyle=\color{blue}\bfseries,  % Parole chiave in blu e in grassetto, comprende parole chiave e quelle aggiunte
+	commentstyle=\color{red},  % Commenti in rosso, seguiti da //
+	stringstyle=\color{purple},  % Stringhe in viola, racchiuse fra virgolette, es: "ciao"
+	identifierstyle=\color{black},  % Variabili in nero (in generale tutto ciò che è scritto in maniera normale)
+	backgroundcolor=\color{lightgray},  % Colore di sfondo
+	numbers=left,  % Disabilita la numerazione delle righe
+	numberstyle=\tiny\color{black},%imposta stile dei numeri
+	frame=single,  % Bordo intorno al codice
+	breaklines=true,  % Rientro automatico delle linee troppo lunghe
+	tabsize=3,
+	literate={\ }{{\ }}1 
+}
+\title{Relazione TecWeb}
+\author{Matteo Mazzaretto 2111005\\
+	Marco Brunello 2110997\\
+	Davide Lorenzon\\
+	Stefano Maso}
+\date{Anno accademico 2025/2026}
+\renewcommand{\tabularxcolumn}[1]{m{#1}} % Centra verticalmente il testo nelle colonne X
+\begin{document}
+	\pagenumbering{gobble}
+	\maketitle
+	\begin{center}
+		%do un nuovo nome alla tabella degli indici e la inizializzo
+		\renewcommand{\contentsname}{Indice}
+		\tableofcontents
+	\end{center}
+	\newpage
+	%inizio l'effettivo conteggio delle pagine
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+\end{document}
