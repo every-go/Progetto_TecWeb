@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* TODO decidere i contrasti */
+:root {
+    --bgcolor: #0365ae;
+    --txtcolor: #fff;
+    --breadcolor: #163f77;
+
+    --linkcolor: #fff;
+    --visitedcolor: #f3c42b;
+
+    --newscolor: #f3c42b;
+    --newstxtcolor: #000;
+
+    --contentbgcolor: #fff;
+    --contenttxtcolor: #000;
+}
+
+html,
+body {
+    font-size: 100%;
+    font-family: "Lexend", "Roboto", sans-serif;
+    /* Per accessibilità */
+    line-height: 1.5em;
+}
+
+body {
+    background-color: var(--bgcolor);
+    max-width: 1200px;
+    margin: auto;
+    color: var(--txtcolor);
+}
