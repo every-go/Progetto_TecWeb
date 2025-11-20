@@ -1,0 +1,49 @@
+name: Compile Typst PDFs
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Typst
+        uses: typst-community/setup-typst@v4
+
+      - name: Verify Typst installation
+        run: typst --version
+
+      - name: Compile Typst sources in Relazione/
+        run: |
+          mkdir -p Relazione/output
+          for file in Relazione/*.typ; do
+            [ -e "$file" ] || continue
+            name=$(basename "$file" .typ)
+            typst compile "$file" "Relazione/output/$name.pdf"
+          done
+
+      - name: Commit and push PDFs
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          git add Relazione/output/*.pdf
+          git diff --staged --quiet || git commit -m "Auto-compile Typst PDFs [skip ci]"
+          git push
+
+      - name: Upload PDFs as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: typst-pdfs
+          path: Relazione/output/*.pdf

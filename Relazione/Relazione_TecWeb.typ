@@ -31,8 +31,7 @@ A.A. 2025-2026
 #table(
   columns: (1fr, 1fr, 1fr),
 table.header([Ruolo],[Username],[Password]),
-[Utente reale],[user],[user],
-[Utente fantasy],[fantasy],[fantasy],
+[Utente],[user],[user],
 [Amministratore],[admin],[admin],
 
 )
