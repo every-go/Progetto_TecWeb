@@ -16,4 +16,6 @@ Progetto Tecnologie Web anno accademico 2025/26
 Installazione linux : snap install typst
 Installazione mac   : brew install typst
 
+Per compilare: typst compile nome_file
+
 Estensione VScode per la preview : Tinymist Typst
