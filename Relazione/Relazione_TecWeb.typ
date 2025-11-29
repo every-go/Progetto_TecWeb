@@ -5,18 +5,20 @@
 #show link:set text(blue)
 
 #set page(
+  numbering: "i",
   footer: context [
-
+    
 
     #align(center + horizon)[
-    #counter(page).display(
-      (x,y)=>{
-        str(x)+" di "+ str(y)
-      },
-      both: true,
-    )
-        #place(left+horizon)[#image("../src/images/png/gatto_logo.png",width: 3em)]
-        #place(right+horizon)[#image("../src/images/png/gatto_logo.png",width: 3em)]
+    // #counter(page).display(
+    //   (x,y)=>{
+    //     str(x)+" di "+ str(y)
+    //   },
+    //   both: true,
+    // )
+    #counter(page).display()
+        #place(left+horizon)[#image("../src/images/png/gatto_logo.png",width: 3em, alt: "")]
+        #place(right+horizon)[#image("../src/images/png/gatto_logo.png",width: 3em, alt: "")]
   ]
   ]
 )
@@ -79,6 +81,30 @@ table.header([Nome],[Matricola]),
 
 #pagebreak()
 #context counter(page).update(1)
+
+#set page(
+  numbering: "i",
+  footer: context [
+    
+
+    #align(center + horizon)[
+    #counter(page).display(
+      (x,y)=>{
+        str(x)+" di "+ str(y)
+      },
+      both: true,
+    )
+
+        #place(left+horizon)[#image("../src/images/png/gatto_logo.png",width: 3em, alt: "")]
+        #place(right+horizon)[#image("../src/images/png/gatto_logo.png",width: 3em, alt: "")]
+  ]
+  ]
+)
+
+
+
+
+
 = Analisi dei Requisiti
 
 
