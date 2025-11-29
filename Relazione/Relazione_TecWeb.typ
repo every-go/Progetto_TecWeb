@@ -1,8 +1,27 @@
 #set page(paper:"a4")
-#set text(size: 16pt,lang="IT")
+#set text(size: 16pt,lang:"IT")
 
 
 #show link:set text(blue)
+
+#set page(
+  footer: context [
+
+
+    #align(center + horizon)[
+    #counter(page).display(
+      (x,y)=>{
+        str(x)+" di "+ str(y)
+      },
+      both: true,
+    )
+        #place(left+horizon)[#image("../src/images/png/gatto_logo.png",width: 3em)]
+        #place(right+horizon)[#image("../src/images/png/gatto_logo.png",width: 3em)]
+  ]
+  ]
+)
+
+
 
 #align(center)[
 #image("images/logo_Unipd.png", width: 30%)
@@ -52,7 +71,6 @@ table.header([Nome],[Matricola]),
 
 ]
 
-// #set heading(numbering: none)
 
 
 #pagebreak()
