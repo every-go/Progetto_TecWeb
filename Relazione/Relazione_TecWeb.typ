@@ -17,8 +17,8 @@
     //   both: true,
     // )
     #counter(page).display()
-        #place(left+horizon)[#image("../src/images/png/gatto_logo.png",width: 3em, alt: "")]
-        #place(right+horizon)[#image("../src/images/png/gatto_logo.png",width: 3em, alt: "")]
+        #place(left+horizon)[#image("images/gatto_logo.png",width: 3em, alt: "")]
+        #place(right+horizon)[#image("images/gatto_logo.png",width: 3em, alt: "")]
   ]
   ]
 )
@@ -102,38 +102,38 @@ table.header([Nome],[Matricola]),
       both: true,
     )
 
-        #place(left+horizon)[#image("../src/images/png/gatto_logo.png",width: 3em, alt: "")]
-        #place(right+horizon)[#image("../src/images/png/gatto_logo.png",width: 3em, alt: "")]
+        #place(left+horizon)[#image("images/gatto_logo.png",width: 3em, alt: "")]
+        #place(right+horizon)[#image("images/gatto_logo.png",width: 3em, alt: "")]
   ]
   ]
 )
 
-#include "intro.typ"
+#include "content/intro.typ"
 
 #pagebreak()
 
-#include "requisiti.typ"
+#include "content/requisiti.typ"
 
 #pagebreak()
 
-#include "progettazione.typ"
+#include "content/progettazione.typ"
 
 #pagebreak()
 
-#include "dati_info.typ"
+#include "content/dati_info.typ"
 
 #pagebreak()
 
-#include "app_servizi.typ"
+#include "content/app_servizi.typ"
 
 #pagebreak()
 
-#include "accessibility_usability.typ"
+#include "content/accessibility_usability.typ"
 
 #pagebreak()
 
-#include "colore.typ"
+#include "content/colore.typ"
 
 #pagebreak()
 
-#include "test.typ"
+#include "content/test.typ"

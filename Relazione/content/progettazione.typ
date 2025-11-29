@@ -9,7 +9,7 @@
 
 == Albero gerarchico
 #figure(caption: "Albero gerarchico del sito web")[
-  #image("images/albero.png", width: 80%)
+  #image("../images/albero.png", width: 80%)
 ]
 
 #text()[
