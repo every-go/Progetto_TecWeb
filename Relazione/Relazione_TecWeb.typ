@@ -83,7 +83,7 @@ table.header([Nome],[Matricola]),
 #context counter(page).update(1)
 
 #set page(
-  numbering: "i",
+  numbering: "1",
   footer: context [
     
 
@@ -102,63 +102,24 @@ table.header([Nome],[Matricola]),
 )
 
 
-
-
-
-= Analisi dei Requisiti
-
-
+#include "requisiti.typ"
 
 #pagebreak()
 
-= Colore e Contrasti
+#include "dati_info.typ"
 
-#text()[Per i colori del sito web, sono stati scelti dei colori che richiamano la natura e gli animali. Ovvero verde (sia scuro che chiaro) che richiama solidità, forza e crescita, in questo caso dell'animale. Il giallo richiama l'energia e la libertà. Il beige richiama la semplicità e la calma. Il marrone richiama la terra. Infine il grigio scuro richiama l'equilibrio e lo stile.]
+#pagebreak()
 
-#figure(
-  caption: [Colore con la relativa codifica RGB utilizzata nel sito 
-  ]
-)[
-#table(columns:(1fr,1fr),
-[Colore],[Codifica RGB],
-table.cell(fill: rgb("1b4332"))[],[1b4332],
-table.cell(fill: rgb("A3b18a"))[],[A3b18a],
-table.cell(fill: rgb("FFD166"))[],[FFD166],
-table.cell(fill: rgb("faf3dd"))[],[faf3dd],
-table.cell(fill: rgb("62402b"))[],[62402b],
-table.cell(fill: rgb("2f2f2f"))[],[2f2f2f]
-)
-]
+#include "app_servizi.typ"
 
-#text()[Per garantire una buona accessibilità del sito web, sono stati verificati i contrasti tra i colori utilizzati per gli sfondi e quelli utilizzati per i testi. Di seguito sono riportati i risultati delle verifiche effettuate.]
+#pagebreak()
 
-#figure(
-  caption: [Contrasti Colori \ Verificati con #link("https://webaim.org/resources/contrastchecker/") 
-  ])[
-#table(columns:(1fr,1fr,1fr,1fr,1fr,1fr,1fr),
-[],table.cell(fill: rgb("1b4332"))[],
-table.cell(fill: rgb("A3b18a"))[],
-table.cell(fill: rgb("FFD166"))[],
-table.cell(fill: rgb("faf3dd"))[],
-table.cell(fill: rgb("62402b"))[],
-table.cell(fill: rgb("2f2f2f"))[],
-// Row 1
-table.cell(fill: rgb("1b4332"))[],
-[],[],[],[],[],[],
-// Row 2
-table.cell(fill: rgb("A3b18a"))[],
-[],[],[],[],[],[],
-// Row 3
-table.cell(fill: rgb("FFD166"))[],
-[],[],[],[],[],[],
-// Row 4
-table.cell(fill: rgb("faf3dd"))[],
-[],[],[],[],[],[],
-// Row 5
-table.cell(fill: rgb("62402b"))[],
-[],[],[],[],[],[],
-// Row 6
-table.cell(fill: rgb("2f2f2f"))[],
-[],[],[],[],[],[],
-)
-]
+#include "accessibility_usability.typ"
+
+#pagebreak()
+
+#include "colore.typ"
+
+#pagebreak()
+
+#include "test.typ"
