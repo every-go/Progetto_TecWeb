@@ -25,7 +25,7 @@ table.cell(fill: rgb("000000"))[],[000000]
 #text()[Per garantire una buona accessibilità del sito web, sono stati verificati i contrasti tra i colori utilizzati per gli sfondi e quelli utilizzati per i testi. Di seguito sono riportati i risultati delle verifiche effettuate.]
 
 #figure(
-  caption: [Contrasti Colori \ Verificati con #link("https://webaim.org/resources/contrastchecker/") 
+  caption: [Contrasti Colori 
   ])[
 #table(columns:(1fr,1fr,1fr,1fr,1fr,1fr,1fr),rows:(1.2em),
   // Header Row
@@ -58,6 +58,10 @@ table.cell(fill: rgb("000000"))[],
 ]
 
 #text()[
+  I contrasti sono stati calcolati utilizzando lo strumento online "Contrast Checker" disponibile all'indirizzo web #link("https://webaim.org/resources/contrastchecker/")[https://webaim.org/resources/contrastchecker/].
+]
+
+#text()[
   Il rapporto fra colore e testo deve essere almeno di 4.5:1 per il testo piccolo, di 3:1 per il testo grande.
 
   I contrasti non rispettati non vengono mai utilizzati nel sito web.
@@ -81,4 +85,8 @@ table.cell(fill: rgb("000000"))[],
 
 #text()[
   Il colore delle icone nello sfondo verde chiaro (A3B18A) è il verde scuro (1B4332, rapporto 4.86:1). 1B
+]
+
+#text()[
+  Il logo dell'Università degli Studi di Padova, utilizzato nel disclaimer, non è in contrasto con i colori da noi utilizzati. Purtroppo, il manuale di identità visiva non fornisce alternative per il logo, costringendoci a mantenere il logo originale. Siamo comunque consapevoli del fatto che non mantiene i contrasti corretti.
 ]

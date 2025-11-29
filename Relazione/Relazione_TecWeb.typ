@@ -33,7 +33,7 @@ Università degli Studi di Padova
 A.A. 2025-2026
 
 #strong()[Indirizzo del sito:] \
-#link("https")[link del sito]
+#link("tecweb.studenti.math.unipd.it/mmazzare")[tecweb.studenti.math.unipd.it/mmazzare]
 
 #strong()[Mail referente:] \
 #link("mailto:matteo.mazzaretto@studenti.unipd.it")[matteo.mazzaretto\@studenti.unipd.it]
@@ -77,7 +77,14 @@ table.header([Nome],[Matricola]),
 
 #pagebreak()
 
+#set heading(numbering: "1.")
+
 #outline(title: "Indice")
+
+#outline(
+  title: [Tabelle],
+  target: figure.where(kind: table),
+)
 
 #pagebreak()
 #context counter(page).update(1)
@@ -101,8 +108,15 @@ table.header([Nome],[Matricola]),
   ]
 )
 
+#include "intro.typ"
+
+#pagebreak()
 
 #include "requisiti.typ"
+
+#pagebreak()
+
+#include "progettazione.typ"
 
 #pagebreak()
 
