@@ -1,0 +1,25 @@
+.left-panel {
+    display: none;
+}
+
+#contenuto {
+    width: 100%;
+}
+
+footer img {
+    display: none;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+footer .disclaimer {
+    width: 100%;
+    padding-top: 2em;
+}
+
