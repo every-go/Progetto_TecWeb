@@ -1,13 +1,14 @@
 * {
     margin: 0;
     padding: 0;
+    line-height: 1.5em;
 }
 
 /* TODO decidere i contrasti */
 :root {
     --bgcolor: #FAF3DD;
     --txtcolor: #000000;
-    --breadcolor: #163f77;
+    --breadcolor: #1B4332;
 
     --linkcolor: #fff;
     --visitedcolor: #f3c42b;
@@ -22,8 +23,6 @@
 html, body {
     font-size: 100%;
     font-family: "Noto Sans", sans-serif;
-    /* Per accessibilità */
-    line-height: 1.5em;
 }
 
 /*
