@@ -1,3 +1,14 @@
+.container-menu {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+#menu {
+    height: 3.5em;
+}
+
 .left-panel {
     display: none;
 }

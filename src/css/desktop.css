@@ -6,9 +6,10 @@
 
 /* TODO decidere i contrasti */
 :root {
-    --bgcolor: #FAF3DD;
-    --txtcolor: #000000;
-    --breadcolor: #1B4332;
+    --panna: #FAF3DD;
+    --nero: #000000;
+    --verdescuro: #1B4332;
+    --giallo: #FFD166;
 
     --linkcolor: #fff;
     --visitedcolor: #f3c42b;
@@ -23,10 +24,11 @@
 html, body {
     font-size: 100%;
     font-family: "Noto Sans", sans-serif;
+    background-color: var(--panna); /* COLORE SFONDO */
 }
 
 /*
-    ERRORI 
+    MENU
 */
 
 .aiuti {
@@ -36,6 +38,104 @@ html, body {
     top: auto;
     width: 1px;
 }
+
+.aiuti:focus {
+    margin: 1em;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    padding-top: 0.5em;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    width: auto;
+    height: 2em;
+    background-color: var(--verdescuro);
+    color: var(--panna);
+    border-radius: 2em;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    overflow: visible;
+}
+
+.aiuti:focus::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.container-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2em;
+}
+
+.logo-header {
+    background-image: url("../images/png/gatto_logo.png");
+    min-height: 20%;
+    width: 13%;
+    font-size: 3em;
+    text-indent: -99999em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    overflow: hidden;
+}
+
+#menu {
+    background-color: var(--verdescuro);
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    padding-left: 2em;
+    padding-right: 2em;
+    height: 3.5em;
+}
+
+#menu ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+#currentlink{
+    color: var(--giallo);
+    padding: 0.5em 1em;
+
+}
+
+
+#menu a{
+    color: var(--panna);
+    text-decoration: none;
+    padding: 0.5em 1em; 
+    border-radius: 1em; 
+    display: inline-block; 
+    transition: all 0.3s ease; /* Transizione fluida */
+}
+
+#menu a:hover{
+    background-color: var(--giallo); 
+    color: var(--verdescuro);
+    text-decoration: underline; 
+}
+
+#menu a:focus{
+    outline: 3px solid var(--giallo);
+}
+
+
+
+/*
+    ERRORI 
+*/
+
 
 .container {
     display: flex;
@@ -98,7 +198,7 @@ html, body {
 }
 
 #contenuto .pulsante:focus {
-    outline: 3px solid #f3c42b; /* Bordo visibile per accessibilità */
+    outline: 3px solid var(--giallo); /* Bordo visibile per accessibilità */
     outline-offset: 2px;
 }
 
