@@ -10,6 +10,8 @@
     --nero: #000000;
     --verdescuro: #1B4332;
     --giallo: #FFD166;
+    --grigio: #2F2F2F;
+    --arancione: #B45000;
 
     --linkcolor: #fff;
     --visitedcolor: #f3c42b;
@@ -130,6 +132,32 @@ html, body {
     outline: 3px solid var(--giallo);
 }
 
+/*
+    HOME
+*/
+
+.pagina {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.txt-img {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2em;
+}
+
+.txt-img img {
+    width: 40%;
+    border-radius: 2em;
+    border: 2px solid var(--grigio);
+}
+
+/* .pulsante */
 
 
 /*
@@ -188,17 +216,22 @@ html, body {
     margin-bottom: 0.5em;
 }
 
-#contenuto .pulsante {
+.pulsante {
     border-radius: 8px;
     padding: 0.5em;
     background-color: #1B4332;
-    color: #FAF3DD;
+    color: var(--panna);
     text-decoration: none;
-    margin-top: 0.5em;
+    margin-top: 1em;
+    display: inline-block;
 }
 
-#contenuto .pulsante:focus {
-    outline: 3px solid var(--giallo); /* Bordo visibile per accessibilità */
+.pulsante:hover {
+    text-decoration: underline;
+}
+
+.pulsante:focus {
+    outline: 3px solid var(--arancione); /* Bordo visibile per accessibilità */
     outline-offset: 2px;
 }
 
