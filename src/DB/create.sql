@@ -15,7 +15,7 @@ CREATE TYPE adozione AS ENUM ('Bassa', 'Media', 'Elevata');
 CREATE TABLE animali (
     id          SERIAL PRIMARY KEY,
     nome        TEXT NOT NULL,
-    immagine    TEXT,
+    immagine    TEXT NOT NULL,
     sesso       genere NOT NULL,
     tipo        tipo NOT NULL,
     luogo       TEXT NOT NULL,

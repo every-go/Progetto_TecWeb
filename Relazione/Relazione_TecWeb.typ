@@ -86,6 +86,11 @@ table.header([Nome],[Matricola]),
   target: figure.where(kind: table),
 )
 
+#outline(
+  title: [Immagini],
+  target: figure.where(kind: image),
+)
+
 #pagebreak()
 #context counter(page).update(1)
 

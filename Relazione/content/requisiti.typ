@@ -21,6 +21,7 @@ Un animale, se adottato, scompare dalla lista degli utenti ma rimane visualizzab
 + Utente autenticato: Logged-in
 + Amministratore: Admin
 Da notare che tutte le funzionalità dell'utente non autenticato sono disponibili anche per l'utente autenticato e per l'amministratore. \
+Le funzionalità dell'utente "Logged-in" sono disponibili anche per l'amministratore. \
 ]
 #figure(
   caption: [Schema delle funzionalità principali del sito web 
@@ -44,3 +45,8 @@ Da notare che tutte le funzionalità dell'utente non autenticato sono disponibil
   )
 ]
 
+== Localizzazione
+#text()[
+  Il sito web è studiato per essere disponibile solamente in Italia, quindi l'unica lingua supportata è l'italiano. \
+  Per questo motivo, non esistono altre versioni a differenza dei siti globalizzati (es. Amazon, eBay, ecc.). \
+]
