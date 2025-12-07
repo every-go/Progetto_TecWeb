@@ -159,6 +159,11 @@ html, body {
 
 /* .pulsante */
 
+ul.statistiche img{
+    width:3em
+}
+
+
 
 /*
     ERRORI 
@@ -273,3 +278,4 @@ footer a:visited{
 footer .disclaimer {
     width: 30%;
 }
+
