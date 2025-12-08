@@ -1,3 +1,7 @@
+main>article {
+    padding: 0 2em;
+}
+
 .container-menu {
     flex-direction: column;
     justify-content: center;
@@ -21,8 +25,12 @@
 }
 
 .txt-img img {
-    width: 100%;
+    width: 80%;
     margin-top: 3em;
+}
+
+.statistiche-card img {
+    width: 30%;
 }
 
 #menu {
@@ -35,6 +43,14 @@
 
 #contenuto {
     width: 100%;
+}
+
+.darkBackground {
+    padding: 2em 2em;
+}
+
+#adozione .card {
+    padding: 2em 1em;
 }
 
 footer img {
@@ -53,4 +69,3 @@ footer .disclaimer {
     width: 100%;
     padding-top: 2em;
 }
-

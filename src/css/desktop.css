@@ -12,7 +12,7 @@
     --giallo: #FFD166;
     --grigio: #2F2F2F;
     --arancione: #B45000;
-    --marrone:#4D2F24;
+    --marrone: #4D2F24;
 
 
     --linkcolor: #fff;
@@ -23,17 +23,70 @@
 
     --contentbgcolor: #fff;
     --contenttxtcolor: #000;
+
+    --link-non-visited: var(--nero);
+    --link-visited: var(--arancione);
+    --current-link: var(--giallo);
+    --text-color: var(--nero);
+    --primary-title-color: var(--marrone);
+    --secondary-title-color: var(--verdescuro);
+    --primary-bg: var(--panna);
+    --secondary-bg: var(--verdescuro);
 }
 
-html, body {
+/* Tag HTML */
+
+html,
+body {
     font-size: 100%;
     font-family: "Noto Sans", sans-serif;
-    background-color: var(--panna); /* COLORE SFONDO */
+    background-color: var(--primary-bg);
+    /* COLORE SFONDO */
+}
+
+body {
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: .5em;
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: var(--primary-title-color);
+}
+
+main>article {
+    min-height: 65vh;
+}
+
+hr {
+    border-top: 1px solid #000000;
+    margin: 2em 0;
+}
+
+a {
+    color: var(--text-color);
+}
+
+a:visited {
+    color: var(--link-visited);
 }
 
 /*
     MENU
 */
+
+/* Così lo stile di h1 non interferisce */
+header h1 {
+    margin: 0;
+}
 
 .aiuti {
     height: 1px;
@@ -53,8 +106,8 @@ html, body {
     padding-right: 0.7em;
     width: auto;
     height: 2em;
-    background-color: var(--verdescuro);
-    color: var(--panna);
+    background-color: var(--secondary-bg);
+    color: var(--primary-bg);
     border-radius: 2em;
     font-size: 1em;
     font-weight: bold;
@@ -93,8 +146,8 @@ html, body {
 }
 
 #menu {
-    background-color: var(--verdescuro);
-    border-radius: 2em;
+    background-color: var(--secondary-bg);
+    border-radius: 1em;
     display: flex;
     align-items: center;
     padding-left: 2em;
@@ -102,97 +155,85 @@ html, body {
     height: 3.5em;
 }
 
-#menu ul{
+#menu ul {
     list-style: none;
     display: flex;
     flex-direction: row;
 }
 
-#currentlink{
+#currentlink {
     color: var(--giallo);
     padding: 0.5em 1em;
 
 }
 
 
-#menu a{
+#menu a {
     color: var(--panna);
     text-decoration: none;
-    padding: 0.5em 1em; 
-    border-radius: 1em; 
-    display: inline-block; 
-    transition: all 0.3s ease; /* Transizione fluida */
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    display: inline-block;
+    transition: all 0.3s ease;
+    /* Transizione fluida */
 }
 
-#menu a:hover{
-    background-color: var(--giallo); 
+#menu a:hover {
+    background-color: var(--giallo);
     color: var(--verdescuro);
-    text-decoration: underline; 
+    text-decoration: underline;
 }
 
-#menu a:focus{
-    outline: 3px solid var(--giallo);
+#menu a:focus {
+    outline: 3px solid var(--current-link);
 }
 
 /*
     HOME
 */
 
-.pagina {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .txt-img {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    padding: 2em;
 }
 
 .txt-img img {
-    width: 40%;
+    width: 50%;
     border-radius: 2em;
-    border: 2px solid var(--grigio);
+    border: 2px solid var(--text-color);
 }
 
-.txt-img h2 {
-    padding-bottom: 1em;
+.txt-img h1 {
+    color: var(--primary-title-color);
 }
 
-/* .pulsante */
-
-.h1 {
-    text-align: center;
+.txt-img p {
+    width: 85%;
 }
+
 
 /* Breadcrumb */
 #breadcrumb {
     text-align: center;
-    color: var(--grigio);
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    font-size: .9em;
 }
-
-
-
-hr {
-    border-top: 1px solid #000000;
-    margin:0 5% ;
-}
-
 
 /* Statistiche */
-.statistiche{
-    padding-top: 3em;
+.statistiche {
+    /* padding-top: 3em; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    margin-bottom: 5em;
 }
 
-.statistiche-heading {
+.statistiche header {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -200,98 +241,73 @@ hr {
 
 .statistiche-card {
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
     list-style-type: none;
-    gap: 5em;
-    padding-top: 5em;
-    padding-left: 10em;
-    padding-right: 10em;
-    padding-bottom: 3em;
+    /* gap: 5em; */
+    /* padding-bottom: 3em; */
+    /* padding-top: 5em; */
+    /* padding-left: 10em;
+    /* padding-right: 10em; */
+    padding: 5em 0;
     text-align: center;
     align-items: flex-start;
 }
 
 .statistiche-card li {
-    width: 30%;
+    width: 20%;
 }
 
 .statistiche-card img {
-    width: 100%;
+    width: 60%;
 }
 
 .stat {
-    color:var(--verdescuro);
-    font-size: 5em;
-}
-
-/*
-    .statistiche ul{
-    margin: 0 1em;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap; 
-}
-
-.statistiche li{
-    margin: 1em 2em;
-    padding: 1em;
-    border-radius: 5px;
-    flex: 1 1 5em;
-
-}
-.statistiche img{
-    max-width:5em;
-    max-height: 5em;
-    max-width: 100%;
-    object-fit: contain;
-}
-
-.statistiche .stat{
-    color:var(--verdescuro);
-    font-size:2em;
+    color: var(--secondary-bg);
+    font-size: 4em;
     font-weight: bold;
 }
-*/
+
 
 
 /* Adozione */
 
-.darkBackground{
-    background-color: var(--verdescuro);
-    width: 100%;
-    margin:1em 0 0 0;
-    padding-top: 2em;
-    padding-bottom: 2em;
+.darkBackground {
+    background-color: var(--secondary-bg);
+    padding: 2em 5em;
+    color: var(--primary-bg);
+    border-radius: 2em;
 }
 
 .darkBackground hr {
-    border-color: var(--panna);
+    border-color: var(--primary-bg);
 }
 
-#adozione{
-    margin:1em calc(5% - 1em);
-    padding: 1em;
+#adozione {
+    color: var(--text-color);
+    margin: 1em 0;
+    /* margin: 1em calc(5% - 1em); */
+    /* padding: 1em; */
     display: flex;
-    flex-wrap: wrap; 
+    gap: 4em;
+    flex-wrap: wrap;
 }
 
 #adozione .card {
-    margin:1em 2em;
-    padding:2% 5%;
-    background-color: var(--panna);
+    margin: 1em 0;
+    padding: 2% 5% 3em 5%;
+    background-color: var(--primary-bg);
     border-radius: 2em;
     flex: 1 1 20em;
 }
 
-#adozione .card h2{
-    color: var(--verdescuro);
+#adozione .card h2 {
+    color: var(--secondary-bg);
+    margin-bottom: .2em;
+    text-align: center;
 }
 
 #adozione dl {
-    /* Rimuove eventuali margini/padding indesiderati */
-    margin: 0; 
+    margin: 0;
     padding: 0;
 }
 
@@ -299,41 +315,45 @@ hr {
 #adozione dt {
     /* Resetta lo stile di visualizzazione e aggiunge un po' di spazio */
     margin-top: 1em;
-    color:var(--marrone);
-    font-weight: bold; /* Opzionale, per evidenziare il termine */
+    color: var(--primary-title-color);
+    font-weight: bold;
+    /* Opzionale, per evidenziare il termine */
 }
 
 /* 3. Crea il "pallino" usando lo pseudo-elemento ::before */
 #adozione dl.unordered dt::before {
-    content: "•"; /* Usa il carattere Unicode per il pallino (Alt + 7) */
+    content: "•";
+    /* Usa il carattere Unicode per il pallino (Alt + 7) */
     font-size: 1.2em;
-    margin-right: 0.5em; /* Spazio tra il pallino e il termine */
+    margin-right: 0.5em;
+    /* Spazio tra il pallino e il termine */
 }
 
 
-#adozione dl.ordered{
-counter-reset: dt-counter; /* 1. Inizializza un contatore chiamato 'dt-counter' a 0 */
+#adozione dl.ordered {
+    counter-reset: dt-counter;
+    /* 1. Inizializza un contatore chiamato 'dt-counter' a 0 */
     margin: 0;
     padding: 0;
 }
 
 #adozione dl.ordered dt {
-counter-increment: dt-counter; /* 2. Incrementa 'dt-counter' di 1 per ogni <dt> */
+    counter-increment: dt-counter;
+    /* 2. Incrementa 'dt-counter' di 1 per ogni <dt> */
     margin-top: 1em;
     font-weight: bold;
 }
 
 #adozione dl.ordered dt::before {
-/* 3. Visualizza il valore del contatore, seguito da un punto e uno spazio */
-    content: counter(dt-counter) ". "; 
-    
+    /* 3. Visualizza il valore del contatore, seguito da un punto e uno spazio */
+    content: counter(dt-counter) ". ";
+
     /* Stile del numero */
-    color: var(--verdescuro); /* Colore per evidenziare la numerazione */
+    color: var(--verdescuro);
+    /* Colore per evidenziare la numerazione */
     font-weight: bold;
     margin-right: 0.5em;
 }
-
-
 
 /* 4. Opzionale: Stile per la definizione <dd> */
 #adozione dd {
@@ -343,9 +363,45 @@ counter-increment: dt-counter; /* 2. Incrementa 'dt-counter' di 1 per ogni <dt> 
 
 
 
+/* CHI SIAMO */
 
+#chi-siamo em {
+    color: var(--secondary-bg);
+    font-style: normal;
+}
 
+#impegno {
+    text-align: center;
+    padding: 2em 10em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+}
 
+#impegno h2 {
+    color: var(--primary-bg);
+    margin-bottom: .1em;
+}
+
+#impegno ul,
+#impegno p {
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+#impegno ul {
+    margin: 2em 0;
+    list-style: none;
+}
+
+#impegno li {
+    margin: 1em 0;
+}
+
+#impegno em {
+    color: var(--current-link);
+}
 
 
 
@@ -387,7 +443,7 @@ counter-increment: dt-counter; /* 2. Incrementa 'dt-counter' di 1 per ogni <dt> 
     display: flex;
     align-items: center;
     justify-content: center;
-} 
+}
 
 
 .left-panel img {
@@ -426,9 +482,9 @@ counter-increment: dt-counter; /* 2. Incrementa 'dt-counter' di 1 per ogni <dt> 
 }
 
 .pulsante {
-    border-radius: 8px;
-    padding: 0.5em;
-    background-color: #1B4332;
+    border-radius: 10px;
+    padding: 0.5em 1em;
+    background-color: var(--verdescuro);
     color: var(--panna);
     text-decoration: none;
     margin-top: 1.5em;
@@ -440,7 +496,8 @@ counter-increment: dt-counter; /* 2. Incrementa 'dt-counter' di 1 per ogni <dt> 
 }
 
 .pulsante:focus {
-    outline: 3px solid var(--arancione); /* Bordo visibile per accessibilità */
+    outline: 3px solid var(--arancione);
+    /* Bordo visibile per accessibilità */
     outline-offset: 2px;
 }
 
@@ -451,7 +508,6 @@ counter-increment: dt-counter; /* 2. Incrementa 'dt-counter' di 1 per ogni <dt> 
 footer {
     background-color: #FAF3DD;
     padding: 1.5em;
-    border-top: 2px solid #1B4332;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -467,19 +523,26 @@ footer h2 {
     margin-bottom: 0.5em;
 }
 
-footer nav ul{
+footer nav ul {
     list-style: none;
 }
 
-footer a{
-    color: #000000;
-}
-
-footer a:visited{
-    color: #B45000;
-}
 
 footer .disclaimer {
     width: 30%;
 }
 
+
+@media (max-width: 1200px) {
+    body {
+        padding: 0 2em;
+    }
+
+    main>article.darkBackground {
+        margin-inline: -2em;
+    }
+
+    .darkBackground {
+        border-radius: 0;
+    }
+}
