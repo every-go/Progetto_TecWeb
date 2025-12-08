@@ -263,7 +263,6 @@ hr {
 /* 3. Crea il "pallino" usando lo pseudo-elemento ::before */
 #adozione dl.unordered dt::before {
     content: "•"; /* Usa il carattere Unicode per il pallino (Alt + 7) */
-    color: var(--colore-principale); /* Applica un colore del brand, ad esempio il verde scuro */
     font-size: 1.2em;
     margin-right: 0.5em; /* Spazio tra il pallino e il termine */
 }
