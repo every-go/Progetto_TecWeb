@@ -12,6 +12,8 @@
     --giallo: #FFD166;
     --grigio: #2F2F2F;
     --arancione: #B45000;
+    --marrone:#4D2F24;
+
 
     --linkcolor: #fff;
     --visitedcolor: #f3c42b;
@@ -159,9 +161,169 @@ html, body {
 
 /* .pulsante */
 
-ul.statistiche img{
-    width:3em
+
+/* heading */
+h1,h2,h3,h4 {
+    text-align: center;
 }
+
+
+/* Breadcrumb */
+#breadcrumb {
+    text-align: center;
+    color: var(--grigio);
+}
+
+
+
+hr {
+    border-color: #000;
+    margin:0 5% ;
+}
+
+
+/* Statistiche */
+.statistiche{
+ text-align: center;   
+}
+.statistiche ul{
+    margin: 0 1em;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.statistiche li{
+    margin: 1em 2em;
+    padding: 1em;
+    border-radius: 5px;
+    flex: 1 1 5em;
+
+}
+.statistiche img{
+    max-width:5em;
+    max-height: 5em;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.statistiche .stat{
+    color:var(--verdescuro);
+    font-size:2em;
+    font-weight: bold;
+}
+
+/* Adozione */
+
+.darkBackground{
+    background-color: var(--verdescuro);
+    width: 100%;
+    margin:1em 0 0 0;
+    padding: 1em;
+
+}
+
+.darkBackground hr {
+    border-color: var(--panna);
+}
+#adozione{
+    margin:1em calc(5% - 1em);
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+#adozione .card {
+    margin:1em 2em;
+    padding:2% 5%;
+    background-color: var(--panna);
+    border-radius: 2em;
+    flex: 1 1 20em;
+}
+
+#adozione .card h2{
+    color: var(--verdescuro);
+}
+
+#adozione dl {
+    /* Rimuove eventuali margini/padding indesiderati */
+    margin: 0; 
+    padding: 0;
+}
+
+/* 2. Applica la puntatura all'elemento <dt> (Termine) */
+#adozione dt {
+    /* Resetta lo stile di visualizzazione e aggiunge un po' di spazio */
+    margin-top: 1em;
+    color:var(--marrone);
+    font-weight: bold; /* Opzionale, per evidenziare il termine */
+}
+
+/* 3. Crea il "pallino" usando lo pseudo-elemento ::before */
+#adozione dl.unordered dt::before {
+    content: "•"; /* Usa il carattere Unicode per il pallino (Alt + 7) */
+    color: var(--colore-principale); /* Applica un colore del brand, ad esempio il verde scuro */
+    font-size: 1.2em;
+    margin-right: 0.5em; /* Spazio tra il pallino e il termine */
+}
+
+
+#adozione dl.ordered{
+counter-reset: dt-counter; /* 1. Inizializza un contatore chiamato 'dt-counter' a 0 */
+    margin: 0;
+    padding: 0;
+}
+
+#adozione dl.ordered dt {
+counter-increment: dt-counter; /* 2. Incrementa 'dt-counter' di 1 per ogni <dt> */
+    margin-top: 1em;
+    font-weight: bold;
+}
+
+#adozione dl.ordered dt::before {
+/* 3. Visualizza il valore del contatore, seguito da un punto e uno spazio */
+    content: counter(dt-counter) ". "; 
+    
+    /* Stile del numero */
+    color: var(--verdescuro); /* Colore per evidenziare la numerazione */
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+
+
+
+/* 4. Opzionale: Stile per la definizione <dd> */
+#adozione dd {
+    /* Sposta leggermente la definizione a destra, come una ul */
+    margin-left: 2em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
