@@ -5,6 +5,26 @@
     gap: 1em;
 }
 
+.statistiche-card {
+    flex-direction: column;
+}
+
+.statistiche-card li {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0em;
+}
+
+.txt-img {
+    flex-direction: column;
+}
+
+.txt-img img {
+    width: 100%;
+    margin-top: 3em;
+}
+
 #menu {
     height: 3.5em;
 }
