@@ -162,9 +162,8 @@ header h1 {
 }
 
 #currentlink {
-    color: var(--giallo);
+    color: var(--current-link);
     padding: 0.5em 1em;
-
 }
 
 
