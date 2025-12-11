@@ -8,6 +8,7 @@
 :root {
     --panna: #FAF3DD;
     --nero: #000000;
+    --verdino: #A3B18A;
     --verdescuro: #1B4332;
     --giallo: #FFD166;
     --grigio: #2F2F2F;
@@ -403,12 +404,134 @@ header h1 {
 }
 
 
+/*
+    ANIMALI
+*/
+
+#home-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search {
+    min-width: 400px;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    border-radius: 28px;
+    background: #2F2F2F;
+}
 
 
+.search-input {
+    font-size: 1em;
+    color: #FAF3DD;
+    margin-left: 1em;
+    outline: none;
+    border: none;
+    background: transparent;
+}
 
+.search-input::placeholder, .search-icon {
+    color: #FAF3DD;
+}
 
+.animali {
+    margin-top: 4em;
+    display: flex;
+    flex-direction: row;
+    gap: 5em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
+.animale-link {
+    border-radius: 28px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    flex: 1 1 25%; /* Base 22%, cresce e si restringe */
+    min-width: 18.75rem; /* Larghezza minima prima di andare a capo */
+    max-width: 30%; /* Massimo 4 per riga */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.animale-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.animale-link:visited {
+    color: inherit;
+}
+
+.animale-link:focus {
+    outline: 3px solid var(--arancione);
+    outline-offset: 2px;
+}
+
+.animale {
+    width: 100%;
+    background-color: var(--secondary-bg);
+    border-radius: 28px;
+}
+
+.animale img {
+    width: 100%;
+    height: 15.625rem;
+    object-fit: cover;
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+}
+
+.animale-info {
+    padding: 1em;
+    color: var(--primary-bg);
+    text-align: center;
+}
+
+.animale-info .nome {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.8em;
+}
+
+/* gestione spazi righe informazioni */
+.animale-info .riga-info { 
+    display: flex;
+    justify-content: space-between;
+    gap: 4em;
+    margin-bottom: 1.5em;
+}
+
+/* gestione nelle righe delle informazioni */
+.animale-info .info-box { 
+    background-color: var(--verdino);
+    color: var(--nero);
+    padding: 0.4em 0.6em;
+    border-radius: 8px;
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3em;
+    font-size: 1em;
+}
+
+/* gestione loghi */
+.animale-info .info-box img {
+    width: 1.2em;
+    height: 1.2em;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.animale-info .info-box .material-symbols-outlined {
+    font-size: 1.2em;
+    vertical-align: middle;
+}
 
 
 
@@ -488,6 +611,10 @@ header h1 {
     text-decoration: none;
     margin-top: 1.5em;
     display: inline-block;
+}
+
+.pulsante:visited {
+    color: var(--panna);
 }
 
 .pulsante:hover {
