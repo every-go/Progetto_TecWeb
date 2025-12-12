@@ -399,9 +399,10 @@ header h1 {
     background: transparent;
 }
 
-.search-input::placeholder, .search-icon {
+.search-icon {
     color: var(--searchplaceholdericon);
 }
+
 
 .animali {
     margin-top: 4em;
@@ -410,22 +411,12 @@ header h1 {
     gap: 10em;
     justify-content: center;
     flex-wrap: wrap;
+    list-style: none;
+    padding-left: 0;
 }
 
 .animale-link {
-    border-radius: 28px;
     text-decoration: none;
-    color: inherit;
-    display: block;
-    flex: 0 1 20%; /* Base 22%, cresce e si restringe */
-    min-width: 18rem; /* Larghezza minima prima di andare a capo */
-    max-width: 25%; /* Massimo 4 per riga */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.animale-link:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .animale-link:visited {
@@ -437,13 +428,29 @@ header h1 {
     outline-offset: 2px;
 }
 
-.animale {
+.animale-card {
     width: 100%;
     background-color: var(--secondary-bg);
     border-radius: 28px;
+    border-radius: 28px;
+    border-radius: 28px;
+    color: inherit;
+    display: block;
+    flex: 0 1 20%;
+    /* Base 22%, cresce e si restringe */
+    min-width: 18rem;
+    /* Larghezza minima prima di andare a capo */
+    max-width: 25%;
+    /* Massimo 4 per riga */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.animale img {
+.animale-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.animale-card img {
     width: 100%;
     height: 15.625rem;
     object-fit: cover;
@@ -454,30 +461,28 @@ header h1 {
 .animale-info {
     padding: 1em;
     color: var(--primary-bg);
-    text-align: center;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: .5em;
+    column-gap: 1em;
+    list-style: none;
 }
 
 .animale-info .nome {
     font-size: 1.5em;
     font-weight: bold;
-    margin-bottom: 0.8em;
-}
-
-/* gestione spazi righe informazioni */
-.animale-info .riga-info { 
-    display: flex;
-    justify-content: space-between;
-    gap: 4em;
-    margin-bottom: 1.5em;
+    /* margin-bottom: 0.8em; */
+    grid-column: 1 / 3;
 }
 
 /* gestione nelle righe delle informazioni */
-.animale-info .info-box { 
+.animale-info .info-box {
     background-color: var(--animalebackground);
     color: var(--textanimale);
     padding: 0.4em 0.6em;
     border-radius: 8px;
-    flex: 1; 
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
