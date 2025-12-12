@@ -417,6 +417,7 @@ header h1 {
 
 .animale-link {
     text-decoration: none;
+    display: block;
 }
 
 .animale-link:visited {
@@ -426,13 +427,12 @@ header h1 {
 .animale-link:focus {
     outline: 3px solid var(--focusanimale);
     outline-offset: 2px;
+    border-radius: 28px;
 }
 
 .animale-card {
     width: 100%;
     background-color: var(--secondary-bg);
-    border-radius: 28px;
-    border-radius: 28px;
     border-radius: 28px;
     color: inherit;
     display: block;
