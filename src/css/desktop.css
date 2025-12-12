@@ -33,6 +33,27 @@
     --secondary-title-color: var(--verdescuro);
     --primary-bg: var(--panna);
     --secondary-bg: var(--verdescuro);
+    /* Navbar */
+    --navelement: var(--panna);
+    --navhoverbackground: var(--giallo);
+    --navhovercolor: var(--verdescuro);
+    /* Animali */
+    --searchbackground: var(--nero);
+    --searchcolor: var(--panna);
+    --searchplaceholdericon: var(--panna);
+    --focusanimale: var(--nero);
+    --textanimale: var(--nero);
+    --animalebackground: var(--verdino);
+    /* Errori */
+    --contenutobackground: var(--panna);
+    --leftbackground: var(--verdescuro);
+    /* Pulsante */
+    --pulsantebackground: var(--verdescuro);
+    --pulsantecolor: var(--panna);
+    --pulsantevisited: var(--panna);
+    --pulsantefocus: var(--arancione);
+    /* Footer */
+    --footerbackground: var(--panna);
 }
 
 /* Tag HTML */
@@ -169,7 +190,7 @@ header h1 {
 
 
 #menu a {
-    color: var(--panna);
+    color: var(--navelement);
     text-decoration: none;
     padding: 0.5em 1em;
     border-radius: 1em;
@@ -179,8 +200,8 @@ header h1 {
 }
 
 #menu a:hover {
-    background-color: var(--giallo);
-    color: var(--verdescuro);
+    background-color: var(--navhoverbackground);
+    color: var(--navhovercolor);
     text-decoration: underline;
 }
 
@@ -306,63 +327,6 @@ header h1 {
     text-align: center;
 }
 
-#adozione dl {
-    margin: 0;
-    padding: 0;
-}
-
-/* 2. Applica la puntatura all'elemento <dt> (Termine) */
-#adozione dt {
-    /* Resetta lo stile di visualizzazione e aggiunge un po' di spazio */
-    margin-top: 1em;
-    color: var(--primary-title-color);
-    font-weight: bold;
-    /* Opzionale, per evidenziare il termine */
-}
-
-/* 3. Crea il "pallino" usando lo pseudo-elemento ::before */
-#adozione dl.unordered dt::before {
-    content: "•";
-    /* Usa il carattere Unicode per il pallino (Alt + 7) */
-    font-size: 1.2em;
-    margin-right: 0.5em;
-    /* Spazio tra il pallino e il termine */
-}
-
-
-#adozione dl.ordered {
-    counter-reset: dt-counter;
-    /* 1. Inizializza un contatore chiamato 'dt-counter' a 0 */
-    margin: 0;
-    padding: 0;
-}
-
-#adozione dl.ordered dt {
-    counter-increment: dt-counter;
-    /* 2. Incrementa 'dt-counter' di 1 per ogni <dt> */
-    margin-top: 1em;
-    font-weight: bold;
-}
-
-#adozione dl.ordered dt::before {
-    /* 3. Visualizza il valore del contatore, seguito da un punto e uno spazio */
-    content: counter(dt-counter) ". ";
-
-    /* Stile del numero */
-    color: var(--verdescuro);
-    /* Colore per evidenziare la numerazione */
-    font-weight: bold;
-    margin-right: 0.5em;
-}
-
-/* 4. Opzionale: Stile per la definizione <dd> */
-#adozione dd {
-    /* Sposta leggermente la definizione a destra, come una ul */
-    margin-left: 2em;
-}
-
-
-
 /* CHI SIAMO */
 
 #chi-siamo em {
@@ -421,14 +385,14 @@ header h1 {
     align-items: center;
     padding: 1em;
     border-radius: 28px;
-    background: #2F2F2F;
+    background: var(--searchbackground);
 }
 
 
 .search-input {
     width: 25rem;
     font-size: 1em;
-    color: #FAF3DD;
+    color: var(--searchcolor);
     margin-left: 1em;
     outline: none;
     border: none;
@@ -436,7 +400,7 @@ header h1 {
 }
 
 .search-input::placeholder, .search-icon {
-    color: #FAF3DD;
+    color: var(--searchplaceholdericon);
 }
 
 .animali {
@@ -469,7 +433,7 @@ header h1 {
 }
 
 .animale-link:focus {
-    outline: 3px solid var(--arancione);
+    outline: 3px solid var(--focusanimale);
     outline-offset: 2px;
 }
 
@@ -509,8 +473,8 @@ header h1 {
 
 /* gestione nelle righe delle informazioni */
 .animale-info .info-box { 
-    background-color: var(--verdino);
-    color: var(--nero);
+    background-color: var(--animalebackground);
+    color: var(--textanimale);
     padding: 0.4em 0.6em;
     border-radius: 8px;
     flex: 1; 
@@ -562,7 +526,7 @@ header h1 {
 
 .left-panel {
     width: 35%;
-    background-color: #1B4332;
+    background-color: var(--leftbackground);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -577,7 +541,7 @@ header h1 {
 
 #contenuto {
     width: 65%;
-    background-color: #FAF3DD;
+    background-color: var(--contenutobackground);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -607,15 +571,15 @@ header h1 {
 .pulsante {
     border-radius: 10px;
     padding: 0.5em 1em;
-    background-color: var(--verdescuro);
-    color: var(--panna);
+    background-color: var(--pulsantebackground);
+    color: var(--pulsantecolor);
     text-decoration: none;
     margin-top: 1.5em;
     display: inline-block;
 }
 
 .pulsante:visited {
-    color: var(--panna);
+    color: var(--pulsantevisited);
 }
 
 .pulsante:hover {
@@ -623,7 +587,7 @@ header h1 {
 }
 
 .pulsante:focus {
-    outline: 3px solid var(--arancione);
+    outline: 3px solid var(--pulsantefocus);
     /* Bordo visibile per accessibilità */
     outline-offset: 2px;
 }
@@ -633,7 +597,7 @@ header h1 {
 */
 
 footer {
-    background-color: #FAF3DD;
+    background-color: var(--footerbackground);
     padding: 1.5em;
     display: flex;
     flex-direction: row;
