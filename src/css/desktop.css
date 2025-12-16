@@ -504,18 +504,142 @@ header h1 {
 }
 
 
+/* ANIMALE */
+
+#animale-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    row-gap: 3em;
+    align-items: start;
+}
+
+.img-cutter {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    aspect-ratio: 4/3;
+    width: 70%;
+}
+
+.img-container {
+    border-radius: 40px;
+    border: 3px solid var(--text-color);
+}
+
+#animale-main h1 {
+    text-align: left;
+    font-size: 4em;
+    margin: 0 0 .5em 0;
+}
+
+#animale-main h2 {
+    margin: 0;
+}
 
 
+#info-principali dl {
+    font-size: 2.5em;
+}
 
+#info-principali dt {
+    float: left;
+    font-weight: bold;
+}
 
+#info-principali dd {
+    margin-bottom: .7em;
+    text-indent: .5em;
+}
 
+#descrizione {
+    border: 2px solid var(--text-color);
+    border-radius: 2em;
+    padding: 1em 3em;
+}
 
+#descrizione header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
 
+#descrizione h3 {
+    font-size: 1.5em;
+    margin-bottom: .3em;
+}
 
+#descrizione p {
+    margin-bottom: 1em;
+}
 
+#descrizione ::marker {
+    color: var(--secondary-bg);
+}
 
+#descrizione ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
 
+    /* Per allineamento del pallino della lista */
+    margin-left: 1.2em;
 
+}
+
+#descrizione li {
+    flex: 1 1 10em;
+    margin-bottom: 1em;
+}
+
+#animale-main aside {
+    margin-left: 10%;
+    padding: 1.5em 2.5em;
+    background-color: var(--animalebackground);
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+}
+
+#animale-main aside h2 {
+    text-align: center;
+}
+
+#animale-main aside button {
+    margin-top: 2em;
+    border: 0;
+    font-size: 2em;
+    border-radius: 9999px;
+    padding: .5em 2em;
+    cursor: pointer;
+    color: var(--primary-bg);
+    background-color: var(--secondary-bg);
+}
+
+.bottone-preferiti {
+    border: 3px solid var(--secondary-bg);
+    background-color: var(--giallo);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    aspect-ratio: 1/1;
+    transition: transform .2s ease;
+}
+
+.bottone-preferiti:hover {
+    transform: scale(1.05);
+}
+
+.bottone-preferiti img {
+    /* Per mettere il colore all'immagine di verdescuro*/
+    filter: invert(19%) sepia(25%) saturate(928%) hue-rotate(102deg) brightness(99%) contrast(90%);
+    width: 60%;
+}
 
 /*
     ERRORI 
@@ -607,6 +731,8 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-top: 1px solid var(--nero);
+    margin-top: 3em;
 }
 
 footer img {
