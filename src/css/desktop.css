@@ -33,6 +33,27 @@
     --secondary-title-color: var(--verdescuro);
     --primary-bg: var(--panna);
     --secondary-bg: var(--verdescuro);
+    /* Navbar */
+    --navelement: var(--panna);
+    --navhoverbackground: var(--giallo);
+    --navhovercolor: var(--verdescuro);
+    /* Animali */
+    --searchbackground: var(--nero);
+    --searchcolor: var(--panna);
+    --searchplaceholdericon: var(--panna);
+    --focusanimale: var(--nero);
+    --textanimale: var(--nero);
+    --animalebackground: var(--verdino);
+    /* Errori */
+    --contenutobackground: var(--panna);
+    --leftbackground: var(--verdescuro);
+    /* Pulsante */
+    --pulsantebackground: var(--verdescuro);
+    --pulsantecolor: var(--panna);
+    --pulsantevisited: var(--panna);
+    --pulsantefocus: var(--arancione);
+    /* Footer */
+    --footerbackground: var(--panna);
 }
 
 /* Tag HTML */
@@ -169,7 +190,7 @@ header h1 {
 
 
 #menu a {
-    color: var(--panna);
+    color: var(--navelement);
     text-decoration: none;
     padding: 0.5em 1em;
     border-radius: 1em;
@@ -179,8 +200,8 @@ header h1 {
 }
 
 #menu a:hover {
-    background-color: var(--giallo);
-    color: var(--verdescuro);
+    background-color: var(--navhoverbackground);
+    color: var(--navhovercolor);
     text-decoration: underline;
 }
 
@@ -306,63 +327,6 @@ header h1 {
     text-align: center;
 }
 
-#adozione dl {
-    margin: 0;
-    padding: 0;
-}
-
-/* 2. Applica la puntatura all'elemento <dt> (Termine) */
-#adozione dt {
-    /* Resetta lo stile di visualizzazione e aggiunge un po' di spazio */
-    margin-top: 1em;
-    color: var(--primary-title-color);
-    font-weight: bold;
-    /* Opzionale, per evidenziare il termine */
-}
-
-/* 3. Crea il "pallino" usando lo pseudo-elemento ::before */
-#adozione dl.unordered dt::before {
-    content: "•";
-    /* Usa il carattere Unicode per il pallino (Alt + 7) */
-    font-size: 1.2em;
-    margin-right: 0.5em;
-    /* Spazio tra il pallino e il termine */
-}
-
-
-#adozione dl.ordered {
-    counter-reset: dt-counter;
-    /* 1. Inizializza un contatore chiamato 'dt-counter' a 0 */
-    margin: 0;
-    padding: 0;
-}
-
-#adozione dl.ordered dt {
-    counter-increment: dt-counter;
-    /* 2. Incrementa 'dt-counter' di 1 per ogni <dt> */
-    margin-top: 1em;
-    font-weight: bold;
-}
-
-#adozione dl.ordered dt::before {
-    /* 3. Visualizza il valore del contatore, seguito da un punto e uno spazio */
-    content: counter(dt-counter) ". ";
-
-    /* Stile del numero */
-    color: var(--verdescuro);
-    /* Colore per evidenziare la numerazione */
-    font-weight: bold;
-    margin-right: 0.5em;
-}
-
-/* 4. Opzionale: Stile per la definizione <dd> */
-#adozione dd {
-    /* Sposta leggermente la definizione a destra, come una ul */
-    margin-left: 2em;
-}
-
-
-
 /* CHI SIAMO */
 
 #chi-siamo em {
@@ -421,23 +385,24 @@ header h1 {
     align-items: center;
     padding: 1em;
     border-radius: 28px;
-    background: #2F2F2F;
+    background: var(--searchbackground);
 }
 
 
 .search-input {
     width: 25rem;
     font-size: 1em;
-    color: #FAF3DD;
+    color: var(--searchcolor);
     margin-left: 1em;
     outline: none;
     border: none;
     background: transparent;
 }
 
-.search-input::placeholder, .search-icon {
-    color: #FAF3DD;
+.search-icon {
+    color: var(--searchplaceholdericon);
 }
+
 
 .animali {
     margin-top: 4em;
@@ -446,22 +411,13 @@ header h1 {
     gap: 10em;
     justify-content: center;
     flex-wrap: wrap;
+    list-style: none;
+    padding-left: 0;
 }
 
 .animale-link {
-    border-radius: 28px;
     text-decoration: none;
-    color: inherit;
     display: block;
-    flex: 0 1 20%; /* Base 22%, cresce e si restringe */
-    min-width: 18rem; /* Larghezza minima prima di andare a capo */
-    max-width: 25%; /* Massimo 4 per riga */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.animale-link:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .animale-link:visited {
@@ -469,17 +425,32 @@ header h1 {
 }
 
 .animale-link:focus {
-    outline: 3px solid var(--arancione);
+    outline: 3px solid var(--focusanimale);
     outline-offset: 2px;
-}
-
-.animale {
-    width: 100%;
-    background-color: var(--secondary-bg);
     border-radius: 28px;
 }
 
-.animale img {
+.animale-card {
+    width: 100%;
+    background-color: var(--secondary-bg);
+    border-radius: 28px;
+    color: inherit;
+    display: block;
+    flex: 0 1 20%;
+    /* Base 22%, cresce e si restringe */
+    min-width: 18rem;
+    /* Larghezza minima prima di andare a capo */
+    max-width: 25%;
+    /* Massimo 4 per riga */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animale-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.animale-card img {
     width: 100%;
     height: 15.625rem;
     object-fit: cover;
@@ -490,30 +461,28 @@ header h1 {
 .animale-info {
     padding: 1em;
     color: var(--primary-bg);
-    text-align: center;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: .5em;
+    column-gap: 1em;
+    list-style: none;
 }
 
 .animale-info .nome {
     font-size: 1.5em;
     font-weight: bold;
-    margin-bottom: 0.8em;
-}
-
-/* gestione spazi righe informazioni */
-.animale-info .riga-info { 
-    display: flex;
-    justify-content: space-between;
-    gap: 4em;
-    margin-bottom: 1.5em;
+    /* margin-bottom: 0.8em; */
+    grid-column: 1 / 3;
 }
 
 /* gestione nelle righe delle informazioni */
-.animale-info .info-box { 
-    background-color: var(--verdino);
-    color: var(--nero);
+.animale-info .info-box {
+    background-color: var(--animalebackground);
+    color: var(--textanimale);
     padding: 0.4em 0.6em;
     border-radius: 8px;
-    flex: 1; 
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -535,18 +504,142 @@ header h1 {
 }
 
 
+/* ANIMALE */
+
+#animale-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    row-gap: 3em;
+    align-items: start;
+}
+
+.img-cutter {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    aspect-ratio: 4/3;
+    width: 70%;
+}
+
+.img-container {
+    border-radius: 40px;
+    border: 3px solid var(--text-color);
+}
+
+#animale-main h1 {
+    text-align: left;
+    font-size: 4em;
+    margin: 0 0 .5em 0;
+}
+
+#animale-main h2 {
+    margin: 0;
+}
 
 
+#info-principali dl {
+    font-size: 2.5em;
+}
 
+#info-principali dt {
+    float: left;
+    font-weight: bold;
+}
 
+#info-principali dd {
+    margin-bottom: .7em;
+    text-indent: .5em;
+}
 
+#descrizione {
+    border: 2px solid var(--text-color);
+    border-radius: 2em;
+    padding: 1em 3em;
+}
 
+#descrizione header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
 
+#descrizione h3 {
+    font-size: 1.5em;
+    margin-bottom: .3em;
+}
 
+#descrizione p {
+    margin-bottom: 1em;
+}
 
+#descrizione ::marker {
+    color: var(--secondary-bg);
+}
 
+#descrizione ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
 
+    /* Per allineamento del pallino della lista */
+    margin-left: 1.2em;
 
+}
+
+#descrizione li {
+    flex: 1 1 10em;
+    margin-bottom: 1em;
+}
+
+#animale-main aside {
+    margin-left: 10%;
+    padding: 1.5em 2.5em;
+    background-color: var(--animalebackground);
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+}
+
+#animale-main aside h2 {
+    text-align: center;
+}
+
+#animale-main aside button {
+    margin-top: 2em;
+    border: 0;
+    font-size: 2em;
+    border-radius: 9999px;
+    padding: .5em 2em;
+    cursor: pointer;
+    color: var(--primary-bg);
+    background-color: var(--secondary-bg);
+}
+
+.bottone-preferiti {
+    border: 3px solid var(--secondary-bg);
+    background-color: var(--giallo);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    aspect-ratio: 1/1;
+    transition: transform .2s ease;
+}
+
+.bottone-preferiti:hover {
+    transform: scale(1.05);
+}
+
+.bottone-preferiti img {
+    /* Per mettere il colore all'immagine di verdescuro*/
+    filter: invert(19%) sepia(25%) saturate(928%) hue-rotate(102deg) brightness(99%) contrast(90%);
+    width: 60%;
+}
 
 /*
     ERRORI 
@@ -562,7 +655,7 @@ header h1 {
 
 .left-panel {
     width: 35%;
-    background-color: #1B4332;
+    background-color: var(--leftbackground);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -577,7 +670,7 @@ header h1 {
 
 #contenuto {
     width: 65%;
-    background-color: #FAF3DD;
+    background-color: var(--contenutobackground);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -607,15 +700,15 @@ header h1 {
 .pulsante {
     border-radius: 10px;
     padding: 0.5em 1em;
-    background-color: var(--verdescuro);
-    color: var(--panna);
+    background-color: var(--pulsantebackground);
+    color: var(--pulsantecolor);
     text-decoration: none;
     margin-top: 1.5em;
     display: inline-block;
 }
 
 .pulsante:visited {
-    color: var(--panna);
+    color: var(--pulsantevisited);
 }
 
 .pulsante:hover {
@@ -623,7 +716,7 @@ header h1 {
 }
 
 .pulsante:focus {
-    outline: 3px solid var(--arancione);
+    outline: 3px solid var(--pulsantefocus);
     /* Bordo visibile per accessibilità */
     outline-offset: 2px;
 }
@@ -633,11 +726,13 @@ header h1 {
 */
 
 footer {
-    background-color: #FAF3DD;
+    background-color: var(--footerbackground);
     padding: 1.5em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-top: 1px solid var(--nero);
+    margin-top: 3em;
 }
 
 footer img {
