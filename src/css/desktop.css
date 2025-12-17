@@ -721,6 +721,53 @@ header h1 {
     outline-offset: 2px;
 }
 
+
+
+
+
+#lista-crediti {
+    list-style: none; 
+    /* padding: 0; */
+}
+
+
+#lista-crediti li a {
+    display: flex;           
+    align-items: center;     
+    gap: 1em;        
+    margin-bottom: 1em;     
+    
+    /* Opzionale: aggiunge un effetto hover per far capire che è cliccabile */
+    /* padding: 0.8em; */
+
+    transition: background-color 0.2s;
+}
+
+
+/* Stile per le icone/immagini */
+#lista-crediti li img {
+    width: 5em;
+    object-fit: cover;       /* Evita che l'immagine si deformi */
+    border-radius: 8px;      /* Opzionale: bordi stondati */
+    flex-shrink: 0;          /* FONDAMENTALE: impedisce all'icona di rimpicciolirsi se il testo è lungo */
+    
+}
+
+/* Stile per il testo */
+#lista-crediti li div {
+    display: flex;
+    flex-direction: column; /* Mette i paragrafi uno sotto l'altro */
+}
+
+#lista-crediti li div p {
+    margin: 0;              /* Rimuove i margini enormi di default dei paragrafi */
+    line-height: 1.4em;
+}
+
+
+
+
+
 /*
     FOOTER
 */
