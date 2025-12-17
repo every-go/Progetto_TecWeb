@@ -213,6 +213,20 @@ header h1 {
     HOME
 */
 
+.line {
+    height: 1px; 
+    width: 100%;
+    background-color: black;
+    margin: 2em 0;
+}
+
+.line2 {
+    height: 1px; 
+    width: 100%;
+    background-color: var(--primary-bg);
+    margin: 2em 0;
+}
+
 .txt-img {
     display: flex;
     flex-direction: row;
