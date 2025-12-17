@@ -4,16 +4,6 @@
   Il sito web deve offrire un'esperienza utente semplice e intuitiva, permettendo agli utenti di navigare facilmente tra le varie sezioni del sito. \
 ]
 
-== Categorie utenti
-#text()[
-  Il sito deve supportare due categorie principali di utenti:
-+ Utenti reali
-+ Utenti fantasy
-Entrambe le categorie hanno le stesse identiche funzionalità, quindi nessuna categoria è avvantaggiata rispetto all'altra. \
-Inoltre, esiste l'utente admin, il quale ha la possibilità di aggiungere, modificare o eliminare gli animali presenti nel sito, in piena linea con il principio CRUD. \
-Un animale, se adottato, scompare dalla lista degli utenti ma rimane visualizzabile dall'admin e viene segnato come adottato. \
-]
-
 == Funzionalità principali
 #text()[
   Per comodità, divideremo in 3 categorie la seguente tabella per indicare le funzionalità.
