@@ -141,4 +141,12 @@ table.header([Nome],[Matricola]),
 
 #pagebreak()
 
+#include "content/js.typ"
+
+#pagebreak()
+
+#include "content/php.typ"
+
+#pagebreak()
+
 #include "content/test.typ"
