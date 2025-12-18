@@ -47,13 +47,15 @@
     /* Errori */
     --contenutobackground: var(--panna);
     --leftbackground: var(--verdescuro);
-    /* Pulsante */
+    /* Pulsante errori */
     --pulsantebackground: var(--verdescuro);
     --pulsantecolor: var(--panna);
     --pulsantevisited: var(--panna);
     --pulsantefocus: var(--arancione);
     /* Footer */
     --footerbackground: var(--panna);
+    /* Preferiti */
+    --preferitibackground: var(--giallo)
 }
 
 /* Tag HTML */
@@ -143,7 +145,7 @@ header h1 {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.container-menu {
+#container-menu {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -151,7 +153,7 @@ header h1 {
     padding-top: 2em;
 }
 
-.logo-header {
+#logo-header {
     background-image: url("../images/png/gatto_logo.png");
     min-height: 20%;
     width: 13%;
@@ -216,11 +218,11 @@ header h1 {
     margin: 1em 0;
 }
 
-.line2 {
+#linesecond {
     height: 1px; 
     width: 90%;
     background-color: var(--primary-bg);
-    margin: 2em auto 1em; /* top lef&right bottom */
+    margin: 2em auto 1em; /* top left&right bottom */
 }
 
 .txt-img {
@@ -256,7 +258,7 @@ header h1 {
 }
 
 /* Statistiche */
-.statistiche {
+#statistiche {
     /* padding-top: 3em; */
     display: flex;
     flex-direction: column;
@@ -265,13 +267,13 @@ header h1 {
     margin-bottom: 5em;
 }
 
-.statistiche header {
+#statistiche header {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-.statistiche-card {
+#statistiche-card {
     display: flex;
     justify-content: space-evenly;
     list-style-type: none;
@@ -279,11 +281,11 @@ header h1 {
     align-items: flex-start;
 }
 
-.statistiche-card li {
+#statistiche-card li {
     width: 20%;
 }
 
-.statistiche-card img {
+#statistiche-card img {
     width: 60%;
 }
 
@@ -297,7 +299,7 @@ header h1 {
 
 /* Adozione */
 
-.darkBackground {
+#container-adozione {
     background-color: var(--secondary-bg);
     color: var(--primary-bg);
     border-radius: 24px;
@@ -358,6 +360,9 @@ header h1 {
     flex-direction: column;
     justify-content: center;
     gap: 2em;
+    background-color: var(--secondary-bg);
+    color: var(--primary-bg);
+    border-radius: 24px;
 }
 
 #impegno h2 {
@@ -396,7 +401,7 @@ header h1 {
     flex-direction: column;
 }
 
-.search {
+#search {
     min-width: 25rem;
     display: flex;
     align-items: center;
@@ -406,7 +411,7 @@ header h1 {
 }
 
 
-.search-input {
+#search-input {
     width: 25rem;
     font-size: 1em;
     color: var(--searchcolor);
@@ -416,7 +421,7 @@ header h1 {
     background: transparent;
 }
 
-.search-icon {
+#search-icon {
     color: var(--searchplaceholdericon);
 }
 
@@ -530,7 +535,7 @@ header h1 {
     align-items: start;
 }
 
-.img-cutter {
+#img-cutter {
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -538,7 +543,7 @@ header h1 {
     width: 70%;
 }
 
-.img-container {
+#img-container {
     border-radius: 40px;
     border: 3px solid var(--text-color);
 }
@@ -553,6 +558,10 @@ header h1 {
     margin: 0;
 }
 
+#animale-name {
+    font-weight: bold;
+    font-size: 2.5em;
+}
 
 #info-principali dl {
     font-size: 2.5em;
@@ -636,9 +645,9 @@ header h1 {
     background-color: var(--secondary-bg);
 }
 
-.bottone-preferiti {
+#bottone-preferiti {
     border: 3px solid var(--secondary-bg);
-    background-color: var(--giallo);
+    background-color: var(--preferitibackground);
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -648,11 +657,11 @@ header h1 {
     transition: transform .2s ease;
 }
 
-.bottone-preferiti:hover {
+#bottone-preferiti:hover {
     transform: scale(1.05);
 }
 
-.bottone-preferiti img {
+#bottone-preferiti img {
     /* Per mettere il colore all'immagine di verdescuro*/
     filter: invert(19%) sepia(25%) saturate(928%) hue-rotate(102deg) brightness(99%) contrast(90%);
     width: 60%;
@@ -670,7 +679,7 @@ header h1 {
     height: 100vh;
 }
 
-.left-panel {
+#left-panel {
     width: 35%;
     background-color: var(--leftbackground);
     display: flex;
@@ -679,7 +688,7 @@ header h1 {
 }
 
 
-.left-panel img {
+#left-panel img {
     width: 75%;
     height: 70%;
     object-fit: contain;
@@ -696,7 +705,7 @@ header h1 {
     padding: 2em;
 }
 
-.logo {
+#logo {
     background-image: url("../images/png/gatto_logo.png");
     min-height: 20%;
     width: 100%;
@@ -738,7 +747,9 @@ header h1 {
     outline-offset: 2px;
 }
 
-
+/*
+    CREDITI 
+*/
 
 
 
@@ -782,9 +793,6 @@ header h1 {
 }
 
 
-
-
-
 /*
     FOOTER
 */
@@ -805,8 +813,10 @@ footer img {
     object-fit: contain;
 }
 
-footer h2 {
+#title-mappa {
     margin-bottom: 0.5em;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
 footer nav ul {
@@ -814,8 +824,13 @@ footer nav ul {
 }
 
 
-footer .disclaimer {
+footer #disclaimer {
     width: 30%;
+}
+
+footer #disclaimer p:first-of-type {
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 
@@ -824,11 +839,11 @@ footer .disclaimer {
         padding: 0 2em;
     }
 
-    main>article.darkBackground {
+    main>article#container-adozione {
         margin-inline: -2em;
     }
 
-    .darkBackground {
+    #container-adozione {
         border-radius: 0;
     }
 }

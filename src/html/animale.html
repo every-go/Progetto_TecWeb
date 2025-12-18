@@ -2,7 +2,7 @@
 <html lang="it">
 
 <head>
-    <title>Capitano - Casa Otium</title>
+    <title>Animale - Casa Otium</title>
     <link rel="icon" type="image/x-icon" href="../images/ico/logo.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,15 +15,14 @@
 <body>
 
     <a class="aiuti" href="#main-content"> Vai al contenuto </a>
-    <header class="container-menu">
+    <header id="container-menu">
 
-        <h1 id="main-content" class="logo-header">Casa Otium</h1>
-
-        <!-- <h1 class="logo-header">Casa Otium</h1>	 -->
+        <h1 id="logo-header">Casa Otium</h1>
+        
         <nav id="menu">
             <ul>
-                <li lang="en"> <a href="home.html"> Home </a></li>
-                <li id="currentlink"> Animali </li>
+                <li> <a href="home.html"><span lang="en">Home</span></a></li>
+                <li> <a href="animali.html"> Animali </a></li>
                 <li><a href="chiSiamo.html">Chi siamo</a></li>
                 <li> <a href="preferiti.html"> Preferiti </a></li>
                 <li> <a href="login.html"> <span lang="en"> Login</span></a>
@@ -40,8 +39,8 @@
         <div class="img-cutter img-container">
             <img src="../images/jpg/cane_bello.jpg" alt="">
         </div>
-        <section id="info-principali">
-            <h1>Capitano</h1>
+        <div id="info-principali">
+            <p id="animale-name">Capitano</p>
             <dl>
                 <dt>Età: </dt>
                 <dd>1 Anno</dd>
@@ -50,12 +49,12 @@
                 <dt>Carattere:</dt>
                 <dd>Facile</dd>
             </dl>
-        </section>
+        </div>
         <section id="descrizione">
             <header>
                 <h2>Di più su di me:</h2>
                 <!--Preferiti, con imagereplacement-->
-                <button class="bottone-preferiti"><img src="../images/png/heart.png"
+                <button id="bottone-preferiti"><img src="../images/png/heart.png"
                         alt="Aggiungi ai preferiti"></button>
             </header>
             <h3>La mia descrizione:</h3>
@@ -101,9 +100,9 @@
             <button>Adotta!</button>
         </aside>
     </main>
-    <footer class="mappa-nav">
+    <footer>
         <div>
-            <h2> Mappa di navigazione </h2>
+            <p id="title-mappa"> Mappa di navigazione </p>
             <nav>
                 <ul>
                     <li> <a href="home.html"><span lang="en">Home</span></a></li>
@@ -115,8 +114,8 @@
             </nav>
         </div>
         <img src="../images/png/logo_unipd.png" alt="">
-        <div class="disclaimer">
-            <h3> <span lang="en">Disclaimer</span></h3>
+        <div id="disclaimer">
+            <p> <span lang="en">Disclaimer</span></p>
             <p>
                 Questo sito <span lang="en">web</span> è stato sviluppato presso l'Università di Padova come progetto
                 didattico valutato dalla Prof.essa Gaggi Ombretta; ogni riferimento a luogo, persona o animale reale è

@@ -16,19 +16,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <!-- link lente -->
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
 </head>
 
 <body>
-    <a class="aiuti" href="#main-content"> Vai al contenuto </a>
-    <header class="container-menu">
+    <a class="aiuti" href="#ricerca"> Vai alla barra di ricerca </a>
+    <a class="aiuti" href="#animali"> Vai agli animali </a>
+    <header id="container-menu">
 
-        <h1 id="main-content" class="logo-header">Casa Otium</h1>
-
-        <!-- <h1 class="logo-header">Casa Otium</h1>	 -->
+        <h1 id="logo-header">Casa Otium</h1>
+        
         <nav id="menu">
             <ul>
-                <li lang="en"> <a href="home.html"> Home </a></li>
+                <li> <a href="home.html"><span lang="en"> Home </span></a></li>
                 <li id="currentlink"> Animali </li>
                 <li><a href="chiSiamo.html">Chi siamo</a></li>
                 <li> <a href="preferiti.html"> Preferiti </a></li>
@@ -43,14 +43,15 @@
                 Ti trovi in: <a href="home.html" lang="en">Home </a> <span aria-hidden="true">&gt;&gt;</span> Animali
             </p>
         </nav>
-        <h1> Casa Otium - Trova il tuo amico </h1>
+        <h1 id="ricerca"> Trova il tuo amico </h1>
         <form>
-            <div class="search">
-                <span class="search-icon material-symbols-outlined" aria-hidden="true"> search </span>
-                <input id="search" class="search-input" type="searc" placeholder="Cerca il tuo futuro amico...">
+            <div id="search">
+                <span id="search-icon" class="material-symbols-outlined" aria-hidden="true">search</span>
+                <input id="search-input" type="search" placeholder="Cerca il tuo futuro amico...">
             </div>
         </form>
 
+        <div id = "animali"></div>
         <ul class="animali">
             <li class="animale-card">
                 <a href="animale.html?id=1" class="animale-link">
@@ -167,9 +168,9 @@
 
 
     </main>
-    <footer class="mappa-nav">
+    <footer>
         <div>
-            <h2> Mappa di navigazione </h2>
+            <p id="title-mappa"> Mappa di navigazione </p>
             <nav>
                 <ul>
                     <li> <a href="home.html"><span lang="en">Home</span></a></li>
@@ -181,8 +182,8 @@
             </nav>
         </div>
         <img src="../images/png/logo_unipd.png" alt="">
-        <div class="disclaimer">
-            <h3> <span lang="en">Disclaimer</span></h3>
+        <div id="disclaimer">
+            <p> <span lang="en">Disclaimer</span></p>
             <p>
                 Questo sito <span lang="en">web</span> è stato sviluppato presso l'Università di Padova come progetto
                 didattico valutato dalla Prof.essa Gaggi Ombretta; ogni riferimento a luogo, persona o animale reale è

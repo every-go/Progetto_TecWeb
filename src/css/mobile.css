@@ -9,11 +9,11 @@ main>article {
     gap: 1em;
 }
 
-.statistiche-card {
+#statistiche-card {
     flex-direction: column;
 }
 
-.statistiche-card li {
+#statistiche-card li {
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -42,7 +42,7 @@ main>article {
     height: 3.5em;
 }
 
-.left-panel {
+#left-panel {
     display: none;
 }
 
@@ -50,7 +50,7 @@ main>article {
     width: 100%;
 }
 
-.darkBackground {
+.container-adozione {
     padding: 2em 2em;
 }
 
@@ -60,7 +60,7 @@ main>article {
     gap: 0em;
 }
 
-.line2 {
+#linesecond {
     margin: 1em auto;
 }
 
@@ -82,7 +82,7 @@ footer {
     text-align: center;
 }
 
-footer .disclaimer {
+footer #disclaimer {
     width: 100%;
     padding-top: 2em;
 }

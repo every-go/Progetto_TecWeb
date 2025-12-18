@@ -13,7 +13,12 @@ Questi sono:
 + Difficoltà {"Bassa","Media","Elevata"}
 + Sesso {"Maschio","Femmina"}
 + Tipo {"Reale","Fantasy"}
+
 Inoltre l'attributo "Adottato" è un booleano.\
+
+Questo indica che, se un animale ha il bool "Adottato" a true, allora questo non sarà più visualizzabile da altri utenti nella pagina degli animali, ma sarà visualizzabile solo dall'utente che l'ha effettivamente adottato nella pagina dei Preferiti.\
+Questo è consentito dal controllo di PhP, descritto meglio nella sezione PhP, che visualizza solo gli animali non ancora adottati.\
+
 Tutti gli altri attributi sono integer oppure text.\
 Gli unici elementi che permettono il valore NULL sono "Descrizione" ed "Immagine", tutti gli altri elementi sono obbligatori all'inserimento di un nuovo utente/animale.\
 Per quest'ultimo abbiamo preso questa scelta perché non vogliamo la possibilità dell'admin di inserire animali senza informazioni dettagliate per l'adozione da parte di qualche utente.
