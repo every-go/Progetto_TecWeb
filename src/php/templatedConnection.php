@@ -6,8 +6,8 @@ use mysqli_result;
 
 class DBAccess {
 
-	private const HOST_DB = "localhost";
-	private const DATABASE_NAME = "Laboratorio";
+	private const HOST_DB = "mysql_db";
+	private const DATABASE_NAME = "mydb";
 	private const USERNAME = "root";
 	private const PASSWORD = "root";
 
@@ -16,14 +16,21 @@ class DBAccess {
 	public function openDBConnection() {
 		mysqli_report(MYSQLI_REPORT_ERROR);
 
-		$this->connection = mysqli_connect(DBAccess::HOST_DB, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DATABASE_NAME);
+		$this->connection = @mysqli_connect(DBAccess::HOST_DB, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DATABASE_NAME);
 
-		if (mysqli_connect_errno()) {
-			return false;
-		} else {
-			return true;  
-		}
-		
+	if (!$this->connection) {
+    // Log the error (optional but recommended)
+    // error_log("Database connection failed: " . mysqli_connect_error());
+    
+    	http_response_code(500);
+		include dirname(__DIR__) . "/html/500.html";
+    
+    // Stop script execution
+    	exit();
+	}
+
+		return true;
+
 	}
 
 	public function closeConnection() {
@@ -33,7 +40,7 @@ class DBAccess {
 
 	public function getList() {
 
-		$query = "SELECT * FROM Animali WHERE adottato = false ORDER BY id ASC";
+		$query = "SELECT * FROM animali WHERE adottato = 0 ORDER BY id ASC";
 		//controllo errori sulla query
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in dbConnection: " . mysqli_error($this->connection));
 		//controllo presenza di righe
