@@ -88,10 +88,6 @@ main>article {
     min-height: 65vh;
 }
 
-hr {
-    border-top: 1px solid #000000;
-    margin: 2em 0;
-}
 
 a {
     color: var(--text-color);
@@ -217,14 +213,14 @@ header h1 {
     height: 1px; 
     width: 100%;
     background-color: black;
-    margin: 2em 0;
+    margin: 1em 0;
 }
 
 .line2 {
     height: 1px; 
-    width: 100%;
+    width: 90%;
     background-color: var(--primary-bg);
-    margin: 2em 0;
+    margin: 2em auto 1em; /* top lef&right bottom */
 }
 
 .txt-img {
@@ -232,10 +228,11 @@ header h1 {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    gap: 2em;
 }
 
 .txt-img img {
-    width: 50%;
+    width: 55%;
     border-radius: 2em;
     border: 2px solid var(--text-color);
 }
@@ -278,12 +275,6 @@ header h1 {
     display: flex;
     justify-content: space-evenly;
     list-style-type: none;
-    /* gap: 5em; */
-    /* padding-bottom: 3em; */
-    /* padding-top: 5em; */
-    /* padding-left: 10em;
-    /* padding-right: 10em; */
-    padding: 5em 0;
     text-align: center;
     align-items: flex-start;
 }
@@ -308,37 +299,49 @@ header h1 {
 
 .darkBackground {
     background-color: var(--secondary-bg);
-    padding: 2em 5em;
     color: var(--primary-bg);
-    border-radius: 2em;
+    border-radius: 24px;
 }
 
-.darkBackground hr {
-    border-color: var(--primary-bg);
-}
 
 #adozione {
     color: var(--text-color);
     margin: 1em 0;
-    /* margin: 1em calc(5% - 1em); */
-    /* padding: 1em; */
     display: flex;
-    gap: 4em;
-    flex-wrap: wrap;
+    gap: 5em;
+    justify-content: center;
 }
 
 #adozione .card {
+    width: 30%;
     margin: 1em 0;
     padding: 2% 5% 3em 5%;
     background-color: var(--primary-bg);
     border-radius: 2em;
-    flex: 1 1 20em;
 }
 
 #adozione .card h2 {
     color: var(--secondary-bg);
     margin-bottom: .2em;
     text-align: center;
+}
+
+#adozione .card li > p:first-of-type, #adozione .card dt {
+    font-weight: bold;
+    color: var(--primary-title-color);
+}
+
+#adozione .card dt {
+    padding-top: 1em;
+}
+
+#adozione .card li {
+    padding-top: 1em;
+}
+
+#adozione .card li::marker {
+    color: var(--secondary-title-color);
+    font-weight: bold;
 }
 
 /* CHI SIAMO */
@@ -350,7 +353,7 @@ header h1 {
 
 #impegno {
     text-align: center;
-    padding: 2em 10em;
+    padding: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
