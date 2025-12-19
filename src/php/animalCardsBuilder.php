@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__DIR__) .DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'templatedConnection.php';
+require_once dirname(__DIR__) .DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'connectionDB.php';
 use DB\DBAccess;
 
 
@@ -60,9 +60,9 @@ function singleCardBuilder($animale){
 
 	$paginaHTML=file_get_contents("animalListTemplate.html");
 	
-		$db=new DBAccess();
-		$stringaAnimali="";
-		$listaAnimali="";
+	$stringaAnimali="";
+	$listaAnimali="";
+	$db=new DBAccess();
 		$connessioneOK=$db->openDBConnection();
 
 		if($connessioneOK){

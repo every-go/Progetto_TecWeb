@@ -8,7 +8,7 @@ class DBAccess {
 
 	private const HOST_DB = "mysql_db";
 	private const DATABASE_NAME = "mydb";
-	private const USERNAME = "root";
+	private const USERNAME = "rot";
 	private const PASSWORD = "root";
 
 	private $connection;
