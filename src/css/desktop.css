@@ -1,6 +1,6 @@
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0em;
+    padding: 0em;
     line-height: 1.5em;
 }
 
@@ -65,7 +65,6 @@ body {
     font-size: 100%;
     font-family: "Noto Sans", sans-serif;
     background-color: var(--primary-bg);
-    /* COLORE SFONDO */
 }
 
 body {
