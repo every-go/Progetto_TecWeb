@@ -1,0 +1,72 @@
+<?php
+    session_start();
+
+    $currentPage = basename($_SERVER['PHP_SELF']);
+
+    // pagine del menu 
+    $pages = [
+        'home.php' => ['text' => 'Home', 'lang' => 'en'],
+        'animali.php' => ['text' => 'Animali'],
+        'chiSiamo.php' => ['text' => 'Chi siamo'],
+        
+    ];
+
+    // pagine del footer
+    $pagesFooter = [
+        'home.php' => ['text' => 'Home', 'lang' => 'en'],
+        'animali.php' => ['text' => 'Animali'],
+        'chiSiamo.php' => ['text' => 'Chi siamo'],
+    ];
+
+    if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true ) {
+        $pages['preferiti.php'] = ['text' => 'Preferiti'];
+        $pages['logout.php'] = ['text' => 'Logout', 'lang' => 'en'];
+        $pagesFooter['preferiti.php'] = ['text' => 'Preferiti'];
+
+    } else {
+        $pages['login.php'] = ['text' => 'Login', 'lang' => 'en'];
+    }
+
+    // aggiunge crediti per ultimo 
+    $pagesFooter['crediti.php'] = ['text' => 'Crediti'];
+
+    $listaMenu = '';
+    foreach($pages as $page => $data) {
+        $isCurrentPage = false;
+
+        if ($page === $currentPage) {
+            $isCurrentPage = true;
+        }
+
+        if ($isCurrentPage) {
+            $listaMenu .= '<li id="currentlink" ' .
+            (!empty($data['lang']) ? 'lang="' . $data["lang"] . '"' : '') .
+            '>' . $data["text"] . '</li>';
+        } else {
+            $listaMenu .= '<li><a href="' . $page . '"' .
+            (!empty($data['lang']) ? 'lang="' . $data["lang"] . '"' : '') .
+            '>' . $data["text"] . '</a></li>';
+        }
+    }
+
+    $listaFooter = '';
+    foreach($pagesFooter as $page => $data) {
+        $isCurrentPage = false;
+
+        if ($page === $currentPage) {
+            $isCurrentPage = true;
+        }
+
+        if ($isCurrentPage) {
+            $listaFooter .= '<li ' .
+            (!empty($data['lang']) ? 'lang="' . $data["lang"] . '"' : '') .
+            '>' . $data["text"] . '</li>';
+        } else {
+            $listaFooter .= '<li><a href="' . $page . '"' .
+            (!empty($data['lang']) ? 'lang="' . $data["lang"] . '"' : '') .
+            '>' . $data["text"] . '</a></li>';
+        }
+    }
+
+
+?>
