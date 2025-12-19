@@ -1,6 +1,10 @@
 = Colore e Contrasti
 
-#text()[Per i colori principali del sito web, sono stati scelti dei colori che richiamano la natura e gli animali. Il verde (sia scuro che chiaro) richiama solidità, forza e crescita. Il giallo richiama l'energia e la libertà. Il beige richiama la semplicità e la calma.]
+Per i colori principali del sito web, sono stati scelti dei colori che richiamano la natura e gli animali.
+
+Il verde (sia scuro che chiaro) richiama solidità, forza e crescita.\
+Il giallo richiama l'energia e la libertà.\
+Il beige richiama la semplicità e la calma.
 
 == Colori utilizzati
 
@@ -22,7 +26,9 @@ table.cell(fill: rgb("000000"))[],[000000]
 
 == Contrasti principali
 
-#text()[Per garantire una buona accessibilità del sito web, sono stati verificati i contrasti tra i colori utilizzati per gli sfondi e quelli utilizzati per i testi. Di seguito sono riportati i risultati delle verifiche effettuate.]
+Per garantire una buona accessibilità del sito web, sono stati verificati i contrasti tra i colori utilizzati per gli sfondi e quelli utilizzati per i testi.
+
+Di seguito sono riportati i risultati delle verifiche effettuate.
 
 #figure(
   caption: [Contrasti Colori 
@@ -57,36 +63,29 @@ table.cell(fill: rgb("000000"))[],
 )
 ]
 
-#text()[
-  I contrasti sono stati calcolati utilizzando lo strumento online "Contrast Checker" disponibile all'indirizzo web #link("https://webaim.org/resources/contrastchecker/")[https://webaim.org/resources/contrastchecker/].
-]
 
-#text()[
-  Il rapporto fra colore e testo deve essere almeno di 4.5:1 per il testo piccolo, di 3:1 per il testo grande.
+I contrasti sono stati calcolati utilizzando lo strumento online "Contrast Checker" disponibile all'indirizzo web #link("https://webaim.org/resources/contrastchecker/")[https://webaim.org/resources/contrastchecker/].
 
-  I contrasti non rispettati non vengono mai utilizzati nel sito web.
+Il rapporto fra colore e testo deve essere almeno di 4.5:1 per il testo piccolo, di 3:1 per il testo grande.
 
-  I colori utilizzati per lo sfondo sono il verde scuro (1B4332), il verde chiaro (A3B18A) il beige (FAF3DD).
+I contrasti non rispettati non vengono mai utilizzati nel sito web.
 
-  Sul verde scuro (1B4332) vengono utilizzati come colori del testo il beige (FAF3DD, rapporto 9.98:1) e il giallo (FFD166, rapporto 7.68:1).
-  
-  Sul beige (FAF3DD) vengono utilizzati il marrone (4D2F24, rapporto 10.83:1), il nero (000000, rapporto 18.92:1) e il verde scuro (1B4332, rapporto 9.98:1).
+I colori utilizzati per lo sfondo sono il verde scuro (1B4332), il verde chiaro (A3B18A) il beige (FAF3DD).
 
-  A volte viene anche utilizzato il verde chiaro (A3B18A) come sfondo. In questo caso, il testo è di colore nero (000000, rapporto 9.21:1).
-]
+Sul verde scuro (1B4332) vengono utilizzati come colori del testo il beige (FAF3DD, rapporto 9.98:1) e il giallo (FFD166, rapporto 7.68:1).
 
-#text()[
-  Il rapporto nei link deve essere 3:1 con il testo, 4.5:1 con lo sfondo. 
+Sul beige (FAF3DD) vengono utilizzati il marrone (4D2F24, rapporto 10.83:1), il nero (000000, rapporto 18.92:1) e il verde scuro (1B4332, rapporto 9.98:1).
 
-  I link non visitati sono sottolineati, in modo da sistemare eventuali problemi di contrasto.
+A volte viene anche utilizzato il verde chiaro (A3B18A) come sfondo. In questo caso, il testo è di colore nero (000000, rapporto 9.21:1).
 
-  I link visitati invece sono di colore arancione (B45000) su sfondo beige (FAF3DD, rapporto 4.63:1) e vicino al testo nero (000000, rapporto 4.08:1). Vicino al marrone (4D2F24) c'è un rapporto di 2.33:1, ma non essendo affianco al testo dei link non crea problemi di accessibilità
-]
 
-#text()[
-  Il colore delle icone nello sfondo verde chiaro (A3B18A) è il verde scuro (1B4332, rapporto 4.86:1). 1B
-]
+Il rapporto nei link deve essere 3:1 con il testo, 4.5:1 con lo sfondo. 
 
-#text()[
-  Il logo dell'Università degli Studi di Padova, utilizzato nel disclaimer, non è in contrasto con i colori da noi utilizzati. Purtroppo, il manuale di identità visiva non fornisce alternative per il logo, costringendoci a mantenere il logo originale. Siamo comunque consapevoli del fatto che non mantiene i contrasti corretti.
-]
+I link non visitati sono sottolineati, in modo da sistemare eventuali problemi di contrasto.
+
+I link visitati invece sono di colore arancione (B45000) su sfondo beige (FAF3DD, rapporto 4.63:1) e vicino al testo nero (000000, rapporto 4.08:1). Vicino al marrone (4D2F24) c'è un rapporto di 2.33:1, ma non essendo affianco al testo dei link non crea problemi di accessibilità
+
+
+Il colore delle icone nello sfondo verde chiaro (A3B18A) è il verde scuro (1B4332, rapporto 4.86:1).
+
+Il logo dell'Università degli Studi di Padova, utilizzato nel disclaimer, non è in contrasto con i colori da noi utilizzati. Purtroppo, il manuale di identità visiva non fornisce alternative per il logo, costringendoci a mantenere il logo originale. Siamo comunque consapevoli del fatto che non mantiene i contrasti corretti.
