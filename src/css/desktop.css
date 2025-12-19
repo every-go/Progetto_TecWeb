@@ -212,17 +212,18 @@ header h1 {
 */
 
 .line {
-    height: 1px; 
+    height: 1px;
     width: 100%;
     background-color: black;
     margin: 1em 0;
 }
 
 #linesecond {
-    height: 1px; 
+    height: 1px;
     width: 90%;
     background-color: var(--primary-bg);
-    margin: 2em auto 1em; /* top left&right bottom */
+    margin: 2em auto 1em;
+    /* top left&right bottom */
 }
 
 .txt-img {
@@ -328,7 +329,8 @@ header h1 {
     text-align: center;
 }
 
-#adozione .card li > p:first-of-type, #adozione .card dt {
+#adozione .card li>p:first-of-type,
+#adozione .card dt {
     font-weight: bold;
     color: var(--primary-title-color);
 }
@@ -535,7 +537,7 @@ header h1 {
     align-items: start;
 }
 
-#img-cutter {
+.img-cutter {
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -543,24 +545,20 @@ header h1 {
     width: 70%;
 }
 
-#img-container {
+.img-container {
     border-radius: 40px;
     border: 3px solid var(--text-color);
 }
 
-#animale-main h1 {
+#animale-name {
     text-align: left;
     font-size: 4em;
     margin: 0 0 .5em 0;
+    font-weight: bold;
 }
 
 #animale-main h2 {
     margin: 0;
-}
-
-#animale-name {
-    font-weight: bold;
-    font-size: 2.5em;
 }
 
 #info-principali dl {
@@ -754,17 +752,17 @@ header h1 {
 
 
 #lista-crediti {
-    list-style: none; 
+    list-style: none;
     /* padding: 0; */
 }
 
 
 #lista-crediti li a {
-    display: flex;           
-    align-items: center;     
-    gap: 1em;        
-    margin-bottom: 1em;     
-    
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1em;
+
     /* Opzionale: aggiunge un effetto hover per far capire che è cliccabile */
     /* padding: 0.8em; */
 
@@ -775,20 +773,25 @@ header h1 {
 /* Stile per le icone/immagini */
 #lista-crediti li img {
     width: 5em;
-    object-fit: cover;       /* Evita che l'immagine si deformi */
-    border-radius: 8px;      /* Opzionale: bordi stondati */
-    flex-shrink: 0;          /* FONDAMENTALE: impedisce all'icona di rimpicciolirsi se il testo è lungo */
-    
+    object-fit: cover;
+    /* Evita che l'immagine si deformi */
+    border-radius: 8px;
+    /* Opzionale: bordi stondati */
+    flex-shrink: 0;
+    /* FONDAMENTALE: impedisce all'icona di rimpicciolirsi se il testo è lungo */
+
 }
 
 /* Stile per il testo */
 #lista-crediti li div {
     display: flex;
-    flex-direction: column; /* Mette i paragrafi uno sotto l'altro */
+    flex-direction: column;
+    /* Mette i paragrafi uno sotto l'altro */
 }
 
 #lista-crediti li div p {
-    margin: 0;              /* Rimuove i margini enormi di default dei paragrafi */
+    margin: 0;
+    /* Rimuove i margini enormi di default dei paragrafi */
     line-height: 1.4em;
 }
 
