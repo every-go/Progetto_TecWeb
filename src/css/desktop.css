@@ -1,6 +1,6 @@
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0em;
+    padding: 0em;
     line-height: 1.5em;
 }
 
@@ -47,13 +47,15 @@
     /* Errori */
     --contenutobackground: var(--panna);
     --leftbackground: var(--verdescuro);
-    /* Pulsante */
+    /* Pulsante errori */
     --pulsantebackground: var(--verdescuro);
     --pulsantecolor: var(--panna);
     --pulsantevisited: var(--panna);
     --pulsantefocus: var(--arancione);
     /* Footer */
     --footerbackground: var(--panna);
+    /* Preferiti */
+    --preferitibackground: var(--giallo)
 }
 
 /* Tag HTML */
@@ -63,7 +65,6 @@ body {
     font-size: 100%;
     font-family: "Noto Sans", sans-serif;
     background-color: var(--primary-bg);
-    /* COLORE SFONDO */
 }
 
 body {
@@ -88,10 +89,6 @@ main>article {
     min-height: 65vh;
 }
 
-hr {
-    border-top: 1px solid #000000;
-    margin: 2em 0;
-}
 
 a {
     color: var(--text-color);
@@ -147,7 +144,7 @@ header h1 {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.container-menu {
+#container-menu {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -155,7 +152,7 @@ header h1 {
     padding-top: 2em;
 }
 
-.logo-header {
+#logo-header {
     background-image: url("../images/png/gatto_logo.png");
     min-height: 20%;
     width: 13%;
@@ -213,15 +210,31 @@ header h1 {
     HOME
 */
 
+.line {
+    height: 1px;
+    width: 100%;
+    background-color: black;
+    margin: 1em 0;
+}
+
+#linesecond {
+    height: 1px;
+    width: 90%;
+    background-color: var(--primary-bg);
+    margin: 2em auto 1em;
+    /* top left&right bottom */
+}
+
 .txt-img {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    gap: 2em;
 }
 
 .txt-img img {
-    width: 50%;
+    width: 55%;
     border-radius: 2em;
     border: 2px solid var(--text-color);
 }
@@ -245,7 +258,7 @@ header h1 {
 }
 
 /* Statistiche */
-.statistiche {
+#statistiche {
     /* padding-top: 3em; */
     display: flex;
     flex-direction: column;
@@ -254,31 +267,25 @@ header h1 {
     margin-bottom: 5em;
 }
 
-.statistiche header {
+#statistiche header {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-.statistiche-card {
+#statistiche-card {
     display: flex;
     justify-content: space-evenly;
     list-style-type: none;
-    /* gap: 5em; */
-    /* padding-bottom: 3em; */
-    /* padding-top: 5em; */
-    /* padding-left: 10em;
-    /* padding-right: 10em; */
-    padding: 5em 0;
     text-align: center;
     align-items: flex-start;
 }
 
-.statistiche-card li {
+#statistiche-card li {
     width: 20%;
 }
 
-.statistiche-card img {
+#statistiche-card img {
     width: 60%;
 }
 
@@ -292,39 +299,52 @@ header h1 {
 
 /* Adozione */
 
-.darkBackground {
+#container-adozione {
     background-color: var(--secondary-bg);
-    padding: 2em 5em;
     color: var(--primary-bg);
-    border-radius: 2em;
+    border-radius: 24px;
 }
 
-.darkBackground hr {
-    border-color: var(--primary-bg);
-}
 
 #adozione {
     color: var(--text-color);
     margin: 1em 0;
-    /* margin: 1em calc(5% - 1em); */
-    /* padding: 1em; */
     display: flex;
-    gap: 4em;
-    flex-wrap: wrap;
+    gap: 5em;
+    justify-content: center;
 }
 
 #adozione .card {
+    width: 30%;
     margin: 1em 0;
     padding: 2% 5% 3em 5%;
     background-color: var(--primary-bg);
     border-radius: 2em;
-    flex: 1 1 20em;
 }
 
 #adozione .card h2 {
     color: var(--secondary-bg);
     margin-bottom: .2em;
     text-align: center;
+}
+
+#adozione .card li>p:first-of-type,
+#adozione .card dt {
+    font-weight: bold;
+    color: var(--primary-title-color);
+}
+
+#adozione .card dt {
+    padding-top: 1em;
+}
+
+#adozione .card li {
+    padding-top: 1em;
+}
+
+#adozione .card li::marker {
+    color: var(--secondary-title-color);
+    font-weight: bold;
 }
 
 /* CHI SIAMO */
@@ -336,11 +356,14 @@ header h1 {
 
 #impegno {
     text-align: center;
-    padding: 2em 10em;
+    padding: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 2em;
+    background-color: var(--secondary-bg);
+    color: var(--primary-bg);
+    border-radius: 24px;
 }
 
 #impegno h2 {
@@ -379,7 +402,7 @@ header h1 {
     flex-direction: column;
 }
 
-.search {
+#search {
     min-width: 25rem;
     display: flex;
     align-items: center;
@@ -389,7 +412,7 @@ header h1 {
 }
 
 
-.search-input {
+#search-input {
     width: 25rem;
     font-size: 1em;
     color: var(--searchcolor);
@@ -399,7 +422,7 @@ header h1 {
     background: transparent;
 }
 
-.search-icon {
+#search-icon {
     color: var(--searchplaceholdericon);
 }
 
@@ -526,16 +549,16 @@ header h1 {
     border: 3px solid var(--text-color);
 }
 
-#animale-main h1 {
+#animale-name {
     text-align: left;
     font-size: 4em;
     margin: 0 0 .5em 0;
+    font-weight: bold;
 }
 
 #animale-main h2 {
     margin: 0;
 }
-
 
 #info-principali dl {
     font-size: 2.5em;
@@ -619,9 +642,9 @@ header h1 {
     background-color: var(--secondary-bg);
 }
 
-.bottone-preferiti {
+#bottone-preferiti {
     border: 3px solid var(--secondary-bg);
-    background-color: var(--giallo);
+    background-color: var(--preferitibackground);
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -631,11 +654,11 @@ header h1 {
     transition: transform .2s ease;
 }
 
-.bottone-preferiti:hover {
+#bottone-preferiti:hover {
     transform: scale(1.05);
 }
 
-.bottone-preferiti img {
+#bottone-preferiti img {
     /* Per mettere il colore all'immagine di verdescuro*/
     filter: invert(19%) sepia(25%) saturate(928%) hue-rotate(102deg) brightness(99%) contrast(90%);
     width: 60%;
@@ -653,7 +676,7 @@ header h1 {
     height: 100vh;
 }
 
-.left-panel {
+#left-panel {
     width: 35%;
     background-color: var(--leftbackground);
     display: flex;
@@ -662,7 +685,7 @@ header h1 {
 }
 
 
-.left-panel img {
+#left-panel img {
     width: 75%;
     height: 70%;
     object-fit: contain;
@@ -679,7 +702,7 @@ header h1 {
     padding: 2em;
 }
 
-.logo {
+#logo {
     background-image: url("../images/png/gatto_logo.png");
     min-height: 20%;
     width: 100%;
@@ -721,22 +744,24 @@ header h1 {
     outline-offset: 2px;
 }
 
-
+/*
+    CREDITI 
+*/
 
 
 
 #lista-crediti {
-    list-style: none; 
+    list-style: none;
     /* padding: 0; */
 }
 
 
 #lista-crediti li a {
-    display: flex;           
-    align-items: center;     
-    gap: 1em;        
-    margin-bottom: 1em;     
-    
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1em;
+
     /* Opzionale: aggiunge un effetto hover per far capire che è cliccabile */
     /* padding: 0.8em; */
 
@@ -747,25 +772,27 @@ header h1 {
 /* Stile per le icone/immagini */
 #lista-crediti li img {
     width: 5em;
-    object-fit: cover;       /* Evita che l'immagine si deformi */
-    border-radius: 8px;      /* Opzionale: bordi stondati */
-    flex-shrink: 0;          /* FONDAMENTALE: impedisce all'icona di rimpicciolirsi se il testo è lungo */
-    
+    object-fit: cover;
+    /* Evita che l'immagine si deformi */
+    border-radius: 8px;
+    /* Opzionale: bordi stondati */
+    flex-shrink: 0;
+    /* FONDAMENTALE: impedisce all'icona di rimpicciolirsi se il testo è lungo */
+
 }
 
 /* Stile per il testo */
 #lista-crediti li div {
     display: flex;
-    flex-direction: column; /* Mette i paragrafi uno sotto l'altro */
+    flex-direction: column;
+    /* Mette i paragrafi uno sotto l'altro */
 }
 
 #lista-crediti li div p {
-    margin: 0;              /* Rimuove i margini enormi di default dei paragrafi */
+    margin: 0;
+    /* Rimuove i margini enormi di default dei paragrafi */
     line-height: 1.4em;
 }
-
-
-
 
 
 /*
@@ -788,8 +815,10 @@ footer img {
     object-fit: contain;
 }
 
-footer h2 {
+#title-mappa {
     margin-bottom: 0.5em;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
 footer nav ul {
@@ -797,8 +826,13 @@ footer nav ul {
 }
 
 
-footer .disclaimer {
+footer #disclaimer {
     width: 30%;
+}
+
+footer #disclaimer p:first-of-type {
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 
@@ -807,11 +841,11 @@ footer .disclaimer {
         padding: 0 2em;
     }
 
-    main>article.darkBackground {
+    main>article#container-adozione {
         margin-inline: -2em;
     }
 
-    .darkBackground {
+    #container-adozione {
         border-radius: 0;
     }
 }

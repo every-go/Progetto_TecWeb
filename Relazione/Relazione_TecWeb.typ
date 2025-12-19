@@ -81,16 +81,6 @@ table.header([Nome],[Matricola]),
 
 #outline(title: "Indice")
 
-#outline(
-  title: [Tabelle],
-  target: figure.where(kind: table),
-)
-
-#outline(
-  title: [Immagini],
-  target: figure.where(kind: image),
-)
-
 #pagebreak()
 #context counter(page).update(1)
 

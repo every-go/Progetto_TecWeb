@@ -1,0 +1,48 @@
+/*
+* {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5em;
+}
+
+html,
+body {
+    font-size: 100%;
+    font-family: "Times New Roman", "Bodoni", serif;
+    background-color: var(--primary-bg);
+}
+
+img {
+   display: none;
+}
+
+header{
+   display: none;
+}
+
+footer{
+   display: none;
+}
+*/
+
+*{
+   padding: 0em;
+   margin: 0em;
+}
+
+main>article{
+   min-height: 0vh;
+}
+
+html, body{
+   font-size: 12pt;
+   font-family: 'Times New Roman', Times, serif;
+}
+
+header{
+   display: none;
+}
+
+footer{
+   display: none;
+}
