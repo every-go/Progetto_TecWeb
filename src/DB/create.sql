@@ -7,12 +7,12 @@ DROP TABLE IF EXISTS animali;
 
 CREATE TABLE animali (
     id           INT AUTO_INCREMENT PRIMARY KEY,
-    nome         VARCHAR(255) NOT NULL,
-    alt          VARCHAR(255) NOT NULL,
-    immagine     VARCHAR(255),
+    nome         VARCHAR(1023) NOT NULL,
+    alt          VARCHAR(1023) NOT NULL,
+    immagine     VARCHAR(1023),
     sesso        ENUM('Maschio','Femmina') NOT NULL,
     tipo_animale ENUM('Reale','Fantasy') NOT NULL,
-    luogo        VARCHAR(255) NOT NULL,
+    luogo        VARCHAR(1023) NOT NULL,
     eta          INT NOT NULL,
     taglia       ENUM('Piccola','Media','Grande') NOT NULL,
     carattere    ENUM('Facile','Moderato','Difficile') NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE adottati (
 INSERT INTO animali (nome, alt, immagine, sesso, tipo_animale, luogo, eta, taglia, carattere, descrizione, bisogni, storia, adottato)
 VALUES
 ('Capitano', 
-'Un cane di taglia media, simile a un mix di <span lang='en'>Shetland Sheepdog</span> o <span lang='en'>Collie</span>, 
+'Un cane di taglia media, simile a un mix di <span lang="en">Shetland Sheepdog</span> o <span lang="en">Collie</span>, 
     con un lungo e folto doppio mantello nei toni del marrone e bianco. 
     Il pelo è dritto e denso intorno al collo. 
     La testa presenta un muso stretto con una lista bianca che corre dalla fronte fino al naso.
@@ -71,7 +71,7 @@ VALUES
     3) Alimentazione bilanciata: crocchette premium per cani di taglia media, con integratori per le articolazioni se necessario.
     4) Ambiente ideale: famiglia affettuosa, tollera poco la solitudine (non più di 4-5 ore al giorno).
     5) Cure veterinarie: vaccini annuali e controlli oculistici',
-'Capitano, un mix di <span lang='en'>Collie</span> di 4 anni, è stato salvato dopo essere stato abbandonato
+'Capitano, un mix di <span lang="en">Collie</span> di 4 anni, è stato salvato dopo essere stato abbandonato
     durante un trasloco della sua vecchia famiglia.
     Inizialmente timido, ha riguadagnato fiducia grazie ai volontari, rivelando un carattere gioioso e affettuoso.
     Adora le passeggiate nei parchi e le coccole sul divano, e ora cerca una casa stabile dove poter offrire la sua fedeltà incondizionata.

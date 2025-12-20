@@ -8,7 +8,7 @@ class DBAccess {
 
 	private const HOST_DB = "mysql_db";
 	private const DATABASE_NAME = "mydb";
-	private const USERNAME = "rot";
+	private const USERNAME = "root";
 	private const PASSWORD = "root";
 
 	private $connection;
@@ -55,6 +55,42 @@ class DBAccess {
 			return false;
 		}
 	}
+	
+	public function getAnimalById($id) {
+    // 1. Validazione input
+    if (!filter_var($id, FILTER_VALIDATE_INT) || $id <= 0) {
+        return null;
+    }
+
+    $query = "SELECT * FROM animali WHERE id = ?";
+    $animalData = null; // Default a null (nessun animale trovato)
+
+    if ($stmt = mysqli_prepare($this->connection, $query)) {
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        
+        if (mysqli_stmt_execute($stmt)) {
+            $queryResult = mysqli_stmt_get_result($stmt);
+
+            // 2. Controllo se l'oggetto risultato è valido
+            if ($queryResult) {
+                // 3. Controllo ESPLICITO: abbiamo trovato almeno una riga?
+                if (mysqli_num_rows($queryResult) > 0) {
+                    $animalData = mysqli_fetch_assoc($queryResult);
+                }
+                
+                // 4. Liberiamo la memoria (fondamentale)
+                mysqli_free_result($queryResult);
+            }
+        }
+        
+        // 5. Chiudiamo lo statement
+        mysqli_stmt_close($stmt);
+    }
+
+    // Ritorna l'array dati oppure NULL se non trovato/errore
+    return $animalData; 
+}
+
 
 // 	public function insertNewElement($nome, $capitano, $dataNascita, $luogo, $squadra, $ruolo, $altezza, $maglia, $magliaNazionale, $punti, $riconoscimenti, $note, $genere) {
 
