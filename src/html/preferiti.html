@@ -18,17 +18,19 @@
 
 <body>
 	<a class="aiuti" href="#main-content"> Vai al contenuto </a>
+    <a class="aiuti" href="#preferiti-content"> Vai ai preferiti </a>
+    <a class="aiuti" href="#adottati-content"> Vai agli adottati </a>
 	<header id="container-menu">
 
 		<h1 id="logo-header">Casa Otium</h1>
 
 		<nav id="menu">
 			<ul>
-				<li lang="en"> <a href="home.html"> Home </a></li>
-            <li> <a href="animali.html"> Animali </a></li>
-            <li> <a href="chiSiamo.html">Chi siamo</a></li>
-            <li id="currentlink">Preferiti </li>
-            <li> <a href="login.html"> <span lang="en"> Login</span></a>
+				<li lang="en"> <a href="../php/home.php"> Home </a></li>
+                <li> <a href="../php/animali.php"> Animali </a></li>
+                <li> <a href="../php/chiSiamo.php">Chi siamo</a></li>
+                <li id="currentlink">Preferiti </li>
+                <li> <a href="../php/login.php"> <span lang="en"> Login</span></a>
 			</ul>
 		</nav>
 	</header>
@@ -36,7 +38,7 @@
 <main id="home-main">
         <nav id="breadcrumb">
             <p>
-                Ti trovi in: <a href="home.html" lang="en">Home </a> <span aria-hidden="true">&gt;&gt;</span> Preferiti 
+                Ti trovi in: <a href="home.php" lang="en">Home </a> <span aria-hidden="true">&gt;&gt;</span> Preferiti 
             </p>
         </nav>
         <!-- Da aggiungere ID. Ho messo h2 perché altrimenti ci sarebbero due h1, uno per i preferiti uno per gli adottati -->
@@ -48,109 +50,14 @@
             </div>
         </form>
 
-        <div id="animali"></div>
-        <ul class="animali">
-            <li class="animale-card">
-                <a href="animale.html?id=1" class="animale-link">
-                    <img src="../images/jpg/cane_bello.jpg" class="animale-immagine" alt="[mini-descrizione]">
-                    <ul class="animale-info">
-                        <li class="nome" aria-label="Nome: Capitano">Capitano</li>
-                        <li class="info-box"><span class="material-symbols-outlined"
-                                aria-hidden="true">location_on</span>
-                            Veneto</li>
-                        <li class="info-box"> <span class="material-symbols-outlined" aria-hidden="true"> cake
-                            </span>1 anno</li>
-                        <li class="info-box">Cane</li>
-                        <li class="info-box"> <img src="../images/png/diff_adozione.png" alt="Carattere"> Facile </li>
-                    </ul>
-                </a>
-            </li>
-
-            <li class="animale-card">
-                <a href="animale.html?id=1" class="animale-link">
-                    <img src="../images/jpg/cane_bello.jpg" class="animale-immagine" alt="Capitano">
-                    <ul class="animale-info">
-                        <li class="nome" aria-label="Nome: Capitano">Capitano</li>
-                        <li class="info-box"><span class="material-symbols-outlined"
-                                aria-hidden="true">location_on</span>
-                            Veneto</li>
-                        <li class="info-box"> <span class="material-symbols-outlined" aria-hidden="true"> cake
-                            </span>1 anno</li>
-                        <li class="info-box">Cane</li>
-                        <li class="info-box"> <img src="../images/png/diff_adozione.png" alt="Carattere"> Facile </li>
-                    </ul>
-                </a>
-            </li>
-
-            <li class="animale-card">
-                <a href="animale.html?id=1" class="animale-link">
-                    <img src="../images/jpg/cane_bello.jpg" class="animale-immagine" alt="Capitano">
-                    <ul class="animale-info">
-                        <li class="nome" aria-label="Nome: Capitano">Capitano</li>
-                        <li class="info-box"><span class="material-symbols-outlined"
-                                aria-hidden="true">location_on</span>
-                            Veneto</li>
-                        <li class="info-box"> <span class="material-symbols-outlined" aria-hidden="true"> cake
-                            </span>1 anno</li>
-                        <li class="info-box">Cane</li>
-                        <li class="info-box"> <img src="../images/png/diff_adozione.png" alt="Carattere"> Facile </li>
-                    </ul>
-                </a>
-            </li>
-
-            <li class="animale-card">
-                <a href="animale.html?id=1" class="animale-link">
-                    <img src="../images/jpg/cane_bello.jpg" class="animale-immagine" alt="Capitano">
-                    <ul class="animale-info">
-                        <li class="nome" aria-label="Nome: Capitano">Capitano</li>
-                        <li class="info-box"><span class="material-symbols-outlined"
-                                aria-hidden="true">location_on</span>
-                            Veneto</li>
-                        <li class="info-box"> <span class="material-symbols-outlined" aria-hidden="true"> cake
-                            </span>1 anno</li>
-                        <li class="info-box">Cane</li>
-                        <li class="info-box"> <img src="../images/png/diff_adozione.png" alt="Carattere"> Facile </li>
-                    </ul>
-                </a>
-            </li>
-
-            <li class="animale-card">
-                <a href="animale.html?id=1" class="animale-link">
-                    <img src="../images/jpg/cane_bello.jpg" class="animale-immagine" alt="Capitano">
-                    <ul class="animale-info">
-                        <li class="nome" aria-label="Nome: Capitano">Capitano</li>
-                        <li class="info-box"><span class="material-symbols-outlined"
-                                aria-hidden="true">location_on</span>
-                            Veneto</li>
-                        <li class="info-box"> <span class="material-symbols-outlined" aria-hidden="true"> cake
-                            </span>1 anno</li>
-                        <li class="info-box">Cane</li>
-                        <li class="info-box"> <img src="../images/png/diff_adozione.png" alt="Carattere"> Facile </li>
-                    </ul>
-                </a>
-            </li>
-        </ul>
+        <!-- ID dei preferiti -->
+        <p id = "preferiti-content"> I tuoi animali preferiti </p>
+        [listaAnimali]
 
         <!-- ID degli adottati -->
-        <h2> I tuoi animali adottati </h2>
-        <ul class="animali">
-         <li class="animale-card">
-                <a href="animale.html?id=1" class="animale-link">
-                    <img src="../images/jpg/cane_bello.jpg" class="animale-immagine" alt="Capitano">
-                    <ul class="animale-info">
-                        <li class="nome" aria-label="Nome: Capitano">Capitano</li>
-                        <li class="info-box"><span class="material-symbols-outlined"
-                                aria-hidden="true">location_on</span>
-                            Veneto</li>
-                        <li class="info-box"> <span class="material-symbols-outlined" aria-hidden="true"> cake
-                            </span>1 anno</li>
-                        <li class="info-box">Cane</li>
-                        <li class="info-box"> <img src="../images/png/diff_adozione.png" alt="Carattere"> Facile </li>
-                    </ul>
-                </a>
-            </li>
-        </ul>
+        <p id = "adottati-content"> I tuoi animali adottati </p>
 
+        [listaAnimali]
 
     </main>
     <footer>
@@ -158,11 +65,11 @@
             <p id="title-mappa"> Mappa di navigazione </p>
             <nav>
                 <ul>
-                  <li> <a href="home.html"><span lang="en">Home</span></a></li>
-                  <li> <a href="chiSiamo.html"> Chi siamo </a></li>
-                  <li> <a href="animali.html"> Animali </a> </li>
+                  <li> <a href="../php/home.php"><span lang="en">Home</span></a></li>
+                  <li> <a href="../php/chiSiamo.php"> Chi siamo </a></li>
+                  <li> <a href="../php/animali.php"> Animali </a> </li>
                   <li> Preferiti </li>
-                  <li> <a href="crediti.html"> Crediti </a></li>
+                  <li> <a href="../php/crediti.php"> Crediti </a></li>
                 </ul>
             </nav>
         </div>

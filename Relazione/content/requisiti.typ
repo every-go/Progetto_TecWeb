@@ -26,6 +26,7 @@ Le funzionalità dell'utente "Logged-in" sono disponibili anche per l'amministra
     [*Ruolo*], [*Funzionalità*],
   ),
 
+  [Utente], [Design responsive e accessibile],
   [Utente], [Visualizzare gli animali disponibili per l'adozione],
   [Utente], [Visualizzare i dettagli di un animale specifico],
   [Utente], [Effettuare il login],
@@ -37,8 +38,7 @@ Le funzionalità dell'utente "Logged-in" sono disponibili anche per l'amministra
   [Logged-in], [Visualizzare la lista dei preferiti],
   [Admin], [Aggiungere un nuovo animale],
   [Admin], [Modificare le informazioni di un animale esistente],
-  [Admin], [Eliminare un animale esistente],
-  [Tutti], [Design responsive e accessibile]
+  [Admin], [Eliminare un animale esistente]
 )
 #v(8pt)
 #align(center)[

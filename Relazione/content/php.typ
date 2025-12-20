@@ -15,7 +15,7 @@ Questa cambia quando effettui il login, diventando
 + Animali
 + Chi siamo
 + Preferiti
-+ Login
++ Logout
 
 Una cosa molto simile succede al footer, "introducendo" il link alla pagina dei preferiti solo dopo aver effettuato il login.
 

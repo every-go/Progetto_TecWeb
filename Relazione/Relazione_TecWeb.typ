@@ -1,5 +1,5 @@
 #set page(paper:"a4")
-#set text(size: 16pt,lang:"IT")
+#set text(size: 10pt,lang:"IT")
 
 
 #show link:set text(blue)
@@ -116,6 +116,10 @@ table.header([Nome],[Matricola]),
 #pagebreak()
 
 #include "content/dati_info.typ"
+
+#pagebreak()
+
+#include "content/interfaccia_stile.typ"
 
 #pagebreak()
 

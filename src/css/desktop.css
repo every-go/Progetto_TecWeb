@@ -426,6 +426,13 @@ header h1 {
     color: var(--searchplaceholdericon);
 }
 
+#animali-content{
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    top: auto;
+    width: 1px;
+}
 
 .animali {
     margin-top: 4em;
@@ -441,6 +448,7 @@ header h1 {
 .animale-link {
     text-decoration: none;
     display: block;
+    height: 100%;
 }
 
 .animale-link:visited {
@@ -669,7 +677,7 @@ header h1 {
 */
 
 
-.container {
+#container {
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -794,6 +802,25 @@ header h1 {
     line-height: 1.4em;
 }
 
+/*
+    PREFERITI
+*/
+
+#preferiti-content{
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    top: auto;
+    width: 1px;
+}
+
+#adottati-content{
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    top: auto;
+    width: 1px;
+}
 
 /*
     FOOTER

@@ -46,7 +46,7 @@ CREATE TABLE adottati (
 INSERT INTO animali (nome, alt, immagine, sesso, tipo_animale, luogo, eta, taglia, carattere, descrizione, bisogni, storia, adottato)
 VALUES
 ('Capitano', 
-'Un cane di taglia media, simile a un mix di <span lang="en">Shetland Sheepdog</span> o <span lang="en">Collie</span>, 
+'Un cane di taglia media, simile a un mix di Shetland Sheepdog o Collie, 
     con un lungo e folto doppio mantello nei toni del marrone e bianco. 
     Il pelo è dritto e denso intorno al collo. 
     La testa presenta un muso stretto con una lista bianca che corre dalla fronte fino al naso.
@@ -57,7 +57,7 @@ VALUES
 '../images/jpg/cane_bello.jpg',
 'Maschio',
 'Reale',
-'Padova',
+'Veneto',
 4,
 'Media',
 'Facile',
@@ -87,7 +87,7 @@ FALSE),
 '../images/jpg/cavallo_lunare.jpg',
 'Maschio',
 'Fantasy',
-'Parte oscura della Luna',
+'Crateri lunari',
 5, 
 'Grande',
 'Facile',
@@ -112,7 +112,7 @@ FALSE),
 '../images/jpg/procione.jpg',
 'Femmina',
 'Reale',
-'Napoli',
+'Campania',
 2,
 'Piccola',
 'Moderato',
@@ -136,7 +136,7 @@ FALSE),
 '../images/jpg/medusa_lunare.jpg',
 'Femmina',
 'Fantasy',
-'Parte visibile della Luna',
+'Crateri lunari',
 3,
 'Piccola',
 'Moderato',
@@ -154,25 +154,25 @@ FALSE),
     Cerca un proprietario che ami la meditazione e che voglia aggiungere un tocco di luce celestiale alla propria casa.',
 FALSE),
 
-('Paffuto',
-'Un gattino di circa tre anni con una pelliccia estremamente soffice e folta.
+('Paffuta',
+'Una gattina di circa tre anni con una pelliccia estremamente soffice e folta.
     Il colore dominante è un nero delicato.
     Gli occhi sono grandi, di un giallo intenso, che gli conferiscono un''espressione di perenne stupore.
     Le orecchie sono piccole e leggermente arrotondate, mentre il musetto è corto con un piccolo naso nero.',
 '../images/jpg/gatto.jpg',
 'Femmina',
 'Reale',
-'Foggia',
+'Puglia',
 3,
 'Piccola',
 'Facile',
-'Paffuto è la quintessenza della dolcezza.
+'Paffuta è la quintessenza della dolcezza.
     È una gattina estremamente calma per la sua età, che preferisce le lunghe dormite sulle ginocchia ai giochi troppo movimentati.
     È socievole con gli umani e tende a fare le fusa non appena viene sfiorata, dimostrando una fiducia totale nel prossimo.',
 '1) Alimentazione specifica per gattini in crescita per supportare lo sviluppo osseo.
     2) Spazzolatura settimanale per mantenere il pelo morbido e privo di nodi.
     3) Molte interazioni umane e calore domestico, poiché soffre molto il freddo e la solitudine.',
-'Trovata infreddolita in un vicolo di Foggia durante una mattina di pioggia, Paffuto è stata salvata da una
+'Trovata infreddolita in un vicolo di Foggia durante una mattina di pioggia, Paffuta è stata salvata da una
     signora che l''ha sentita miagolare debolmente.
     Nonostante l''inizio difficile, ha recuperato peso e salute in tempi record, rivelando un carattere d''oro.
     Ora aspetta solo una casa dove poter diventare la regina del divano.',
