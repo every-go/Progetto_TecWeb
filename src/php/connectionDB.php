@@ -59,11 +59,11 @@ class DBAccess {
 	public function getAnimalById($id) {
     // 1. Validazione input
     if (!filter_var($id, FILTER_VALIDATE_INT) || $id <= 0) {
-        return null;
+        return false;
     }
 
     $query = "SELECT * FROM animali WHERE id = ?";
-    $animalData = null; // Default a null (nessun animale trovato)
+    $animalData = false; // Default a false (nessun animale trovato)
 
     if ($stmt = mysqli_prepare($this->connection, $query)) {
         mysqli_stmt_bind_param($stmt, "i", $id);
@@ -89,7 +89,7 @@ class DBAccess {
 
     // Ritorna l'array dati oppure NULL se non trovato/errore
     return $animalData; 
-}
+	}
 
 
 // 	public function insertNewElement($nome, $capitano, $dataNascita, $luogo, $squadra, $ruolo, $altezza, $maglia, $magliaNazionale, $punti, $riconoscimenti, $note, $genere) {

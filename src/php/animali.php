@@ -1,35 +1,32 @@
 <?php 
 
-require_once dirname(__DIR__) .DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'connectionDB.php';
-use DB\DBAccess;
+	require_once dirname(__DIR__) .DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'connectionDB.php';
+	use DB\DBAccess;
 
-function singleCardBuilder($animale){
-	$animaleCard=file_get_contents("animalCardTemplate.html");
-	$animaleCard=str_replace("[ID_ANIMALE]",$animale["id"],$animaleCard);
-	$animaleCard=str_replace("[NOME_ANIMALE]",$animale["nome"],$animaleCard);
-	$animaleCard=str_replace("[ALT_IMMAGINE]",$animale["alt"],$animaleCard);
-	$animaleCard=str_replace("[PATH_IMMAGINE]",$animale["immagine"],$animaleCard);
-	$animaleCard=str_replace("[TIPO]",$animale["tipo_animale"],$animaleCard);
-	$animaleCard=str_replace("[LUOGO]",$animale["luogo"],$animaleCard);
-	if($animale["eta"]==1){
-		$animale["eta"]="1 anno";
+	function singleCardBuilder($animale){
+		$animaleCard=file_get_contents("../html/animalCardTemplate.html");
+		$animaleCard=str_replace("[ID_ANIMALE]",$animale["id"],$animaleCard);
+		$animaleCard=str_replace("[NOME_ANIMALE]",$animale["nome"],$animaleCard);
+		$animaleCard=str_replace("[ALT_IMMAGINE]",$animale["alt"],$animaleCard);
+		$animaleCard=str_replace("[PATH_IMMAGINE]",$animale["immagine"],$animaleCard);
+		$animaleCard=str_replace("[TIPO]",$animale["tipo_animale"],$animaleCard);
+		$animaleCard=str_replace("[LUOGO]",$animale["luogo"],$animaleCard);
+		if($animale["eta"]==1){
+			$animale["eta"]="1 anno";
+		}
+		else{
+			$animale["eta"]=$animale["eta"]." anni";
+		}
+		$animaleCard=str_replace("[ETA_ANIMALE]",$animale["eta"],$animaleCard);
+		$animaleCard=str_replace("[TAGLIA]",$animale["taglia"],$animaleCard);
+		$animaleCard=str_replace("[CARATTERE]",$animale["carattere"],$animaleCard);	
+		return $animaleCard;	
 	}
-	else{
-		$animale["eta"]=$animale["eta"]." anni";
-	}
-	$animaleCard=str_replace("[ETA_ANIMALE]",$animale["eta"],$animaleCard);
-	$animaleCard=str_replace("[TAGLIA]",$animale["taglia"],$animaleCard);
-	$animaleCard=str_replace("[CARATTERE]",$animale["carattere"],$animaleCard);
-	$animaleCard=str_replace("[DESCRIZIONE_ANIMALE]",$animale["descrizione"],$animaleCard);
-	$animaleCard=str_replace("[STORIA]",$animale["storia"],$animaleCard);
-	$animaleCard=str_replace("[ADOTTATO]",$animale["adottato"],$animaleCard);			
-	return $animaleCard;	
-}
 
-    include "menu.php";
-    $content = file_get_contents("../html/animali.html");
-    $content = str_replace("[listaMenu]", $listaMenu, $content);
-    $content = str_replace('[listaFooter]', $listaFooter, $content);
+   include "menu.php";
+   $content = file_get_contents("../html/animali.html");
+   $content = str_replace("[listaMenu]", $listaMenu, $content);
+   $content = str_replace('[listaFooter]', $listaFooter, $content);
 
 
 	$stringaAnimali="";
@@ -54,5 +51,5 @@ function singleCardBuilder($animale){
 
 	$content= str_replace("[LISTA_ANIMALI]", $listaAnimali, $content);
     
-    echo $content;
+   echo $content;
 ?>

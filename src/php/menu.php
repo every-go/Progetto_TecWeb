@@ -30,7 +30,7 @@
     // aggiunge crediti per ultimo 
     $pagesFooter['crediti.php'] = ['text' => 'Crediti'];
 
-    $listaMenu = '';
+    $listaMenu = '<ul>';
     foreach($pages as $page => $data) {
         $isCurrentPage = false;
 
@@ -48,8 +48,9 @@
             '>' . $data["text"] . '</a></li>';
         }
     }
+    $listaMenu .= '</ul>';
 
-    $listaFooter = '';
+    $listaFooter = '<ul>';
     foreach($pagesFooter as $page => $data) {
         $isCurrentPage = false;
 
@@ -67,6 +68,7 @@
             '>' . $data["text"] . '</a></li>';
         }
     }
+    $listaFooter .= '</ul>';
 
 
 ?>
