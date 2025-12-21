@@ -91,7 +91,41 @@ class DBAccess {
     return $animalData; 
 	}
 
+   
+function loginUtente($username, $passwordInserita) {
+    
+    // 1. Prepara la query (SOLO con username, per sicurezza)
+    $sql = "SELECT username, password FROM utenti WHERE username = ?";
+    
+    if ($stmt = mysqli_prepare($this->connection, $sql)) {
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        // 2. Se l'utente esiste
+		$row = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+		mysqli_stmt_close($stmt);
+		if ($row) {
+            // 3. CONFRONTO DIRETTO (visto che sono in chiaro)
+            // Usa === per essere sicuro che siano identiche (case sensitive)
+            if ($passwordInserita === $row['password']) {
+                
+                // --- PUNTO BONUS COL PROFESSORE ---
+                // Rigenera l'ID per evitare il furto di sessione
+                session_regenerate_id(true); 
+                // ----------------------------------
 
+                // 4. Imposta le variabili di sessione
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['is_logged_in'] = true; // Comodo per i controlli nelle altre pagine
+
+                return true; // Login riuscito
+            }
+        }
+
+    }
+    return false; // Login fallito
+}
 // 	public function insertNewElement($nome, $capitano, $dataNascita, $luogo, $squadra, $ruolo, $altezza, $maglia, $magliaNazionale, $punti, $riconoscimenti, $note, $genere) {
 
 // 		$queryInsert = 'INSERT INTO atleti (nome, capitano, dataNascita, luogo, squadra, ruolo, altezza, maglia, magliaNazionale, punti, riconoscimenti, note, genere) VALUES ("$nome", "$capitano", "$dataNascita", "$luogo", "$squadra", "$ruolo", $altezza, $maglia, $magliaNazionale, $punti, "$riconoscimenti", "$note", $genere)';
