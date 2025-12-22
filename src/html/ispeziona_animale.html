@@ -17,7 +17,125 @@
 </head>
 
 <body>
-	Hello World!
+<header>
+	<header id="container-menu">
+
+		<h1 id="logo-header">Casa Otium</h1>
+
+		<nav id="menu">
+			[listaMenu]
+		</nav>
+</header>
+<main id="home-main">
+
+
+<form action="../php/aggiungiAnimale.php" method="post" enctype="multipart/form-data">
+
+    <fieldset>
+        <legend>Dati Generali</legend>
+
+        <label for="nome">Nome Animale:</label>
+        <input type="text" id="nome" name="nome" [NOME_ANIMALE] required>
+
+        <label for="eta">Età (anni):</label>
+        <input type="number" id="eta" name="eta" [ETA_ANIMALE] required min="0">
+    </fieldset>
+
+    <fieldset>
+        <legend>Sesso</legend>
+        
+        <input type="radio" id="sesso_m" name="sesso" value="Maschio" [CHECK_SESSO_M] required>
+        <label for="sesso_m">Maschio</label>
+
+        <input type="radio" id="sesso_f" name="sesso" value="Femmina" [CHECK_SESSO_F]>
+        <label for="sesso_f">Femmina</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Tipologia</legend>
+
+        <input type="radio" id="tipo_reale" name="tipo_animale" value="Reale" [CHECK_TIPO_REALE] required>
+        <label for="tipo_reale">Reale</label>
+
+        <input type="radio" id="tipo_fantasy" name="tipo_animale" value="Fantasy" [CHECK_TIPO_FANTASY]>
+        <label for="tipo_fantasy">Fantasy</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Immagine</legend>
+        <label for="immagine">URL Immagine:</label>
+        <input type="text" id="immagine" name="immagine" [IMMAGINE_ANIMALE]>
+
+        <label for="alt">Descrizione ALT:</label>
+        <input type="text" id="alt" name="alt" [ALT_ANIMALE] required>
+    </fieldset>
+
+    <fieldset>
+        <legend>Luogo</legend>
+        <label for="luogo">Luogo di ritrovamento:</label>
+        <input type="text" id="luogo" name="luogo" [LUOGO_ANIMALE] required>
+    </fieldset>
+
+    <fieldset>
+        <legend>Taglia</legend>
+
+        <input type="radio" id="taglia_p" name="taglia" value="Piccola" [CHECK_TAGLIA_P] required>
+        <label for="taglia_p">Piccola</label>
+
+        <input type="radio" id="taglia_m" name="taglia" value="Media" [CHECK_TAGLIA_M]>
+        <label for="taglia_m">Media</label>
+
+        <input type="radio" id="taglia_g" name="taglia" value="Grande" [CHECK_TAGLIA_G]>
+        <label for="taglia_g">Grande</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Carattere</legend>
+
+        <input type="radio" id="car_f" name="carattere" value="Facile" [CHECK_CAR_F] required>
+        <label for="car_f">Facile</label>
+
+        <input type="radio" id="car_m" name="carattere" value="Moderato" [CHECK_CAR_M]>
+        <label for="car_m">Moderato</label>
+
+        <input type="radio" id="car_d" name="carattere" value="Difficile" [CHECK_CAR_D]>
+        <label for="car_d">Difficile</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Descrizioni</legend>
+        
+        <label for="descrizione">Descrizione:</label>
+        <textarea id="descrizione" name="descrizione" rows="5" required>[DESCRIZIONE_ANIMALE]</textarea>
+
+        <label for="bisogni">Bisogni specifici:</label>
+        <textarea id="bisogni" name="bisogni" rows="3" required>[BISOGNI_ANIMALE]</textarea>
+
+        <label for="storia">Storia:</label>
+        <textarea id="storia" name="storia" rows="5">[STORIA_ANIMALE]</textarea>
+    </fieldset>
+
+    <input type="submit" name="[AZIONE]" value="[PULSANTE_AZIONE]">
+</form>
+</main>
+
+<footer>
+		<div>
+			<p id="title-mappa"> Mappa di navigazione </p>
+			<nav>
+				[listaFooter]
+			</nav>
+		</div>
+		<img src="../images/png/logo_unipd.png" alt="">
+		<div id="disclaimer">
+			<p> <span lang="en">Disclaimer</span></p>
+			<p>
+				Questo sito <span lang="en">web</span> è stato sviluppato presso l'Università di Padova come progetto
+				didattico valutato dalla Prof.essa Gaggi Ombretta; ogni riferimento a luogo, persona o animale reale è
+				puramente casuale in quanto alcune immagini sono state generate dall'intelligenza artificiale.
+			</p>
+		</div>
+</footer>
 </body>
 
 </html>

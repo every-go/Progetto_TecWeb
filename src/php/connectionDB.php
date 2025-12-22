@@ -38,6 +38,35 @@ class DBAccess {
 	}
 
 
+public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, $luogo, $eta, $taglia, $carattere, $descrizione, $bisogni, $storia) {
+    
+    $query = "INSERT INTO animali (nome,alt,immagine,sesso,tipo_animale,luogo,eta,taglia,carattere,descrizione,bisogni,storia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        if ($stmt = mysqli_prepare($this->connection, $query)) {
+        mysqli_stmt_bind_param($stmt, "ssssssssssss", $nome, $alt, $immagine, $sesso, $tipo_animale, $luogo, $eta, $taglia, $carattere, $descrizione, $bisogni, $storia);
+        
+        // Eseguiamo la query
+        if (mysqli_stmt_execute($stmt)) {
+            
+            // --- ECCO IL TRUCCO ---
+            // Recuperiamo l'ID appena generato dall'AUTO_INCREMENT
+            $nuovoId = $this->connection->insert_id; // Stile a oggetti
+            // Oppure: $nuovoId = mysqli_insert_id($this->connection); // Stile procedurale
+            
+            mysqli_stmt_close($stmt);
+            
+            // Ritorniamo l'ID invece di true. 
+            // (Nota: se l'ID è > 0 è considerato "true" nei controlli if, quindi è comodo)
+            return $nuovoId;
+        }
+        
+        mysqli_stmt_close($stmt);
+    }
+    
+    return false; // O null, se qualcosa è andato storto
+}
+
+
+
 	public function getList() {
 
 		$query = "SELECT * FROM animali WHERE adottato = 0 ORDER BY id ASC";
@@ -126,23 +155,9 @@ function loginUtente($username, $passwordInserita) {
     }
     return false; // Login fallito
 }
-// 	public function insertNewElement($nome, $capitano, $dataNascita, $luogo, $squadra, $ruolo, $altezza, $maglia, $magliaNazionale, $punti, $riconoscimenti, $note, $genere) {
 
-// 		$queryInsert = 'INSERT INTO atleti (nome, capitano, dataNascita, luogo, squadra, ruolo, altezza, maglia, magliaNazionale, punti, riconoscimenti, note, genere) VALUES ("$nome", "$capitano", "$dataNascita", "$luogo", "$squadra", "$ruolo", $altezza, $maglia, $magliaNazionale, $punti, "$riconoscimenti", "$note", $genere)';
-
-// 		$queryResult = mysqli_query($this->connection, $queryInsert) or die("Errore in dbConnection: " . mysqli_error($this->connection));
-// 		//controllo presenza di righe
-// 		if (mysqli_affected_rows($this->connection) > 0) {
-// 			return true;
-// 		} else {
-// 			return false;
-// 		}
-// 	}
-
-	
-// 
-
-
-// 
 }
+
+
+
 ?>
