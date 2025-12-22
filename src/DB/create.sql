@@ -24,7 +24,8 @@ CREATE TABLE animali (
 
 CREATE TABLE utenti (
     username VARCHAR(255) PRIMARY KEY,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    admin BOOLEAN DEFAULT FALSE
 ) ENGINE=InnoDB;
 
 CREATE TABLE preferiti (
@@ -203,8 +204,8 @@ FALSE),
 FALSE);
 
 INSERT INTO utenti
-VALUES ('user', 'user'),
-       ('admin', 'admin');
+VALUES ('user', 'user', FALSE),
+       ('admin', 'admin', TRUE);
 
 INSERT INTO preferiti
 VALUES ('user', 1),

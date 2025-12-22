@@ -6,8 +6,8 @@ use mysqli_result;
 
 class DBAccess {
 
-	private const HOST_DB = "mysql_db";
-	private const DATABASE_NAME = "mydb";
+	private const HOST_DB = "db";
+	private const DATABASE_NAME = "progetto";
 	private const USERNAME = "root";
 	private const PASSWORD = "root";
 
@@ -84,6 +84,57 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
 			return false;
 		}
 	}
+
+    public function eliminaAnimale($id) {
+        $query = "DELETE FROM animali WHERE id = ?";
+        $risultato = false; // Default a false (eliminazione fallita)
+        
+        if ($stmt = mysqli_prepare($this->connection, $query)) {
+            mysqli_stmt_bind_param($stmt, "i", $id);
+            
+            if (mysqli_stmt_execute($stmt)) {
+                // Controllo se almeno una riga è stata eliminata
+                if (mysqli_stmt_affected_rows($stmt) > 0) {
+                    $risultato = true;
+                }
+            }
+            mysqli_stmt_close($stmt);
+        }
+        return $risultato; // true se eliminato, false altrimenti
+    }
+
+    public function aggiornaAnimale($id, $nome, $alt, $immagine, $sesso, $tipo_animale, $luogo, $eta, $taglia, $carattere, $descrizione, $bisogni, $storia) {
+        $query = "UPDATE animali SET nome = ?, alt = ?, immagine = ?, sesso = ?, tipo_animale = ?, luogo = ?, eta = ?, taglia = ?, carattere = ?, descrizione = ?, bisogni = ?, storia = ?, adottato = 0 WHERE id = ?";
+        
+        $risultato = false;
+        
+        if ($stmt = mysqli_prepare($this->connection, $query)) {
+            mysqli_stmt_bind_param($stmt, "ssssssisssssi", 
+                $nome, 
+                $alt, 
+                $immagine, 
+                $sesso, 
+                $tipo_animale, 
+                $luogo, 
+                $eta, 
+                $taglia, 
+                $carattere, 
+                $descrizione, 
+                $bisogni, 
+                $storia,
+                $id
+            );
+            if (mysqli_stmt_execute($stmt)) {
+                if (mysqli_stmt_affected_rows($stmt) >= 0) {
+                    // >= 0 perché anche 0 righe modificate è OK (dati identici)
+                    $risultato = true;
+                }
+            }
+            mysqli_stmt_close($stmt);
+        }
+        
+        return $risultato;
+    }
 	
 	public function getAnimalById($id) {
     // 1. Validazione input
@@ -121,40 +172,45 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
 	}
 
    
-function loginUtente($username, $passwordInserita) {
-    
-    // 1. Prepara la query (SOLO con username, per sicurezza)
-    $sql = "SELECT username, password FROM utenti WHERE username = ?";
-    
-    if ($stmt = mysqli_prepare($this->connection, $sql)) {
-        mysqli_stmt_bind_param($stmt, "s", $username);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        // 2. Se l'utente esiste
-		$row = mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
-		mysqli_stmt_close($stmt);
-		if ($row) {
-            // 3. CONFRONTO DIRETTO (visto che sono in chiaro)
-            // Usa === per essere sicuro che siano identiche (case sensitive)
-            if ($passwordInserita === $row['password']) {
-                
-                // --- PUNTO BONUS COL PROFESSORE ---
-                // Rigenera l'ID per evitare il furto di sessione
-                session_regenerate_id(true); 
-                // ----------------------------------
+    function loginUtente($username, $passwordInserita) {
+        
+        // 1. Prepara la query (SOLO con username, per sicurezza)
+        $sql = "SELECT username, password, admin FROM utenti WHERE username = ?";
+        
+        if ($stmt = mysqli_prepare($this->connection, $sql)) {
+            mysqli_stmt_bind_param($stmt, "s", $username);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            // 2. Se l'utente esiste
+            $row = mysqli_fetch_assoc($result);
+            mysqli_free_result($result);
+            mysqli_stmt_close($stmt);
+            if ($row) {
+                // 3. CONFRONTO DIRETTO (visto che sono in chiaro)
+                // Usa === per essere sicuro che siano identiche (case sensitive)
+                if ($passwordInserita === $row['password']) {
+                    
+                    // --- PUNTO BONUS COL PROFESSORE ---
+                    // Rigenera l'ID per evitare il furto di sessione
+                    session_regenerate_id(true); 
+                    // ----------------------------------
 
-                // 4. Imposta le variabili di sessione
-                $_SESSION['username'] = $row['username'];
-                $_SESSION['is_logged_in'] = true; // Comodo per i controlli nelle altre pagine
-
-                return true; // Login riuscito
+                    // 4. Imposta le variabili di sessione
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['is_logged_in'] = true; // Comodo per i controlli nelle altre pagine
+                    if ($row["admin"]) {
+                        $_SESSION['role'] = "admin";
+                    } else {
+                        $_SESSION['role'] = "user";
+                    }
+                    
+                    return true; // Login riuscito
+                }
             }
-        }
 
+        }
+        return false; // Login fallito
     }
-    return false; // Login fallito
-}
 
 }
 

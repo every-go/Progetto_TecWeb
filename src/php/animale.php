@@ -6,6 +6,11 @@
     $content = str_replace("[listaMenu]", $listaMenu, $content);
     $content = str_replace("[listaFooter]", $listaFooter, $content);
 
+    $pulsanti = '';
+    $sezioneAdottami = '';
+    $animalData = '';
+    $adottami = '';
+
     if(isset($_GET['id'])){
         $db = new DBAccess();
         $connessioneOK = $db->openDBConnection();
@@ -23,24 +28,42 @@
                 $content = str_replace("[DESCRIZIONE]", htmlspecialchars($animalData["descrizione"]), $content);
                 $content = str_replace("[BISOGNI]", htmlspecialchars($animalData["bisogni"]), $content);
                 $content = str_replace("[STORIA]", htmlspecialchars($animalData["storia"]), $content);
-            }
-            else {
+            } else {
                 include dirname(__DIR__) . "/html/404.html";
                 http_response_code(404);
                 exit();
             }
-        }
-        else {
+        } else {
             include dirname(__DIR__) . "/html/500.html";
             http_response_code(500);
             exit();
         }
-    }
-    else{
+
+        if (isset($_SESSION["is_logged_in"]) && $_SESSION["is_logged_in"] === true && isset($_SESSION["role"]) && $_SESSION["role"] === 'admin') {
+            $pulsanti .= '<div class="admin-buttons">
+                    <a href="ispeziona_animale.php?id=' . $_GET["id"] .'" class="btn-modifica">Modifica</a>
+                    <a href="elimina.php?id=' . $_GET["id"] .'" class="btn-elimina"> Elimina </a>
+                    </div>';
+	    } else {
+            $adottami = '<aside>
+            <h2>Ti piaccio? Adottami!</h2>
+            <p>Ogni essere, reale o straordinario, cerca un luogo in cui sentirsi al sicuro. Io non faccio eccezione.
+                Che la mia natura sia comune o rara, ciò che posso offrire è semplice: compagnia, presenza e un legame
+                sincero. Se qualcosa di me ha acceso la tua curiosità, forse è il primo passo verso un incontro
+                speciale. Scoprimi un po’ di più… potrei essere il compagno che stavi cercando.</p>
+            <button>Adotta!</button>
+            </aside>';
+        }
+
+
+    } else{
         include dirname(__DIR__) . "/html/404.html";
         http_response_code(404);
         exit();
     }
+
+    $content = str_replace("[pulsanti]", $pulsanti, $content);
+    $content = str_replace("[adottami]", $adottami, $content);
     
     echo $content;
 ?>

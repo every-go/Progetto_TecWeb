@@ -402,18 +402,25 @@ header h1 {
     flex-direction: column;
 }
 
-#search {
-    min-width: 25rem;
+#search-container {
     display: flex;
     align-items: center;
-    padding: 1em;
-    border-radius: 28px;
-    background: var(--searchbackground);
+    justify-content: center;
+    gap: 1em;
+    margin-bottom: 2em;
 }
 
+#search {
+    display: flex;
+    align-items: center;
+    padding: 1em 1.5em;
+    border-radius: 28px;
+    background: var(--searchbackground);
+    flex: 0 1 auto;
+}
 
 #search-input {
-    width: 25rem;
+    width: 20rem;
     font-size: 1em;
     color: var(--searchcolor);
     margin-left: 1em;
@@ -422,8 +429,58 @@ header h1 {
     background: transparent;
 }
 
+#search-input::placeholder {
+    color: var(--searchplaceholdericon);
+}
+
 #search-icon {
     color: var(--searchplaceholdericon);
+    flex-shrink: 0;
+}
+
+#add-animal-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    padding: 1em 2em;
+    background-color: var(--secondary-bg);
+    color: var(--primary-bg);
+    border: none;
+    border-radius: 28px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 1em;
+    font-weight: 600;
+    font-family: "Noto Sans", sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+#add-animal-btn:visited {
+    color: var(--primary-bg);
+}
+
+#add-animal-btn:hover {
+    background-color: var(--verdescuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+}
+
+#add-animal-btn:focus {
+    outline: 3px solid var(--current-link);
+    outline-offset: 2px;
+}
+
+#add-animal-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+#add-animal-btn .material-symbols-outlined {
+    font-size: 1.3em;
 }
 
 #animali-content{
@@ -582,6 +639,10 @@ header h1 {
     text-indent: .5em;
 }
 
+#animale-main:not(:has(aside)) #descrizione {
+    grid-column: 1 / 3;
+}
+
 #descrizione {
     border: 2px solid var(--text-color);
     border-radius: 2em;
@@ -670,6 +731,64 @@ header h1 {
     /* Per mettere il colore all'immagine di verdescuro*/
     filter: invert(19%) sepia(25%) saturate(928%) hue-rotate(102deg) brightness(99%) contrast(90%);
     width: 60%;
+}
+
+/* Pulsanti Admin */
+.admin-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    margin-top: 2em;
+}
+
+.btn-modifica, .btn-elimina {
+    padding: 0.8em 2em;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-modifica {
+    background-color: var(--secondary-bg);
+    color: var(--primary-bg);
+}
+
+.btn-modifica:hover {
+    background-color: var(--verdescuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-modifica:visited , .btn-elimina:visited{
+    color: var(--primary-bg);
+}
+
+.btn-elimina {
+    background-color: #d32f2f;
+    color: white;
+}
+
+.btn-elimina:hover {
+    background-color: #b71c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-modifica:focus,
+.btn-elimina:focus {
+    outline: 3px solid var(--grigio);
+    outline-offset: 2px;
+}
+
+.btn-modifica:active,
+.btn-elimina:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /*
