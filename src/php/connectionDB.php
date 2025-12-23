@@ -7,7 +7,7 @@ use mysqli_result;
 class DBAccess {
 
 	private const HOST_DB = "db";
-	private const DATABASE_NAME = "progetto";
+	private const DATABASE_NAME = "mydb";
 	private const USERNAME = "root";
 	private const PASSWORD = "root";
 
