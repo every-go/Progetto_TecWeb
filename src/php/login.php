@@ -30,7 +30,7 @@
         // form da fare meglio
 
         //POSSIBILE ANCHE METTERLO STATICAMENTE NEL HTML e tenere solo gli errori
-        $loginFormTemplate='<form action="../php/login.php" method="post">
+        $loginFormTemplate='<form action="../php/login.php" method="post" id="main-content">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" value="[USERNAME_VALUE]" required>
         <br>
