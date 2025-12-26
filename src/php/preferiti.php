@@ -1,11 +1,7 @@
 <?php 
-
-    require_once dirname(__DIR__) .DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'connectionDB.php';
-    use DB\DBAccess;
-
     function singleCardBuilder($animale){
         $animaleCard=file_get_contents("../html/animalCardTemplate.html");
-        $animaleCard=str_replace("[ID_ANIMALE]",$animale["id"],$animaleCard);
+        $animaleCard= str_replace("[ID_ANIMALE]", $animale["id"], $animaleCard);
         $animaleCard=str_replace("[NOME_ANIMALE]",$animale["nome"],$animaleCard);
         $animaleCard=str_replace("[ALT_IMMAGINE]",$animale["alt"],$animaleCard);
         $animaleCard=str_replace("[PATH_IMMAGINE]",$animale["immagine"],$animaleCard);
@@ -22,30 +18,40 @@
         $animaleCard=str_replace("[CARATTERE]",$animale["carattere"],$animaleCard);	
         return $animaleCard;	
     }
-    
+
+    require_once dirname(__DIR__) .DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'connectionDB.php';
+    use DB\DBAccess;
+
+    include "menu.php";
     $content = file_get_contents("../html/preferiti.html");
 
+    // Controllo accesso admin
+    if (!isset($_SESSION["username"]) || $_SESSION["role"] !== 'user') {
+        header('Location: home.php');
+        exit();
+    }
+
+    $_SESSION['provenienza'] = 'Preferiti';
     $stringaAnimali="";
     $listaAnimali="";
-    $db=new DBAccess();
-        $connessioneOK=$db->openDBConnection();
+    $db = new DBAccess();
+    $connessioneOK = $db->openDBConnection();
 
-        if($connessioneOK){
-            $stringaAnimali=$db->getList();
-            $db->closeConnection();
+    if($connessioneOK){
+        $stringaAnimali = $db->getPreferiti($_SESSION['username']);
+        $db->closeConnection();
 
-            foreach($stringaAnimali as $stringaAnimale){
-                $listaAnimali.= singleCardBuilder($stringaAnimale);
-            }
-            $listaAnimali='<ul class="animali">'.$listaAnimali.'</ul>';
+        foreach($stringaAnimali as $stringaAnimale){
+            $listaAnimali.= singleCardBuilder($stringaAnimale);
         }
-        else{
-            $listaAnimali="<p>I sistemi sono momentaneamente 
-            fuori servizio, ci scusiamo per il disagio.</p>";
-        }
+        $listaAnimali='<ul class="animali">'.$listaAnimali.'</ul>';
+    } else{
+        $listaAnimali="<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
+    }
 
 
     $content= str_replace("[LISTA_ANIMALI]", $listaAnimali, $content);
-
+    $content = str_replace("[listaMenu]", $listaMenu, $content);
+    $content = str_replace("[listaFooter]", $listaFooter, $content);
     echo $content;
-    ?>
+?>

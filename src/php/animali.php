@@ -23,10 +23,13 @@
 		return $animaleCard;	
 	}
 
-   include "menu.php";
-   $content = file_get_contents("../html/animali.html");
-   $content = str_replace("[listaMenu]", $listaMenu, $content);
-   $content = str_replace('[listaFooter]', $listaFooter, $content);
+	include "menu.php";
+	$content = file_get_contents("../html/animali.html");
+	$content = str_replace("[listaMenu]", $listaMenu, $content);
+	$content = str_replace('[listaFooter]', $listaFooter, $content);
+
+	//setto la provenienza per la breadcrum
+	$_SESSION['provenienza'] = 'Animali';
 
 
 	$stringaAnimali="";
