@@ -47,8 +47,8 @@
 
         if (isset($_SESSION["is_logged_in"]) && $_SESSION["is_logged_in"] === true && isset($_SESSION["role"]) && $_SESSION["role"] === 'admin') {
             $pulsanti .= '<div class="admin-buttons">
-                    <a href="ispeziona_animale.php?id=' . $_GET["id"] .'" class="btn-modifica">Modifica</a>
-                    <a href="elimina.php?id=' . $_GET["id"] .'" class="btn-elimina"> Elimina </a>
+                    <a role="button" href="ispeziona_animale.php?id=' . $_GET["id"] .'" class="btn-modifica">Modifica</a>
+                    <a role="button" href="elimina.php?id=' . $_GET["id"] .'" class="btn-elimina"> Elimina </a>
                     </div>';
 	    } else {
             $adottami = '<aside>

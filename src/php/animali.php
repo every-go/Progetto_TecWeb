@@ -51,7 +51,7 @@
 
 	$pulsanteAdd = '';
 	if (isset($_SESSION["is_logged_in"]) && $_SESSION["is_logged_in"] === true && isset($_SESSION["role"]) && $_SESSION["role"] === 'admin') {
-		$pulsanteAdd = '<a id="add-animal-btn" href="ispeziona_animale.php?">
+		$pulsanteAdd = '<a id="add-animal-btn" role="button" href="ispeziona_animale.php?">
             <span class="material-symbols-outlined" aria-hidden="true">add</span>
             Aggiungi </a>';
 	}
