@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="../css/mobile.css" type="text/css" media="screen and (max-width:800px)">
 	<link rel="stylesheet" href="../css/print.css" type="text/css" media="print">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
 </head>
 
 <body>
@@ -25,52 +27,33 @@
 		<h1 id="logo-header">Casa Otium</h1>
 
 		<nav id="menu">
-			<ul>
-				<li lang="en"> <a href="../php/home.php"> Home </a></li>
-                <li> <a href="../php/animali.php"> Animali </a></li>
-                <li> <a href="../php/chiSiamo.php">Chi siamo</a></li>
-                <li id="currentlink">Preferiti </li>
-                <li> <a href="../php/login.php"> <span lang="en"> Login</span></a>
-			</ul>
+			[listaMenu]
 		</nav>
 	</header>
 
-<main id="home-main">
+    <main id="home-main">
         <nav id="breadcrumb">
             <p>
-                Ti trovi in: <a href="home.php" lang="en">Home </a> <span aria-hidden="true">&gt;&gt;</span> Preferiti 
+                Ti trovi in: <a href="../php/home.php" lang="en">Home </a> <span aria-hidden="true">&gt;&gt;</span> Preferiti 
             </p>
         </nav>
         <!-- Da aggiungere ID. Ho messo h2 perché altrimenti ci sarebbero due h1, uno per i preferiti uno per gli adottati -->
         <h2> I tuoi preferiti </h2>
-        <form>
-            <div id="search">
-                <span id="search-icon" class="material-symbols-outlined" aria-hidden="true">search</span>
-                <input id="search-input" type="search" placeholder="Cerca il tuo futuro amico...">
-            </div>
-        </form>
 
         <!-- ID dei preferiti -->
         <p id = "preferiti-content"> I tuoi animali preferiti </p>
-        [listaAnimali]
+        [LISTA_ANIMALI]
 
-        <!-- ID degli adottati -->
+        <!-- ID degli adottati 
         <p id = "adottati-content"> I tuoi animali adottati </p>
 
-        [listaAnimali]
-
+        [LISTA_ANIMALI] -->
     </main>
     <footer>
         <div>
             <p id="title-mappa"> Mappa di navigazione </p>
             <nav>
-                <ul>
-                  <li> <a href="../php/home.php"><span lang="en">Home</span></a></li>
-                  <li> <a href="../php/chiSiamo.php"> Chi siamo </a></li>
-                  <li> <a href="../php/animali.php"> Animali </a> </li>
-                  <li> Preferiti </li>
-                  <li> <a href="../php/crediti.php"> Crediti </a></li>
-                </ul>
+                [listaFooter]
             </nav>
         </div>
         <img src="../images/png/logo_unipd.png" alt="">

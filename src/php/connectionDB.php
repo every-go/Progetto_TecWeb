@@ -170,6 +170,30 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
     // Ritorna l'array dati oppure NULL se non trovato/errore
     return $animalData; 
 	}
+        
+    function getPreferiti($username) {
+        $sql = 'SELECT AN.id, AN.nome, AN.alt, AN.immagine, AN.sesso, AN.tipo_animale, AN.luogo, AN.eta, AN.taglia, AN.carattere, AN.descrizione, AN.bisogni, AN.storia 
+                FROM animali AN, adottati AD, utenti U 
+                WHERE AN.id = AD.id AND AD.username = U.username AND U.username = ?';
+        
+        $animalData = [];
+        
+        if ($stmt = mysqli_prepare($this->connection, $sql)) {
+            mysqli_stmt_bind_param($stmt, "s", $username);
+            if (mysqli_stmt_execute($stmt)) {
+                $queryResult = mysqli_stmt_get_result($stmt);
+                if ($queryResult) {
+                    while ($row = mysqli_fetch_assoc($queryResult)) {
+                        $animalData[] = $row;
+                    }
+                    mysqli_free_result($queryResult);
+                }
+            }
+            mysqli_stmt_close($stmt);
+        }
+        
+        return $animalData; // Ritorna array di animali (può essere vuoto)
+    }
 
    
     function loginUtente($username, $passwordInserita) {

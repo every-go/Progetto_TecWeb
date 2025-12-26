@@ -6,6 +6,12 @@
     $content = str_replace("[listaMenu]", $listaMenu, $content);
     $content = str_replace("[listaFooter]", $listaFooter, $content);
 
+    if (isset($_SESSION['provenienza']) && $_SESSION['provenienza'] === 'Preferiti') {
+        $breadcrum = '<a href="../php/preferiti.php"> Preferiti </a>';
+    } else {
+        $breadcrum = '<a href="../php/animali.php"> Animali </a>';
+    }
+    $content = str_replace("[breadcrum]", $breadcrum, $content);
     $pulsanti = '';
     $sezioneAdottami = '';
     $animalData = '';
