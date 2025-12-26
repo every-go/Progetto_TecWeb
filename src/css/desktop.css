@@ -878,20 +878,16 @@ header h1 {
 
 #lista-crediti {
     list-style: none;
-    /* padding: 0; */
 }
 
 
-#lista-crediti li a {
+#lista-crediti li {
     display: flex;
     align-items: center;
-    gap: 1em;
-    margin-bottom: 1em;
+    gap: 2em;
+    margin-bottom: 2em;
 
-    /* Opzionale: aggiunge un effetto hover per far capire che è cliccabile */
-    /* padding: 0.8em; */
 
-    transition: background-color 0.2s;
 }
 
 
@@ -899,25 +895,40 @@ header h1 {
 #lista-crediti li img {
     width: 5em;
     object-fit: cover;
-    /* Evita che l'immagine si deformi */
     border-radius: 8px;
-    /* Opzionale: bordi stondati */
     flex-shrink: 0;
-    /* FONDAMENTALE: impedisce all'icona di rimpicciolirsi se il testo è lungo */
 
 }
 
-/* Stile per il testo */
-#lista-crediti li div {
+#lista-crediti li a {
+    position: relative; /* Indispensabile per posizionare l'icona "dentro" il link */
+    /* ... le altre regole di prima restano uguali ... */
+}
+a:has(> img) {
+    position: relative;
+    display: inline-block; /* Importante per avvolgere l'immagine */
+    width: fit-content;    /* Si adatta alla dimensione dell'immagine */
+}
+
+/* Ora creiamo l'icona sull'elemento 'a', NON sull'img */
+a:has(> img)::after {
+    content: "↗";          /* O la tua icona */
+    position: absolute;
+
+    
+    /* Stile cosmetico */
+    background: white;
+    color: black;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
-    /* Mette i paragrafi uno sotto l'altro */
-}
-
-#lista-crediti li div p {
-    margin: 0;
-    /* Rimuove i margini enormi di default dei paragrafi */
-    line-height: 1.4em;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    pointer-events: none; /* Il click passa attraverso l'icona e va al link */
 }
 
 /*
