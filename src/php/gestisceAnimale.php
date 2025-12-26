@@ -90,19 +90,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fileTmpPath = $_FILES['immagine']['tmp_name'];
         $fileName = basename($_FILES['immagine']['name']);
         $fileSize = $_FILES['immagine']['size'];
-        $fileType = mime_content_type($fileTmpPath);
         
-        if (!in_array($fileType, $allowedTypes)) {
-            $errori['immagine'] = "<p>Formato non consentito. Usa JPG, PNG o WEBP.</p>";
-            $formValido = false;
-        } else if ($fileSize > $maxSize) {
+        if ($fileSize > $maxSize) {
             $errori['immagine'] = "<p>Dimensione troppo grande. Max 1MB.</p>";
             $formValido = false;
         } else {
-            $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
-            $newFileName = uniqid('animal_', true) . '.' . $fileExtension;
-            $imagePath = '../images/' . $newFileName;
+            $fileType = mime_content_type($fileTmpPath);
+            if (!in_array($fileType, $allowedTypes)) {
+                $errori['immagine'] = "<p>Formato non consentito. Usa JPG, PNG o WEBP.</p>";
+                $formValido = false;
+            } else {
+                $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+                $newFileName = uniqid('animal_', true) . '.' . $fileExtension;
+                $imagePath = '../images/' . $newFileName;
+            }
         }
+
     }
     
     // ==================== SALVATAGGIO ====================
