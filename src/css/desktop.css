@@ -904,14 +904,13 @@ header h1 {
     position: relative; /* Indispensabile per posizionare l'icona "dentro" il link */
     /* ... le altre regole di prima restano uguali ... */
 }
-a:has(> img) {
+#lista-crediti a:has(> img) {
     position: relative;
     display: inline-block; /* Importante per avvolgere l'immagine */
     width: fit-content;    /* Si adatta alla dimensione dell'immagine */
 }
 
-/* Ora creiamo l'icona sull'elemento 'a', NON sull'img */
-a:has(> img)::after {
+#lista-crediti a:has(> img)::after {
     content: "↗";          /* O la tua icona */
     position: absolute;
 
