@@ -31,6 +31,9 @@
 	//setto la provenienza per la breadcrum
 	$_SESSION['provenienza'] = 'Animali';
 
+	$animaliPerPagina = 3;
+	$paginaCorrente = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+	if($paginaCorrente < 1) $paginaCorrente = 1; 
 
 	$stringaAnimali="";
 	$listaAnimali="";
@@ -40,10 +43,38 @@
 	if($connessioneOK){
 		$stringaAnimali=$db->getList();
 		$db->closeConnection();
-		foreach($stringaAnimali as $stringaAnimale){
+
+		// calcoli per la paginazione
+		$totaleAnimali = count($stringaAnimali);
+		$totalePagine = ceil($totaleAnimali / $animaliPerPagina);
+		if($paginaCorrente > $totalePagine && $totalePagine > 0) {
+			$paginaCorrente = $totalePagine;
+		}
+		$offest = ($paginaCorrente - 1) * $animaliPerPagina;
+		$animaliPaginaCorrente = array_slice($stringaAnimali, $offest, $animaliPerPagina);
+
+		foreach($animaliPaginaCorrente as $stringaAnimale){
 			$listaAnimali.= singleCardBuilder($stringaAnimale);
 		}
 		$listaAnimali='<ul class="animali">'.$listaAnimali.'</ul>';
+
+		if ($paginaCorrente > 1 ) {
+			$content = str_replace("[indietroLink]", 'href="animali.php?pagina=' . $paginaCorrente - 1 .'"', $content);
+		} else {
+			$content = str_replace("[indietroLink]", 'class="disabled" aria-disabled="true"', $content);
+		}
+
+		$indicatorePagina = '<span class="indicatore-pagina"> Pagina ' . $paginaCorrente . ' di ' . $totalePagine . '</span>';
+		$content = str_replace('[indicatorePagina]', $indicatorePagina, $content);
+
+
+		if ($paginaCorrente < $totalePagine) {
+			$content = str_replace("[avantiLink]", 'href="animali.php?pagina=' . $paginaCorrente + 1 . '"', $content);
+		} else {
+			$content = str_replace("[avantiLink]", 'class="disabled" aria-disabled="true"', $content);
+
+		}
+
 	} else{
 		$listaAnimali="<p>I sistemi sono momentaneamente 
 		fuori servizio, ci scusiamo per il disagio.</p>";

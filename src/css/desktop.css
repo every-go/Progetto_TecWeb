@@ -394,7 +394,6 @@ header h1 {
 /*
     ANIMALI
 */
-
 #home-main {
     display: flex;
     justify-content: center;
@@ -469,7 +468,7 @@ header h1 {
 }
 
 #add-animal-btn:focus {
-    outline: 3px solid var(--current-link);
+    outline: 3px solid var(--grigio);
     outline-offset: 2px;
 }
 
@@ -590,9 +589,28 @@ header h1 {
     vertical-align: middle;
 }
 
+.pages-buttons {
+    display: flex;
+    gap: 3em;
+    margin-top: 3em;
+}
+
+.pages-buttons a {
+    color: var(--secondary-bg);
+    cursor: pointer;
+    border: none;
+}
+
+.pages-buttons a:focus { 
+    outline: 2px solid var(--grigio);
+    outline-offset: 2px;
+}
+
+.pages-buttons .disabled {
+    cursor: not-allowed;
+}
 
 /* ANIMALE */
-
 #animale-main {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -611,6 +629,12 @@ header h1 {
 .img-container {
     border-radius: 40px;
     border: 3px solid var(--text-color);
+}
+
+.img-cutter img, .img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
 }
 
 #animale-name {
@@ -672,10 +696,7 @@ header h1 {
     display: flex;
     flex-wrap: wrap;
     gap: 5%;
-
-    /* Per allineamento del pallino della lista */
     margin-left: 1.2em;
-
 }
 
 #description li {
@@ -763,7 +784,7 @@ header h1 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.btn-modifica:visited , .btn-elimina:visited{
+.btn-modifica:visited, .btn-elimina:visited{
     color: var(--primary-bg);
 }
 
@@ -778,14 +799,12 @@ header h1 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.btn-modifica:focus,
-.btn-elimina:focus {
+.btn-modifica:focus, .btn-elimina:focus {
     outline: 3px solid var(--grigio);
     outline-offset: 2px;
 }
 
-.btn-modifica:active,
-.btn-elimina:active {
+.btn-modifica:active, .btn-elimina:active {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
@@ -793,8 +812,6 @@ header h1 {
 /*
     ERRORI 
 */
-
-
 #container {
     display: flex;
     flex-direction: row;
@@ -809,7 +826,6 @@ header h1 {
     align-items: center;
     justify-content: center;
 }
-
 
 #left-panel img {
     width: 75%;
@@ -873,13 +889,9 @@ header h1 {
 /*
     CREDITI 
 */
-
-
-
 #lista-crediti {
     list-style: none;
 }
-
 
 #lista-crediti li {
     display: flex;
@@ -890,8 +902,6 @@ header h1 {
 
 }
 
-
-/* Stile per le icone/immagini */
 #lista-crediti li img {
     width: 5em;
     object-fit: cover;
@@ -901,21 +911,19 @@ header h1 {
 }
 
 #lista-crediti li a {
-    position: relative; /* Indispensabile per posizionare l'icona "dentro" il link */
-    /* ... le altre regole di prima restano uguali ... */
+    position: relative;
 }
+
+
 #lista-crediti a:has(> img) {
     position: relative;
-    display: inline-block; /* Importante per avvolgere l'immagine */
-    width: fit-content;    /* Si adatta alla dimensione dell'immagine */
+    display: inline-block;
+    width: fit-content;   
 }
 
 #lista-crediti a:has(> img)::after {
-    content: "↗";          /* O la tua icona */
+    content: "↗";
     position: absolute;
-
-    
-    /* Stile cosmetico */
     background: white;
     color: black;
     width: 1.5em;
@@ -927,7 +935,7 @@ header h1 {
     font-weight: bold;
     font-size: 12px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    pointer-events: none; /* Il click passa attraverso l'icona e va al link */
+    pointer-events: none; 
 }
 
 /*
