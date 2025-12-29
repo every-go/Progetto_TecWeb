@@ -5,24 +5,24 @@ Il database utilizzato per il progetto è rappresentato dal seguente diagramma E
 #figure(caption: "E-R Database")[
   #image("../images/db_er.png", width: 80%)
 ]
-Ci sono due tabelle principali che sono "Utenti" e "Animali", fra di loro ci sono due collegamenti N:N che creano due nuove tabelle: "Preferiti" e "Adottati".
+Ci sono due tabelle principali che sono "Utenti" e "Animali", fra di loro ci sono due collegamenti N:N che, con la ristrutturazione, portano alla creazione di due nuove tabelle "Preferiti" e "Adottati".
 
 Abbiamo deciso di identificare in maniera univoca gli Utenti con lo username, mentre per gli Animali abbiamo deciso di usare come chiave primaria l'id.
 Gli animali hanno un sacco di attributi, dei quali alcuni sono enum.
 
 Questi sono:
 + Taglia {"Piccola","Media","Grande"}
-+ Difficoltà {"Bassa","Media","Elevata"}
++ Carattere {"Facile","Moderato","Difficile"}
 + Sesso {"Maschio","Femmina"}
 + Tipo {"Reale","Fantasy"}
 
-Inoltre l'attributo "Adottato" è un booleano.
+Inoltre gli attributi "Adottato" e "Admin" per la tabella Utenti sono boolean.
 
 Questo indica che, se un animale ha il bool "Adottato" a true, allora questo non sarà più visualizzabile da altri utenti nella pagina degli animali, ma sarà visualizzabile solo dall'utente che l'ha effettivamente adottato nella pagina dei Preferiti.
 
 Questo è consentito dal controllo di PhP, descritto meglio nella sezione PhP, che visualizza solo gli animali non ancora adottati.
 
-Tutti gli altri attributi sono integer oppure text.
+Tutti gli altri attributi sono int, text oppure varchar.
 
 Gli unici elementi che permettono il valore NULL sono "Storia" ed "Immagine", tutti gli altri elementi sono obbligatori all'inserimento di un nuovo animale.
 
@@ -71,4 +71,4 @@ Per la generazione delle immagini degli animali fantasy, ci siamo affidati alla 
 
 Per l'alternativa testuale delle immagini, abbiamo inserito nel DB l'attributo alt che va a inserire l'alternativa testuale per ogni immagine.
 
-Questa si differenzia dalla descrizione dell'animale, perché l'idea è che l'alternativa testuale descriva fisicamente l'animale, la descrizione lo descriva caratterialmente.
+Questa si differenzia dalla descrizione dell'animale, perché l'idea è che l'alternativa testuale descriva fisicamente l'animale, per permettere a chiunque di comprendere com'è fatto l'animale, mentre la descrizione è di tipo caratteriale.

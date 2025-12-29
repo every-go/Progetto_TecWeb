@@ -3,6 +3,7 @@
 
 
 #show link:set text(blue)
+#show ref:set text(blue) 
 
 #set page(
   numbering: "i",
@@ -109,38 +110,18 @@ table.header([Nome],[Matricola]),
 
 #include "content/requisiti.typ"
 
-#pagebreak()
-
 #include "content/progettazione.typ"
-
-#pagebreak()
 
 #include "content/dati_info.typ"
 
-#pagebreak()
-
 #include "content/interfaccia_stile.typ"
-
-#pagebreak()
-
-#include "content/app_servizi.typ"
-
-#pagebreak()
 
 #include "content/accessibility_usability.typ"
 
-#pagebreak()
-
-#include "content/colore.typ"
-
-#pagebreak()
+DA SCRIVERE TUTTA
 
 #include "content/js.typ"
 
-#pagebreak()
-
 #include "content/php.typ"
-
-#pagebreak()
 
 #include "content/test.typ"

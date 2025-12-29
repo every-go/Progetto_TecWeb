@@ -1,1 +1,0 @@
-= Applicazioni e Servizi

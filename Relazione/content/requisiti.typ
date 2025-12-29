@@ -32,10 +32,11 @@ Le funzionalità dell'utente "Logged-in" sono disponibili anche per l'amministra
   [Utente], [Effettuare il login],
   [Utente], [Visualizzare le informazioni su come adottare un animale, sui suoi bisogni generali],
   [Utente], [Visualizzare la pagina sulle informazioni di chi gestisce "Casa Otium"],
-  [Utente], [Ricercare un animale specifico per tipo animale o per filtri (es. regione, se reale o fantasy, ecc.)],
+  [Utente], [Ricercare un animale specifico per nome oppure filtrare per tipo (reale oppure fantasy)],
   [Logged-in], [Effettuare il logout],
-  [Logged-in], [Aggiungere o rimuovere animali dalla lista dei preferiti],
+  [Logged-in], [Aggiungere o rimuovere animali dalla lista dei preferiti (possibile farlo sia dalla schermata degli animali, sia nella schermata di dettaglio animale, sia dalla sezione dei preferiti)],
   [Logged-in], [Visualizzare la lista dei preferiti],
+  [Logged-in], ["Adottare" un animale],
   [Admin], [Aggiungere un nuovo animale],
   [Admin], [Modificare le informazioni di un animale esistente],
   [Admin], [Eliminare un animale esistente]
@@ -50,4 +51,7 @@ Le funzionalità dell'utente "Logged-in" sono disponibili anche per l'amministra
 == Localizzazione
 Il sito web è studiato per essere disponibile solamente in Italia, quindi l'unica lingua supportata è l'italiano.
 
-Per questo motivo, non esistono altre versioni a differenza dei siti globalizzati (es. Amazon, eBay, ecc.).
+== Hardware minimo
+Per il nostro sito non è richiesto un hardware minimo necessario per la visualizzazione delle pagine, poiché il nostro JavaScript non è per niente invasivo ed eventuali problematiche del browser sull'interpretazione degli script non comprometterebbe la corretta visualizzazione del sito web.
+
+Tuttavia, anche se oggi ormai impensabile, un browser che non riesce a funzionare con il PhP corromperebbe completamente il nostro sito impedendo una visualizzazione adeguata e corretta.

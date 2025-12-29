@@ -2,7 +2,7 @@
 
 La progettazione è stata studiata per essere intuitiva e semplice.
 
-Essendo comunque questo un sito web molto semplice, abbiamo optato per mantenere un'ampiezza di 4, per le pagine "Chi Siamo", "Animali", "Preferiti" (se logged-in), "Login".
+Essendo comunque questo un sito web molto semplice, abbiamo optato per mantenere un'ampiezza di 4, per le pagine "Chi Siamo", "Animali", "Preferiti" (se logged-in), "Login/Logout".
 
 La pagina "Crediti" è accessibile solo dalla mappa della navigazione presente in fondo a ogni pagina, poiché quella è solo una pagina che ringrazia i creatori delle icone utilizzate nel sito.
 
