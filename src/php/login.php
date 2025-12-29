@@ -26,21 +26,9 @@
     $content = str_replace("[listaMenu]", $listaMenu, $content);
     $content = str_replace("[listaFooter]", $listaFooter, $content);
 
+    $username = '';
+
     if(!isset($_SESSION['is_logged_in'])||$_SESSION['is_logged_in'] !== true){
-        // form da fare meglio
-
-        //POSSIBILE ANCHE METTERLO STATICAMENTE NEL HTML e tenere solo gli errori
-        $loginFormTemplate='<form action="../php/login.php" method="post" id="main-content">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" value="[USERNAME_VALUE]" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <input type="submit" name="login" value="login">
-        </form>';
-        $content = str_replace("[LOGIN_FORM]", $loginFormTemplate, $content);
-
         if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password'])) {
             // echo("sono in login");
             $username = sanitizeUsername($_POST['username']);
@@ -62,8 +50,9 @@
                     } else {
                         // Login fallito
                         // echo("login fallito");
-                        $errorMessage = "Username o password non validi.";
-                        $content = str_replace("[ERROR_MESSAGE]", "<p class='error'>$errorMessage</p>", $content);
+                        $errorMessage = "<p class='error-login'> ! <span lang='en'>Username</span> o <span lang='en'>password</span> non validi ! </p>";
+                        $content = str_replace("[ERROR_MESSAGE]", $errorMessage, $content);
+                        $content = str_replace("[autofocus]", 'autofocus', $content);
                         $content = str_replace("[USERNAME_VALUE]", $username, $content);
                     }
                 } else {
@@ -85,16 +74,11 @@
         }
     } else {
         // Utente già loggato, reindirizza alla home
-
-        // O COSI O TRAMITE header( ), DA DISCUTERE E DECIDERE
-        $alreadyLoggesInMessage = '<p>Sei già loggato come '. $_SESSION['username'].' </p>
-        <p><a href="home.php">Vai alla home</a></p>'.
-        '<p><a href="logout.php">Logout</a></p>';
-        $content = str_replace("[ERROR_MESSAGE]", "", $content);
-        $content = str_replace("[LOGIN_FORM]", $alreadyLoggesInMessage, $content);
+        header('Location: home.php');
+        exit();
     }
 
     // replace del USERNAME_VALUE nel form
-    $content = str_replace("[USERNAME_VALUE]", "", $content);
+    $content = str_replace("[USERNAME_VALUE]", $username, $content);
     echo $content;
 ?>

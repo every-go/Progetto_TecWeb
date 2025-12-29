@@ -18,11 +18,13 @@
         'chiSiamo.php' => ['text' => 'Chi siamo'],
     ];
 
-    if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true ) {
+    if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true && isset($_SESSION['role']) && $_SESSION['role'] === 'user') {
         $pages['preferiti.php'] = ['text' => 'Preferiti'];
         $pages['logout.php'] = ['text' => 'Logout', 'lang' => 'en'];
         $pagesFooter['preferiti.php'] = ['text' => 'Preferiti'];
 
+    } else if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true && isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+        $pages['logout.php'] = ['text' => 'Logout', 'lang' => 'en'];
     } else {
         $pages['login.php'] = ['text' => 'Login', 'lang' => 'en'];
     }
