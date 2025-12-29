@@ -17,8 +17,7 @@
 </head>
 
 <body>
-	<!-- Da sistemare, deve mandare subito al form e ora come ora non rimanda a niente -->
-	<a class="aiuti" href="#main-content"> Vai al <span lang="en">form</span> per il <span lang="en">login </span></a>
+	<a class="aiuti" href="#username"> Vai al <span lang="en">form</span> per il <span lang="en">login </span></a>
 	<header id="container-menu">
 
 		<h1 id="logo-header">Casa Otium</h1>
@@ -29,28 +28,30 @@
 	</header>
 
 	<main id="login-main">
-		[LOGIN_FORM]
+		<nav id="breadcrumb">
+			<p>
+				Ti trovi in: <a href="home.php" lang="en">Home</a> &gt;&gt; <span lang="en">Login</span>
+			</p>
+		</nav>
 
 		[ERROR_MESSAGE]
+
+		<div id="txt-form">
+			<img src="../images/jpg/cane_login.jpg" alt="">
+
+			<div id="form-reg">
+				<form action="../php/login.php" method="post" id="login-form">
+					<label for="username">Username:</label>
+					<input type="text" id="username" name="username" [autofocus] value="[USERNAME_VALUE]" required>
+					<label for="password">Password:</label>
+					<input type="password" id="password" name="password" required>
+					<input type="submit" name="login" value="Accedi" aria-label="Accedi al tuo account">
+				</form>
+				<p> Non hai un <span lang="en">account</span>? <a href="registrati.php">Registrati</a></p>
+			</div>
+		</div>
 	</main>
 
-	<footer>
-		<div>
-			<p id="title-mappa"> Mappa di navigazione </p>
-			<nav>
-				[listaFooter]
-			</nav>
-		</div>
-		<img src="../images/png/logo_unipd.png" alt="">
-		<div id="disclaimer">
-			<p> <span lang="en">Disclaimer</span></p>
-			<p>
-				Questo sito <span lang="en">web</span> è stato sviluppato presso l'Università di Padova come progetto
-				didattico valutato dalla Prof.essa Gaggi Ombretta; ogni riferimento a luogo, persona o animale reale è
-				puramente casuale in quanto alcune immagini sono state generate dall'intelligenza artificiale.
-			</p>
-		</div>
-	</footer>
 </body>
 
 </html>

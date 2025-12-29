@@ -1,12 +1,49 @@
-main>article {
+main > article {
+    min-height: auto;
+}
+
+body {
     padding: 0 2em;
 }
 
-.container-menu {
+#container-menu {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1em;
+}
+
+#logo-header {
+    width: 50%;
+}
+
+#breadcrumb {
+    margin-bottom: 0em;
+}
+
+#container-adozione {
+    width: 100vw;
+}
+
+#impegno {
+    border-radius: 0px;
+    margin: 2em -2em;
+}
+
+#impegno h2 {
+    margin-bottom: 1em;
+}
+
+#impegno ul {
+    margin: 0;
+}
+
+#search-input {
+    width: 15rem;
+}
+
+.animali { 
+    gap: 3em
 }
 
 #statistiche-card {
@@ -22,7 +59,7 @@ main>article {
 
 .txt-img {
     flex-direction: column;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     text-align: center;
 }
 
@@ -34,7 +71,7 @@ main>article {
     width: 100%;
 }
 
-.statistiche-card img {
+#statistiche-card img {
     width: 30%;
 }
 
@@ -57,7 +94,7 @@ main>article {
 #adozione {
     flex-direction: column;
     justify-content: center;
-    gap: 0em;
+    gap: 3em;
 }
 
 #linesecond {
@@ -66,8 +103,54 @@ main>article {
 
 #adozione .card {
     width: 80%;
-    margin: 1em auto;
-    padding-left: 3em;
+    margin: 0 auto;
+}
+
+.card ol {
+    padding-left: 1em;
+}
+
+#animale-main {
+    display:unset;
+}
+
+.img-cutter {
+    margin: 2em 0;
+    width: 100%;
+}
+
+#animale-name {
+    text-align: center;
+}
+
+#description {
+    margin-bottom: 2em;
+}
+
+#animale-main aside {
+    margin-left: 0;
+    position: static;
+}
+
+#animale-main aside button {
+    margin-top: 1em;
+}
+
+#search-container {
+    flex-direction: column-reverse;
+}
+
+#txt-form {
+    flex-direction: column;
+    gap: 2em;
+}
+
+.error-login {
+    margin-top: 2em;
+}
+
+#txt-form img {
+    width: 100%;
 }
 
 footer img {
@@ -80,9 +163,18 @@ footer {
     justify-content: center;
     align-items: center;
     text-align: center;
+    gap: 1.5em;
+}
+
+footer li {
+    margin-bottom: 0.8em;
 }
 
 footer #disclaimer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
     width: 100%;
-    padding-top: 2em;
 }
