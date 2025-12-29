@@ -17,115 +17,113 @@
 </head>
 
 <body>
-<header>
-	<header id="container-menu">
+    <header>
+        <header id="container-menu">
 
-		<h1 id="logo-header">Casa Otium</h1>
+            <h1 id="logo-header">Casa Otium</h1>
 
-		<nav id="menu">
-			[listaMenu]
-		</nav>
-</header>
-<main id="home-main">
-
-
-<form action="[actionForm]" method="post" enctype="multipart/form-data">
-
-    <fieldset>
-        <legend>Dati Generali</legend>
-
-        <label for="nome">Nome Animale:</label>
-        <input type="text" id="nome" name="nome" value="[nomeAnimale]" required>
-        <div id="errNome"> [nomeErr] </div>
-
-        <label for="eta">Età (anni):</label>
-        <input type="number" id="eta" name="eta" value="[etaAnimale]" required min="0">
-        <div id="errEta"> [etaErr] </div>
-    </fieldset>
-
-    <fieldset>
-        <legend>Sesso</legend>
-        
-        <input type="radio" id="sesso_m" name="sesso" value="Maschio" [checkMaschio] required>
-        <label for="sesso_m">Maschio</label>
-
-        <input type="radio" id="sesso_f" name="sesso" value="Femmina" [checkFemmina]>
-        <label for="sesso_f">Femmina</label>
-    </fieldset>
-
-    <fieldset>
-        <legend>Tipologia</legend>
-
-        <input type="radio" id="tipo_reale" name="tipo_animale" value="Reale" [checkReale] required>
-        <label for="tipo_reale">Reale</label>
-
-        <input type="radio" id="tipo_fantasy" name="tipo_animale" value="Fantasy" [checkFantasy]>
-        <label for="tipo_fantasy">Fantasy</label>
-    </fieldset>
-
-    <fieldset>
-        <legend>Immagine</legend>
-        <label for="immagine">Immagine:</label>
-        <input type="file" id="immagine" name="immagine" accept=".jpg, .jpeg, .png">
+            <nav id="menu">
+                [listaMenu]
+            </nav>
+    </header>
+    <main id="form-main">  
         [immagineCorrente]
-        <div id="errImmagine"> [fileErr] </div>
-        <label for="alt">Descrizione ALT:</label>
-        <input type="text" id="alt" name="alt" value="[altImmagine]" required>
-        <div id="errAlt"> [imageErr] </div>
-    </fieldset>
+        <form action="[actionForm]" method="post" enctype="multipart/form-data">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" value="[nomeAnimale]" required>
+            <div id="errNome"> [nomeErr] </div>
 
-    <fieldset>
-        <legend>Luogo</legend>
-        <label for="luogo">Luogo di ritrovamento:</label>
-        <input type="text" id="luogo" name="luogo" value="[luogoAnimale]" required>
-        <div id="errLuogo"> [luogoErr] </div>
-    </fieldset>
+            <label for="eta">Età (anni):</label>
+            <input type="number" id="eta" name="eta" value="[etaAnimale]" required min="0">
+            <div id="errEta"> [etaErr] </div>
+            
+            <legend> Sesso: </legend>
+            <div class="radio">
+                <div class="radio-item">
+                    <label for="sesso_m">Maschio</label>
+                    <input type="radio" id="sesso_m" name="sesso" value="Maschio" [checkMaschio] required>
+                </div>
+                <div class="radio-item">
+                        <label for="sesso_f">Femmina</label>
+                        <input type="radio" id="sesso_f" name="sesso" value="Femmina" [checkFemmina]>
+                </div>
+            </div>
+            
+            <legend> Tipologia: </legend>
+            <div class="radio">
+                <div class="radio-item">
+                    <label for="tipo_reale">Reale</label>
+                    <input type="radio" id="tipo_reale" name="tipo_animale" value="Reale" [checkReale] required>
+                </div>
+                <div class="radio-item">
+                    <label for="tipo_fantasy">Fantasy</label>
+                    <input type="radio" id="tipo_fantasy" name="tipo_animale" value="Fantasy" [checkFantasy]>
+                </div>
+            </div>
+          
+            
+            <label for="immagine">Immagine:</label>
+            <input type="file" id="immagine" name="immagine" accept=".jpg, .jpeg, .png">
+            <div id="errImmagine"> [fileErr] </div>
+            <label for="alt">Descrizione ALT:</label>
+            <input type="text" id="alt" name="alt" value="[altImmagine]" required>
+            <div id="errAlt"> [imageErr] </div>
 
-    <fieldset>
-        <legend>Taglia</legend>
+            <label for="luogo">Luogo di ritrovamento:</label>
+            <input type="text" id="luogo" name="luogo" value="[luogoAnimale]" required>
+            <div id="errLuogo"> [luogoErr] </div>
 
-        <input type="radio" id="taglia_p" name="taglia" value="Piccola" [checkTagliaP] required>
-        <label for="taglia_p">Piccola</label>
+            <legend>Taglia: </legend>
+            <div class="radio">
+                <div class="radio-item">
+                    <label for="taglia_p">Piccola</label>
+                    <input type="radio" id="taglia_p" name="taglia" value="Piccola" [checkTagliaP] required>
+                </div>
+                <div class="radio-item">
+                    <label for="taglia_m">Media</label>
+                    <input type="radio" id="taglia_m" name="taglia" value="Media" [checkTagliaM]>
+                </div>
+                <div class="radio-item">
+                    <label for="taglia_g">Grande</label>
+                     <input type="radio" id="taglia_g" name="taglia" value="Grande" [checkTagliaG]>
+                </div>
+            </div> 
 
-        <input type="radio" id="taglia_m" name="taglia" value="Media" [checkTagliaM]>
-        <label for="taglia_m">Media</label>
+            <legend>Carattere: </legend>
+            <div class="radio">
+                <div class="radio-item">
+                    <label for="car_f">Facile</label>
+                    <input type="radio" id="car_f" name="carattere" value="Facile" [checkCarF] required>
+                </div>
+                <div class="radio-item">
+                    <label for="car_m">Moderato</label>
+                    <input type="radio" id="car_m" name="carattere" value="Moderato" [checkCarM]>
+                </div>
+                <div class="radio-item">
+                    <label for="car_d">Difficile</label>
+                    <input type="radio" id="car_d" name="carattere" value="Difficile" [checkCarD]>
+                </div>
+            </div>
+            
 
-        <input type="radio" id="taglia_g" name="taglia" value="Grande" [checkTagliaG]>
-        <label for="taglia_g">Grande</label>
-    </fieldset>
+            <legend>Descrizioni</legend>
+            <div id="descrizione-animale">
+                <label for="descrizione">Descrizione:</label>
+                <textarea id="descrizione" name="descrizione" rows="5" required>[descrizione]</textarea>
+                <div id="errDesc"> [descrizioneErr] </div>
 
-    <fieldset>
-        <legend>Carattere</legend>
+                <label for="bisogni">Bisogni specifici:</label>
+                <textarea id="bisogni" name="bisogni" rows="5" required>[bisogni]</textarea>
+                <div id="errBisogni"> [bisogniErr] </div>
 
-        <input type="radio" id="car_f" name="carattere" value="Facile" [checkCarF] required>
-        <label for="car_f">Facile</label>
+                <label for="storia">Storia:</label>
+                <textarea id="storia" name="storia" rows="5">[storia]</textarea>
+                <div id="errStoria"> [storiaErr] </div>
 
-        <input type="radio" id="car_m" name="carattere" value="Moderato" [checkCarM]>
-        <label for="car_m">Moderato</label>
-
-        <input type="radio" id="car_d" name="carattere" value="Difficile" [checkCarD]>
-        <label for="car_d">Difficile</label>
-    </fieldset>
-
-    <fieldset>
-        <legend>Descrizioni</legend>
-        
-        <label for="descrizione">Descrizione:</label>
-        <textarea id="descrizione" name="descrizione" rows="5" required>[descrizione]</textarea>
-        <div id="errDesc"> [descrizioneErr] </div>
-
-        <label for="bisogni">Bisogni specifici:</label>
-        <textarea id="bisogni" name="bisogni" rows="3" required>[bisogni]</textarea>
-        <div id="errBisogni"> [bisogniErr] </div>
-
-        <label for="storia">Storia:</label>
-        <textarea id="storia" name="storia" rows="5">[storia]</textarea>
-        <div id="errStoria"> [storiaErr] </div>
-    </fieldset>
-
-    <input type="submit" name="[azione]" value="[pulsanteAzione]">
-</form>
-</main>
+                <input type="submit" name="[azione]" value="[pulsanteAzione]">
+            </div>
+        </form>
+    </main>
 
 <footer>
 		<div>

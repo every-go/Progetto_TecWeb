@@ -786,8 +786,12 @@ header h1 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.btn-modifica:visited, .btn-elimina:visited{
+.btn-modifica:visited {
     color: var(--primary-bg);
+}
+
+.btn-elimina:visited {
+    color: var(--secondary-bg);
 }
 
 .btn-elimina {
@@ -810,6 +814,70 @@ header h1 {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
+
+#form-main form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#form-main .radio {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-main legend {
+    text-align: center;
+    margin: 0.8em 0;
+}
+
+#form-main .radio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#form-main img {
+    width: 60%;
+}
+
+#descrizione-animale {
+    border: 2px solid var(--text-color);
+    border-radius: 2em;
+    padding: 1em 3em;
+    display: flex;
+    flex-direction: column;
+}
+
+#descrizione-animale textarea {
+    background-color: var(--primary-bg);
+    border-radius: 24px;
+    padding: 1em;
+    margin: 1em 0
+}
+
+input[type="submit"] {
+    padding: 0.8em 2em;
+    background-color: var(--secondary-bg);
+    color: var(--primary-bg);
+    border: none;
+    border-radius: 24px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1em;
+    width: fit-content;
+    align-self: center;
+}
+
+input[type="submit"]:focus {
+    outline: 2px solid var(--grigio);
+    outline-offset: 3px;
+}
+
 
 /*
     ERRORI 
@@ -1007,23 +1075,6 @@ header h1 {
 #login-form input[type="text"]:focus, #login-form input[type="password"]:focus {
     outline: 1px solid var(--grigio);
     border-color: var(--grigio);
-}
-
-#login-form input[type="submit"] {
-    padding: 0.8em 2em;
-    background-color: var(--secondary-bg);
-    color: var(--primary-bg);
-    border: none;
-    border-radius: 24px;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 1em;
-}
-
-#login-form input[type="submit"]:focus {
-    outline: 2px solid var(--grigio);
-    outline-offset: 3px;
 }
 
 #form-reg p {

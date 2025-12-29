@@ -196,13 +196,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Mostra immagine corrente se in modifica
         if ($isModifica) {
+            $content = str_replace("[Nome]", ' ' . $animaleCorrente["nome"], $content);
             $immagineCorrente = '<img src="' . htmlspecialchars($imagePath) . '">';
             $content = str_replace("[immagineCorrente]", $immagineCorrente, $content);
+            
         } else {
+            $content = str_replace("[Nome]", ' animale', $content);
             $content = str_replace("[immagineCorrente]", '', $content);
         }
         
         // Valori campi
+        $content = str_replace("[Ispezione]", $azione, $content);
+
         $content = str_replace("[nomeAnimale]", htmlspecialchars($nome), $content);
         $content = str_replace("[etaAnimale]", htmlspecialchars($eta), $content);
         $content = str_replace("[luogoAnimale]", htmlspecialchars($luogo), $content);
@@ -211,17 +216,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $content = str_replace("[bisogni]", htmlspecialchars($bisogni), $content);
         $content = str_replace("[storia]", htmlspecialchars($storia), $content);
         
-        // Radio buttons
+        $valoriSelezionati = [
+            'sesso' => $sesso,
+            'tipologia' => $tipologia,
+            'taglia' => $taglia,
+            'carattere' => $carattere
+        ];
+
         $radioButtons = [
             'sesso' => ['Maschio' => 'checkMaschio', 'Femmina' => 'checkFemmina'],
             'tipologia' => ['Reale' => 'checkReale', 'Fantasy' => 'checkFantasy'],
             'taglia' => ['Piccola' => 'checkTagliaP', 'Media' => 'checkTagliaM', 'Grande' => 'checkTagliaG'],
             'carattere' => ['Facile' => 'checkCarF', 'Moderato' => 'checkCarM', 'Difficile' => 'checkCarD']
         ];
-        
-        foreach ($radioButtons as $campo => $opzioni) {
-            foreach ($opzioni as $valore => $placeholder) {
-                $content = str_replace("[$placeholder]", $campo === $valore ? 'checked' : '', $content);
+
+        foreach ($radioButtons as $campo => $opzioni) { // $campo = sesso, $opzioni =  ['Maschio' => 'checkMaschio', 'Femmina' => 'checkFemmina']
+            $valoreSelezionato = $valoriSelezionati[$campo]; // ciò che l'utente ha mandato
+            
+            foreach ($opzioni as $valore => $placeholder) { //$valore = Maschio, $placeholder = 'checkMaschio'
+                $isChecked = ($valoreSelezionato === $valore) ? 'checked' : ''; //confronta valoreSelezionato dall'utente con Maschio e Femmina, se corrispondo allora 'checked'
+                $content = str_replace("[$placeholder]", $isChecked, $content); //rimpiazza il placeholder
             }
         }
         
