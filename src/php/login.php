@@ -80,5 +80,6 @@
 
     // replace del USERNAME_VALUE nel form
     $content = str_replace("[USERNAME_VALUE]", $username, $content);
+    $content = str_replace("[autofocus]", '', $content);
     echo $content;
 ?>
