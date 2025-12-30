@@ -491,6 +491,13 @@ header h1 {
     width: 1px;
 }
 
+.invisibile {
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+
 .animali {
     margin-top: 2em;
     display: flex;
