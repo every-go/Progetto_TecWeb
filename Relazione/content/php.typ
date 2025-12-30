@@ -1,7 +1,8 @@
 = PhP
+<php>
 
 == Header e footer
-Tutti gli header e footer, tranne quelli per la pagina "Preferiti" e "Ispeziona" (poiché accessibili solo dall'admin, e quindi già autenticato obbligatoriarmente), hanno un header e un footer dinamico.
+Le pagine che ne hanno bisogno hanno un header e un footer dinamico che cambiano in base all'accesso "logged-in", admin oppure utente.
 
 Infatti, nel caso della navbar nell'header questa ha come elementi 
 + Home
@@ -14,7 +15,7 @@ Questa cambia quando effettui il login, diventando
 + Home
 + Animali
 + Chi siamo
-+ Preferiti
++ Preferiti (non visualizzabile dall'admin, in quanto lui non ha bisogno idealmente di aggiungere animali ai preferiti)
 + Logout
 
 Una cosa molto simile succede al footer, "introducendo" il link alla pagina dei preferiti solo dopo aver effettuato il login.
