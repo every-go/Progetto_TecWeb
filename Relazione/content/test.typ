@@ -8,6 +8,6 @@ Un altro test effettuato molto spesso è l'utilizzo di NVDA alla fine della scri
 
 Uno dei test effettuati, menzionati nella @colore, è il calcolo dei contrasti.
 
-Un altro test effettuato, non avendo TotalValidator ufficiale a casa, abbiamo trovato il sito #link("https://validator.w3.org")[https://validator.w3.org/] per effettuare dei test che si avvicinino alla realtà di TotalValidator. 
+Un altro test effettuato, non avendo TotalValidator ufficiale a casa, abbiamo trovato il sito #link("https://validator.w3.org")[https://validator.w3.org/] per effettuare dei test sulle pagine html e #link("https://jigsaw.w3.org/css-validator/")[https://jigsaw.w3.org/css-validator/] per i test sul CSS.
 
 Chiaramente quando ce n'era la possibilità lo abbiamo utilizzato in laboratorio per testare se sono stati riscontrati problemi non trovati dal sito appena menzionato. Infatti l'ultimo test effettuato è stato il giorno prima della consegna per essere sicuri della bontà della validazione.

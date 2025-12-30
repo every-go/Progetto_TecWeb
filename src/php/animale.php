@@ -6,12 +6,14 @@
     $content = str_replace("[listaMenu]", $listaMenu, $content);
     $content = str_replace("[listaFooter]", $listaFooter, $content);
 
+    $breadcrumb = '';
+
     if (isset($_SESSION['provenienza']) && $_SESSION['provenienza'] === 'Preferiti') {
-        $breadcrum = '<a href="../php/preferiti.php"> Preferiti </a>';
+        $breadcrumb = '<a href="../php/preferiti.php"> Preferiti </a>';
     } else {
-        $breadcrum = '<a href="../php/animali.php"> Animali </a>';
+        $breadcrumb = '<a href="../php/animali.php"> Animali </a>';
     }
-    $content = str_replace("[breadcrum]", $breadcrum, $content);
+    $content = str_replace("[breadcrumb]", $breadcrumb, $content);
     $pulsanti = '';
     $sezioneAdottami = '';
     $animalData = '';
@@ -25,15 +27,30 @@
             $animalData = $db->getAnimalById($_GET['id']);
             $db->closeConnection();
             if ($animalData) {
-                $content = str_replace("[NOME]", htmlspecialchars($animalData["nome"]), $content);
-                $content = str_replace("[ETA]", htmlspecialchars($animalData["eta"]) . ($animalData["eta"] == 1 ? " anno" : " anni"), $content);
-                $content = str_replace("[LUOGO]", htmlspecialchars($animalData["luogo"]), $content);
-                $content = str_replace("[CARATTERE]", htmlspecialchars($animalData["carattere"]), $content);
-                $content = str_replace("[PATH_IMMAGINE]", htmlspecialchars($animalData["immagine"]), $content);
-                $content = str_replace("[ALT_IMMAGINE]", htmlspecialchars($animalData["alt"]), $content);
-                $content = str_replace("[DESCRIZIONE]", htmlspecialchars($animalData["descrizione"]), $content);
-                $content = str_replace("[BISOGNI]", htmlspecialchars($animalData["bisogni"]), $content);
-                $content = str_replace("[STORIA]", htmlspecialchars($animalData["storia"]), $content);
+                $content = str_replace("[NOME]", $animalData["nome"], $content);
+                $content = str_replace("[ETA]", $animalData["eta"] . ($animalData["eta"] == 1 ? " anno" : " anni"), $content);
+                $content = str_replace("[LUOGO]", $animalData["luogo"], $content);
+                $content = str_replace("[CARATTERE]", $animalData["carattere"], $content);
+                $content = str_replace("[PATH_IMMAGINE]", $animalData["immagine"], $content);
+                $content = str_replace("[ALT_IMMAGINE]", $animalData["alt"], $content);
+                $content = str_replace("[DESCRIZIONE]", $animalData["descrizione"], $content);
+                
+                $bisogni = $animalData["bisogni"];
+                // Inserisce <p> davanti a ogni nuovo punto numerato
+                $bisogni = preg_replace(
+                    '/(^|\s)(\d+\))\s/',
+                    '<p>$2 ',
+                    trim($bisogni)
+                );
+                // Chiude i <p>
+                $bisogni = '<p>' . $bisogni . '</p>';
+                $bisogni = str_replace('</p><p>', '</p><p>', $bisogni);
+                // Chiusura corretta di ogni paragrafo
+                $bisogni = preg_replace('/\s*(?=<p>)/', '</p>', $bisogni);
+                $bisogni = rtrim($bisogni, '</p>') . '</p>';
+                $content = str_replace("[BISOGNI]", $bisogni, $content);
+
+                $content = str_replace("[STORIA]", $animalData["storia"], $content);
             } else {
                 include dirname(__DIR__) . "/html/404.html";
                 http_response_code(404);
