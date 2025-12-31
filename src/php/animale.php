@@ -9,9 +9,19 @@
     $breadcrumb = '';
 
     if (isset($_SESSION['provenienza']) && $_SESSION['provenienza'] === 'Preferiti') {
-        $breadcrumb = '<a href="../php/preferiti.php"> Preferiti </a>';
+        // $breadcrumb = '<a href="../php/preferiti.php"> Preferiti </a>';
+        if(isset($_GET['pagina']) && is_numeric($_GET['pagina'])){
+            $breadcrumb .= ' > <a href="../php/preferiti.php?pagina='.$_GET['pagina'].'"> Animali </a>';
+        } else {
+            $breadcrumb .= ' > <a href="../php/preferiti.php"> Animali </a>';
+        }
     } else {
-        $breadcrumb = '<a href="../php/animali.php"> Animali </a>';
+        // $breadcrumb = '<a href="../php/animali.php"> Animali </a>';
+        if(isset($_GET['pagina']) && is_numeric($_GET['pagina'])){
+            $breadcrumb .= ' > <a href="../php/animali.php?pagina='.$_GET['pagina'].'"> Animali </a>';
+        } else {
+            $breadcrumb .= ' > <a href="../php/animali.php"> Animali </a>';
+        }
     }
     $content = str_replace("[breadcrumb]", $breadcrumb, $content);
     $pulsanti = '';

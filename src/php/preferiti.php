@@ -1,23 +1,35 @@
 <?php 
-    function singleCardBuilder($animale){
-        $animaleCard=file_get_contents("../html/animalCardTemplate.html");
-        $animaleCard= str_replace("[ID_ANIMALE]", $animale["id"], $animaleCard);
-        $animaleCard=str_replace("[NOME_ANIMALE]",$animale["nome"],$animaleCard);
-        $animaleCard=str_replace("[ALT_IMMAGINE]",$animale["alt"],$animaleCard);
-        $animaleCard=str_replace("[PATH_IMMAGINE]",$animale["immagine"],$animaleCard);
-        $animaleCard=str_replace("[TIPO]",$animale["tipo_animale"],$animaleCard);
-        $animaleCard=str_replace("[LUOGO]",$animale["luogo"],$animaleCard);
-        if($animale["eta"]==1){
-            $animale["eta"]="1 anno";
-        }
-        else{
-            $animale["eta"]=$animale["eta"]." anni";
-        }
-        $animaleCard=str_replace("[ETA_ANIMALE]",$animale["eta"],$animaleCard);
-        $animaleCard=str_replace("[TAGLIA]",$animale["taglia"],$animaleCard);
-        $animaleCard=str_replace("[CARATTERE]",$animale["carattere"],$animaleCard);	
-        return $animaleCard;	
-    }
+
+	function singleCardBuilder($animale){
+		$animaleCard=file_get_contents("../html/animalCardTemplate.html");
+		$animaleCard=str_replace("[ID_ANIMALE]",$animale["id"],$animaleCard);
+		$animaleCard=str_replace("[NOME_ANIMALE]",$animale["nome"],$animaleCard);
+		$animaleCard=str_replace("[ALT_IMMAGINE]",$animale["alt"],$animaleCard);
+		$animaleCard=str_replace("[PATH_IMMAGINE]",$animale["immagine"],$animaleCard);
+		$animaleCard=str_replace("[TIPO]",$animale["tipo_animale"],$animaleCard);
+		$animaleCard=str_replace("[LUOGO]",$animale["luogo"],$animaleCard);
+		if($animale["eta"]==1){
+			$animale["eta"]="1 anno";
+		}
+		else{
+			$animale["eta"]=$animale["eta"]." anni";
+		}
+		$animaleCard=str_replace("[ETA_ANIMALE]",$animale["eta"],$animaleCard);
+		$animaleCard=str_replace("[TAGLIA]",$animale["taglia"],$animaleCard);
+		$animaleCard=str_replace("[CARATTERE]",$animale["carattere"],$animaleCard);	
+
+		//gestione provenienza per tornare alla pagina corretta dopo la visualizzazione del singolo animale
+		if(isset($_GET['pagina'])&&is_numeric($_GET['pagina'])){
+			$animaleCard=str_replace("[PAGINA_PROVENIENZA]",'&pagina='.$_GET['pagina'],$animaleCard);
+		}
+		else{
+			$animaleCard=str_replace("[PAGINA_PROVENIENZA]",'',$animaleCard);
+		}
+
+
+
+		return $animaleCard;	
+	}
 
     require_once dirname(__DIR__) .DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'connectionDB.php';
     use DB\DBAccess;

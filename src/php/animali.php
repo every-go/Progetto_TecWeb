@@ -20,6 +20,17 @@
 		$animaleCard=str_replace("[ETA_ANIMALE]",$animale["eta"],$animaleCard);
 		$animaleCard=str_replace("[TAGLIA]",$animale["taglia"],$animaleCard);
 		$animaleCard=str_replace("[CARATTERE]",$animale["carattere"],$animaleCard);	
+
+		//gestione provenienza per tornare alla pagina corretta dopo la visualizzazione del singolo animale
+		if(isset($_GET['pagina'])&&is_numeric($_GET['pagina'])){
+			$animaleCard=str_replace("[PAGINA_PROVENIENZA]",'&pagina='.$_GET['pagina'],$animaleCard);
+		}
+		else{
+			$animaleCard=str_replace("[PAGINA_PROVENIENZA]",'',$animaleCard);
+		}
+
+
+
 		return $animaleCard;	
 	}
 
