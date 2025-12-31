@@ -11,14 +11,14 @@
     if (isset($_SESSION['provenienza']) && $_SESSION['provenienza'] === 'Preferiti') {
         // $breadcrumb = '<a href="../php/preferiti.php"> Preferiti </a>';
         if(isset($_GET['pagina']) && is_numeric($_GET['pagina'])){
-            $breadcrumb .= ' > <a href="../php/preferiti.php?pagina='.$_GET['pagina'].'"> Animali </a>';
+            $breadcrumb .= ' > <a href="../php/preferiti.php?pagina='.$_GET['pagina'].'"> Animali: pagina-'.$_GET['pagina'].' </a>';
         } else {
             $breadcrumb .= ' > <a href="../php/preferiti.php"> Animali </a>';
         }
     } else {
         // $breadcrumb = '<a href="../php/animali.php"> Animali </a>';
         if(isset($_GET['pagina']) && is_numeric($_GET['pagina'])){
-            $breadcrumb .= ' > <a href="../php/animali.php?pagina='.$_GET['pagina'].'"> Animali </a>';
+            $breadcrumb .= ' > <a href="../php/animali.php?pagina='.$_GET['pagina'].'"> Animali: pagina-'.$_GET['pagina'].'</a>';
         } else {
             $breadcrumb .= ' > <a href="../php/animali.php"> Animali </a>';
         }
