@@ -35,6 +35,22 @@
 
         if($connessioneOK){
             $animalData = $db->getAnimalById($_GET['id']);
+            $isFavorite=false;
+            if(isset($_SESSION['username'])){
+                $isFavorite = $db->checkPreferito($_SESSION['username'], intval($_GET['id']));
+                if($isFavorite){
+                    $pulsanti .= '<button id="bottone-preferiti">
+                                    <img src="../images/png/heart_filled.png"
+                                    alt="Rimuovi dai preferiti">
+                                  </button>';
+                } else {
+                    $pulsanti .= '<button id="bottone-preferiti">
+                                    <img src="../images/png/heart.png"
+                                    alt="Aggiungi ai preferiti">
+                                  </button>';
+                }
+
+            }
             $db->closeConnection();
             if ($animalData) {
                 $content = str_replace("[NOME]", $animalData["nome"], $content);

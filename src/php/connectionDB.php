@@ -235,9 +235,55 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
         }
         return false; // Login fallito
     }
+    public function checkPreferito($username, $idAnimale) {
+        $query = "SELECT * FROM adottati WHERE id = ? AND username = (SELECT username FROM utenti WHERE username = ?)";
+        $isFavorite = false;
+
+        if ($stmt = mysqli_prepare($this->connection, $query)) {
+            mysqli_stmt_bind_param($stmt, "is", $idAnimale, $username);
+            if (mysqli_stmt_execute($stmt)) {
+                $result = mysqli_stmt_get_result($stmt);
+                if (mysqli_num_rows($result) > 0) {
+                    $isFavorite = true;
+                }
+                mysqli_free_result($result);
+            }
+            mysqli_stmt_close($stmt);
+        }
+
+        return $isFavorite;
+    }
+    public function aggiungiPreferito($username, $idAnimale) {
+        $query = "INSERT INTO preferiti (username, id) VALUES (?, ?)";
+        $success = false;
+
+        if ($stmt = mysqli_prepare($this->connection, $query)) {
+            mysqli_stmt_bind_param($stmt, "si", $username, $idAnimale);
+            if (mysqli_stmt_execute($stmt)) {
+                if (mysqli_stmt_affected_rows($stmt) > 0) {
+                    $success = true;
+                }
+            }
+            mysqli_stmt_close($stmt);
+        }
+
+        return $success;
+    }
+    public function rimuoviPreferito($username, $idAnimale) {
+        $query = "DELETE FROM preferiti WHERE username = ? AND id = ?";
+        $success = false;
+
+        if ($stmt = mysqli_prepare($this->connection, $query)) {
+            mysqli_stmt_bind_param($stmt, "si", $username, $idAnimale);
+            if (mysqli_stmt_execute($stmt)) {
+                if (mysqli_stmt_affected_rows($stmt) > 0) {
+                    $success = true;
+                }
+            }
+            mysqli_stmt_close($stmt);
+        }
+
+        return $success;
+    }   
 
 }
-
-
-
-?>
