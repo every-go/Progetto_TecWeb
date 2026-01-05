@@ -44,25 +44,49 @@
     }
 
     $_SESSION['provenienza'] = 'Preferiti';
-    $stringaAnimali="";
-    $listaAnimali="";
+    $stringaPreferiti="";
+    $h2Preferiti="";
+    $listaPreferiti="";
+    $h2Adottati="";
+    $listaAdottati="";
     $db = new DBAccess();
     $connessioneOK = $db->openDBConnection();
 
     if($connessioneOK){
-        $stringaAnimali = $db->getPreferiti($_SESSION['username']);
+        $stringaPreferiti = $db->getPreferiti($_SESSION['username']);
+        $stringaAdottati = $db->getAdottati($_SESSION['username']);
         $db->closeConnection();
 
-        foreach($stringaAnimali as $stringaAnimale){
-            $listaAnimali.= singleCardBuilder($stringaAnimale);
+        // Preferiti
+        if(!empty($stringaPreferiti)){
+            $h2Preferiti="<h2 id = 'preferiti-content'>I tuoi animali preferiti </h2>";
+            $listaPreferiti = '<ul class="animali">';
+            foreach ($stringaPreferiti as $stringaAnimale) {
+                $listaPreferiti .= singleCardBuilder($stringaAnimale);
+            }
+            $listaPreferiti .= '</ul>';
         }
-        $listaAnimali='<ul class="animali">'.$listaAnimali.'</ul>';
-    } else{
-        $listaAnimali="<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
+
+        // Adottati
+        if (!empty($stringaAdottati)) {
+            $h2Adottati = "<h2 id='adottati-content'>I tuoi animali adottati</h2>";
+            $listaAdottati = '<ul class="animali">';
+            foreach ($stringaAdottati as $stringaAnimale) {
+                $listaAdottati .= singleCardBuilder($stringaAnimale);
+            }
+            $listaAdottati .= '</ul>';
+        }
+    }
+    else{
+        $listaPreferiti="<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
     }
 
 
-    $content= str_replace("[LISTA_ANIMALI]", $listaAnimali, $content);
+    
+    $content= str_replace("[H2_PREFERITI]", $h2Preferiti, $content);
+    $content= str_replace("[LISTA_PREFERITI]", $listaPreferiti, $content);
+    $content= str_replace("[H2_ADOTTATI]", $h2Adottati, $content);
+    $content= str_replace("[LISTA_ADOTTATI]", $listaAdottati, $content);
     $content = str_replace("[listaMenu]", $listaMenu, $content);
     $content = str_replace("[listaFooter]", $listaFooter, $content);
     echo $content;

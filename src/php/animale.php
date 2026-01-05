@@ -18,7 +18,7 @@
     } else {
         // $breadcrumb = '<a href="../php/animali.php"> Animali </a>';
         if(isset($_GET['pagina']) && is_numeric($_GET['pagina'])){
-            $breadcrumb .= ' > <a href="../php/animali.php?pagina='.$_GET['pagina'].'"> Animali: pagina-'.$_GET['pagina'].'</a>';
+            $breadcrumb .= ' > <a href="../php/animali.php?pagina='.$_GET['pagina'].'"> Animali</a>';
         } else {
             $breadcrumb .= ' > <a href="../php/animali.php"> Animali </a>';
         }
@@ -28,6 +28,7 @@
     $sezioneAdottami = '';
     $animalData = '';
     $adottami = '';
+    $aiutoadozione= '';
 
     if(isset($_GET['id'])){
         $db = new DBAccess();
@@ -94,12 +95,13 @@
                     <a role="button" href="elimina.php?id=' . $_GET["id"] .'" class="btn-elimina"> Elimina </a>
                     </div>';
 	    } else {
-            $adottami = '<aside>
-            <h2>Ti piaccio? Adottami!</h2>
-            <p>Ogni essere, reale o straordinario, cerca un luogo in cui sentirsi al sicuro. Io non faccio eccezione.
-                Che la mia natura sia comune o rara, ciò che posso offrire è semplice: compagnia, presenza e un legame
-                sincero. Se qualcosa di me ha acceso la tua curiosità, forse è il primo passo verso un incontro
-                speciale. Scoprimi un po’ di più… potrei essere il compagno che stavi cercando.</p>
+            $aiutoadozione = '<a class="aiuti" href="#adozione"> Vai alla adozione </a>';
+            $adottami = '<aside id="adozione">
+            <h2>Ti piace? Adotta!</h2>
+            <p>Ogni essere, reale o straordinario, cerca un luogo in cui sentirsi al sicuro.
+                Che la sua natura sia comune o rara, ciò che può offrire è semplice: compagnia, presenza e un legame
+                sincero. Se qualcosa ha acceso la tua curiosità, forse è il primo passo verso un incontro
+                speciale. Scopri un po’ di più… potrebbe essere il compagno che stavi cercando.</p>
             <button>Adotta!</button>
             </aside>';
         }
@@ -112,6 +114,7 @@
     }
 
     $content = str_replace("[pulsanti]", $pulsanti, $content);
+    $content = str_replace("[aiutoAdozione]", $aiutoadozione, $content);
     $content = str_replace("[adottami]", $adottami, $content);
     
     echo $content;

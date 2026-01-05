@@ -17,29 +17,32 @@
 </head>
 
 <body>
-	<a class="aiuti" href="#main-content"> Vai al contenuto </a>
+		<a class="aiuti" href="#main-content"> Vai al contenuto </a>
+		<a class="aiuti" href="#statistiche">Vai ai nostri numeri</a>
+		<a class="aiuti" href="#container-adozione">Come puoi adottare?</a>
+		<a class="aiuti" href="#title-mappa">Vai alla mappa del sito web</a>
 	<header id="container-menu">
 
 		<h1 id="logo-header">Casa Otium</h1>
 
-		<nav id="menu">
+		<nav id="menu"  aria-label="Menù">
 			[listaMenu]
 		</nav>
 	</header>
 
 	<main id="home-main">
-		<nav id="breadcrumb">
+		<nav id="breadcrumb"> 
 			<p>
 				Ti trovi in: <span lang="en">Home</span>
 			</p>
 		</nav>
-		<h1>Benvenuti nel nostro rifugio </h1>
+		<h1 id="main-content">Benvenuti nel nostro rifugio </h1>
 		
-		<div class="line"></div>
+		<hr aria-hidden="true">
 
 		<article class="txt-img">
 			<div>
-				<h2 id="main-content"> Tanti animali cercano casa: trova il tuo </h2>
+				<h2> Tanti animali cercano casa: trova il tuo </h2>
 				<p> Lo sapevi che il cane è considerato il migliore amico dell’uomo? </p>
 				<p> Per noi di Casa Otium tutti gli animali sono migliori amici, scegli il tuo preferito!</p>
 				<a href="./animali.php" role="button" class="pulsante"> Scopri di più </a>
@@ -47,7 +50,7 @@
 			<img src="../images/jpg/cane_bambina.jpg" alt="">
 		</article>
 
-		<div class="line"></div>
+		<hr aria-hidden="true">
 
 		<article id="statistiche">
 			<header>
@@ -68,7 +71,7 @@
 				</li>
 				<li>
 					<img class="img-statistiche" src="../images/jpg/volontario_e_mago.jpg" alt="">
-					<p class="stat">1.6<abbr title="migliaia">k</abbr></p>
+					<p class="stat">1600</p>
 					<p class="descrizione">Volontari e maghi che hanno donato il loro tempo.</p>
 				</li>
 				<li>
@@ -81,7 +84,7 @@
 		</article>
 
 		<div id="container-adozione">
-			<div id="linesecond"></div>
+			<hr id="linesecond" aria-hidden="true">
 			<div id="adozione">
 				<article class="card">
 					<h2>
@@ -92,7 +95,7 @@
 					<p>Ecco i requisiti principali:</p>
 					<dl>
 						<dt>Spazio Adeguato</dt>
-						<dd>Un ambiente idoneo alla taglia e all’esigenze dell’animale</dd>
+						<dd>Un ambiente idoneo alla taglia e alle esigenze dell’animale</dd>
 
 						<dt>Tempo da dedicare</dt>
 						<dd>Presenza quotidiana di cure, uscite e socializzazione</dd>
@@ -122,11 +125,13 @@
 						</li>
 						<li>
 							<p>Invia la richiesta di adozione</p>
-							<p>Una volta che hai scelto i tuoi animali preferiti e visualizzato i loro “bisogni”, clicca
-								su “Adotta”.
+							<p>
+								Una volta che hai scelto i tuoi animali preferiti e visualizzato i loro “Bisogni”, clicca sul pulsante “Adotta”.
 							</p>
-							<p>Il nostro <span lang="en">staff</span> verrà immediatamente notificato e si metterà
-								presto in contatto per un incontro.</p>
+							<p>
+								Il nostro <span lang="en">staff</span> verrà immediatamente notificato e si metterà
+								presto in contatto per un incontro.
+							</p>
 						</li>
 
 						<li>
@@ -149,8 +154,8 @@
 	</main>
 	<footer>
 		<div>
-			<p id="title-mappa"> Mappa di navigazione </p>
 			<nav>
+				<p id="title-mappa"> Mappa del sito web</p>
 				[listaFooter]
 			</nav>
 		</div>
@@ -159,7 +164,7 @@
 			<p> <span lang="en">Disclaimer</span></p>
 			<p>
 				Questo sito <span lang="en">web</span> è stato sviluppato presso l'Università di Padova come progetto
-				didattico valutato dalla Prof.essa Gaggi Ombretta; ogni riferimento a luogo, persona o animale reale è
+				didattico valutato dalla professoressa Gaggi Ombretta; ogni riferimento a luogo, persona o animale reale è
 				puramente casuale in quanto alcune immagini sono state generate dall'intelligenza artificiale.
 			</p>
 		</div>

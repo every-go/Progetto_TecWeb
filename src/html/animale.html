@@ -19,6 +19,9 @@
 <body>
 
     <a class="aiuti" href="#main-content"> Vai al contenuto </a>
+    <a class="aiuti" href="info-principali">Vai alle informazioni principali</a>
+    <a class="aiuti" href="#description"> Vai alla descrizione, ai bisogni e alla storia </a>
+    [aiutoAdozione]
     <header id="container-menu">
 
         <h1 id="logo-header">Casa Otium</h1>
@@ -34,18 +37,22 @@
         </p>
     </nav>
     <main id="animale-main">
-        <div class="img-cutter img-container">
+        <div class="img-cutter img-container" id="main-content">
             <img src="[PATH_IMMAGINE]" alt="[ALT_IMMAGINE]">
         </div>
         <div id="info-principali">
-            <p id="animale-name">[NOME]</p>
             <dl>
-                <dt>Età: </dt>
-                <dd>[ETA]</dd>
-                <dt>Luogo: </dt>
-                <dd>[LUOGO]</dd>
-                <dt>Carattere:</dt>
-                <dd>[CARATTERE]</dd>
+            <dt>Nome:</dt>
+            <dd>[NOME]</dd>
+
+            <dt>Età:</dt>
+            <dd>[ETA]</dd>
+
+            <dt>Luogo:</dt>
+            <dd>[LUOGO]</dd>
+
+            <dt>Carattere:</dt>
+            <dd>[CARATTERE]</dd>
             </dl>
         </div>
         <section id="description">
@@ -68,8 +75,8 @@
     </main>
     <footer>
         <div>
-            <p id="title-mappa"> Mappa di navigazione </p>
             <nav>
+                <p id="title-mappa"> Mappa del sito web </p>
                 [listaFooter]
             </nav>
         </div>
@@ -78,7 +85,7 @@
             <p> <span lang="en">Disclaimer</span></p>
             <p>
                 Questo sito <span lang="en">web</span> è stato sviluppato presso l'Università di Padova come progetto
-                didattico valutato dalla Prof.essa Gaggi Ombretta; ogni riferimento a luogo, persona o animale reale è
+                didattico valutato dalla professoressa Gaggi Ombretta; ogni riferimento a luogo, persona o animale reale è
                 puramente casuale in quanto alcune immagini sono state generate dall'intelligenza artificiale.
             </p>
         </div>

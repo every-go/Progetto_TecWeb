@@ -51,8 +51,8 @@ VALUES
     con un lungo e folto doppio mantello nei toni del marrone e bianco. 
     Il pelo è dritto e denso intorno al collo. 
     La testa presenta un muso stretto con una lista bianca che corre dalla fronte fino al naso.
-    Gli occhi sono di un caldo colore ambra-marrone, attenti e con uno sguardo diretto.
-    Le orecchie sono semi-erette, piegate in avanti, con pelo piumoso lungo i bordi.
+    Gli occhi sono di un caldo colore ambra marrone, attenti e con uno sguardo diretto.
+    Le orecchie sono semi erette, piegate in avanti, con pelo piumoso lungo i bordi.
     Il naso è nero e umido, la bocca mostra qualche
     piccolo granello sul labbro inferiore, conferendo un''espressione gentile e curiosa.',
 '../images/jpg/cane_bello.jpg',
@@ -68,9 +68,9 @@ VALUES
     È gentile con le persone, paziente durante le coccole e protettivo senza essere aggressivo,
     con un temperamento equilibrato che lo aiuta a integrarsi facilmente in ambienti familiari calmi e stimolanti.',
 '1) Spazzolatura regolare: almeno tre volte alla settimana per evitare nodi nel pelo lungo e mantenere la cute sana.
-    2) Esercizio quotidiano: passeggiate di 30-45 minuti o sessioni di gioco all''aperto per canalizzare la sua energia.
+    2) Esercizio quotidiano: passeggiate di 30 o 45 minuti o sessioni di gioco all''aperto per canalizzare la sua energia.
     3) Alimentazione bilanciata: crocchette premium per cani di taglia media, con integratori per le articolazioni se necessario.
-    4) Ambiente ideale: famiglia affettuosa, tollera poco la solitudine (non più di 4-5 ore al giorno).
+    4) Ambiente ideale: famiglia affettuosa, tollera poco la solitudine (non più di 4 ore al giorno).
     5) Cure veterinarie: vaccini annuali e controlli oculistici',
 'Capitano, un mix di <span lang="en">Collie</span> di 4 anni, è stato salvato dopo essere stato abbandonato
     durante un trasloco della sua vecchia famiglia.
@@ -81,7 +81,7 @@ FALSE),
 
 ('Cavallo Lunare',
 'Un maestoso cavallo dalla corporatura possente, caratterizzato da un mantello scuro e polveroso che emula la superficie lunare,
-    costellato di crateri circolari e sfumature argenteo-metalliche.
+    costellato di crateri circolari e sfumature argenteo metalliche.
     La criniera e la coda sono lunghe, fluenti e di un bianco luminoso quasi etereo,
     che sembra risplendere di luce propria.
     La muscolatura è ben definita, conferendo all''animale un''andatura regale e soprannaturale.',
@@ -201,7 +201,7 @@ FALSE),
 'Protettore per decenni della Terra dei Draghi, ha deciso di cercare un nuovo legame dopo che il suo antico nido è
     diventato troppo silenzioso. Nonostante l''età, la sua forza è intatta e cerca un custode
     che non tema la sua imponenza ma che sappia rispettare la sua storia millenaria.',
-FALSE);
+TRUE);
 
 INSERT INTO utenti
 VALUES ('user', 'user', FALSE),
@@ -213,4 +213,4 @@ VALUES ('user', 1),
        ('user', 3);
 
 INSERT INTO adottati
-VALUES ('user', 1);
+VALUES ('user', 6);

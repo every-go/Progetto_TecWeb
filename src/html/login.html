@@ -30,7 +30,7 @@
 	<main id="login-main">
 		<nav id="breadcrumb">
 			<p>
-				Ti trovi in: <a href="home.php" lang="en">Home</a> &gt;&gt; <span lang="en">Login</span>
+				Ti trovi in: <a href="home.php" lang="en">Home</a><span aria-hidden="true"> &gt;&gt; </span><span lang="en">Login</span>
 			</p>
 		</nav>
 
@@ -41,11 +41,11 @@
 
 			<div id="form-reg">
 				<form action="../php/login.php" method="post" id="login-form">
-					<label for="username">Username:</label>
+					<label for="username"><span lang="en">Inserisci il tuo username:</span></label>
 					<input type="text" id="username" name="username" [autofocus] value="[USERNAME_VALUE]" required>
-					<label for="password">Password:</label>
+					<label for="password"><span lang="en">Inserisci la tua password:</span></label>
 					<input type="password" id="password" name="password" required>
-					<input type="submit" name="login" value="Accedi" aria-label="Accedi al tuo account">
+					<input type="submit" name="login" value="Accedi">
 				</form>
 				<!--
 				<p> Non hai un <span lang="en">account</span>? <a href="registrati.php">Registrati</a></p>

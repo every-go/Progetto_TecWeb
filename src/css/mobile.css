@@ -145,7 +145,7 @@ body {
     gap: 2em;
 }
 
-.error-login {
+#error-login {
     margin-top: 2em;
 }
 

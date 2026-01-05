@@ -1,16 +1,29 @@
-
 <li class="animale-card">
-    <a href="animale.php?id=[ID_ANIMALE][PAGINA_PROVENIENZA]" class="animale-link">
-        <img src="[PATH_IMMAGINE]" class="animale-immagine" alt="[ALT_IMMAGINE]">
-        <ul aria-label="Informazioni animale" class="animale-info">
-            <li class="nome"> <span class="invisibile">Nome:</span> [NOME_ANIMALE]</li>
-            <li class="info-box"><span class="material-symbols-outlined"
-                    aria-hidden="true">location_on</span>
-                    <span class="invisibile"> Luogo:</span> [LUOGO]</li>
-            <li class="info-box"> <span class="material-symbols-outlined" aria-hidden="true"> cake
-                </span> <span class="invisibile"> Et&aacute;</span> [ETA_ANIMALE]</li>
-            <li class="info-box"> <span class="invisibile"> Tipo: </span>[TIPO]</li>
-            <li class="info-box"> <img aria-hidden="true" src="../images/png/diff_adozione.png" alt=""> <span class="invisibile">Carattere:</span> [CARATTERE] </li>
-        </ul>
-    </a>
+  <a href="animale.php?id=[ID_ANIMALE][PAGINA_PROVENIENZA]" 
+     class="animale-link"
+     aria-label="Descrizione immagine [ALT_IMMAGINE],Nome [NOME_ANIMALE], Luogo [LUOGO], Età [ETA_ANIMALE], Tipo [TIPO], Carattere [CARATTERE]">
+    
+    <img src="[PATH_IMMAGINE]" class="animale-immagine">
+
+    <ul aria-label="Informazioni animale" class="animale-info">
+      <li class="nome">
+        <span class="invisibile">Nome: </span>[NOME_ANIMALE]
+      </li>
+      <li class="info-box">
+        <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
+        <span class="invisibile">Luogo: </span>[LUOGO]
+      </li>
+      <li class="info-box">
+        <span class="material-symbols-outlined" aria-hidden="true">cake</span>
+        <span class="invisibile">Età: </span>[ETA_ANIMALE]
+      </li>
+      <li class="info-box">
+        <span class="invisibile">Tipo: </span>[TIPO]
+      </li>
+      <li class="info-box">
+        <img src="../images/png/diff_adozione.png" alt="" aria-hidden="true">
+        <span class="invisibile">Carattere: </span>[CARATTERE]
+      </li>
+    </ul>
+  </a>
 </li>

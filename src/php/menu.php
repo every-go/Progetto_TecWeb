@@ -41,7 +41,7 @@
         }
 
         if ($isCurrentPage) {
-            $listaMenu .= '<li id="currentlink" ' .
+            $listaMenu .= '<li id="currentlink" aria-current="page" ' .
             (!empty($data['lang']) ? 'lang="' . $data["lang"] . '"' : '') .
             '>' . $data["text"] . '</li>';
         } else {
@@ -61,7 +61,7 @@
         }
 
         if ($isCurrentPage) {
-            $listaFooter .= '<li ' .
+            $listaFooter .= '<li aria-current="page"' .
             (!empty($data['lang']) ? 'lang="' . $data["lang"] . '"' : '') .
             '>' . $data["text"] . '</li>';
         } else {

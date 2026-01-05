@@ -172,12 +172,15 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
 	}
         
     function getPreferiti($username) {
-        $sql = 'SELECT AN.id, AN.nome, AN.alt, AN.immagine, AN.sesso, AN.tipo_animale, AN.luogo, AN.eta, AN.taglia, AN.carattere, AN.descrizione, AN.bisogni, AN.storia 
-                FROM animali AN, adottati AD, utenti U 
-                WHERE AN.id = AD.id AND AD.username = U.username AND U.username = ?';
+        $sql = 'SELECT AN.id, AN.nome, AN.alt, AN.immagine, AN.sesso, AN.tipo_animale, AN.luogo, AN.eta,
+                AN.taglia, AN.carattere, AN.descrizione, AN.bisogni, AN.storia
+                FROM animali AN
+                JOIN preferiti PR ON AN.id = PR.id
+                JOIN utenti U ON PR.username = U.username
+                WHERE U.username = ?';
         
         $animalData = [];
-        
+
         if ($stmt = mysqli_prepare($this->connection, $sql)) {
             mysqli_stmt_bind_param($stmt, "s", $username);
             if (mysqli_stmt_execute($stmt)) {
@@ -190,6 +193,39 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
                 }
             }
             mysqli_stmt_close($stmt);
+        }
+        else{
+            error_log(mysqli_error($this->connection));
+        }
+        
+        return $animalData; // Ritorna array di animali (può essere vuoto)
+    }
+
+    function getAdottati($username) {
+        $sql = 'SELECT AN.id, AN.nome, AN.alt, AN.immagine, AN.sesso, AN.tipo_animale, AN.luogo, AN.eta,
+                AN.taglia, AN.carattere, AN.descrizione, AN.bisogni, AN.storia
+                FROM animali AN
+                JOIN adottati AD ON AN.id = AD.id
+                JOIN utenti U ON AD.username = U.username
+                WHERE U.username = ?';
+        
+        $animalData = [];
+
+        if ($stmt = mysqli_prepare($this->connection, $sql)) {
+            mysqli_stmt_bind_param($stmt, "s", $username);
+            if (mysqli_stmt_execute($stmt)) {
+                $queryResult = mysqli_stmt_get_result($stmt);
+                if ($queryResult) {
+                    while ($row = mysqli_fetch_assoc($queryResult)) {
+                        $animalData[] = $row;
+                    }
+                    mysqli_free_result($queryResult);
+                }
+            }
+            mysqli_stmt_close($stmt);
+        }
+        else{
+            error_log(mysqli_error($this->connection));
         }
         
         return $animalData; // Ritorna array di animali (può essere vuoto)

@@ -50,7 +50,7 @@
                     } else {
                         // Login fallito
                         // echo("login fallito");
-                        $errorMessage = "<p class='error-login'> ! <span lang='en'>Username</span> o <span lang='en'>password</span> non validi ! </p>";
+                        $errorMessage = "<p aria-live='assertive' role='alert'> ! <span lang='en'>Username</span> o <span lang='en'>password</span> non validi ! </p>";
                         $content = str_replace("[ERROR_MESSAGE]", $errorMessage, $content);
                         $content = str_replace("[autofocus]", 'autofocus', $content);
                         $content = str_replace("[USERNAME_VALUE]", $username, $content);
@@ -61,11 +61,12 @@
                     http_response_code(500);
                     exit();
                 }
-            } else { 
-                    // echo("dati non validi");
-                    $content = str_replace("[USERNAME_VALUE]", $username, $content);
-                    $errorMessage = "Username o password non validi.";
-                    $content = str_replace("[ERROR_MESSAGE]", "<p>$errorMessage</p>", $content);
+            }
+            else { 
+                // echo("dati non validi");
+                $content = str_replace("[USERNAME_VALUE]", $username, $content);
+                $errorMessage = "<p class='error-login' aria-live='assertive' role='alert'> ! <span lang='en'>Username</span> o <span lang='en'>password</span> non validi ! </p>";
+                $content = str_replace("[ERROR_MESSAGE]", "$errorMessage", $content);
             }
         } else {
             // echo("nessun dato inviato");

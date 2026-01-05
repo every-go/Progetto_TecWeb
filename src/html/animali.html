@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <a class="aiuti" href="#ricerca"> Vai alla barra di ricerca </a>
+    <a class="aiuti" href="#search-input"> Vai alla barra di ricerca degli animali </a>
     <a class="aiuti" href="#animali-content"> Vai agli animali </a>
     <header id="container-menu">
 
@@ -36,16 +36,18 @@
                 Ti trovi in: <a href="../php/home.php" lang="en">Home </a> <span aria-hidden="true">&gt;&gt;</span> Animali
             </p>
         </nav>
-        <h1 id="ricerca"> Trova il tuo amico </h1>
+        <h1> Trova il tuo amico </h1>
         <div id="search-container">
-            <form>
+            <form role="search">
                 <div id="search">
                     <span id="search-icon" class="material-symbols-outlined" aria-hidden="true">search</span>
+                <!-- <label for="search-input">Cerca il tuo futuro amico</label>-->
                     <input id="search-input" type="search" placeholder="Cerca il tuo futuro amico...">
                 </div>
             </form>
             [addButton]
         </div>
+
         
 
         <p id="animali-content"> Ecco tutti i nostri amici! </p>
@@ -60,8 +62,8 @@
     </main>
     <footer>
         <div>
-            <p id="title-mappa"> Mappa di navigazione </p>
             <nav>
+                <p id="title-mappa"> Mappa del sito web </p>
                 [listaFooter]
             </nav>
         </div>
@@ -70,7 +72,7 @@
             <p> <span lang="en">Disclaimer</span></p>
             <p>
                 Questo sito <span lang="en">web</span> è stato sviluppato presso l'Università di Padova come progetto
-                didattico valutato dalla Prof.essa Gaggi Ombretta; ogni riferimento a luogo, persona o animale reale è
+                didattico valutato dalla professoressa Gaggi Ombretta; ogni riferimento a luogo, persona o animale reale è
                 puramente casuale in quanto alcune immagini sono state generate dall'intelligenza artificiale.
             </p>
         </div>

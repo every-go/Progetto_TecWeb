@@ -211,15 +211,8 @@ header h1 {
     HOME
 */
 
-.line {
-    height: 1px;
-    width: 100%;
-    background-color: black;
-    margin: 1em 0;
-}
-
 #linesecond {
-    height: 1px;
+    height: 0.1em;
     width: 90%;
     background-color: var(--primary-bg);
     margin: 2em auto 1em;
@@ -484,11 +477,7 @@ header h1 {
 }
 
 #animali-content{
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
     top: auto;
-    width: 1px;
 }
 
 .invisibile {
@@ -646,12 +635,14 @@ header h1 {
     object-fit: cover; 
 }
 
+/*
 #animale-name {
     text-align: left;
-    font-size: 3em;
+    font-size: 1em;
     margin: 0 0 .5em 0;
     font-weight: bold;
 }
+*/
 
 #animale-main h2 {
     margin: 0;
@@ -995,11 +986,10 @@ input[type="submit"]:focus {
 #lista-crediti a:has(> img) {
     position: relative;
     display: inline-block;
-    width: fit-content;   
+    width: fit-content;
 }
 
 #lista-crediti a:has(> img)::after {
-    content: "↗";
     position: absolute;
     background: white;
     color: black;
@@ -1015,24 +1005,8 @@ input[type="submit"]:focus {
     pointer-events: none; 
 }
 
-/*
-    PREFERITI
-*/
-
-#preferiti-content{
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    top: auto;
-    width: 1px;
-}
-
-#adottati-content{
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    top: auto;
-    width: 1px;
+#paragraph-crediti{
+    text-align: center;
 }
 
 /* 
@@ -1089,7 +1063,7 @@ input[type="submit"]:focus {
     text-align: center;
 }
 
-.error-login {
+#error-login {
     font-size: 1.5em;
     margin-top: 3em;
     text-align: center;

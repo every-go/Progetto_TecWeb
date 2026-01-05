@@ -1,5 +1,5 @@
 docker compose up
-stessa rete wifi
+stessa rete wifi per telefono e pc
 in altro terminale ip addr
 prendo ip rete wifi (ip addr con MacOs/Linux, ipconfig con Windows, cerca Ipv4 address Ethernet/Wi-Fi)
 da telefono ip:8080
