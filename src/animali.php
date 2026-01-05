@@ -1,10 +1,10 @@
 <?php 
 
-	require_once dirname(__DIR__) .DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'connectionDB.php';
+	require_once '.'.DIRECTORY_SEPARATOR.'connectionDB.php';
 	use DB\DBAccess;
 
 	function singleCardBuilder($animale){
-		$animaleCard=file_get_contents("../html/animalCardTemplate.html");
+		$animaleCard=file_get_contents("html/animalCardTemplate.html");
 		$animaleCard=str_replace("[ID_ANIMALE]",$animale["id"],$animaleCard);
 		$animaleCard=str_replace("[NOME_ANIMALE]",$animale["nome"],$animaleCard);
 		$animaleCard=str_replace("[ALT_IMMAGINE]",$animale["alt"],$animaleCard);
@@ -35,7 +35,7 @@
 	}
 
 	include "menu.php";
-	$content = file_get_contents("../html/animali.html");
+	$content = file_get_contents("html/animali.html");
 	$content = str_replace("[listaMenu]", $listaMenu, $content);
 	$content = str_replace('[listaFooter]', $listaFooter, $content);
 

@@ -22,7 +22,7 @@
  
 
     include "menu.php";
-    $content = file_get_contents("../html/login.html");
+    $content = file_get_contents("html/login.html");
     $content = str_replace("[listaMenu]", $listaMenu, $content);
     $content = str_replace("[listaFooter]", $listaFooter, $content);
 
@@ -45,7 +45,7 @@
                     if ($res_login) {
                         // echo("login ok");
                         // Login riuscito
-                        header("Location: home.php");
+                        header("Location: index.php");
                         exit();
                     } else {
                         // Login fallito
@@ -75,7 +75,7 @@
         }
     } else {
         // Utente già loggato, reindirizza alla home
-        header('Location: home.php');
+        header('Location: index.php');
         exit();
     }
 

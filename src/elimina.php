@@ -4,7 +4,7 @@
     use DB\DBAccess;
 
     if ($_SESSION['role'] !== 'admin') {
-        header('Location: home.php');
+        header('Location: index.php');
         exit();
     }
 

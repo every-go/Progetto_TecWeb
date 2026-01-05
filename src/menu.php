@@ -5,7 +5,7 @@
 
     // pagine del menu 
     $pages = [
-        'home.php' => ['text' => 'Home', 'lang' => 'en'],
+        'index.php' => ['text' => 'Home', 'lang' => 'en'],
         'animali.php' => ['text' => 'Animali'],
         'chiSiamo.php' => ['text' => 'Chi siamo'],
         
@@ -13,7 +13,7 @@
 
     // pagine del footer
     $pagesFooter = [
-        'home.php' => ['text' => 'Home', 'lang' => 'en'],
+        'index.php' => ['text' => 'Home', 'lang' => 'en'],
         'animali.php' => ['text' => 'Animali'],
         'chiSiamo.php' => ['text' => 'Chi siamo'],
     ];

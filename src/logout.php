@@ -4,6 +4,6 @@
     session_destroy();  // Distrugge la sessione sul server
 
     // Rimanda alla home o al login
-    header("Location: home.php");
+    header("Location: index.php");
     exit;
 ?>

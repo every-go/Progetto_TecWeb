@@ -1,8 +1,8 @@
 <?php 
     include "menu.php";
-    require_once dirname(__DIR__) .DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'connectionDB.php';
+    require_once '.'.DIRECTORY_SEPARATOR.'connectionDB.php';
     use DB\DBAccess;
-    $content = file_get_contents("../html/animale.html");
+    $content = file_get_contents("html/animale.html");
     $content = str_replace("[listaMenu]", $listaMenu, $content);
     $content = str_replace("[listaFooter]", $listaFooter, $content);
 
@@ -11,16 +11,16 @@
     if (isset($_SESSION['provenienza']) && $_SESSION['provenienza'] === 'Preferiti') {
         // $breadcrumb = '<a href="../php/preferiti.php"> Preferiti </a>';
         if(isset($_GET['pagina']) && is_numeric($_GET['pagina'])){
-            $breadcrumb .= ' > <a href="../php/preferiti.php?pagina='.$_GET['pagina'].'"> Animali: pagina-'.$_GET['pagina'].' </a>';
+            $breadcrumb .= ' <a href="preferiti.php?pagina='.$_GET['pagina'].'"> Preferiti: pagina-'.$_GET['pagina'].' </a>';
         } else {
-            $breadcrumb .= ' > <a href="../php/preferiti.php"> Animali </a>';
+            $breadcrumb .= ' <a href="preferiti.php"> Preferiti </a>';
         }
     } else {
         // $breadcrumb = '<a href="../php/animali.php"> Animali </a>';
         if(isset($_GET['pagina']) && is_numeric($_GET['pagina'])){
-            $breadcrumb .= ' > <a href="../php/animali.php?pagina='.$_GET['pagina'].'"> Animali</a>';
+            $breadcrumb .= ' <a href="animali.php?pagina='.$_GET['pagina'].'"> Animali</a>';
         } else {
-            $breadcrumb .= ' > <a href="../php/animali.php"> Animali </a>';
+            $breadcrumb .= ' <a href="animali.php"> Animali </a>';
         }
     }
     $content = str_replace("[breadcrumb]", $breadcrumb, $content);
@@ -58,7 +58,12 @@
                 $content = str_replace("[ETA]", $animalData["eta"] . ($animalData["eta"] == 1 ? " anno" : " anni"), $content);
                 $content = str_replace("[LUOGO]", $animalData["luogo"], $content);
                 $content = str_replace("[CARATTERE]", $animalData["carattere"], $content);
-                $content = str_replace("[PATH_IMMAGINE]", $animalData["immagine"], $content);
+                if($animalData["immagine"]){
+                    $content = str_replace("[PATH_IMMAGINE]", $animalData["immagine"], $content);
+                }
+                else{
+                    $content = str_replace("[PATH_IMMAGINE]", "", $content);
+                }
                 $content = str_replace("[ALT_IMMAGINE]", $animalData["alt"], $content);
                 $content = str_replace("[DESCRIZIONE]", $animalData["descrizione"], $content);
                 

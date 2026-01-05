@@ -1,7 +1,7 @@
 <?php 
 
 	function singleCardBuilder($animale){
-		$animaleCard=file_get_contents("../html/animalCardTemplate.html");
+		$animaleCard=file_get_contents("html/animalCardTemplate.html");
 		$animaleCard=str_replace("[ID_ANIMALE]",$animale["id"],$animaleCard);
 		$animaleCard=str_replace("[NOME_ANIMALE]",$animale["nome"],$animaleCard);
 		$animaleCard=str_replace("[ALT_IMMAGINE]",$animale["alt"],$animaleCard);
@@ -31,15 +31,15 @@
 		return $animaleCard;	
 	}
 
-    require_once dirname(__DIR__) .DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'connectionDB.php';
+    require_once '.'.DIRECTORY_SEPARATOR.'connectionDB.php';
     use DB\DBAccess;
 
     include "menu.php";
-    $content = file_get_contents("../html/preferiti.html");
+    $content = file_get_contents("html/preferiti.html");
 
     // Controllo accesso admin
     if (!isset($_SESSION["username"]) || $_SESSION["role"] !== 'user') {
-        header('Location: home.php');
+        header('Location: index.php');
         exit();
     }
 

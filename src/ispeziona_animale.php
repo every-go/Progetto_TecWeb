@@ -16,13 +16,13 @@ include "menu.php";
 
 // 1. CONTROLLO ACCESSO
 if (!isset($_SESSION["username"]) || $_SESSION["role"] !== 'admin') {
-    header('Location: home.php');
+    header('Location: index.php');
     exit();
 }
 
 
 // 2. CONFIGURAZIONE E SETUP INIZIALE
-$uploadDirSystem = '../images/uploads'; // Dove salvare fisicamente
+$uploadDirSystem = 'images/uploads'; // Dove salvare fisicamente
 $uploadDirWeb = 'images/uploads/'; // Cosa scrivere nel DB
 
 // Inizializzo l'handler immagini

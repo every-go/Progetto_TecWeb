@@ -271,6 +271,7 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
         }
         return false; // Login fallito
     }
+
     public function checkPreferito($username, $idAnimale) {
         $query = "SELECT * FROM adottati WHERE id = ? AND username = (SELECT username FROM utenti WHERE username = ?)";
         $isFavorite = false;
@@ -289,6 +290,7 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
 
         return $isFavorite;
     }
+
     public function aggiungiPreferito($username, $idAnimale) {
         $query = "INSERT INTO preferiti (username, id) VALUES (?, ?)";
         $success = false;
@@ -305,6 +307,7 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
 
         return $success;
     }
+
     public function rimuoviPreferito($username, $idAnimale) {
         $query = "DELETE FROM preferiti WHERE username = ? AND id = ?";
         $success = false;
@@ -321,5 +324,33 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
 
         return $success;
     }   
+
+    public function aggiungiAdottato($username, $idAnimale) {
+        $queryInserimento = "INSERT INTO adottati (username, id) VALUES (?, ?)";
+        $queryAggiornamento = "UPDATE animali SET adottato = TRUE WHERE id = ?";
+        $success = false;
+
+        if ($stmt = mysqli_prepare($this->connection, $queryInserimento)) {
+            mysqli_stmt_bind_param($stmt, "si", $username, $idAnimale);
+
+            if (mysqli_stmt_execute($stmt) && mysqli_stmt_affected_rows($stmt) > 0) {
+                mysqli_stmt_close($stmt);   // chiuso appena finito
+
+                if ($agg = mysqli_prepare($this->connection, $queryAggiornamento)) {
+                    mysqli_stmt_bind_param($agg, "i", $idAnimale);
+
+                    if (mysqli_stmt_execute($agg) && mysqli_stmt_affected_rows($agg) > 0) {
+                        $success = true;
+                    }
+
+                    mysqli_stmt_close($agg); // SEMPRE chiuso
+                }
+            } else {
+                mysqli_stmt_close($stmt);   // chiuso anche in caso di fallimento
+            }
+        }
+
+        return $success;
+    }
 
 }

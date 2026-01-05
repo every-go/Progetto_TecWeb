@@ -53,7 +53,7 @@ function createForm($azione, $id = null) {
             http_response_code(404);
             exit();
         }
-    $content = file_get_contents(__DIR__ ."/../../html/ispeziona_animale.html");
+    $content = file_get_contents("html/ispeziona_animale.html");
     $content = str_replace("[Ispezione]", $azione, $content);
     $content = str_replace("[pulsanteAzione]", $azione, $content);
     $content = str_replace("[Azione]", $azione, $content);
