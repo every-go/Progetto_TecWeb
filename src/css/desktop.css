@@ -86,10 +86,16 @@ h2 {
     color: var(--primary-title-color);
 }
 
-main>article {
-    min-height: 35vh;
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
+main>article {
+    min-height: 60vh;
+}
 
 a {
     color: var(--text-color);
@@ -97,6 +103,20 @@ a {
 
 a:visited {
     color: var(--link-visited);
+}
+
+hr.linefirst {
+    background-color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-radius: 100px;
+    width: 100%;
+}
+
+/* Questo è valido per tutti gli hr linesecond */
+hr.linesecond {
+    background-color: var(--primary-bg);
+    border: 1px solid var(--primary-bg);
+    border-radius: 100px;
 }
 
 /*
@@ -211,12 +231,9 @@ header h1 {
     HOME
 */
 
-#linesecond {
-    height: 0.1em;
+#home-main .linesecond {
     width: 90%;
-    background-color: var(--primary-bg);
     margin: 2em auto 1em;
-    /* top left&right bottom */
 }
 
 .txt-img {
@@ -350,16 +367,22 @@ header h1 {
 }
 
 #impegno {
-    text-align: center;
     padding: 2em;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     gap: 2em;
+    /* align-items: center; */
     background-color: var(--secondary-bg);
     color: var(--primary-bg);
     border-radius: 24px;
 }
+
+#impegno .linesecond {
+    /* Serve sennò questo hr collassa e diventa piccolissimo */
+    align-self: stretch;
+    width: 1px;
+}
+
 
 #impegno h2 {
     color: var(--primary-bg);
@@ -373,8 +396,7 @@ header h1 {
 }
 
 #impegno ul {
-    margin: 2em 0;
-    list-style: none;
+    margin: 2em;
 }
 
 #impegno li {
@@ -385,16 +407,21 @@ header h1 {
     color: var(--current-link);
 }
 
+#impegno>div {
+    margin-top: 4.5em;
+    margin-inline: 3em;
+    width: 50%;
+}
+
+#impegno>div>h2 {
+    margin-bottom: 1em;
+}
+
 
 /*
     ANIMALI
 */
-#home-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+
 
 #search-container {
     display: flex;
@@ -476,19 +503,20 @@ header h1 {
     font-size: 1.3em;
 }
 
-#animali-content{
+#animali-content {
     top: auto;
 }
 
 .invisibile {
-    height: 1px;
+    /* height: 1px;
     overflow: hidden;
     position: absolute;
-    width: 1px;
+    width: 1px; */
+    display: none;
 }
 
 .animali {
-    margin-top: 2em;
+    margin: 2em 0;
     display: flex;
     flex-direction: row;
     gap: 10em;
@@ -599,7 +627,7 @@ header h1 {
     border: none;
 }
 
-.pages-buttons a:focus { 
+.pages-buttons a:focus {
     outline: 2px solid var(--grigio);
     outline-offset: 2px;
 }
@@ -608,7 +636,30 @@ header h1 {
     cursor: not-allowed;
 }
 
+.pagination {
+    display: flex;
+    list-style: none;
+    gap: 2em;
+}
+
+.pagination li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    aspect-ratio: 1;
+}
+
+.pagination .active {
+    background-color: var(--secondary-bg);
+    color: var(--primary-bg);
+    border-radius: 100%;
+}
+
+
 /* ANIMALE */
+
+
 #animale-main {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -629,11 +680,6 @@ header h1 {
     border: 1px solid var(--text-color);
 }
 
-.img-cutter img, .img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-}
 
 /*
 #animale-name {
@@ -762,7 +808,8 @@ header h1 {
     margin-top: 2em;
 }
 
-.btn-modifica, .btn-elimina {
+.btn-modifica,
+.btn-elimina {
     padding: 0.8em 2em;
     font-size: 1em;
     font-weight: bold;
@@ -804,12 +851,14 @@ header h1 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.btn-modifica:focus, .btn-elimina:focus {
+.btn-modifica:focus,
+.btn-elimina:focus {
     outline: 3px solid var(--grigio);
     outline-offset: 2px;
 }
 
-.btn-modifica:active, .btn-elimina:active {
+.btn-modifica:active,
+.btn-elimina:active {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
@@ -1002,11 +1051,11 @@ input[type="submit"]:focus {
     justify-content: center;
     font-weight: bold;
     font-size: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    pointer-events: none; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
 }
 
-#paragraph-crediti{
+#paragraph-crediti {
     text-align: center;
 }
 
@@ -1045,7 +1094,8 @@ input[type="submit"]:focus {
     font-size: 1.4em;
 }
 
-#login-form input[type="text"], #login-form input[type="password"] {
+#login-form input[type="text"],
+#login-form input[type="password"] {
     background-color: var(--primary-bg);
     padding: 0.5em;
     border: none;
@@ -1054,7 +1104,8 @@ input[type="submit"]:focus {
 }
 
 
-#login-form input[type="text"]:focus, #login-form input[type="password"]:focus {
+#login-form input[type="text"]:focus,
+#login-form input[type="password"]:focus {
     outline: 1px solid var(--grigio);
     border-color: var(--grigio);
 }

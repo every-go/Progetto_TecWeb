@@ -115,8 +115,8 @@
                     <a role="button" href="elimina.php?id=' . $_GET["id"] .'" class="btn-elimina"> Elimina </a>
                     </div>';
 	    } elseif($animalData['adottato'] == 0) {
-            $aiutoadozione = '<a class="aiuti" href="#adozione"> Vai alla adozione </a>';
-            $adottami = '<aside id="adozione">
+            $aiutoadozione = '<a class="aiuti" href="#adotta"> Vai alla adozione </a>';
+            $adottami = '<aside id="adotta">
             <h2>Ti piace? Adotta!</h2>
             <p>Ogni essere, reale o straordinario, cerca un luogo in cui sentirsi al sicuro.
                 Che la sua natura sia comune o rara, ciò che può offrire è semplice: compagnia, presenza e un legame
@@ -126,8 +126,8 @@
             </aside>';
         }
         else{
-            $warningAdozione = '<a class="aiuti" href="#adozione"> '.$animalData['nome'].' è già stato adottato </a>';
-            $adottami = '<aside id="adozione">
+            $warningAdozione = '<a class="aiuti" href="#adotta"> '.$animalData['nome'].' è già stato adottato </a>';
+            $adottami = '<aside id="adotta">
             <h2>Già adottato!</h2>
             <p>Questo animale ha già trovato una casa amorevole. Grazie per il tuo interesse nell\'adottare e
             per il tuo sostegno alla nostra missione di trovare famiglie per tutti i nostri amici a quattro zampe.</p>
