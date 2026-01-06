@@ -679,12 +679,13 @@ header h1 {
     margin-bottom: 1em;
 }
 
-#description h3 {
+#description dt {
     font-size: 1.5em;
+    font-weight: bold;
     margin-bottom: .3em;
 }
 
-#description p {
+#description dd {
     margin-bottom: 1em;
 }
 

@@ -17,11 +17,23 @@
         }
     } else {
         // $breadcrumb = '<a href="../php/animali.php"> Animali </a>';
+        $mediaQueryProvenienza=[];
         if(isset($_GET['pagina']) && is_numeric($_GET['pagina'])){
-            $breadcrumb .= ' <a href="animali.php?pagina='.$_GET['pagina'].'"> Animali</a>';
-        } else {
-            $breadcrumb .= ' <a href="animali.php"> Animali </a>';
+            $mediaQueryProvenienza[] = 'pagina='.$_GET['pagina'];
+        } 
+
+        if(isset($_GET['search']) && !empty(trim($_GET['search']))){
+            $mediaQueryProvenienza[] = 'search='.$_GET['search'];
         }
+
+        $breadcrumb .=' <a href="animali.php';
+
+        if(!empty($mediaQueryProvenienza)){
+            // $breadcrumb .='?'.ltrim($mediaQueryProvenienza,'&');
+            $breadcrumb .='?'.implode('&',$mediaQueryProvenienza);
+        }
+
+        $breadcrumb .='"> Animali </a>';
     }
     $content = str_replace("[breadcrumb]", $breadcrumb, $content);
     $pulsanti = '';
@@ -30,6 +42,7 @@
     $animalData = '';
     $adottami = '';
     $aiutoadozione= '';
+    $warningAdozione='';
 
     if(isset($_GET['id'])){
         $db = new DBAccess();
@@ -46,7 +59,7 @@
                                     alt="Rimuovi dai preferiti"
                                     id="icona-preferiti">
                                   </button>';
-                } else {
+                } elseif($animalData['adottato'] == 0 && (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin')) {
                     $pulsantePreferiti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
                                     <img src="../images/png/heart.png"
                                     alt="Aggiungi ai preferiti"
@@ -102,7 +115,7 @@
                     <a role="button" href="ispeziona_animale.php?id=' . $_GET["id"] .'" class="btn-modifica">Modifica</a>
                     <a role="button" href="elimina.php?id=' . $_GET["id"] .'" class="btn-elimina"> Elimina </a>
                     </div>';
-	    } else {
+	    } elseif($animalData['adottato'] == 0) {
             $aiutoadozione = '<a class="aiuti" href="#adozione"> Vai alla adozione </a>';
             $adottami = '<aside id="adozione">
             <h2>Ti piace? Adotta!</h2>
@@ -113,7 +126,15 @@
             <button>Adotta!</button>
             </aside>';
         }
-
+        else{
+            $warningAdozione = '<a class="aiuti" href="#adozione"> '.$animalData['nome'].' è già stato adottato </a>';
+            $adottami = '<aside id="adozione">
+            <h2>Già adottato!</h2>
+            <p>Questo animale ha già trovato una casa amorevole. Grazie per il tuo interesse nell\'adottare e
+            per il tuo sostegno alla nostra missione di trovare famiglie per tutti i nostri amici a quattro zampe.</p>
+            </aside>';
+        }
+        
 
     } else{
         include dirname(__DIR__) . "/html/404.html";
@@ -124,6 +145,7 @@
     $content = str_replace("[pulsanti]", $pulsanti, $content);
     $content = str_replace("[PULSANTE_PREFERITI]", $pulsantePreferiti, $content);
     $content = str_replace("[aiutoAdozione]", $aiutoadozione, $content);
+    $content = str_replace("[WARNING_ADOZIONE]", $warningAdozione, $content);
     $content = str_replace("[adottami]", $adottami, $content);
     
     echo $content;
