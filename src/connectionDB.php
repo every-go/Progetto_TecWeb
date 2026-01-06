@@ -340,7 +340,7 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
                     mysqli_stmt_bind_param($agg, "i", $idAnimale);
 
                     if (mysqli_stmt_execute($agg) && mysqli_stmt_affected_rows($agg) > 0) {
-                        $success = true;
+                        $success = $this->rimuoviPreferito($username, $idAnimale);
                     }
 
                     mysqli_stmt_close($agg); // SEMPRE chiuso
@@ -354,3 +354,5 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
     }
 
 }
+
+?>
