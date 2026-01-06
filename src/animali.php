@@ -22,18 +22,18 @@
         $animaleCard=str_replace("[CARATTERE]",$animale["carattere"],$animaleCard); 
         
         // gestione provenienza per tornare alla pagina corretta dopo la visualizzazione del singolo animale
-        $mediaQueryProvenienza='';
+        $paramQueryProvenienza='';
         if(isset($_GET['pagina']) && is_numeric($_GET['pagina'])){
-            $mediaQueryProvenienza.='&pagina='.$_GET['pagina'];
+            $paramQueryProvenienza.='&pagina='.$_GET['pagina'];
         } 
 
         if(isset($_GET['search']) && !empty(trim($_GET['search']))){
-            $mediaQueryProvenienza.='&search='.$_GET['search'];
+            $paramQueryProvenienza.='&search='.$_GET['search'];
 
 
         } 
                 
-        $animaleCard=str_replace("[PAGINA_PROVENIENZA]",$mediaQueryProvenienza,$animaleCard);
+        $animaleCard=str_replace("[PAGINA_PROVENIENZA]",$paramQueryProvenienza,$animaleCard);
 
         return $animaleCard;    
     }

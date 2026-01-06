@@ -17,20 +17,19 @@
         }
     } else {
         // $breadcrumb = '<a href="../php/animali.php"> Animali </a>';
-        $mediaQueryProvenienza=[];
+        $paramQueryProvenienza=[];
         if(isset($_GET['pagina']) && is_numeric($_GET['pagina'])){
-            $mediaQueryProvenienza[] = 'pagina='.$_GET['pagina'];
+            $paramQueryProvenienza[] = 'pagina='.$_GET['pagina'];
         } 
 
         if(isset($_GET['search']) && !empty(trim($_GET['search']))){
-            $mediaQueryProvenienza[] = 'search='.$_GET['search'];
+            $paramQueryProvenienza[] = 'search='.$_GET['search'];
         }
 
         $breadcrumb .=' <a href="animali.php';
 
-        if(!empty($mediaQueryProvenienza)){
-            // $breadcrumb .='?'.ltrim($mediaQueryProvenienza,'&');
-            $breadcrumb .='?'.implode('&',$mediaQueryProvenienza);
+        if(!empty($paramQueryProvenienza)){
+            $breadcrumb .='?'.implode('&',$paramQueryProvenienza);
         }
 
         $breadcrumb .='"> Animali </a>';
