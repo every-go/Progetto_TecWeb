@@ -231,6 +231,31 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
         return $animalData; // Ritorna array di animali (può essere vuoto)
     }
 
+    public function searchAnimali($searchTerm) {
+        $sql = "SELECT * FROM animali 
+                WHERE nome LIKE ?
+                ORDER BY nome";
+        $animalData = [];
+
+        if ($stmt = mysqli_prepare($this->connection, $sql)) {
+            $searchParam = "%$searchTerm%";
+            mysqli_stmt_bind_param($stmt, "s",  $searchParam);
+            if (mysqli_stmt_execute($stmt)) {
+                $queryResult = mysqli_stmt_get_result($stmt);
+                if ($queryResult) {
+                    while ($row = mysqli_fetch_assoc($queryResult)) {
+                        $animalData[] = $row;
+                    }
+                    mysqli_free_result($queryResult);
+                }
+            }
+            mysqli_stmt_close($stmt);
+        } else {
+            error_log(mysqli_error($this->connection));
+        }
+        return $animalData;
+    }
+
    
     function loginUtente($username, $passwordInserita) {
         

@@ -25,6 +25,7 @@
     }
     $content = str_replace("[breadcrumb]", $breadcrumb, $content);
     $pulsanti = '';
+    $pulsantePreferiti = '';
     $sezioneAdottami = '';
     $animalData = '';
     $adottami = '';
@@ -40,13 +41,13 @@
             if(isset($_SESSION['username'])){
                 $isFavorite = $db->checkPreferito($_SESSION['username'], intval($_GET['id']));
                 if($isFavorite){
-                    $pulsanti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
+                    $pulsantePreferiti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
                                     <img src="../images/png/heart_filled.png"
                                     alt="Rimuovi dai preferiti"
                                     id="icona-preferiti">
                                   </button>';
                 } else {
-                    $pulsanti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
+                    $pulsantePreferiti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
                                     <img src="../images/png/heart.png"
                                     alt="Aggiungi ai preferiti"
                                     id="icona-preferiti">
@@ -121,6 +122,7 @@
     }
 
     $content = str_replace("[pulsanti]", $pulsanti, $content);
+    $content = str_replace("[PULSANTE_PREFERITI]", $pulsantePreferiti, $content);
     $content = str_replace("[aiutoAdozione]", $aiutoadozione, $content);
     $content = str_replace("[adottami]", $adottami, $content);
     
