@@ -59,7 +59,9 @@
 }
 
 /* Tag HTML */
-
+html {
+    scroll-behavior: smooth;
+}
 html,
 body {
     font-size: 100%;
@@ -1164,6 +1166,56 @@ footer #disclaimer p:first-of-type {
 }
 
 
+a.pulsante-torna-su {
+/* --- POSIZIONAMENTO ESTERNO --- */
+    /* Rende il link un blocco flessibile, così possiamo centrarlo nella pagina */
+    display: flex; 
+    
+    /* Questo centra il bottone orizzontalmente nel footer */
+    margin: 0 auto; 
+    
+    /* Spaziatura esterna (sopra e sotto) */
+    margin-top: .4rem;
+    margin-bottom: 1.4em;
+
+    /* --- ESTETICA DEL BOTTONE --- */
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 50%;
+    
+    /* --- CENTRAMENTO FRECCIA INTERNA --- */
+    justify-content: center; /* Centra orizzontalmente la freccia */
+    align-items: center;     /* Centra verticalmente la freccia */
+
+    /* --- STILE VISIVO --- */
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    
+    /* Colori (Usa le tue variabili) */
+    color: var(--giallo);
+    background: var(--verdescuro);
+    border: 2px solid var(--verdino);
+
+    /* --- ANIMAZIONI --- */
+    box-shadow: 0 0 0 0 transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+a.pulsante-torna-su:hover,
+a.pulsante-torna-su:focus {
+    /*Rimuovi il bordo blu/nero standard del browser */
+    outline: none; 
+    
+
+    box-shadow: 0 0 0 4px rgba(51, 51, 51, 0.3); 
+    
+    /*Cambia il colore di sfondo al passaggio del mouse */
+    background: var(--verdino); 
+    color:var(--verdescuro);
+
+}
+
 @media (max-width: 1200px) {
     main>article#container-adozione {
         margin-inline: -2em;
@@ -1171,5 +1223,12 @@ footer #disclaimer p:first-of-type {
 
     #container-adozione {
         border-radius: 0;
+    }
+}
+
+/* Se l'utente ha chiesto al sistema operativo di ridurre i movimenti... */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto; /* ...torniamo allo scatto istantaneo */
     }
 }

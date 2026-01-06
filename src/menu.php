@@ -72,5 +72,4 @@
     }
     $listaFooter .= '</ul>';
 
-
 ?>
