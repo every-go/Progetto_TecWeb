@@ -40,14 +40,16 @@
             if(isset($_SESSION['username'])){
                 $isFavorite = $db->checkPreferito($_SESSION['username'], intval($_GET['id']));
                 if($isFavorite){
-                    $pulsanti .= '<button id="bottone-preferiti">
+                    $pulsanti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
                                     <img src="../images/png/heart_filled.png"
-                                    alt="Rimuovi dai preferiti">
+                                    alt="Rimuovi dai preferiti"
+                                    id="icona-preferiti">
                                   </button>';
                 } else {
-                    $pulsanti .= '<button id="bottone-preferiti">
+                    $pulsanti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
                                     <img src="../images/png/heart.png"
-                                    alt="Aggiungi ai preferiti">
+                                    alt="Aggiungi ai preferiti"
+                                    id="icona-preferiti">
                                   </button>';
                 }
 

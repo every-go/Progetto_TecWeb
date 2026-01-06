@@ -273,7 +273,7 @@ public function inserisciAnimale($nome, $alt, $immagine, $sesso, $tipo_animale, 
     }
 
     public function checkPreferito($username, $idAnimale) {
-        $query = "SELECT * FROM adottati WHERE id = ? AND username = (SELECT username FROM utenti WHERE username = ?)";
+        $query = "SELECT * FROM preferiti WHERE id = ? AND username = (SELECT username FROM utenti WHERE username = ?)";
         $isFavorite = false;
 
         if ($stmt = mysqli_prepare($this->connection, $query)) {
