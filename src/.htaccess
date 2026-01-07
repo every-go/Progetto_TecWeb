@@ -1,26 +1,22 @@
-# 1. ABILITA la lista dei file (cambiato da - a +)
-# Usa +Indexes per vedere i file, -Indexes per nasconderli (sicurezza in produzione)
-Options +Indexes
+# 1. Gestione Errori Personalizzata
+ErrorDocument 500 /500.php
+ErrorDocument 404 /404.php
+ErrorDocument 401 /401.php
 
-# 2. Gestione Errori Personalizzata
-ErrorDocument 500 /html/500.html
-ErrorDocument 404 /html/404.html
-ErrorDocument 401 /html/401.html
-
-# 3. SICUREZZA: Blocca l'accesso alla cartella DB
+# 2. SICUREZZA: Blocca l'accesso alla cartella DB
 # Nota: <Directory> non funziona nei file .htaccess, si usa RewriteRule
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteRule ^DB/ - [F,L]
 </IfModule>
 
-# 4. Blocca l'accesso diretto ai file .sql ovunque siano
+# 3. Blocca l'accesso diretto ai file .sql ovunque siano
 <FilesMatch "\.(sql)$">
     Order allow,deny
     Deny from all
 </FilesMatch>
 
-# 5. Proteggi il file .htaccess stesso
+# 4. Proteggi il file .htaccess stesso
 <Files ~ "^\.ht">
     Order allow,deny
     Deny from all
