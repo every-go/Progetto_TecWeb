@@ -55,7 +55,7 @@ VALUES
     Le orecchie sono semi erette, piegate in avanti, con pelo piumoso lungo i bordi.
     Il naso è nero e umido, la bocca mostra qualche
     piccolo granello sul labbro inferiore, conferendo un''espressione gentile e curiosa.',
-'../images/jpg/cane_bello.jpg',
+'./images/jpg/cane_bello.jpg',
 'Maschio',
 'Reale',
 'Veneto',
@@ -85,7 +85,7 @@ FALSE),
     La criniera e la coda sono lunghe, fluenti e di un bianco luminoso quasi etereo,
     che sembra risplendere di luce propria.
     La muscolatura è ben definita, conferendo all''animale un''andatura regale e soprannaturale.',
-'../images/jpg/cavallo_lunare.jpg',
+'./images/jpg/cavallo_lunare.jpg',
 'Maschio',
 'Fantasy',
 'Crateri lunari',
@@ -110,7 +110,7 @@ FALSE),
     puro sopra e sotto gli occhi. Il naso è piccolo e nero.
     La pelliccia è folta e variegata, con una miscela di peli grigi, neri e biancastri che gli conferiscono un aspetto soffice.
     Si intravede una piccola zampa nera con dita agili appoggiata al legno.',
-'../images/jpg/procione.jpg',
+'./images/jpg/procione.jpg',
 'Femmina',
 'Reale',
 'Campania',
@@ -134,7 +134,7 @@ FALSE),
     che fluttuano nell''aria come fili di seta.
     Al centro, sotto la cupola, si trova una struttura più densa e frastagliata,
     simile a petali di un fiore esotico, con sfumature calde che vanno dal color panna all''arancione tenue.',
-'../images/jpg/medusa_lunare.jpg',
+'./images/jpg/medusa_lunare.jpg',
 'Femmina',
 'Fantasy',
 'Crateri lunari',
@@ -160,7 +160,7 @@ FALSE),
     Il colore dominante è un nero delicato.
     Gli occhi sono grandi, di un giallo intenso, che gli conferiscono un''espressione di perenne stupore.
     Le orecchie sono piccole e leggermente arrotondate, mentre il musetto è corto con un piccolo naso nero.',
-'../images/jpg/gatto.jpg',
+'./images/jpg/gatto.jpg',
 'Femmina',
 'Reale',
 'Puglia',
@@ -184,7 +184,7 @@ FALSE),
     Una cresta di aculei ossei corre lungo la sommità del capo e del collo.
     Gli occhi sono piccoli, di un arancione infuocato con pupilla verticale, e trasmettono un senso di antica saggezza.
     Il muso è potente, con narici ampie e una mascella robusta protetta da corna laterali.',
-'../images/jpg/drago.jpg',
+'./images/jpg/drago.jpg',
 'Maschio',
 'Fantasy',
 'Terra dei Draghi',

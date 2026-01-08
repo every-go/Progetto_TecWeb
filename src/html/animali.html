@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../images/ico/logo.ico">
+    <link rel="icon" type="image/x-icon" href="./images/ico/logo.ico">
     <title>Animali - Casa Otium</title>
     <meta name="keywords"
         content="Casa Otium, animali, adozione, amico,">
     <meta name="description"
         content="In questa pagina puoi visualizzare tutto l'elenco degli animali disponibili per l'adozione, trova il tuo nuovo amico con Casa Otium">
-    <link rel="stylesheet" href="css/desktop.css" type="text/css">
-    <link rel="stylesheet" href="css/mobile.css" type="text/css" media="screen and (max-width:800px)">
-    <link rel="stylesheet" href="css/print.css" type="text/css" media="print">
+    <link rel="stylesheet" href="./css/desktop.css" type="text/css">
+    <link rel="stylesheet" href="./css/mobile.css" type="text/css" media="screen and (max-width:800px)">
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <!-- link lente -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
@@ -31,7 +31,7 @@
         </nav>
     </header>
 
-    <main id="home-main">
+    <main>
         <nav id="breadcrumb">
             <p>
                 Ti trovi in: <a href="index.php" lang="en">Home </a> <span aria-hidden="true">&gt;&gt;</span> Animali
@@ -39,11 +39,14 @@
         </nav>
         <h1> Trova il tuo amico </h1>
         <div id="search-container">
-            <form role="search">
+            <form id="search-form" method="get" action="animali.php" role="search">
                 <div id="search">
                     <span id="search-icon" class="material-symbols-outlined" aria-hidden="true">search</span>
-                <!-- <label for="search-input">Cerca il tuo futuro amico</label>-->
-                    <input id="search-input" type="search" placeholder="Cerca il tuo futuro amico..." value="[SEARCH_VALUE]">
+                    <!-- <label for="search-input">Cerca il tuo futuro amico</label>-->
+                    <input id="search-input" name="search" type="search" aria-label="Cerca il tuo futuro amico..." placeholder="Cerca il tuo futuro amico..." value="[SEARCH_VALUE]">
+                </div>
+                <div>
+                    <button type="submit"> Cerca </button>
                 </div>
             </form>
             [addButton]
@@ -55,17 +58,6 @@
         
         [LISTA_ANIMALI]    
 
-        <!-- <nav class="pages-buttons">
-            <ul>
-                <li>
-                    <a role="button" aria-label="Pagina precedente" [indietroLink] > <span aria-hidden="true" class="material-symbols-outlined"> arrow_left_alt </span> </a>
-                </li>
-                [indicatorePagina]
-                <li>
-                <a role="button" aria-label="Pagina successiva" [avantiLink]> <span aria-hidden="true" class="material-symbols-outlined"> arrow_right_alt </span> </a>
-                </li>
-            </ul>
-        </nav> -->
         [LISTA_PAGINE]
     </main>
     <a href="#top" class="pulsante-torna-su" aria-label="Torna a inizio della pagina">
@@ -73,12 +65,12 @@
 	</a>
     <footer>
         <div>
-            <nav>
+            <nav aria-label="Mappa del sito">
                 <p id="title-mappa"> Mappa del sito web </p>
                 [listaFooter]
             </nav>
         </div>
-        <img src="../images/png/logo_unipd.png" alt="">
+        <img src="./images/png/logo_unipd.png" alt="">
         <div id="disclaimer">
             <p> <span lang="en">Disclaimer</span></p>
             <p>

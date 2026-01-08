@@ -226,6 +226,9 @@ $content = str_replace('[immagineCorrente]', $htmlImg, $content);
 // 4. Stampo gli errori (Se l'array $errori è vuoto, replaceErrorPlaceholders pulirà tutto)
 $content = replaceErrorPlaceholders($content, $errori);
 
+// aggiunge aria-invalid ai camppi che hanno errori
+$content = addAriaInvalid($content, $errori);
+
 // 5. Pulizia finale (Placeholder orfani)
 $content = cleanForm($content);
 

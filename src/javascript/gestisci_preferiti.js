@@ -32,11 +32,11 @@ function togglePreferiti(idAnimale) {
             // CORREZIONE 2: Cambio src e alt in base alla risposta
             if (data.action === 'added') {
                 // Ora è preferito -> Cuore Pieno
-                icona.src = "../images/png/heart_filled.png";
+                icona.src = "./images/png/heart_filled.png";
                 icona.alt = "Rimuovi dai preferiti";
             } else {
                 // Rimosso -> Cuore Vuoto
-                icona.src = "../images/png/heart.png";
+                icona.src = "./images/png/heart.png";
                 icona.alt = "Aggiungi ai preferiti";
             }
         } else {

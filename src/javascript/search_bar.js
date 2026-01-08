@@ -11,8 +11,6 @@ searchInput.addEventListener('input', function() {
         if (query.length === 0) {
             // barra di ricerca vuota => torna pagina default
             window.location.href = 'animali.php';
-        } else if (query.length >= 2) {
-            window.location.href = `animali.php?search=${encodeURIComponent(query)}`;
         }
     }, 800);
 });

@@ -87,14 +87,14 @@
                 $content = str_replace("[STORIA]", $animalData["storia"], $content);
 
                 if ($isFavorite){
-                    $pulsantePreferiti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
-                                    <img src="../images/png/heart_filled.png"
+                    $pulsantePreferiti .= '<button id="bottone-preferiti" aria-label="Rimuovi dai preferiti" data-id="'.intval($_GET['id']).'">
+                                    <img src="./images/png/heart_filled.png"
                                     alt="Rimuovi dai preferiti"
                                     id="icona-preferiti">
                                   </button>';
                 } elseif ($animalData['adottato'] === 0 && (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin')) {
-                    $pulsantePreferiti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
-                                    <img src="../images/png/heart.png"
+                    $pulsantePreferiti .= '<button id="bottone-preferiti" aria-label="Aggiungi ai preferiti" data-id="'.intval($_GET['id']).'">
+                                    <img src="./images/png/heart.png"
                                     alt="Aggiungi ai preferiti"
                                     id="icona-preferiti">
                                   </button>';

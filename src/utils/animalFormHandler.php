@@ -9,38 +9,42 @@
 
 class campiDatiAnimale{
     public static $testi = [
-        'nome'        => ['form' => 'nome',          'placeholder' => 'nomeAnimale','errPlaceholder' => 'nomeErr'],
-        'eta'         => ['form' => 'eta',           'placeholder' => 'etaAnimale','errPlaceholder' => 'etaErr'],
-        'luogo'       => ['form' => 'luogo',         'placeholder' => 'luogoAnimale','errPlaceholder' => 'luogoErr'],
-        'descrizione' => ['form' => 'descrizione',   'placeholder' => 'descrizione','errPlaceholder' => 'descrizioneErr'],
-        'alt'         => ['form' => 'alt',           'placeholder' => 'altImmagine','errPlaceholder' => 'imageErr'],
-        'bisogni'     => ['form' => 'bisogni',       'placeholder' => 'bisogni','errPlaceholder' => 'bisogniErr'],
-        'storia'      => ['form' => 'storia',        'placeholder' => 'storia','errPlaceholder' => 'storiaErr']
+        'nome'        => ['form' => 'nome',          'placeholder' => 'nomeAnimale','errPlaceholder' => 'nomeErr', 'ariaInvalidPlaceholder' => 'ariaInvalidNome'],
+        'eta'         => ['form' => 'eta',           'placeholder' => 'etaAnimale','errPlaceholder' => 'etaErr', 'ariaInvalidPlaceholder' => 'ariaInvalidEta'],
+        'luogo'       => ['form' => 'luogo',         'placeholder' => 'luogoAnimale','errPlaceholder' => 'luogoErr', 'ariaInvalidPlaceholder' => 'ariaInvalidLuogo'],
+        'descrizione' => ['form' => 'descrizione',   'placeholder' => 'descrizione','errPlaceholder' => 'descrizioneErr', 'ariaInvalidPlaceholder' => 'ariaInvalidDesc'],
+        'alt'         => ['form' => 'alt',           'placeholder' => 'altImmagine','errPlaceholder' => 'imageErr', 'ariaInvalidPlaceholder' => 'ariaInvalidAlt'],
+        'bisogni'     => ['form' => 'bisogni',       'placeholder' => 'bisogni','errPlaceholder' => 'bisogniErr', 'ariaInvalidPlaceholder' => 'ariaInvalidBisogni'],
+        'storia'      => ['form' => 'storia',        'placeholder' => 'storia','errPlaceholder' => 'storiaErr', 'ariaInvalidPlaceholder' => 'ariaInvalidStoria']
     ];
     public static $radio = [
         'sesso' => [
             'form' => 'sesso', 
             'opzioni' => ['Maschio' => 'checkMaschio', 'Femmina' => 'checkFemmina'],
-            'errPlaceholder'=>'sessoErr'
+            'errPlaceholder'=>'sessoErr',
+            'ariaInvalidPlaceholder' => 'ariaInvalidSesso'
         ],
         'tipo_animale' => [
             'form' => 'tipo_animale', 
             'opzioni' => ['Reale' => 'checkReale', 'Fantasy' => 'checkFantasy'],
-            'errPlaceholder'=>'tipoAnimaleErr'
+            'errPlaceholder'=>'tipoAnimaleErr',
+            'ariaInvalidPlaceholder' => 'ariaInvalidTipoAnimale'
         ],
         'taglia' => [
             'form' => 'taglia',
             'opzioni' => ['Piccola' => 'checkTagliaP', 'Media' => 'checkTagliaM', 'Grande' => 'checkTagliaG'],  
-            'errPlaceholder'=>'tagliaErr'
+            'errPlaceholder'=>'tagliaErr',
+            'ariaInvalidPlaceholder' => 'ariaInvalidTaglia'
         ],
         'carattere' => [
             'form' => 'carattere',
             'opzioni' => ['Facile' => 'checkCarF', 'Moderato' => 'checkCarM', 'Difficile' => 'checkCarD'],  
-            'errPlaceholder'=>'carattereErr'
+            'errPlaceholder'=>'carattereErr',
+            'ariaInvalidPlaceholder' => 'ariaInvalidCarattere'
         ]
     ];
     public static $files = [
-        'immagine' => ['form' => 'immagine', 'placeholder' => 'immagineCorrente', 'errPlaceholder' => 'fileErr']
+        'immagine' => ['form' => 'immagine', 'placeholder' => 'immagineCorrente', 'errPlaceholder' => 'fileErr', 'ariaInvalidPlaceholder' => 'ariaInvalidImmagine']
     ];
 }
 
@@ -97,6 +101,7 @@ function cleanForm($content) {
     // Pulisce i placeholder del form
     $content = removeFormDataPlaceholders($content);
     $content = removeErrorPlaceholders($content);
+    $content = removeAriaInvalidPlaceholders($content);
     return $content;
 }
 
@@ -106,6 +111,7 @@ function replaceTextPlaceholder($html, $placeholders) {
     }
     return $html;
 }
+
 function renderRadio($html, $datiUtente) {
     // Configurazione centralizzata dei radio button
     $config = [
@@ -127,8 +133,6 @@ function renderRadio($html, $datiUtente) {
 }
 
 
-
-
 function replaceErrorPlaceholders($html, $errori) {
     $chiavi=array_merge(
         array_column(campiDatiAnimale::$testi,'errPlaceholder'),
@@ -148,6 +152,40 @@ function removeErrorPlaceholders($html) {
         array_column(campiDatiAnimale::$testi,'errPlaceholder'),
         array_column(campiDatiAnimale::$radio,'errPlaceholder'),
         array_column(campiDatiAnimale::$files,'errPlaceholder')
+    );
+    foreach ($chiavi as $key) {
+        $html = str_replace("[$key]", '', $html);
+    }
+    return $html;
+}
+
+// Aggiunge aria-invalid="true" ai campi con errori
+function addAriaInvalid($html, $errori) {
+    // Raccolgo tutti i placeholder aria-invalid da tutte le configurazioni
+    // La chiave dell'array sarà l'errPlaceholder, il valore sarà l'ariaInvalidPlaceholder
+    $allAriaPlaceholders = array_merge(
+        array_column(campiDatiAnimale::$testi, 'ariaInvalidPlaceholder', 'errPlaceholder'),
+        array_column(campiDatiAnimale::$radio, 'ariaInvalidPlaceholder', 'errPlaceholder'),
+        array_column(campiDatiAnimale::$files, 'ariaInvalidPlaceholder', 'errPlaceholder')
+    );
+    
+    // Per ogni placeholder aria-invalid, controllo se esiste l'errore corrispondente
+    foreach ($allAriaPlaceholders as $errKey => $ariaPlaceholder) {
+        $valore = (isset($errori[$errKey]) && !empty($errori[$errKey])) 
+                  ? ' aria-invalid="true"' 
+                  : '';
+        $html = str_replace("[$ariaPlaceholder]", $valore, $html);
+    }
+    
+    return $html;
+}
+
+// Rimuove i placeholder aria-invalid dall'HTML
+function removeAriaInvalidPlaceholders($html) {
+    $chiavi = array_merge(
+        array_column(campiDatiAnimale::$testi, 'ariaInvalidPlaceholder'),
+        array_column(campiDatiAnimale::$radio, 'ariaInvalidPlaceholder'),
+        array_column(campiDatiAnimale::$files, 'ariaInvalidPlaceholder')
     );
     foreach ($chiavi as $key) {
         $html = str_replace("[$key]", '', $html);
@@ -184,7 +222,6 @@ function removeFormDataPlaceholders($html) {
 }
 
 
-
 function checkSelection($input, $allowedValues, $nomeCampo) {
     if (empty($input)) {
         return "Seleziona un'opzione per $nomeCampo.";
@@ -195,13 +232,6 @@ function checkSelection($input, $allowedValues, $nomeCampo) {
     return null;
 }
 
-
-// function stampaErrori($errori, $content){
-//     foreach ($errori as $key => $messaggio) {
-//         $content = str_replace($key, $messaggio ?? '', $content);
-//     }
-//     return $content;
-// }
 
 // Funzione principale di validazione del form animale, ritorna array di errori
 function checkForm($data) {
