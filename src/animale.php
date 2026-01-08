@@ -50,23 +50,10 @@
         if($connessioneOK){
             $animalData = $db->getAnimalById($_GET['id']);
             $isFavorite=false;
-            if(isset($_SESSION['username'])){
+            if(isset($_SESSION['username'])){ 
                 $isFavorite = $db->checkPreferito($_SESSION['username'], intval($_GET['id']));
-                if($isFavorite){
-                    $pulsantePreferiti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
-                                    <img src="../images/png/heart_filled.png"
-                                    alt="Rimuovi dai preferiti"
-                                    id="icona-preferiti">
-                                  </button>';
-                } elseif($animalData['adottato'] == 0 && (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin')) {
-                    $pulsantePreferiti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
-                                    <img src="../images/png/heart.png"
-                                    alt="Aggiungi ai preferiti"
-                                    id="icona-preferiti">
-                                  </button>';
-                }
-
             }
+            
             $db->closeConnection();
             if ($animalData) {
                 $content = str_replace("[NOME]", $animalData["nome"], $content);
@@ -98,6 +85,20 @@
                 $content = str_replace("[BISOGNI]", $bisogni, $content);
 
                 $content = str_replace("[STORIA]", $animalData["storia"], $content);
+
+                if ($isFavorite){
+                    $pulsantePreferiti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
+                                    <img src="../images/png/heart_filled.png"
+                                    alt="Rimuovi dai preferiti"
+                                    id="icona-preferiti">
+                                  </button>';
+                } elseif ($animalData['adottato'] === 0 && (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin')) {
+                    $pulsantePreferiti .= '<button id="bottone-preferiti" data-id="'.intval($_GET['id']).'">
+                                    <img src="../images/png/heart.png"
+                                    alt="Aggiungi ai preferiti"
+                                    id="icona-preferiti">
+                                  </button>';
+                }
             } else {
                 include __DIR__ . "/404.php";
                 http_response_code(404);
