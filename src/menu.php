@@ -24,11 +24,14 @@
         $pages['preferiti.php'] = ['text' => 'Preferiti'];
         $pages['logout.php'] = ['text' => 'Logout', 'lang' => 'en'];
         $pagesFooter['preferiti.php'] = ['text' => 'Preferiti'];
+        $pagesFooter['logout.php'] = ['text' => 'Logout', 'lang' => 'en'];
 
     } else if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true && isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
         $pages['logout.php'] = ['text' => 'Logout', 'lang' => 'en'];
+        $pagesFooter['logout.php'] = ['text' => 'Logout', 'lang' => 'en'];
     } else {
         $pages['login.php'] = ['text' => 'Login', 'lang' => 'en'];
+        $pagesFooter['login.php'] = ['text' => 'Login', 'lang' => 'en'];
     }
 
     // aggiunge crediti per ultimo 
