@@ -18,12 +18,12 @@
             header('Location: animali.php');
             exit();
         } else {
-            include dirname(__DIR__) . "/html/500.html";
+            include __DIR__ . "/500.php";
             http_response_code(500);
             exit();
         }
     } else {
-        include dirname(__DIR__) . "/html/500.html";
+        include __DIR__ . "/500.php";
         http_response_code(500);
         exit();
     }

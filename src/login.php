@@ -57,7 +57,7 @@
                     }
                 } else {
                     // echo("connessione fallita");
-                    include dirname(__DIR__) . "/html/500.html";
+                    include __DIR__ . "/500.php";
                     http_response_code(500);
                     exit();
                 }

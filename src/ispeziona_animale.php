@@ -64,12 +64,12 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
                 $dbImagePath = $datiDB['immagine'];
             } else {
                 // ID non trovato -> 404
-                include dirname(__DIR__) . "/html/404.html";
+                include __DIR__ . "/404.php";
                 exit();
             }
         } else {
             // Errore connessione DB
-            include dirname(__DIR__) . "/html/500.html";
+            include __DIR__ . "/500.php";
             exit();
         }
     }
@@ -141,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
             }
             else{
             // Errore connessione DB
-            include dirname(__DIR__) . "/html/500.html";
+            include __DIR__ . "/500.php";
             exit();
         }
         }
@@ -188,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
             }
             else{
             // Errore connessione DB
-            include dirname(__DIR__) . "/html/500.html";
+            include __DIR__ . "/500.php";
             exit();
             }
         }

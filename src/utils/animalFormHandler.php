@@ -49,7 +49,7 @@ class campiDatiAnimale{
 // crea il form per aggiungere oppure il  per modificare un animale
 function createForm($azione, $id = null) {
     if($azione!=="Aggiungi"&&($azione!=="Modifica" || $id===null || !is_numeric($id))){
-            include dirname(__DIR__).DIRECTORY_SEPARATOR.'..' . "/html/404.html";
+            include __DIR__ ."/../../404.php";
             http_response_code(404);
             exit();
         }

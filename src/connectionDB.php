@@ -23,7 +23,7 @@ class DBAccess {
     // error_log("Database connection failed: " . mysqli_connect_error());
     
     	http_response_code(500);
-		include dirname(__DIR__) . "/html/500.html";
+		include __DIR__ . "/html/500.html";
     
     // Stop script execution
     	exit();
