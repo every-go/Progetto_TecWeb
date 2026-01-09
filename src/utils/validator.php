@@ -2,10 +2,10 @@
 
 // helper: Funzioni pure che fanno un solo controllo e ritornano true/false
 // migliorano la leggibilità
-function checkEmptyString($input, $nomeCampo = null) {
+function checkEmptyString($input, $nomeCampo = null)
+{
     // Controllo se è vuoto (trim per evitare spazi bianchi ingannevoli)
     if (empty(trim($input))) {
-        
         // LOGICA DI COSTRUZIONE MESSAGGIO
         if ($nomeCampo !== null) {
             // Caso con nome: "Il campo 'Nome' è obbligatorio."
@@ -15,12 +15,16 @@ function checkEmptyString($input, $nomeCampo = null) {
             return "Questo campo è obbligatorio.";
         }
     }
-    
+
     return null;
 }
 
-function checkNotNaturalNumber($input, $nomeCampo = null) {
-    if (filter_var($input, FILTER_VALIDATE_INT) !== false && intval($input) >= 0) {
+function checkNotNaturalNumber($input, $nomeCampo = null)
+{
+    if (
+        filter_var($input, FILTER_VALIDATE_INT) !== false &&
+        intval($input) >= 0
+    ) {
         return null;
     } else {
         if ($nomeCampo !== null) {
@@ -30,6 +34,5 @@ function checkNotNaturalNumber($input, $nomeCampo = null) {
         }
     }
 }
-
 
 ?>
