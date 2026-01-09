@@ -8,15 +8,13 @@
 
     $breadcrumb = '';
 
-    if (isset($_SESSION['provenienza']) && $_SESSION['provenienza'] === 'Preferiti') {
-        // $breadcrumb = '<a href="../php/preferiti.php"> Preferiti </a>';
+    if (isset($_SESSION['provenienza']) && $_SESSION['provenienza'] === 'Area Personale') {
         if(isset($_GET['pagina']) && is_numeric($_GET['pagina'])){
-            $breadcrumb .= ' <a href="preferiti.php?pagina='.$_GET['pagina'].'"> Preferiti: pagina-'.$_GET['pagina'].' </a>';
+            $breadcrumb .= ' <a href="area_personale.php?pagina='.$_GET['pagina'].'"> Area Personale: pagina-'.$_GET['pagina'].' </a>';
         } else {
-            $breadcrumb .= ' <a href="preferiti.php"> Preferiti </a>';
+            $breadcrumb .= ' <a href="area_personale.php"> Area Personale </a>';
         }
     } else {
-        // $breadcrumb = '<a href="../php/animali.php"> Animali </a>';
         $paramQueryProvenienza=[];
         if(isset($_GET['pagina']) && is_numeric($_GET['pagina'])){
             $paramQueryProvenienza[] = 'pagina='.$_GET['pagina'];

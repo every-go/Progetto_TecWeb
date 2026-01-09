@@ -72,7 +72,7 @@ VALUES
     3) Alimentazione bilanciata: crocchette premium per cani di taglia media, con integratori per le articolazioni se necessario.
     4) Ambiente ideale: famiglia affettuosa, tollera poco la solitudine (non più di 4 ore al giorno).
     5) Cure veterinarie: vaccini annuali e controlli oculistici',
-'Capitano, un mix di <span lang="en">Collie</span> di 4 anni, è stato salvato dopo essere stato abbandonato
+'Capitano, un mix di Collie di 4 anni, è stato salvato dopo essere stato abbandonato
     durante un trasloco della sua vecchia famiglia.
     Inizialmente timido, ha riguadagnato fiducia grazie ai volontari, rivelando un carattere gioioso e affettuoso.
     Adora le passeggiate nei parchi e le coccole sul divano, e ora cerca una casa stabile dove poter offrire la sua fedeltà incondizionata.

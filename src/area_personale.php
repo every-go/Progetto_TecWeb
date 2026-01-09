@@ -35,7 +35,7 @@
     use DB\DBAccess;
 
     include "menu.php";
-    $content = file_get_contents("html/preferiti.html");
+    $content = file_get_contents("html/area_personale.html");
 
     // Controllo accesso admin
     if (!isset($_SESSION["username"]) || $_SESSION["role"] !== 'user') {
@@ -43,7 +43,7 @@
         exit();
     }
 
-    $_SESSION['provenienza'] = 'Preferiti';
+    $_SESSION['provenienza'] = 'Area Personale';
     $stringaPreferiti="";
     $h2Preferiti="";
     $listaPreferiti="";

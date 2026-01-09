@@ -21,9 +21,9 @@
     ];
 
     if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true && isset($_SESSION['role']) && $_SESSION['role'] === 'user') {
-        $pages['preferiti.php'] = ['text' => 'Preferiti'];
+        $pages['area_personale.php'] = ['text' => 'Area Personale'];
         $pages['logout.php'] = ['text' => 'Logout', 'lang' => 'en'];
-        $pagesFooter['preferiti.php'] = ['text' => 'Preferiti'];
+        $pagesFooter['area_personale.php'] = ['text' => 'Area Personale'];
         $pagesFooter['logout.php'] = ['text' => 'Logout', 'lang' => 'en'];
 
     } else if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true && isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
@@ -46,12 +46,12 @@
         }
 
         if ($isCurrentPage) {
-            $listaMenu .= '<li id="currentlink" aria-current="page" ' .
-            (!empty($data['lang']) ? 'lang="' . $data["lang"] . '"' : '') .
+            $listaMenu .= '<li id="currentlink" aria-current="page"' .
+            (!empty($data['lang']) ? ' lang="' . $data["lang"] . '"' : '') .
             '>' . $data["text"] . '</li>';
         } else {
             $listaMenu .= '<li><a href="' . $page . '"' .
-            (!empty($data['lang']) ? 'lang="' . $data["lang"] . '"' : '') .
+            (!empty($data['lang']) ? ' lang="' . $data["lang"] . '"' : '') .
             '>' . $data["text"] . '</a></li>';
         }
     }
@@ -67,11 +67,11 @@
 
         if ($isCurrentPage) {
             $listaFooter .= '<li aria-current="page"' .
-            (!empty($data['lang']) ? 'lang="' . $data["lang"] . '"' : '') .
+            (!empty($data['lang']) ? ' lang="' . $data["lang"] . '"' : '') .
             '>' . $data["text"] . '</li>';
         } else {
             $listaFooter .= '<li><a href="' . $page . '"' .
-            (!empty($data['lang']) ? 'lang="' . $data["lang"] . '"' : '') .
+            (!empty($data['lang']) ? ' lang="' . $data["lang"] . '"' : '') .
             '>' . $data["text"] . '</a></li>';
         }
     }
