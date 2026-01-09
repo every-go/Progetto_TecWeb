@@ -47,10 +47,6 @@ footer{
    display: none;
 }
 
-#error_drago{
+a.pulsante-torna-su{
    display: none;
-}
-
-#error_drago_print{
-   display: inline;
 }

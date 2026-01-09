@@ -1263,8 +1263,3 @@ a.pulsante-torna-su:focus {
         scroll-behavior: auto;
     }
 }
-
-/* Gestione immagini decorative */
-#error_drago_print {
-    display: none;
-}
