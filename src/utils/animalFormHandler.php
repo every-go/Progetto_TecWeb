@@ -154,7 +154,7 @@ function populateForm($animalData, $content)
     } else {
         $content = str_replace(
             "[immagineCorrente]",
-            "Nessuna immagine caricata.",
+            "",
             $content
         );
     }

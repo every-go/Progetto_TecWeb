@@ -15,7 +15,7 @@ include "menu.php";
 
 // 1. CONTROLLO ACCESSO
 if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "admin") {
-    header("Location: index.php");
+    header("Location: 401.php");
     exit();
 }
 
@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
             if ($datiDB) {
                 // Ho trovato l'animale: popolo i valori
                 $valori = $datiDB;
-                $dbImagePath = $datiDB["immagine"];
+                $dbImagePath = $datiDB["immagine"] . ' aria-label="' . $datiDB["alt"] . '"';
             } else {
                 // ID non trovato -> 404
                 include __DIR__ . "/404.php";
@@ -225,7 +225,7 @@ $content = populateForm($valori, $content);
 $htmlImg = $dbImagePath
     ? '<img src="' .
         $dbImagePath .
-        '" alt="Immagine attuale" class="img-preview">'
+        '" alt="" class="img-preview">'
     : "";
 $content = str_replace("[immagineCorrente]", $htmlImg, $content);
 

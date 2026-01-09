@@ -69,7 +69,7 @@ $content = str_replace("[listaFooter]", $listaFooter, $content);
 // setto la provenienza per la breadcrum
 $_SESSION["provenienza"] = "Animali";
 
-$animaliPerPagina = 1;
+$animaliPerPagina = 3;
 
 $paginaCorrente = isset($_GET["pagina"]) ? (int) $_GET["pagina"] : 1;
 if ($paginaCorrente < 1) {

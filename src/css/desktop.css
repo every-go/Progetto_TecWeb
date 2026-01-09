@@ -1260,6 +1260,11 @@ a.pulsante-torna-su:focus {
 /* Se l'utente ha chiesto al sistema operativo di ridurre i movimenti... */
 @media (prefers-reduced-motion: reduce) {
     html {
-        scroll-behavior: auto; /* ...torniamo allo scatto istantaneo */
+        scroll-behavior: auto;
     }
+}
+
+/* Gestione immagini decorative */
+#error_drago_print {
+    display: none;
 }

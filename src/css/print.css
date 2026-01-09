@@ -46,3 +46,11 @@ header{
 footer{
    display: none;
 }
+
+#error_drago{
+   display: none;
+}
+
+#error_drago_print{
+   display: inline;
+}

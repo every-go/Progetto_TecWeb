@@ -4,7 +4,7 @@ require_once "connectionDB.php";
 use DB\DBAccess;
 
 if ($_SESSION["role"] !== "admin") {
-    header("Location: index.php");
+    header("Location: 401.php");
     exit();
 }
 

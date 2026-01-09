@@ -56,7 +56,7 @@ $content = file_get_contents("html/area_personale.html");
 
 // Controllo accesso admin
 if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "user") {
-    header("Location: index.php");
+    header("Location: 401.php");
     exit();
 }
 

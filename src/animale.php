@@ -120,22 +120,25 @@ if (isset($_GET["id"])) {
                     '<button id="bottone-preferiti" aria-label="Rimuovi dai preferiti" data-id="' .
                     intval($_GET["id"]) .
                     '">
-                                    <img src="./images/png/heart_filled.png"
-                                    alt="Rimuovi dai preferiti"
-                                    id="icona-preferiti">
-                                  </button>';
+                        <picture>
+                            <source srcset="./images/png/heart_filled.png" media="print">
+                            <img src="./images/png/heart_filled.png" alt="" id="icona-preferiti">
+                        </picture>
+                    </button>';
             } elseif (
                 $animalData["adottato"] === 0 &&
                 (!isset($_SESSION["role"]) || $_SESSION["role"] !== "admin")
             ) {
                 $pulsantePreferiti .=
-                    '<button id="bottone-preferiti" aria-label="Aggiungi ai preferiti" data-id="' .
-                    intval($_GET["id"]) .
-                    '">
-                                    <img src="./images/png/heart.png"
-                                    alt="Aggiungi ai preferiti"
-                                    id="icona-preferiti">
-                                  </button>';
+                '<button id="bottone-preferiti" aria-label="Aggiungi ai preferiti" data-id="' .
+                intval($_GET["id"]) .
+                '">
+                    <picture>
+                        <source srcset="./images/png/heart.png" media="print">
+                        <img src="./images/png/heart.png" alt="" id="icona-preferiti">
+                    </picture>
+                </button>';
+
             }
         } else {
             include __DIR__ . "/404.php";
