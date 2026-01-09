@@ -79,7 +79,7 @@ function populateForm($animalData, $content) {
     // Sostituisci i placeholder con i dati dell'animale
     $placeholders = [
         'nomeAnimale' => $animalData["nome"],
-        'etaAnimale' => $animalData["eta"],
+        'etaAnimale' => $animalData["eta"] !== '' ? $animalData["eta"] : '[etaAnimale]', // Mantieni il placeholder se vuoto
         'luogoAnimale' => $animalData["luogo"],
         'descrizione' => $animalData["descrizione"],
         'altImmagine' => $animalData["alt"],
@@ -216,7 +216,11 @@ function removeFormDataPlaceholders($html) {
         'checkCarD'
     ];
     foreach ($placeholders as $key) {
-        $html = str_replace("[$key]", '', $html);
+        if ($key === 'etaAnimale') {
+            $html = str_replace("[$key]", '0', $html);
+        } else {
+            $html = str_replace("[$key]", '', $html);
+        }
     }
     return $html;
 }
