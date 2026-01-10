@@ -14,10 +14,10 @@ Non c'è distinzione nel chi può adottare un animale, chiunque può farlo.
 
 Questo rispecchia la globalizzazione che stiamo vivendo in questo periodo, in cui chiunque può adottare quello che vuole.
 
-Il sito permette di visualizzare gli animali, con un focus sull'animale scelto, inoltre permette di avere una lista degli animali preferiti.
+Il sito permette di visualizzare gli animali, con un focus sull'animale scelto, inoltre permette di avere una lista degli animali preferiti e la lista degli animali adottati.
 
 Contiene delle breve descrizioni nella home sul come si può adottare un animale e capire i loro bisogni.
 
-La lista dei preferiti può averla solo chi effettua un login nel sito, altrimenti c'è comunque la possibilità di vedere gli animali e imparare come adottarli.
+La lista dei preferiti e degli adottati può averla solo chi effettua un login nel sito, altrimenti c'è comunque la possibilità di vedere gli animali e imparare come adottarli.
 
 In seguito nel documento, descriveremo in maniera dettagliata le funzionalità del sito, i requisiti, i serivizi, l'accessibilità, i colori scelti i test effettuati.

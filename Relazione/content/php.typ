@@ -15,15 +15,15 @@ Questa cambia quando effettui il login, diventando
 + Home
 + Animali
 + Chi siamo
-+ Preferiti (non visualizzabile dall'admin, in quanto lui non ha bisogno idealmente di aggiungere animali ai preferiti)
++ Area Personale (non visualizzabile dall'admin, in quanto lui non ha bisogno idealmente di aggiungere animali ai preferiti o di adottarne)
 + Logout
 
-Una cosa molto simile succede al footer, "introducendo" il link alla pagina dei preferiti solo dopo aver effettuato il login.
+Una cosa molto simile succede al footer, "introducendo" il link alla pagina dell'Area Personale solo dopo aver effettuato il login.
 
 L'unica differenza è che nel footer è presente il link anche alla pagina dei crediti.
 
-=== Preferiti
-Da notare però che la pagina Preferiti è l'unica a non avere header e footer dinamici, in quanto per accederci bisogna essere un utente "logged-in", e in quanto tale si ha a disposizione la navbar menzionata precedentemente per gli utenti che hanno effettuato il login.
+=== Area Personale
+Da notare però che la pagina Area Personale è l'unica a non avere header e footer dinamici, in quanto per accederci bisogna essere un utente "logged-in", e in quanto tale si ha a disposizione la navbar menzionata precedentemente per gli utenti che hanno effettuato il login.
 
 === Pagine di errore
 Queste pagine per scelta non hanno la navbar ma dispongono del footer, il quale è un elemento che deve rimanere in qualunque parte del sito web.
@@ -39,41 +39,39 @@ Non è previsto che un account admin possa avere una lista dei preferiti, quindi
 == Pagina animali
 Mostra la lista degli animali adottabili.
 
-#upper("è") possibile eseguire una ricerca per nome.
-La query di ricerca ritorna una corrispondenza positiva se trova una sottostringa uguale ai termini di ricerca
-Ad esempio se si cerca "gatto" sia "Signor Gatto" che "Gattone" sono tra i risultati di ricerca.
-
-Uno script javascript si occupa di fare un refresh automatico della pagina una volta inseriti almeno 2 caratteri validi nella box di ricerca.
-
-Il refresh automatico inserisce in automatico i parametri di ricerca nella query dei parametri dell'URL, permettendo al file php di restituire la pagina contenente i risultati della ricerca 
+È possibile eseguire una ricerca per nome, ritornando una corrispondenza positiva se trova una sottostringa uguale ai termini di ricerca.
+Ad esempio se si cerca "Lunare" trova sia "Cavallo Lunare" che "Medusa Lunare" sono tra i risultati di ricerca.
 
 == Pagina animale
-  Nell'eventualità che un animale sia stato già adottato da un altro utente nella pagina animale compare un'avviso che segnala tale fatto all'utente.
+Nell'eventualità che un animale sia stato già adottato da un altro utente nella pagina animale compare un'avviso che segnala tale fatto all'utente.
 
-  L'avviso va a rimpiazzare la sezione dedicata all'adozione
+L'utente con disabilità visive lo nota subito al primo tab con un aiuto speciale che specifica che l'animale è stato già adottato e rimanda alla sezione che descrive l'adozione già completa. 
 
-  Negli aiuti alla navigazione viene inserito come prima voce un link interno all'avviso. Essendo la prima voce un utente che si avvale di screen reader saprà fin da subito che l'animale è stato adottato.
+L'utente che non usa gli aiuti alla navigazione lo nota leggendo la sezione dedicata all'adozione.
 
-  Questa situazione si verifica solo quando un animale è stato inserito tra i preferiti di un utente.
-  L'eliminazione automatica dalla lista dei preferiti degli utenti che non hanno adottato l'animale potrebbe creare confusione all'utente. 
+Negli aiuti alla navigazione viene inserito come prima voce un link interno all'avviso. Essendo la prima voce un utente che si avvale di screen reader saprà fin da subito che l'animale è stato adottato.
+
+Questa situazione si verifica solo quando un animale è stato inserito tra i preferiti di un utente, poiché nella lista degli animali non c'è possibilità di vedere animali già adottati.
+
+L'eliminazione automatica dalla lista dei preferiti degli utenti che non hanno adottato l'animale potrebbe creare confusione all'utente, per questo abbiamo deciso di modificare solo la stringa di adozione.
+
+Rimane comunque la possibilità dell'utente di togliere l'animale fra i preferiti per la pulizia della propria Area Personale.
 
 === Breadcrumb nella pagina animale
-Per garantire una qualità di navigazione accettabile le breadcrumb della pagina animale.php e preferiti.php rimandano alla medesima pagina da cui si è arrivati.
+Per garantire una qualità di navigazione accettabile le breadcrumb della pagina animale.php e area_personale.php rimandano alla medesima pagina da cui si è arrivati.
 
 Ad esempio se l'utente stava svolgendo una ricerca e dopo aver visualizzato un animale vuole proseguire con l'esplorazione i termini di ricerca e la pagina corrente sono mantenuti.
 
-Se si era arrivati dalla pagina preferiti.php la breadcrumb mostra la pagina preferiti.
-
-
+Se si era arrivati dalla pagina Area Personale la breadcrumb mostra la pagina Area Personale.
 
 === Impaginazione
 Per limitare la quantità di dati inviati all'apertura della lista degli animali è stata implementata una visualizzazione per pagine.
 
 La lista degli animali generale e anche quella risultato di una ricerca sono divise in pagine e il server invia all'utente solo una sezione della lista.
 
-La pagina preferiti non è soggetta a paginazione, si assume che l'utente abbia un numero ragionevole di animali salvati tra i preferiti
+La pagina Area Personale non è soggetta a paginazione, si assume che l'utente abbia un numero ragionevole di animali salvati tra i preferiti
 
-Al termine della lista vi è un menù di navigazione implementato con un nav contente una ul di link, è strutturato nel seguente modo: \
+Al termine della lista vi è un menù di navigazione implementato con un nav contenente una ul di link, è strutturato nel seguente modo: \
 #align(center)[
 #set par(justify: true)
 // #box(stroke:(1pt),width:100%, height: 3em,inset:1em)[
@@ -94,7 +92,9 @@ Al termine della lista vi è un menù di navigazione implementato con un nav con
 - #sym.arrow.l Pagina precedente
 - #sym.arrow Pagina Successiva
 ]
-*Gestione di link non validi e circolari* \
+
+*Gestione di link non validi e circolari* 
+
 La freccia di pagina successiva sparisce all'ultima pagina e 
 la freccia di pagina precedente sparisce alla prima pagina.
 
@@ -103,6 +103,12 @@ I link di pagina numerata non sono doppi, a esempio alla prima pagina vengono vi
 Come l'utente si aspetta, il passaggio tra le pagine non cancella i termini di ricerca impostati
 
 La Pagina corrente non è un link e contiene una label che la segnala come pagina corrente.
+
+*Nota*
+
+A causa della mancanza di tanti animali nel DB e la scelta di visualizzare 3 animali a pagina, questa cosa non si nota benissimo.
+
+Cambiando la variabile animaliperPagina ad 1 si può notare questa cosa in maniera più diretta
 
 == Logout
 Il logout è gestito con un file semplice "logout.php", però ad ogni onclick() del tasto logout con una funzione JavaScript si avvisa l'utente che verrà reindirizzato alla home, per permettere di conoscere ciò che avviene dopo il logout ed impedire  il disorientamento dell'utente.

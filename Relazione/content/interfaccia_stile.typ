@@ -3,7 +3,7 @@
 == Utilizzo delle grid
 Le grid non sono state molto utilizzate poiché peggiorano il rendering, ma sono state sfruttate a dovere. 
 
-Nelle card di "animali" e "preferiti" abbiamo messo una grid nelle informazioni dell'animale perché volevamo mantenere fisso il layout 2x2 delle informazioni.
+Nelle card di "animali" e "area personale" abbiamo messo una grid nelle informazioni dell'animale perché volevamo mantenere fisso il layout 2x2 delle informazioni.
 
 Utilizzando flex sarebbe stato un po' più complesso dato che avremmo dovuto mettere un div per ogni riga.
 
@@ -20,7 +20,7 @@ Il verde (sia scuro che chiaro) richiama solidità, forza e crescita.\
 Il giallo richiama l'energia e la libertà.\
 Il beige richiama la semplicità e la calma.
 
-== Colori utilizzati
+=== Colori utilizzati
 
 #figure(
   caption: [Colore con la relativa codifica RGB utilizzata nel sito 
@@ -38,7 +38,7 @@ table.cell(fill: rgb("000000"))[],[000000]
 )
 ]
 
-== Contrasti principali
+=== Contrasti principali
 
 Per garantire una buona accessibilità del sito web, sono stati verificati i contrasti tra i colori utilizzati per gli sfondi e quelli utilizzati per i testi.
 
@@ -92,13 +92,11 @@ Sul beige (FAF3DD) vengono utilizzati il marrone (4D2F24, rapporto 10.83:1), il 
 
 A volte viene anche utilizzato il verde chiaro (A3B18A) come sfondo. In questo caso, il testo è di colore nero (000000, rapporto 9.21:1).
 
-
 Il rapporto nei link deve essere 3:1 con il testo, 4.5:1 con lo sfondo. 
 
 I link non visitati sono sottolineati, in modo da sistemare eventuali problemi di contrasto.
 
 I link visitati invece sono di colore arancione (B45000) su sfondo beige (FAF3DD, rapporto 4.63:1) e vicino al testo nero (000000, rapporto 4.08:1). Vicino al marrone (4D2F24) c'è un rapporto di 2.33:1, ma non essendo affianco al testo dei link non crea problemi di accessibilità
-
 
 Il colore delle icone nello sfondo verde chiaro (A3B18A) è il verde scuro (1B4332, rapporto 4.86:1).
 

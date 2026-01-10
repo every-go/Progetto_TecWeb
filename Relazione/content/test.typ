@@ -8,10 +8,10 @@ Un altro test effettuato molto spesso è l'utilizzo di NVDA alla fine della scri
 
 Uno dei test effettuati, menzionati nella @colore, è il calcolo dei contrasti.
 
-Un altro test effettuato, non avendo TotalValidator ufficiale a casa, abbiamo trovato il sito #link("https://validator.w3.org")[https://validator.w3.org/] per effettuare dei test sulle pagine html e #link("https://jigsaw.w3.org/css-validator/")[https://jigsaw.w3.org/css-validator/] per i test sul CSS.
+Un altro test effettuato, non avendo TotalValidator ufficiale a casa, è l'utilizzo del sito #link("https://validator.w3.org")[https://validator.w3.org/] per effettuare dei test sulle pagine html e #link("https://jigsaw.w3.org/css-validator/")[https://jigsaw.w3.org/css-validator/] per i test sul CSS.
+
+Questo è stato molto utile per trovare rapidamente errori brevi e stupidi e non accumulare debito tecnico nel corso del progetto.
 
 Chiaramente quando ce n'era la possibilità lo abbiamo utilizzato in laboratorio per testare se sono stati riscontrati problemi non trovati dai siti appena menzionato. Infatti l'ultimo test effettuato è stato il giorno prima della consegna per essere sicuri della bontà della validazione.
 
-Purtroppo, non avendo a disposizione molti test semi-automatici (perché sappiamo che l'automaticità per capire se un sito è accessibile è impossibile), non siamo riusciti esattamente a tutelarci sotto il fronte SqlInjection/Script malevoli.
-
-Ma, riguardante questo, abbiamo fatto delle occorrenze particolari nel codice PHP per evitare questo. Queste protezioni sono descritte nella @php
+Per tutelarci da SQL Injection e Script malevoli abbiamo fatto delle occorrenze particolari nel codice PHP per evitare questo. Queste protezioni sono descritte nella @php
