@@ -2,41 +2,41 @@
 <html lang="it">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="./images/ico/logo.ico">
-	<title>[Ispezione][nomeAnimale] - Casa Otium</title>
-	<meta name="keywords" 
-		content="Casa Otium, animali, adozione, aggiungi, modifica">
-	<meta name="description"
-		content="Aggiungi oppure un animale presente nel rifugio di Casa Otium, ">
-	<link rel="stylesheet" href="./css/desktop.css" type="text/css">
-	<link rel="stylesheet" href="./css/mobile.css" type="text/css" media="screen and (max-width:800px)">
-	<link rel="stylesheet" href="./css/print.css" type="text/css" media="print">
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/ico/logo.ico">
+    <title>[Ispezione][nomeAnimale] - Casa Otium</title>
+    <meta name="keywords" content="Casa Otium, animali, adozione, aggiungi, modifica">
+    <meta name="description" content="Aggiungi oppure un animale presente nel rifugio di Casa Otium, ">
+    <link rel="stylesheet" href="./css/desktop.css" type="text/css">
+    <link rel="stylesheet" href="./css/mobile.css" type="text/css" media="screen and (max-width:800px)">
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body id="top">
     <a class="aiuti" href="#form-main"> Vai al contenuto</a>
     <header id="container-menu">
 
-            <h1 id="logo-header">Casa Otium</h1>
+        <h1 id="logo-header">Casa Otium</h1>
 
-            <nav id="menu" aria-label="Menù">
-                [listaMenu]
-            </nav>
+        <nav id="menu" aria-label="Menù">
+            [listaMenu]
+        </nav>
     </header>
-    <main id="form-main">  
+    <main id="form-main">
         [immagineCorrente]
         <form action="[actionForm]" method="post" enctype="multipart/form-data">
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" value="[nomeAnimale]" required aria-describedby="errNome" [ariaInvalidNome]>
+            <input type="text" id="nome" name="nome" value="[nomeAnimale]" required aria-describedby="errNome"
+                [ariaInvalidNome]>
             <div id="errNome" role="alert">[nomeErr]</div>
 
             <label for="eta">Età (anni):</label>
-            <input type="number" id="eta" name="eta" value="[etaAnimale]" required min="0" aria-describedby="errEta" [ariaInvalidEta]> 
+            <input type="number" id="eta" name="eta" value="[etaAnimale]" required min="0" aria-describedby="errEta"
+                [ariaInvalidEta]>
             <div id="errEta" role="alert">[etaErr]</div>
-            
+
             <fieldset>
                 <legend> Sesso: </legend>
                 <div class="radio">
@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </fieldset>
-            
+
             <fieldset>
                 <legend> Tipologia: </legend>
                 <div class="radio">
@@ -64,17 +64,20 @@
                     </div>
                 </div>
             </fieldset>
-          
-            
+
+
             <label for="immagine">Immagine (formati accettati: JPG, JPEG, PNG):</label>
-            <input type="file" id="immagine" name="immagine" accept="image/jpg, image/jpeg, image/png" aria-describedby="errImmagine" [ariaInvalidImmagine]>
+            <input type="file" id="immagine" name="immagine" accept="image/jpg, image/jpeg, image/png"
+                aria-describedby="errImmagine" [ariaInvalidImmagine]>
             <div id="errImmagine" role="alert">[fileErr]</div>
             <label for="alt">Descrizione ALT:</label>
-            <input type="text" id="alt" name="alt" value="[altImmagine]" required aria-describedby="errAlt" [ariaInvalidAlt]>
+            <input type="text" id="alt" name="alt" value="[altImmagine]" required aria-describedby="errAlt"
+                [ariaInvalidAlt]>
             <div id="errAlt" role="alert">[imageErr]</div>
 
             <label for="luogo">Luogo di ritrovamento:</label>
-            <input type="text" id="luogo" name="luogo" value="[luogoAnimale]" required aria-describedby="errLuogo" [ariaInvalidLuogo]>
+            <input type="text" id="luogo" name="luogo" value="[luogoAnimale]" required aria-describedby="errLuogo"
+                [ariaInvalidLuogo]>
             <div id="errLuogo" role="alert">[luogoErr]</div>
 
             <fieldset>
@@ -92,11 +95,11 @@
                         <input type="radio" id="taglia_g" name="taglia" value="Grande" [checkTagliaG]>
                         <label for="taglia_g">Grande</label>
                     </div>
-                </div> 
+                </div>
             </fieldset>
-            
+
             <fieldset>
-            <legend>Carattere: </legend>
+                <legend>Carattere: </legend>
                 <div class="radio">
                     <div class="radio-item">
                         <input type="radio" id="car_f" name="carattere" value="Facile" [checkCarF] required>
@@ -117,15 +120,18 @@
                 <legend>Descrizioni</legend>
                 <div id="descrizione-animale">
                     <label for="descrizione">Descrizione:</label>
-                    <textarea id="descrizione" name="descrizione" rows="5" required aria-describedby="errDesc" [ariaInvalidDesc]>[descrizione]</textarea>
+                    <textarea id="descrizione" name="descrizione" rows="5" required aria-describedby="errDesc"
+                        [ariaInvalidDesc]>[descrizione]</textarea>
                     <div id="errDesc" role="alert">[descrizioneErr]</div>
 
                     <label for="bisogni">Bisogni specifici:</label>
-                    <textarea id="bisogni" name="bisogni" rows="5" required aria-describedby="errBisogni" [ariaInvalidBisogni]>[bisogni]</textarea>
+                    <textarea id="bisogni" name="bisogni" rows="5" required aria-describedby="errBisogni"
+                        [ariaInvalidBisogni]>[bisogni]</textarea>
                     <div id="errBisogni" role="alert">[bisogniErr]</div>
 
                     <label for="storia">Storia:</label>
-                    <textarea id="storia" name="storia" rows="5" aria-describedby="errStoria" [ariaInvalidStoria]>[storia]</textarea>
+                    <textarea id="storia" name="storia" rows="5" aria-describedby="errStoria"
+                        [ariaInvalidStoria]>[storia]</textarea>
                     <div id="errStoria" role="alert">[storiaErr]</div>
 
                     <input type="submit" name="[Azione]" value="[pulsanteAzione]">
@@ -133,26 +139,27 @@
             </fieldset>
         </form>
     </main>
-	<a href="#top" class="pulsante-torna-su" aria-label="Torna a inizio della pagina">
-			⇪
-	</a>
-<footer>
-		<div>
-			<nav aria-label="Mappa del sito">
-			<h2> Mappa del sito web </h2>
-				[listaFooter]
-			</nav>
-		</div>
-		<img src="./images/png/logo_unipd.png" alt="">
-		<div id="disclaimer">
-			<p> <span lang="en">Disclaimer</span></p>
-			<p>
-				Questo sito <span lang="en">web</span> è stato sviluppato presso l'Università di Padova come progetto
-				didattico valutato dalla professoressa Gaggi Ombretta; ogni riferimento a luogo, persona o animale reale è
-				puramente casuale in quanto alcune immagini sono state generate dall'intelligenza artificiale.
-			</p>
-		</div>
-</footer>
+    <footer>
+        <a href="#top" class="pulsante-torna-su" aria-label="Torna a inizio della pagina">
+            ⇪
+        </a>
+        <div>
+            <nav aria-label="Mappa del sito">
+                <h2> Mappa del sito web </h2>
+                [listaFooter]
+            </nav>
+        </div>
+        <img src="./images/png/logo_unipd.png" alt="">
+        <div id="disclaimer">
+            <p> <span lang="en">Disclaimer</span></p>
+            <p>
+                Questo sito <span lang="en">web</span> è stato sviluppato presso l'Università di Padova come progetto
+                didattico valutato dalla professoressa Gaggi Ombretta; ogni riferimento a luogo, persona o animale reale
+                è
+                puramente casuale in quanto alcune immagini sono state generate dall'intelligenza artificiale.
+            </p>
+        </div>
+    </footer>
 
 </body>
 
