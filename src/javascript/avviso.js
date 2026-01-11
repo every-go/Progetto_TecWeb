@@ -1,5 +1,6 @@
 var durata = 4000; // 4 secondi
-var intervallo = 333; // aggiornamento ogni 50ms
+// var intervallo = 333; // 3 aggiornamenti automatici per secondo
+var intervallo = 50; // aggiornamento ogni 50ms
 
 var avviso = document.getElementById('avviso');
 var progressBar = avviso ? avviso.querySelector('.progress-bar') : null;
