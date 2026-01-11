@@ -238,6 +238,28 @@ header h1 {
     margin: 2em auto 1em;
 }
 
+#avviso {
+    background-color: var(--secondary-bg);
+    color: var(--primary-bg);
+    padding: 1em 1.5em;
+    margin: 1.5em auto;
+    max-width: 31.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.2em 0.6em rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#avviso::before {
+    content: "✓";
+    font-size: 1.5em;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
 .txt-img {
     display: flex;
     flex-direction: row;
