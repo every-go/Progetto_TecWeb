@@ -281,7 +281,17 @@ header h1 {
     width: 100%;
     height: 100%;
     background-color: var(--primary-bg);
-    transition: width 0.1s linear;
+    animation: countdown 4s linear forwards;
+}
+
+@keyframes countdown {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
 }
 
 .txt-img {
@@ -1324,5 +1334,10 @@ a.pulsante-torna-su:focus {
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
+    }
+
+    .progress-bar {
+        animation: none;
+        width: 0%;
     }
 }
