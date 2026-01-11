@@ -1247,6 +1247,17 @@ a.pulsante-torna-su:focus {
     box-shadow: 0 0 0 4px rgba(51, 51, 51, 0.3); 
 }
 
+/* 
+    Gestione immagini per la stampa
+*/
+.print-only{
+    display: none;
+}
+
+
+
+
+
 @media (max-width: 1200px) {
     main>article#container-adozione {
         margin-inline: -2em;

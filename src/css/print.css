@@ -50,3 +50,22 @@ footer{
 a.pulsante-torna-su{
    display: none;
 }
+
+
+/* 
+Gestione immagini e contenuti print-only e screen only
+*/
+
+.screen-only{
+   display: none;
+}
+
+.print-only{
+   display: block;
+}
+
+
+
+img.print-only{
+   border: none;
+}
