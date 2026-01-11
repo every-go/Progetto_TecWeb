@@ -62,6 +62,7 @@
 html {
     scroll-behavior: smooth;
 }
+
 html,
 body {
     font-size: 100%;
@@ -236,6 +237,61 @@ header h1 {
 #home-main .linesecond {
     width: 90%;
     margin: 2em auto 1em;
+}
+
+#avviso {
+    position: fixed;
+    top: 1em;
+    right: 2em;
+    background-color: var(--secondary-bg);
+    color: var(--primary-bg);
+    max-width: 31.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.2em 0.6em rgba(0, 0, 0, 0.15);
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#avviso p {
+    /* gap: 1em; */
+    align-items: center;
+    display: flex;
+    padding: 1em 1em 0 1em;
+}
+
+#avviso p::before {
+    content: "✓";
+    font-size: 1.5em;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-right: 1em;
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background-color: var(--verdescuro);
+    margin-top: 10px;
+    overflow: hidden;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-bg);
+    animation: countdown 4s linear forwards;
+}
+
+@keyframes countdown {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
 }
 
 .txt-img {
@@ -472,7 +528,7 @@ button[type="submit"] {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-button[type="submit"]:focus { 
+button[type="submit"]:focus {
     outline: 3px solid var(--grigio);
     outline-offset: 2px;
 }
@@ -550,6 +606,7 @@ button[type="submit"]:hover {
 
 .animali {
     margin: 2em 0;
+    margin-bottom: 5em;
     display: flex;
     flex-direction: row;
     gap: 10em;
@@ -603,6 +660,7 @@ button[type="submit"]:hover {
     border-top-right-radius: 28px;
 }
 
+
 .animale-info {
     padding: 1em;
     color: var(--primary-bg);
@@ -617,7 +675,7 @@ button[type="submit"]:hover {
 .animale-info .nome {
     font-size: 1.5em;
     font-weight: bold;
-    /* margin-bottom: 0.8em; */
+    margin-bottom: .3em;
     grid-column: 1 / 3;
 }
 
@@ -1203,31 +1261,35 @@ footer #disclaimer p:first-of-type {
 
 
 a.pulsante-torna-su {
-/* --- POSIZIONAMENTO ESTERNO --- */
-    /* Rende il link un blocco flessibile, così possiamo centrarlo nella pagina */
-    display: flex; 
-    
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+
+    display: flex;
+
     /* Questo centra il bottone orizzontalmente nel footer */
-    margin: 0 auto; 
-    
+    margin: 0 auto;
+
     /* Spaziatura esterna (sopra e sotto) */
     margin-top: .4rem;
     margin-bottom: 1.4em;
 
     /* --- ESTETICA DEL BOTTONE --- */
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
-    
+
     /* --- CENTRAMENTO FRECCIA INTERNA --- */
-    justify-content: center; /* Centra orizzontalmente la freccia */
-    align-items: center;     /* Centra verticalmente la freccia */
+    justify-content: center;
+    /* Centra orizzontalmente la freccia */
+    align-items: center;
+    /* Centra verticalmente la freccia */
 
     /* --- STILE VISIVO --- */
     text-decoration: none;
     cursor: pointer;
     font-size: 1.2rem;
-    
+
     /* Colori (Usa le tue variabili) */
     color: var(--giallo);
     background: var(--verdescuro);
@@ -1241,16 +1303,16 @@ a.pulsante-torna-su {
 a.pulsante-torna-su:hover,
 a.pulsante-torna-su:focus {
     /*Rimuovi il bordo blu/nero standard del browser */
-    outline: none; 
-    
+    outline: none;
 
-    box-shadow: 0 0 0 4px rgba(51, 51, 51, 0.3); 
+
+    box-shadow: 0 0 0 4px rgba(51, 51, 51, 0.3);
 }
 
 /* 
     Gestione immagini per la stampa
 */
-.print-only{
+.print-only {
     display: none;
 }
 
@@ -1272,5 +1334,10 @@ a.pulsante-torna-su:focus {
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
+    }
+
+    .progress-bar {
+        animation: none;
+        width: 0%;
     }
 }

@@ -1,4 +1,4 @@
-main > article {
+main>article {
     min-height: auto;
 }
 
@@ -17,9 +17,9 @@ body {
     width: 50%;
 }
 
-#breadcrumb {
+/* #breadcrumb {
     margin-bottom: 0em;
-}
+} */
 
 #container-adozione {
     width: 100vw;
@@ -42,7 +42,7 @@ body {
     width: 15rem;
 }
 
-.animali { 
+.animali {
     gap: 3em
 }
 
@@ -111,7 +111,7 @@ body {
 }
 
 #animale-main {
-    display:unset;
+    display: unset;
 }
 
 .img-cutter {
@@ -151,6 +151,11 @@ body {
 
 #txt-form img {
     width: 100%;
+}
+
+a.pulsante-torna-su {
+    right: 1.5em;
+    bottom: 1.5em;
 }
 
 footer img {
