@@ -472,6 +472,28 @@ class DBAccess
 
         return $success;
     }
-}
+    
+
+
+
+    public function getListaLuoghi(){
+    $query = "SELECT DISTINCT luogo FROM animali ORDER BY luogo ASC";
+        $luoghi = [];
+
+        if ($result = mysqli_query($this->connection, $query)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $luoghi[] = $row['luogo'];
+            }
+            mysqli_free_result($result);
+        }
+        
+
+        return $luoghi;
+    }
+    
+
+}    
+
+
 
 ?>
