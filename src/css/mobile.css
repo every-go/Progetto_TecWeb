@@ -183,3 +183,23 @@ footer #disclaimer {
     margin: 0 auto;
     width: 100%;
 }
+
+/* 
+Linearizzazione di Aaron Gustafson
+*/
+
+/* al momento non stiamo usando tfoot, ma ne dubbio lo lascio */
+#tabella-contatti thead,#tabella-contatti tfoot{
+    display: none;
+}
+
+#tabella-contatti tr,#tabella-contatti th, #tabella-contatti td {
+    display: block;
+    padding:0;
+    white-space: normal;
+}
+
+#tabella-contatti th[data-title]:before,#tabella-contatti td[data-title]:before {
+    content: attr(data-title) ":\00A0";
+    font-weight: bold;
+}

@@ -476,20 +476,38 @@ class DBAccess
 
 
 
-    public function getListaLuoghi(){
-    $query = "SELECT DISTINCT luogo FROM animali ORDER BY luogo ASC";
-        $luoghi = [];
+public function getListaLuoghi() {
+    // 1. Modifica Query: Escludiamo i NULL e le stringhe vuote
+    $query = "SELECT DISTINCT luogo 
+                FROM animali 
+                WHERE luogo IS NOT NULL AND luogo <> '' 
+                ORDER BY luogo ASC";
+    
+    $luoghi = [];
 
-        if ($result = mysqli_query($this->connection, $query)) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $luoghi[] = $row['luogo'];
-            }
-            mysqli_free_result($result);
-        }
-        
+    // Eseguiamo la query
+    $result = mysqli_query($this->connection, $query);
 
-        return $luoghi;
+    if (!$result) {
+
+        return null; 
     }
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        // 3. Pulizia dati: (Opzionale) Assicuriamoci che la prima lettera sia maiuscola
+        // Utile se nel DB hai scritto "milano" invece di "Milano"
+        $luogoPulito = ucfirst(strtolower($row['luogo']));
+        
+        // Evitiamo di reinserire duplicati se abbiamo normalizzato le maiuscole/minuscole
+        if (!in_array($luogoPulito, $luoghi)) {
+            $luoghi[] = $luogoPulito;
+        }
+    }
+
+    mysqli_free_result($result);
+
+    return $luoghi;
+}
     
 
 }    

@@ -58,7 +58,11 @@ Le altre keyword utilizzate con la relativa spiegazione sono descritte nella seg
   ),
   [Home],[Rifugio, Amici, Felice],[Rifugio e Felice sono compresi nelle intestazioni. Siccome Rifugio è anche una parola che può indicare un posto in cui gli animali si nascondono, abbiamo deciso di tenerlo come metafora per il nostro sito. Amici è necessario per la description poiché si sa che gli animali sono anche amici dell'uomo (o dei maghi in questo caso) ed era coerente con il significato della pagina.],
   [Login],[Login, Accesso],[Qui le due keyword aggiuntive erano implicite dal significato della pagina, poiché un utente può ricercare la pagina di login per accedere ai servizi di Casa Otium],
-  [Chi Siamo],[Volontari, Intervento],[Questa pagina descrive come i volontari di casa Otium intervongono con la loro dedizione, di conseguenza le parole volontari ed intervento erano naturali e abbiamo pensato che potessero essere ricercate per capire più informazioni sull'operato dei volontari],
+  [Chi Siamo],[Volontari, Intervento, contatti],[Questa pagina descrive come i volontari di casa Otium intervongono con la loro dedizione, di conseguenza le parole volontari ed intervento erano naturali e abbiamo pensato che potessero essere ricercate per capire più informazioni sull'operato dei volontari. 
+  
+  Contiene anche la tabella dei contatti, in questo caso vi è una tabella contente dati fittizzi sugli admin da contattare.
+  La tabella utilizza la tecnica della linearizzazione di Aaron Gustafson per trasformare la tabella al ridursi della dimensione dello schermo.
+  ],
   [401],[Errore 401, Non autorizzato], table.cell(rowspan:3)[Non essendo le pagine di errore effettivamente ricercabili, abbiamo deciso solo di inserire il nome e la breve descrizione del tipo di errore.],
   [404],[Errore 404, Non trovato],
   [500],[Errore 500, Server],
