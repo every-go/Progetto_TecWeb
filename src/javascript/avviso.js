@@ -6,4 +6,4 @@ setTimeout(function () {
             avviso.remove();
         }, 500);
     }
-}, 400000);
+}, 4000);

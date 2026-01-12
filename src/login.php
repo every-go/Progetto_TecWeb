@@ -50,7 +50,7 @@ if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] !== true) {
                 if ($res_login) {
                     // echo("login ok");
                     // Login riuscito
-                    $_SESSION['messaggio_utente'] = '<span lang="en">Login </span> avvenuto con successo';
+                    $_SESSION['messaggio_utente'] = ' <span lang="en">Login&nbsp;</span> avvenuto con successo';
                     header("Location: index.php");
                     exit();
                 } else {

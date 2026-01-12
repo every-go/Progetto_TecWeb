@@ -6,7 +6,7 @@ session_destroy();  // Distrugge la sessione sul server
 session_abort();
 
 session_start();
-$_SESSION['messaggio_utente'] = '<span lang="en">Logout </span>avvenuto con successo';
+$_SESSION['messaggio_utente'] = '<span lang="en">  Logout&nbsp;</span>avvenuto con successo';
 // Rimanda alla home
 header("Location: index.php");
 exit;
