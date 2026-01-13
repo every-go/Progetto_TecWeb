@@ -1,4 +1,5 @@
 <?php
+
 namespace DB;
 
 require_once "utils/imageHandler.php";
@@ -6,6 +7,8 @@ require_once "utils/imageHandler.php";
 use ImageHandler;
 use mysqli;
 use mysqli_result;
+use throwable;
+use exception;
 
 class DBAccess
 {
@@ -93,19 +96,20 @@ class DBAccess
         return false;
     }
 
-    
-    public function getList() {
+
+    public function getList()
+    {
         $query = "SELECT * FROM animali WHERE adottato = 0 ORDER BY id ASC";
-        
+
         ($queryResult = mysqli_query($this->connection, $query)) or
             die("Errore in dbConnection: " . mysqli_error($this->connection));
-        
+
         $result = [];
-        
+
         while ($row = mysqli_fetch_assoc($queryResult)) {
             array_push($result, $row);
         }
-        
+
         $queryResult->free();
         return $result;
     }
@@ -143,7 +147,6 @@ class DBAccess
 
             mysqli_commit($this->connection);
             $risultato = true;
-
         } catch (Throwable $e) {
             mysqli_rollback($this->connection);
             return false;
@@ -331,7 +334,6 @@ class DBAccess
 
             mysqli_commit($this->connection);
             $adozioneRiuscita = true;
-
         } catch (Throwable $e) {
             mysqli_rollback($this->connection);
             return false;
@@ -401,12 +403,12 @@ class DBAccess
             mysqli_stmt_bind_param($stmt, "s", $username);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
-            
+
             $row = mysqli_fetch_assoc($result);
             mysqli_free_result($result);
             mysqli_stmt_close($stmt);
             if ($row) {
-                
+
                 if ($passwordInserita === $row["password"]) {
                     session_regenerate_id(true);
 
@@ -418,7 +420,7 @@ class DBAccess
                         $_SESSION["role"] = "user";
                     }
 
-                    return true; 
+                    return true;
                 }
             }
         }
@@ -449,7 +451,7 @@ class DBAccess
     {
         $query = "SELECT username FROM utenti WHERE username = ?";
         $success = false;
-        if($stmt = mysqli_prepare($this->connection, $query)) {
+        if ($stmt = mysqli_prepare($this->connection, $query)) {
             mysqli_stmt_bind_param($stmt, "s", $username);
 
             if (mysqli_stmt_execute($stmt) && mysqli_stmt_affected_rows($stmt) > 0) {
@@ -457,9 +459,7 @@ class DBAccess
             }
 
             mysqli_stmt_close($stmt);
-
-        }
-        else {
+        } else {
             error_log(mysqli_error($this->connection));
         }
 
@@ -528,57 +528,58 @@ class DBAccess
     {
         $success = false;
         mysqli_begin_transaction($this->connection);
-    
+
         try {
             $queryInserimento = "INSERT INTO adottati (username, id) VALUES (?, ?)";
             $stmt = mysqli_prepare($this->connection, $queryInserimento);
             mysqli_stmt_bind_param($stmt, "si", $username, $idAnimale);
             mysqli_stmt_execute($stmt);
-    
+
             if (mysqli_stmt_affected_rows($stmt) === 0) {
                 throw new Exception("Insert fallita");
             }
             mysqli_stmt_close($stmt);
-    
+
             $queryAggiornamento = "UPDATE animali SET adottato = TRUE WHERE id = ?";
             $stmt = mysqli_prepare($this->connection, $queryAggiornamento);
             mysqli_stmt_bind_param($stmt, "i", $idAnimale);
             mysqli_stmt_execute($stmt);
-    
+
             if (mysqli_stmt_affected_rows($stmt) === 0) {
                 throw new Exception("Update fallita");
             }
             mysqli_stmt_close($stmt);
-    
+
             $success = $this->rimuoviPreferito($username, $idAnimale);
-    
+
             mysqli_commit($this->connection);
         } catch (Throwable $e) {
             mysqli_rollback($this->connection);
             return false;
         }
-    
+
         return $success;
     }
-        
-    public function getListaLuoghi() {
+
+    public function getListaLuoghi()
+    {
         $query = "SELECT DISTINCT luogo 
                     FROM animali 
                     WHERE luogo IS NOT NULL AND luogo <> '' 
                     ORDER BY luogo ASC";
-        
+
         $luoghi = [];
 
         $result = mysqli_query($this->connection, $query);
 
         if (!$result) {
 
-            return null; 
+            return null;
         }
 
         while ($row = mysqli_fetch_assoc($result)) {
             $luogoPulito = ucfirst(strtolower($row['luogo']));
-            
+
             if (!in_array($luogoPulito, $luoghi)) {
                 $luoghi[] = $luogoPulito;
             }
@@ -593,7 +594,7 @@ class DBAccess
     {
         $query = "SELECT username FROM adottati WHERE id = ?";
         $username = null;
-    
+
         if ($stmt = mysqli_prepare($this->connection, $query)) {
             mysqli_stmt_bind_param($stmt, "i", $id);
             if (mysqli_stmt_execute($stmt)) {
@@ -607,9 +608,7 @@ class DBAccess
         } else {
             error_log(mysqli_error($this->connection));
         }
-    
+
         return $username;
     }
-    
-}    
-?>
+}

@@ -1,7 +1,9 @@
 <?php
 include "menu.php";
 require_once "." . DIRECTORY_SEPARATOR . "connectionDB.php";
+
 use DB\DBAccess;
+
 $content = file_get_contents("html/animale.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
@@ -146,13 +148,14 @@ if (isset($_GET["id"])) {
         isset($_SESSION["role"]) &&
         $_SESSION["role"] === "admin"
     ) {
+        $params = htmlspecialchars(http_build_query($_GET));
         $pulsanti .=
             '<div class="admin-buttons">
-                    <a role="button" href="ispeziona_animale.php?id=' .
-            $_GET["id"] .
+                    <a role="button" href="ispeziona_animale.php?' .
+            $params .
             '" class="btn-modifica">Modifica</a>
-                    <a role="button" href="elimina.php?id=' .
-            $_GET["id"] .
+                    <a role="button" href="elimina.php?' .
+            $params .
             '" class="btn-elimina"> Elimina </a>
                     </div>';
     } elseif ($animalData["adottato"] == 0) {
@@ -168,22 +171,23 @@ if (isset($_GET["id"])) {
         </aside>';
     } else {
         $mostraWarning = true;
-    
+
         if (isset($_SESSION['username'])) {
             $db = new DBAccess();
             $db->openDBConnection();
-    
+
             $adozioneUsername = $db->getAdottatoDa($_GET["id"]);
-            
-            if ($adozioneUsername &&
-                $adozioneUsername === $_SESSION['username'])
-            {
+
+            if (
+                $adozioneUsername &&
+                $adozioneUsername === $_SESSION['username']
+            ) {
                 $mostraWarning = false;
             }
-    
+
             $db->closeConnection();
         }
-    
+
         if ($mostraWarning) {
             $warningAdozione = "<div id='avviso' role='alert'>
                 <p>" . $animalData["nome"] . " è già stato adottato</p>
@@ -191,7 +195,7 @@ if (isset($_GET["id"])) {
                     <div class='progress-bar'></div>
                 </div>
             </div>";
-    
+
             $adottami = '<aside id="adotta">
                 <h2>' . $animalData["nome"] . ' è stato già adottato!</h2>
                 <p>' . $animalData["nome"] . ' ha già trovato una casa amorevole. Grazie per il tuo interesse nell\'adottare e
@@ -201,7 +205,6 @@ if (isset($_GET["id"])) {
             $adottami = ''; // sei tu che hai adottato → niente messaggio
         }
     }
-    
 } else {
     include __DIR__ . "/404.php";
     http_response_code(404);
@@ -226,4 +229,3 @@ $content = str_replace("[WARNING_ADOZIONE]", $warningAdozione, $content);
 $content = str_replace("[adottami]", $adottami, $content);
 
 echo $content;
-?>

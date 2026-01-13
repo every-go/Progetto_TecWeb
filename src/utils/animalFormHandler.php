@@ -1,5 +1,26 @@
 <?php
 
+//helper per la creazione delle query dei parametri http
+function createHttpQuery($source, $allowedKeys, $htmlChars = true)
+{
+    // Converto la lista di chiavi ['chiave', 'valore'] in un array associativo ['id'=>0, 'nome'=>1]
+    // Questo serve per poter fare l'intersezione basata sulle chiavi.
+    $whitelist = array_flip($allowedKeys);
+
+    // Prendo da $source SOLO le chiavi che esistono in $whitelist.
+    $filtered = array_intersect_key($source, $whitelist);
+
+    // Costruisco la query, considerando se devo fare l'escape dei caratteri HTML.
+    return $htmlChars ? 
+        htmlspecialchars(http_build_query($filtered)) : 
+        http_build_query($filtered);
+}
+
+
+
+
+
+
 class campiDatiAnimale
 {
     public static $testi = [
@@ -109,10 +130,11 @@ function createForm($azione, $id = null)
     $content = str_replace("[Azione]", $azione, $content);
 
     if ($azione === "Aggiungi") {
-        $actionForm = "ispeziona_animale.php";
+
+        $actionForm = "ispeziona_animale.php?".createHttpQuery($_GET, ['pagina', 'search']);
         $content = str_replace("[actionForm]", $actionForm, $content);
     } elseif ($azione === "Modifica") {
-        $actionForm = "ispeziona_animale.php?id=" . urlencode($id);
+        $actionForm = "ispeziona_animale.php?" . createHttpQuery($_GET, ['pagina', 'search', 'id']);
         $content = str_replace("[actionForm]", $actionForm, $content);
     }
 
@@ -124,7 +146,7 @@ function populateForm($animalData, $content)
     $placeholders = [
         "nomeAnimale" => $animalData["nome"],
         "etaAnimale" =>
-            $animalData["eta"] !== "" ? $animalData["eta"] : "[etaAnimale]",
+        $animalData["eta"] !== "" ? $animalData["eta"] : "[etaAnimale]",
         "luogoAnimale" => $animalData["luogo"],
         "descrizione" => $animalData["descrizione"],
         "altImmagine" => $animalData["alt"],
@@ -248,8 +270,8 @@ function addAriaInvalid($html, $errori)
     foreach ($allAriaPlaceholders as $errKey => $ariaPlaceholder) {
         $valore =
             isset($errori[$errKey]) && !empty($errori[$errKey])
-                ? ' aria-invalid="true"'
-                : "";
+            ? ' aria-invalid="true"'
+            : "";
         $html = str_replace("[$ariaPlaceholder]", $valore, $html);
     }
 
@@ -373,4 +395,3 @@ function checkForm($data)
 
     return array_filter($errori);
 }
-?>

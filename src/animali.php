@@ -173,9 +173,11 @@ if (
     isset($_SESSION["role"]) &&
     $_SESSION["role"] === "admin"
 ) {
-    $pulsanteAdd = '<a id="add-animal-btn" role="button" href="ispeziona_animale.php?">
-            <span class="material-symbols-outlined" aria-hidden="true">add</span>
-            Aggiungi </a>';
+    $parametriQuery = $_GET;
+    $pulsanteAdd = '<a id="add-animal-btn" role="button" href="ispeziona_animale.php?' . 
+    htmlspecialchars(http_build_query($parametriQuery)) . 
+    '">
+    <span class="material-symbols-outlined" aria-hidden="true">add</span> Aggiungi </a>';
 }
 
 $content = str_replace("[addButton]", $pulsanteAdd, $content);

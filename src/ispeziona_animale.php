@@ -23,6 +23,7 @@ $uploadDirWeb = "images/uploads/";
 
 $imgHandler = new ImageHandler($uploadDirSystem, $uploadDirWeb);
 
+
 $id =
     isset($_GET["id"]) && is_numeric($_GET["id"]) ? intval($_GET["id"]) : null;
 $action = $id !== null ? "Modifica" : "Aggiungi";
@@ -87,14 +88,10 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
                     $newImagePath = $imgHandler->save($_FILES["immagine"]);
                     if ($newImagePath !== false) {
                         $valori["immagine"] = $newImagePath;
-                        
+
                         $imgHandler->delete($oldImagepath);
                     } else {
-                        $errori[
-                            campiDatiAnimale::$files["immagine"][
-                                "errPlaceholder"
-                            ]
-                        ] = "Errore nel salvataggio dell'immagine.";
+                        $errori[campiDatiAnimale::$files["immagine"]["errPlaceholder"]] = "Errore nel salvataggio dell'immagine.";
                         $valori["immagine"] = $oldImagepath;
                     }
                 } else {
@@ -118,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
                 $db->closeConnection();
 
                 if ($esitoOperazione) {
-                    header("Location: animale.php?id=" . urlencode($id));
+                    header("Location: animale.php?" . createHttpQuery($_GET, ['pagina', 'search', 'id'],false));
                     exit();
                 } else {
                     $errori["erroreGenerale"] =
@@ -138,11 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
                     if ($newImagePath !== false) {
                         $valori["immagine"] = $newImagePath;
                     } else {
-                        $errori[
-                            campiDatiAnimale::$files["immagine"][
-                                "errPlaceholder"
-                            ]
-                        ] = "Errore nel salvataggio dell'immagine.";
+                        $errori[campiDatiAnimale::$files["immagine"]["errPlaceholder"]] = "Errore nel salvataggio dell'immagine.";
                     }
                 } else {
                     $valori["immagine"] = null;
@@ -164,7 +157,8 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
                 $db->closeConnection();
 
                 if ($nuovoId) {
-                    header("Location: animale.php?id=" . urlencode($nuovoId));
+                    $_GET["id"] = $nuovoId;
+                    header("Location: animale.php?" . createHttpQuery($_GET, ['pagina', 'search', 'id'],false));
                     exit();
                 } else {
                     $errori["erroreGenerale"] =
@@ -177,12 +171,13 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
         }
     } else {
         if ($imgError !== null) {
-            $errori[
-                campiDatiAnimale::$files["immagine"]["errPlaceholder"]
-            ] = $imgError;
+            $errori[campiDatiAnimale::$files["immagine"]["errPlaceholder"]] = $imgError;
         }
     }
 }
+
+
+
 
 $content = createForm($action, $id);
 
@@ -190,8 +185,8 @@ $content = populateForm($valori, $content);
 
 $htmlImg = $dbImagePath
     ? '<img src="' .
-        $dbImagePath .
-        '" alt="" class="img-preview">'
+    $dbImagePath .
+    '" alt="" class="img-preview">'
     : "";
 $content = str_replace("[immagineCorrente]", $htmlImg, $content);
 
@@ -199,10 +194,39 @@ $content = replaceErrorPlaceholders($content, $errori);
 
 $content = addAriaInvalid($content, $errori);
 
+// Gestione http query per sticky parameters nella per la navigazione
+$parametriQuery = [];
+
+//imposta breadcrumb della pagina di modifica, con Sticky Parameters
+if (isset($_GET["pagina"])) $parametriQuery["pagina"] = $_GET["pagina"];
+if (isset($_GET["search"])) $parametriQuery["search"] = $_GET["search"];
+
+
+//breadcrumb lista animali
+$content = str_replace("[ANIMALI_LINK_BREADCRUMB]", '<a href="animali.php?' .
+    htmlspecialchars(http_build_query($parametriQuery)) .
+    '">Animali</a>', $content);
+if ($isModifica) {
+    //breadcrumb modifica
+
+    // breadcrumb dettaglio animale
+    $parametriQuery["id"] = $id;
+    $content = str_replace("[ANIMALE_LINK_BREADCRUMB]", '<a href="animale.php?' .
+        htmlspecialchars(http_build_query($parametriQuery)) . '">' . $valori["nome"] . '</a>', $content);
+
+    $content = str_replace("[BREADCRUMB_SEPARATOR]", '<span aria-hidden="true">&gt;&gt;</span> ', $content);
+} else {
+    // breadcrumb aggiungi animale
+    $content = str_replace("[ANIMALE_LINK_BREADCRUMB]", '', $content);
+    $content = str_replace("[BREADCRUMB_SEPARATOR]", '', $content);
+}
+
+
+
+
 $content = cleanForm($content);
 
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
 
 echo $content;
-?>
