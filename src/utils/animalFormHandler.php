@@ -1,10 +1,5 @@
 <?php
 
-//Singolo punto di modifica per gestire la corrispondenza tra
-// i nomi dei campi del form
-// i nomi usati nel DB
-// i placeholder nell'HTML
-
 class campiDatiAnimale
 {
     public static $testi = [
@@ -98,7 +93,6 @@ class campiDatiAnimale
     ];
 }
 
-// crea il form per aggiungere oppure il  per modificare un animale
 function createForm($azione, $id = null)
 {
     if (
@@ -127,11 +121,10 @@ function createForm($azione, $id = null)
 
 function populateForm($animalData, $content)
 {
-    // Sostituisci i placeholder con i dati dell'animale
     $placeholders = [
         "nomeAnimale" => $animalData["nome"],
         "etaAnimale" =>
-            $animalData["eta"] !== "" ? $animalData["eta"] : "[etaAnimale]", // Mantieni il placeholder se vuoto
+            $animalData["eta"] !== "" ? $animalData["eta"] : "[etaAnimale]",
         "luogoAnimale" => $animalData["luogo"],
         "descrizione" => $animalData["descrizione"],
         "altImmagine" => $animalData["alt"],
@@ -140,7 +133,6 @@ function populateForm($animalData, $content)
     ];
     $content = replaceTextPlaceholder($content, $placeholders);
     $content = renderRadio($content, $animalData);
-    // Gestione immagine corrente
     if (!empty($animalData["immagine"])) {
         $content = str_replace(
             "[immagineCorrente]",
@@ -163,7 +155,6 @@ function populateForm($animalData, $content)
 
 function cleanForm($content)
 {
-    // Pulisce i placeholder del form
     $content = removeFormDataPlaceholders($content);
     $content = removeErrorPlaceholders($content);
     $content = removeAriaInvalidPlaceholders($content);
@@ -180,7 +171,6 @@ function replaceTextPlaceholder($html, $placeholders)
 
 function renderRadio($html, $datiUtente)
 {
-    // Configurazione centralizzata dei radio button
     $config = [
         "sesso" => ["Maschio" => "checkMaschio", "Femmina" => "checkFemmina"],
         "tipo_animale" => [
@@ -202,7 +192,6 @@ function renderRadio($html, $datiUtente)
     foreach ($config as $campo => $opzioni) {
         $selezione = $datiUtente[$campo] ?? "";
         foreach ($opzioni as $valore => $placeholder) {
-            // Selezionato se corrisponde al valore utente
             $checked = $selezione === $valore ? "checked" : "";
             $html = str_replace("[$placeholder]", $checked, $html);
         }
@@ -223,7 +212,6 @@ function replaceErrorPlaceholders($html, $errori)
     return $html;
 }
 
-// Rimuove i placeholder degli errori dall'HTML
 function removeErrorPlaceholders($html)
 {
     $chiavi = array_merge(
@@ -237,11 +225,8 @@ function removeErrorPlaceholders($html)
     return $html;
 }
 
-// Aggiunge aria-invalid="true" ai campi con errori
 function addAriaInvalid($html, $errori)
 {
-    // Raccolgo tutti i placeholder aria-invalid da tutte le configurazioni
-    // La chiave dell'array sarà l'errPlaceholder, il valore sarà l'ariaInvalidPlaceholder
     $allAriaPlaceholders = array_merge(
         array_column(
             campiDatiAnimale::$testi,
@@ -260,7 +245,6 @@ function addAriaInvalid($html, $errori)
         )
     );
 
-    // Per ogni placeholder aria-invalid, controllo se esiste l'errore corrispondente
     foreach ($allAriaPlaceholders as $errKey => $ariaPlaceholder) {
         $valore =
             isset($errori[$errKey]) && !empty($errori[$errKey])
@@ -272,7 +256,6 @@ function addAriaInvalid($html, $errori)
     return $html;
 }
 
-// Rimuove i placeholder aria-invalid dall'HTML
 function removeAriaInvalidPlaceholders($html)
 {
     $chiavi = array_merge(
@@ -286,7 +269,6 @@ function removeAriaInvalidPlaceholders($html)
     return $html;
 }
 
-// Rimuove i dati del form dall'HTML
 function removeFormDataPlaceholders($html)
 {
     $placeholders = [
@@ -330,80 +312,58 @@ function checkSelection($input, $allowedValues, $nomeCampo)
     return null;
 }
 
-// Funzione principale di validazione del form animale, ritorna array di errori
 function checkForm($data)
 {
     $errori = [];
 
-    // Scorciatoie per leggibilità
     $confTesti = campiDatiAnimale::$testi;
     $confRadio = campiDatiAnimale::$radio;
     $confFiles = campiDatiAnimale::$files;
 
-    // ==================== 1. VALIDAZIONI TESTUALI ====================
-    // Accedo alla configurazione per prendere la chiave corretta dell'errore (es. 'nomeErr')
-    // Nome
     $errori[$confTesti["nome"]["errPlaceholder"]] = checkEmptyString(
         $data["nome"],
         "Nome"
     );
 
-    // Luogo
     $errori[$confTesti["luogo"]["errPlaceholder"]] = checkEmptyString(
         $data["luogo"],
         "Luogo"
     );
 
-    // Età (Validazione specifica per numero naturale)
     $errori[$confTesti["eta"]["errPlaceholder"]] = checkNotNaturalNumber(
         $data["eta"],
         "Età"
     );
 
-    // Descrizione
     $errori[$confTesti["descrizione"]["errPlaceholder"]] = checkEmptyString(
         $data["descrizione"],
         "Descrizione"
     );
 
-    // Bisogni
     $errori[$confTesti["bisogni"]["errPlaceholder"]] = checkEmptyString(
         $data["bisogni"],
         "Bisogni"
     );
 
-    // Storia
     $errori[$confTesti["storia"]["errPlaceholder"]] = checkEmptyString(
         $data["storia"],
         "Storia"
     );
 
-    // Alt Immagine (se presente nei testi)
     $errori[$confTesti["alt"]["errPlaceholder"]] = checkEmptyString(
         $data["alt"],
         "Descrizione Immagine"
     );
 
-    // ==================== 2. VALIDAZIONI RADIO / SELECT ====================
-    // Poiché la logica è identica per tutti (checkSelection), usiamo un ciclo dinamico.
-    // Questo rende il codice molto più robusto: se aggiungi un nuovo radio nella classe,
-    // viene validato automaticamente qui senza toccare nulla.
-
     foreach ($confRadio as $dbKey => $config) {
-        // 1. Recupero il nome del campo nel form (es. 'sesso')
-        // Nota: Assicurati che $config['form'] esista nella tua classe, o usa $dbKey se coincidono
         $inputName = isset($config["form"]) ? $config["form"] : $dbKey;
 
-        // 2. Recupero la chiave per l'errore (es. 'sessoErr')
         $errKey = $config["errPlaceholder"];
 
-        // 3. Recupero i valori ammessi (Le chiavi dell'array opzioni: Maschio, Femmina...)
         $valoriAmmessi = array_keys($config["opzioni"]);
 
-        // 4. Etichetta leggibile per l'errore (es. 'tipo_animale' -> 'Tipo animale')
         $label = ucfirst(str_replace("_", " ", $dbKey));
 
-        // 5. Eseguo la validazione
         $errori[$errKey] = checkSelection(
             $data[$inputName] ?? "",
             $valoriAmmessi,
@@ -411,9 +371,6 @@ function checkForm($data)
         );
     }
 
-    // ==================== 4. PULIZIA ====================
-    // Rimuove dall'array tutte le chiavi che hanno valore null/false/vuoto.
-    // In questo modo ritorni solo gli errori effettivi.
     return array_filter($errori);
 }
 ?>

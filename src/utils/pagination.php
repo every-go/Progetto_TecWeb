@@ -1,6 +1,5 @@
 <?php
 
-//assumiamo che baseurl contenga già il ? o & se necessario
 function createPaginationLinks($currentPage, $totalPages, $baseUrl, $delta = 2)
 {
     if ($totalPages <= 1) {
@@ -9,7 +8,6 @@ function createPaginationLinks($currentPage, $totalPages, $baseUrl, $delta = 2)
 
     $navigationHtml =
         '<nav aria-label="Elenco delle pagine"><ul class="pagination">';
-    // Link alla pagina precedente, se non siamo alla prima pagina
     if ($currentPage > 1) {
         $navigationHtml .=
             '<li>
@@ -23,7 +21,6 @@ function createPaginationLinks($currentPage, $totalPages, $baseUrl, $delta = 2)
                             </li>';
     }
 
-    //Prima pagina
     if ($currentPage > 1 + $delta) {
         $navigationHtml .=
             '<li>
@@ -35,7 +32,6 @@ function createPaginationLinks($currentPage, $totalPages, $baseUrl, $delta = 2)
                             </li>';
     }
 
-    //elenco delle pagine
     for ($i = $currentPage - $delta; $i <= $currentPage + $delta; $i++) {
         if ($i > 0 && $i <= $totalPages) {
             if ($i == $currentPage) {
@@ -62,7 +58,6 @@ function createPaginationLinks($currentPage, $totalPages, $baseUrl, $delta = 2)
         }
     }
 
-    //ultima pagina
     if ($currentPage < $totalPages - $delta) {
         $navigationHtml .=
             '<li>
@@ -78,7 +73,6 @@ function createPaginationLinks($currentPage, $totalPages, $baseUrl, $delta = 2)
                             </li>';
     }
 
-    //link alla pagina successiva, se non siamo all'ultima pagina
     if ($currentPage < $totalPages) {
         $navigationHtml .=
             '<li>
@@ -91,11 +85,6 @@ function createPaginationLinks($currentPage, $totalPages, $baseUrl, $delta = 2)
                                 </a>
                             </li>';
     }
-    // else {
-    //     $navigationHtml .= '<li class="disabled" aria-disabled="true">
-    //                             <span aria-hidden="true" class="material-symbols-outlined"> arrow_right_alt </span>
-    //                         </li>';
-    // }
 
     $navigationHtml .= "</ul></nav>";
     return $navigationHtml;

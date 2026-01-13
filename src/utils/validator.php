@@ -1,17 +1,11 @@
 <?php
 
-// helper: Funzioni pure che fanno un solo controllo e ritornano true/false
-// migliorano la leggibilità
 function checkEmptyString($input, $nomeCampo = null)
 {
-    // Controllo se è vuoto (trim per evitare spazi bianchi ingannevoli)
     if (empty(trim($input))) {
-        // LOGICA DI COSTRUZIONE MESSAGGIO
         if ($nomeCampo !== null) {
-            // Caso con nome: "Il campo 'Nome' è obbligatorio."
             return "Il campo $nomeCampo è obbligatorio.";
         } else {
-            // Caso senza nome: "Questo campo è obbligatorio."
             return "Questo campo è obbligatorio.";
         }
     }

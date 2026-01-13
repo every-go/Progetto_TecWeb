@@ -5,14 +5,12 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 $currentPage = basename($_SERVER["PHP_SELF"]);
 
-// pagine del menu
 $pages = [
     "index.php" => ["text" => "Home", "lang" => "en"],
     "animali.php" => ["text" => "Animali"],
     "chiSiamo.php" => ["text" => "Chi siamo"],
 ];
 
-// pagine del footer
 $pagesFooter = [
     "index.php" => ["text" => "Home", "lang" => "en"],
     "animali.php" => ["text" => "Animali"],
@@ -42,7 +40,6 @@ if (
     $pagesFooter["login.php"] = ["text" => "Login", "lang" => "en"];
 }
 
-// aggiunge crediti per ultimo
 $pagesFooter["crediti.php"] = ["text" => "Crediti"];
 
 $listaMenu = "<ul>";

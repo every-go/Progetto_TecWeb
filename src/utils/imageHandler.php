@@ -1,7 +1,7 @@
 <?php
 class ImageHandler
 {
-    private static $MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
+    private static $MAX_FILE_SIZE = 1 * 1024 * 1024;
     private $uploadDir;
     private $allowedMime = ["image/jpeg", "image/png", "image/jpg"];
 
@@ -16,7 +16,7 @@ class ImageHandler
     public function validate($fileInput)
     {
         if (!isset($fileInput) || $fileInput["error"] === UPLOAD_ERR_NO_FILE) {
-            return null; // File opzionale, nessun errore
+            return null;
         }
         if ($fileInput["error"] !== UPLOAD_ERR_OK) {
             return "Errore caricamento codice: " . $fileInput["error"];
@@ -27,12 +27,11 @@ class ImageHandler
             return "Formato non valido (solo JPG/JPEG/PNG)";
         }
         if ($fileInput["size"] > self::$MAX_FILE_SIZE) {
-            // 1MB
             return "File troppo grande (Max " .
                 self::$MAX_FILE_SIZE / 1024 / 1024 .
                 "MB)";
         }
-        return null; // Tutto OK
+        return null;
     }
 
     public function save($fileInput)
@@ -45,7 +44,7 @@ class ImageHandler
         $destPath = $this->uploadDir . DIRECTORY_SEPARATOR . $fileName;
 
         if (move_uploaded_file($fileInput["tmp_name"], $destPath)) {
-            return $destPath; // Ritorna il path per il DB
+            return $destPath;
         }
         return false;
     }
