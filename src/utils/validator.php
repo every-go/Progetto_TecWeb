@@ -29,4 +29,23 @@ function checkNotNaturalNumber($input, $nomeCampo = null)
     }
 }
 
-?>
+function checkListaBisogni($input, $nomeCampo = null)
+{
+    $errore = checkEmptyString($input, $nomeCampo);
+    if ($errore === null) {
+        $arrayBisogni = array_filter(
+            array_map('trim', explode(';', $input)),
+            fn($value) => $value !== ''
+        );
+
+        if (count($arrayBisogni) === 0) {
+            if ($nomeCampo !== null) {
+                return "Il campo '$nomeCampo' deve contenere almeno un bisogno.";
+            } else {
+                return "Questo campo deve contenere almeno un bisogno.";
+            }
+        }
+    }
+
+    return $errore;
+}

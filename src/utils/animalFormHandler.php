@@ -362,7 +362,7 @@ function checkForm($data)
         "Descrizione"
     );
 
-    $errori[$confTesti["bisogni"]["errPlaceholder"]] = checkEmptyString(
+    $errori[$confTesti["bisogni"]["errPlaceholder"]] = checkListaBisogni(
         $data["bisogni"],
         "Bisogni"
     );
