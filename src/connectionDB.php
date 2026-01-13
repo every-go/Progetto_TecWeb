@@ -1,6 +1,9 @@
 <?php
 namespace DB;
 
+require_once "utils/imageHandler.php";
+
+use ImageHandler;
 use mysqli;
 use mysqli_result;
 
@@ -120,9 +123,44 @@ class DBAccess
     }
 
     public function eliminaAnimale($id)
-    {
+    {   
+        $queryImm = "SELECT immagine FROM animali WHERE id = ?";
         $query = "DELETE FROM animali WHERE id = ?";
         $risultato = false; // Default a false (eliminazione fallita)
+
+        $immagine = false; // Default a false (nessun animale trovato)
+
+        if ($stmt = mysqli_prepare($this->connection, $queryImm)) {
+            mysqli_stmt_bind_param($stmt, "i", $id);
+
+            if (mysqli_stmt_execute($stmt)) {
+                $queryResult = mysqli_stmt_get_result($stmt);
+
+                // 2. Controllo se l'oggetto risultato è valido
+                if ($queryResult) {
+                    // 3. Controllo ESPLICITO: abbiamo trovato almeno una riga?
+                    if (mysqli_num_rows($queryResult) > 0) {
+                        $immagine = mysqli_fetch_assoc($queryResult)['immagine'];
+                    }
+
+                    // 4. Liberiamo la memoria (fondamentale)
+                    mysqli_free_result($queryResult);
+                }
+            }
+
+            // 5. Chiudiamo lo statement
+            mysqli_stmt_close($stmt);
+        }
+
+        if($immagine||$immagine!==""){
+
+            $uploadDirSystem = "images/uploads"; // Dove salvare fisicamente
+            $uploadDirWeb = "images/uploads/"; // Cosa scrivere nel DB
+
+            // Inizializzo l'handler immagini
+            $imgHandler = new ImageHandler($uploadDirSystem, $uploadDirWeb);
+            $imgHandler->delete($immagine);
+        }
 
         if ($stmt = mysqli_prepare($this->connection, $query)) {
             mysqli_stmt_bind_param($stmt, "i", $id);

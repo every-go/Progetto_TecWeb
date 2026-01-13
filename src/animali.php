@@ -19,7 +19,7 @@ function singleCardBuilder($animale)
     $animaleCard = str_replace("[ALT_IMMAGINE]", $animale["alt"], $animaleCard);
     $animaleCard = str_replace(
         "[PATH_IMMAGINE]",
-        $animale["immagine"],
+        $animale["immagine"] ? $animale["immagine"] : "./images/png/notfound.png",
         $animaleCard
     );
     $animaleCard = str_replace(

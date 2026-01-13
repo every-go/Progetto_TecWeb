@@ -105,12 +105,12 @@ if (isset($_GET["id"])) {
                 '<p>$2 ',
                 trim($bisogni)
             );
-            // Chiude i <p>
-            //$bisogni = "<p>" . $bisogni . "</p>";
-            $bisogni = str_replace("</p><p>", "</p><p>", $bisogni);
-            // Chiusura corretta di ogni paragrafo
-            //$bisogni = preg_replace( "</p>", $bisogni);
-            //$bisogni = rtrim($bisogni, "</p>") . "</p>";
+            
+            $arrayBisogni = array_filter(explode(";", $bisogni),function($value){
+                return trim($value)!=="";
+            });
+            $bisogni="<ul><li>".implode("</li><li>",$arrayBisogni)."</li></ul>";
+
             $content = str_replace("[BISOGNI]", $bisogni, $content);
 
             $content = str_replace("[STORIA]", $animalData["storia"], $content);
