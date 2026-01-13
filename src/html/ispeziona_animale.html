@@ -25,20 +25,19 @@
         </nav>
     </header>
     <main id="form-main">
-        [immagineCorrente]
         <form action="[actionForm]" method="post" enctype="multipart/form-data">
-            <label for="nome">Nome:</label>
+            <label for="nome">Inserisci il nome:</label>
             <input type="text" id="nome" name="nome" value="[nomeAnimale]" required aria-describedby="errNome"
                 [ariaInvalidNome]>
             <div id="errNome" role="alert">[nomeErr]</div>
 
-            <label for="eta">Età (anni):</label>
+            <label for="eta">Inserisci l'età in anni:</label>
             <input type="number" id="eta" name="eta" value="[etaAnimale]" required min="0" aria-describedby="errEta"
                 [ariaInvalidEta]>
             <div id="errEta" role="alert">[etaErr]</div>
 
             <fieldset>
-                <legend> Sesso: </legend>
+                <legend> Seleziona il sesso dell'animale: </legend>
                 <div class="radio">
                     <div class="radio-item">
                         <input type="radio" id="sesso_m" name="sesso" value="Maschio" [checkMaschio] required>
@@ -52,7 +51,7 @@
             </fieldset>
 
             <fieldset>
-                <legend> Tipologia: </legend>
+                <legend> Seleziona la tipologia dell'animale: </legend>
                 <div class="radio">
                     <div class="radio-item">
                         <input type="radio" id="tipo_reale" name="tipo_animale" value="Reale" [checkReale] required>
@@ -65,23 +64,23 @@
                 </div>
             </fieldset>
 
-
-            <label for="immagine">Immagine (formati accettati: JPG, JPEG, PNG):</label>
+            [immagineCorrente]
+            <label for="immagine">Seleziona un'immagine dell'animale (formati accettati: JPG, JPEG, PNG):</label>
             <input type="file" id="immagine" name="immagine" accept="image/jpg, image/jpeg, image/png"
                 aria-describedby="errImmagine" [ariaInvalidImmagine]>
             <div id="errImmagine" role="alert">[fileErr]</div>
-            <label for="alt">Descrizione ALT:</label>
+            <label for="alt">Descrizione fisica dell'animale:</label>
             <input type="text" id="alt" name="alt" value="[altImmagine]" required aria-describedby="errAlt"
                 [ariaInvalidAlt]>
             <div id="errAlt" role="alert">[imageErr]</div>
 
-            <label for="luogo">Luogo di ritrovamento:</label>
+            <label for="luogo">Luogo in cui puoi trovare l'animale:</label>
             <input type="text" id="luogo" name="luogo" value="[luogoAnimale]" required aria-describedby="errLuogo"
                 [ariaInvalidLuogo]>
             <div id="errLuogo" role="alert">[luogoErr]</div>
 
             <fieldset>
-                <legend>Taglia: </legend>
+                <legend>Seleziona la taglia dell'animale: </legend>
                 <div class="radio">
                     <div class="radio-item">
                         <input type="radio" id="taglia_p" name="taglia" value="Piccola" [checkTagliaP] required>
@@ -99,7 +98,7 @@
             </fieldset>
 
             <fieldset>
-                <legend>Carattere: </legend>
+                <legend>Descrivi il carattere dell'animale: </legend>
                 <div class="radio">
                     <div class="radio-item">
                         <input type="radio" id="car_f" name="carattere" value="Facile" [checkCarF] required>
@@ -119,18 +118,18 @@
             <fieldset>
                 <legend>Descrizioni</legend>
                 <div id="descrizione-animale">
-                    <label for="descrizione">Descrizione:</label>
-                    <textarea id="descrizione" name="descrizione" rows="5" required aria-describedby="errDesc"
+                    <label for="descrizione">Inserisci la descrizione del carattere dell'animale:</label>
+                    <textarea id="descrizione" name="descrizione" rows="5" cols="10" required aria-describedby="errDesc"
                         [ariaInvalidDesc]>[descrizione]</textarea>
                     <div id="errDesc" role="alert">[descrizioneErr]</div>
 
-                    <label for="bisogni">Bisogni specifici:</label>
-                    <textarea id="bisogni" name="bisogni" rows="5" required aria-describedby="errBisogni"
+                    <label for="bisogni">Inserisci i bisogni dell'animale. Separa con il ; ogni bisogno:</label>
+                    <textarea id="bisogni" name="bisogni" rows="5" cols="10" required aria-describedby="errBisogni"
                         [ariaInvalidBisogni]>[bisogni]</textarea>
                     <div id="errBisogni" role="alert">[bisogniErr]</div>
 
-                    <label for="storia">Storia:</label>
-                    <textarea id="storia" name="storia" rows="5" aria-describedby="errStoria"
+                    <label for="storia">Inserisci una breve storia dell'animale(facoltativo):</label>
+                    <textarea id="storia" name="storia" rows="5" cols="10" aria-describedby="errStoria"
                         [ariaInvalidStoria]>[storia]</textarea>
                     <div id="errStoria" role="alert">[storiaErr]</div>
 

@@ -34,7 +34,6 @@ function singleCardBuilder($animale)
         $animaleCard
     );
 
-    //gestione provenienza per tornare alla pagina corretta dopo la visualizzazione del singolo animale
     if (isset($_GET["pagina"]) && is_numeric($_GET["pagina"])) {
         $animaleCard = str_replace(
             "[PAGINA_PROVENIENZA]",
@@ -54,7 +53,6 @@ use DB\DBAccess;
 include "menu.php";
 $content = file_get_contents("html/area_personale.html");
 
-// Controllo accesso admin
 if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "user") {
     header("Location: 401.php");
     exit();
@@ -70,11 +68,13 @@ $db = new DBAccess();
 $connessioneOK = $db->openDBConnection();
 
 if ($connessioneOK) {
+    $h2Preferiti = "";
+    $h2Adottati = "";
+    $noAnimali = "";
     $stringaPreferiti = $db->getPreferiti($_SESSION["username"]);
     $stringaAdottati = $db->getAdottati($_SESSION["username"]);
     $db->closeConnection();
 
-    // Preferiti
     if (!empty($stringaPreferiti)) {
         $h2Preferiti =
             "<h2 id = 'preferiti-content'>I tuoi animali preferiti </h2>";
@@ -85,7 +85,6 @@ if ($connessioneOK) {
         $listaPreferiti .= "</ul>";
     }
 
-    // Adottati
     if (!empty($stringaAdottati)) {
         $h2Adottati = "<h2 id='adottati-content'>I tuoi animali adottati</h2>";
         $listaAdottati = '<ul class="animali">';
@@ -94,6 +93,12 @@ if ($connessioneOK) {
         }
         $listaAdottati .= "</ul>";
     }
+
+    if(empty($stringaAdottati) && empty($stringaPreferiti)){
+        $noAnimali = "<p> Non hai animali né preferiti né adottati </p>"
+            . "<p>Vai nella sezione <a href='animali.php'>animali</a> per vedere tutti i nostri animali!";
+    }
+
 } else {
     $listaPreferiti =
         "<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
@@ -103,6 +108,7 @@ $content = str_replace("[H2_PREFERITI]", $h2Preferiti, $content);
 $content = str_replace("[LISTA_PREFERITI]", $listaPreferiti, $content);
 $content = str_replace("[H2_ADOTTATI]", $h2Adottati, $content);
 $content = str_replace("[LISTA_ADOTTATI]", $listaAdottati, $content);
+$content = str_replace("[NO_ANIMALI]", $noAnimali, $content);
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
 echo $content;

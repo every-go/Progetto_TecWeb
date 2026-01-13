@@ -42,7 +42,6 @@ function singleCardBuilder($animale)
         $animaleCard
     );
 
-    // gestione provenienza per tornare alla pagina corretta dopo la visualizzazione del singolo animale
     $paramQueryProvenienza = "";
     if (isset($_GET["pagina"]) && is_numeric($_GET["pagina"])) {
         $paramQueryProvenienza .= "&pagina=" . $_GET["pagina"];
@@ -66,7 +65,6 @@ $content = file_get_contents("html/animali.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
 
-// setto la provenienza per la breadcrum
 $_SESSION["provenienza"] = "Animali";
 
 $animaliPerPagina = 3;
@@ -79,24 +77,18 @@ if ($paginaCorrente < 1) {
 $stringaAnimali = "";
 $listaAnimali = "";
 
-// ========== GESTIONE RICERCA ==========
-// Controlla se è stata effettuata una ricerca
 $isSearch = isset($_GET["search"]) && !empty(trim($_GET["search"]));
 
-// Prepara il valore di ricerca per il campo di input
 $searchTerm = $isSearch ? trim($_GET["search"]) : "";
 
-// Inserisci il valore di ricerca nel campo di input
 $searchValue = $isSearch ? htmlspecialchars($searchTerm) : "";
 
-// Sostituisci il placeholder nel contenuto
 $content = str_replace("[SEARCH_VALUE]", $searchValue, $content);
 
 $db = new DBAccess();
 $connessioneOK = $db->openDBConnection();
 if ($connessioneOK) {
     if ($isSearch) {
-        // MODALITÀ RICERCA
         if (isset($_SESSION["role"]) && $_SESSION["role"] === "admin") {
             $stringaAnimali = $db->searchAnimali($searchTerm);
         } else {
@@ -104,25 +96,21 @@ if ($connessioneOK) {
         }
         $db->closeConnection();
     } else {
-        // MODALITÀ NORMALE - con paginazione
         $stringaAnimali = $db->getList();
         $db->closeConnection();
     }
 
     if ($stringaAnimali === false) {
-        // errore DB
         include __DIR__ . "/500.php";
         http_response_code(500);
         exit();
     }
 
-    // non ci sono animali
     if (empty($stringaAnimali)) {
         $totaleAnimali = 0;
         $totalePagine = 0;
         $listaAnimali = '<p>Nessun animale disponibile al momento.</p>';
     } else {
-        // Calcola il totale degli animali e delle pagine
         $totaleAnimali = count($stringaAnimali);
         $totalePagine = ceil($totaleAnimali / $animaliPerPagina);
 
@@ -137,19 +125,15 @@ if ($connessioneOK) {
             $animaliPerPagina
         );
 
-        // Costruisci le card degli animali
         foreach ($animaliPaginaCorrente as $stringaAnimale) {
             $listaAnimali .= singleCardBuilder($stringaAnimale);
         }
         $listaAnimali = '<ul class="animali">' . $listaAnimali . "</ul>";
     }
-
-    // ========== GESTIONE MESSAGGI E PAGINAZIONE ==========
     
     $indicatorePagina = "";
     $baseURL = "animali.php?";
     if ($isSearch) {
-        // Messaggio risultati ricerca
         $messaggioRisultati =
             'Risultati per "<strong>' .
             htmlspecialchars($searchTerm) .
