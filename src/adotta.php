@@ -5,7 +5,11 @@
 
     if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] !== true) {
         $_SESSION['messaggio_errore'] = "Devi effettuare il <span lang='en'>login</span> per adottare un animale";
-        header("Location: login.php");
+
+        // Memorizza la pagina corrente per il reindirizzamento dopo il login
+        $pagina_corrente = basename($_SERVER['REQUEST_URI']);
+
+        header("Location: login.php?redirect=" . urlencode($pagina_corrente));
         exit();
     }
 

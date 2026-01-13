@@ -26,10 +26,12 @@ $content = str_replace("[listaFooter]", $listaFooter, $content);
 $username = "";
 $errorMessage = "";
 
-if (isset($_POST["register"]) &&
+if (
+    isset($_POST["register"]) &&
     isset($_POST["username"]) &&
     isset($_POST["password"]) &&
-    isset($_POST["confirm_password"])) {
+    isset($_POST["confirm_password"])
+) {
 
     $username = sanitizeUsername($_POST["username"]);
     $password = $_POST["password"];
@@ -56,7 +58,11 @@ if (isset($_POST["register"]) &&
                 if ($res_register) {
                     $_SESSION['messaggio_utente'] = 'Registrazione avvenuta con successo';
                     $db->closeConnection();
-                    header("Location: login.php");
+
+                    // Memorizza la pagina corrente per il reindirizzamento dopo il login
+                    $pagina_corrente = basename($_SERVER['REQUEST_URI']);
+
+                    header("Location: login.php?redirect=" . urlencode($pagina_corrente));
                     exit();
                 } else {
                     $errorMessage = "<p class='error-login' aria-live='assertive' role='alert'>
@@ -85,5 +91,3 @@ if (isset($_SESSION['messaggio_errore'])) {
 $content = str_replace('[adottaMessage]', $adottaMessage, $content);
 
 echo $content;
-
-?>

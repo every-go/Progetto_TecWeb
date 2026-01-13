@@ -36,8 +36,11 @@ if (
     $pages["logout.php"] = ["text" => "Logout", "lang" => "en"];
     $pagesFooter["logout.php"] = ["text" => "Logout", "lang" => "en"];
 } else {
-    $pages["login.php"] = ["text" => "Login", "lang" => "en"];
-    $pagesFooter["login.php"] = ["text" => "Login", "lang" => "en"];
+    // Memorizza la pagina corrente per il reindirizzamento dopo il login
+    $pagina_corrente = basename($_SERVER['REQUEST_URI']);
+
+    $pages["login.php?redirect=" . urlencode($pagina_corrente)] = ["text" => "Login", "lang" => "en"];
+    $pagesFooter["login.php?redirect=" . urlencode($pagina_corrente)] = ["text" => "Login", "lang" => "en"];
 }
 
 $pagesFooter["crediti.php"] = ["text" => "Crediti"];
@@ -97,5 +100,3 @@ foreach ($pagesFooter as $page => $data) {
     }
 }
 $listaFooter .= "</ul>";
-
-?>
