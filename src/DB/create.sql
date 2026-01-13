@@ -67,11 +67,11 @@ VALUES
     mostrando una grande adattabilità e una natura curiosa che lo rende un compagno ideale per famiglie attive.
     È gentile con le persone, paziente durante le coccole e protettivo senza essere aggressivo,
     con un temperamento equilibrato che lo aiuta a integrarsi facilmente in ambienti familiari calmi e stimolanti.',
-'1) Spazzolatura regolare: almeno tre volte alla settimana per evitare nodi nel pelo lungo e mantenere la cute sana.
-    2) Esercizio quotidiano: passeggiate di 30 o 45 minuti o sessioni di gioco all''aperto per canalizzare la sua energia.
-    3) Alimentazione bilanciata: crocchette premium per cani di taglia media, con integratori per le articolazioni se necessario.
-    4) Ambiente ideale: famiglia affettuosa, tollera poco la solitudine (non più di 4 ore al giorno).
-    5) Cure veterinarie: vaccini annuali e controlli oculistici',
+'Spazzolatura regolare: almeno tre volte alla settimana per evitare nodi nel pelo lungo e mantenere la cute sana;
+    Esercizio quotidiano: passeggiate di 30 o 45 minuti o sessioni di gioco all''aperto per canalizzare la sua energia;
+    Alimentazione bilanciata: crocchette premium per cani di taglia media, con integratori per le articolazioni se necessario;
+    Ambiente ideale: famiglia affettuosa, tollera poco la solitudine (non più di 4 ore al giorno);
+    Cure veterinarie: vaccini annuali e controlli oculistici;',
 'Capitano, un mix di Collie di 4 anni, è stato salvato dopo essere stato abbandonato
     durante un trasloco della sua vecchia famiglia.
     Inizialmente timido, ha riguadagnato fiducia grazie ai volontari, rivelando un carattere gioioso e affettuoso.
@@ -96,9 +96,9 @@ FALSE),
     È una creatura silenziosa, che ama osservare l''ambiente circostante con una calma quasi ipnotica.
     Si lega profondamente a chi dimostra pazienza e dolcezza, rivelandosi un compagno leale e protettivo.
     È particolarmente sensibile alle fasi lunari, mostrando una maggiore vivacità durante il plenilunio.',
-'1) Ampi spazi aperti dove poter galoppare liberamente, preferibilmente sotto cieli stellati.
-    2) Il suo manto richiede cure specifiche per mantenere la lucentezza minerale e la criniera va spazzolata regolarmente per evitare che perda il suo bagliore naturale.
-    3) Alimentazione a base di erbe rare e acqua di sorgente purissima.',
+'Ampi spazi aperti dove poter galoppare liberamente, preferibilmente sotto cieli stellati;
+    Il suo manto richiede cure specifiche per mantenere la lucentezza minerale e la criniera va spazzolata regolarmente per evitare che perda il suo bagliore naturale;
+    Alimentazione a base di erbe rare e acqua di sorgente purissima;',
 'Trovato sperduto tra i picchi desertici della faccia nascosta della Luna, questo stallone è l''ultimo della sua stirpe.
     Può giungere sulla Terra seguendo la scia di una stella cadente, cercando un luogo dove la sua luce non debba temere l''oscurità eterna.
     Cerca una famiglia che sappia apprezzare la magia del silenzio e che abbia un cuore grande quanto l''universo.',
@@ -119,10 +119,10 @@ FALSE),
 'Moderato',
 'Estremamente curiosa e riflessiva, questa femmina di procione ama osservare il mondo da posizioni rialzate.
     È intelligente e dotata di una manualità eccezionale, che usa per esplorare ogni novità.',
-'1) Arricchimento ambientale con strutture per l''arrampicata.
-    2) Dieta onnivora bilanciata.
-    3) Presenza continua di acqua.
-    4) Stimoli mentali quotidiani per prevenire la noia.',
+'Arricchimento ambientale con strutture per l''arrampicata;
+    Dieta onnivora bilanciata;
+    Presenza continua di acqua;
+    Stimoli mentali quotidiani per prevenire la noia;',
 'Recuperata a Napoli mentre cercava cibo in un mercato, ha dimostrato subito una grande calma.
     Cerca una famiglia che capisca la sua natura selvatica ma sappia offrirle il calore di una casa sicura.',
 FALSE),
@@ -147,9 +147,9 @@ FALSE),
     È un essere unico che non vive in acqua, ma fluttua nell''atmosfera rarefatta.
     È silenziosa e comunica attraverso variazioni di intensità luminosa.
     Non è aggressiva, ma i suoi tentacoli possono emettere una leggera scarica statica se toccati bruscamente, simile a un piccolo pizzicore.',
-'1) Un ambiente con bassa gravità o correnti d''aria dolce per permetterle di fluttuare senza sforzo.
-    2) Esposizione regolare alla luce lunare o a lampade a spettro completo per ricaricare la sua bioluminescenza.
-    3) Un contenitore d''aria purificata e priva di polveri pesanti che potrebbero danneggiare la sua cupola sensibile.',
+'Un ambiente con bassa gravità o correnti d''aria dolce per permetterle di fluttuare senza sforzo;
+    Esposizione regolare alla luce lunare o a lampade a spettro completo per ricaricare la sua bioluminescenza;
+    Un contenitore d''aria purificata e priva di polveri pesanti che potrebbero danneggiare la sua cupola sensibile;',
 'Catturata accidentalmente da una sonda automatica durante una missione di esplorazione lunare, questa medusa
     si sa adattare sorprendentemente bene alla vita terrestre, purché l''ambiente sia tranquillo.
     Cerca un proprietario che ami la meditazione e che voglia aggiungere un tocco di luce celestiale alla propria casa.',
@@ -170,9 +170,9 @@ FALSE),
 'Paffuta è la quintessenza della dolcezza.
     È una gattina estremamente calma per la sua età, che preferisce le lunghe dormite sulle ginocchia ai giochi troppo movimentati.
     È socievole con gli umani e tende a fare le fusa non appena viene sfiorata, dimostrando una fiducia totale nel prossimo.',
-'1) Alimentazione specifica per gattini in crescita per supportare lo sviluppo osseo.
-    2) Spazzolatura settimanale per mantenere il pelo morbido e privo di nodi.
-    3) Molte interazioni umane e calore domestico, poiché soffre molto il freddo e la solitudine.',
+'Alimentazione specifica per gattini in crescita per supportare lo sviluppo osseo;
+    Spazzolatura settimanale per mantenere il pelo morbido e privo di nodi;
+    Molte interazioni umane e calore domestico, poiché soffre molto il freddo e la solitudine;',
 'Trovata infreddolita in un vicolo di Foggia durante una mattina di pioggia, Paffuta è stata salvata da una
     signora che l''ha sentita miagolare debolmente.
     Nonostante l''inizio difficile, ha recuperato peso e salute in tempi record, rivelando un carattere d''oro.
@@ -195,9 +195,9 @@ FALSE),
     È un osservatore silenzioso che predilige la solitudine delle vette montuose,
     ma dimostra un''incredibile lealtà verso chi considera degno della sua fiducia.
     Il suo temperamento è difficile solo perché richiede molto tempo per aprirsi.',
-'1) Un territorio vasto e impervio dove poter volare e cacciare.
-    2) Un''area calda, possibilmente vulcanica o riscaldata magicamente, per il riposo.
-    3) Rispetto assoluto della sua privacy e dei suoi tempi di interazione.',
+'Un territorio vasto e impervio dove poter volare e cacciare;
+    Un''area calda, possibilmente vulcanica o riscaldata magicamente, per il riposo;
+    Rispetto assoluto della sua privacy e dei suoi tempi di interazione;',
 'Protettore per decenni della Terra dei Draghi, ha deciso di cercare un nuovo legame dopo che il suo antico nido è
     diventato troppo silenzioso. Nonostante l''età, la sua forza è intatta e cerca un custode
     che non tema la sua imponenza ma che sappia rispettare la sua storia millenaria.',

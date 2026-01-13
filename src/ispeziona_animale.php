@@ -41,7 +41,7 @@ $campiFormSemplici = array_merge(
 // Inizializzo variabili base
 $valori = array_fill_keys($campiFormSemplici, "");
 $errori = [];
-$dbImagePath = "../images/jpg/cane_bello.jpg"; // Default
+$dbImagePath = "";
 $oldImagepath = null;
 // ============================================================
 // 3. LOGICA PRINCIPALE (IL "CERVELLO")

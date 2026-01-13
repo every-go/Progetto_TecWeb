@@ -8,6 +8,7 @@ class DBAccess
 {
     //XAMPP localhost mydb root ""
     //Docker db mydb root root
+    //mmazzare mmazzare mmazzare password
     private const HOST_DB = "db";
     private const DATABASE_NAME = "mydb";
     private const USERNAME = "root";
