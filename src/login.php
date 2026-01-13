@@ -103,6 +103,14 @@ if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] !== true) {
 }
 
 // replace del USERNAME_VALUE nel form
+$adottaMessage = '';
+if (isset($_SESSION['messaggio_errore'])) {
+    $adottaMessage = "<p class='error-login' aria-live='assertive' role='alert'>" . $_SESSION['messaggio_errore'] . " </p>";
+    unset($_SESSION['messaggio_errore']);
+}
+$content = str_replace('[adottaMessage]', $adottaMessage, $content);
+
+// replace del USERNAME_VALUE nel form
 $content = str_replace("[USERNAME_VALUE]", $username, $content);
 $content = str_replace("[autofocus]", "", $content);
 echo $content;

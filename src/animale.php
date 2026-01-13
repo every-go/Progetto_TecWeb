@@ -106,11 +106,11 @@ if (isset($_GET["id"])) {
                 trim($bisogni)
             );
             // Chiude i <p>
-            $bisogni = "<p>" . $bisogni . "</p>";
+            //$bisogni = "<p>" . $bisogni . "</p>";
             $bisogni = str_replace("</p><p>", "</p><p>", $bisogni);
             // Chiusura corretta di ogni paragrafo
-            $bisogni = preg_replace("/\s*(?=<p>)/", "</p>", $bisogni);
-            $bisogni = rtrim($bisogni, "</p>") . "</p>";
+            //$bisogni = preg_replace( "</p>", $bisogni);
+            //$bisogni = rtrim($bisogni, "</p>") . "</p>";
             $content = str_replace("[BISOGNI]", $bisogni, $content);
 
             $content = str_replace("[STORIA]", $animalData["storia"], $content);
@@ -169,7 +169,9 @@ if (isset($_GET["id"])) {
                 Che la sua natura sia comune o rara, ciò che può offrire è semplice: compagnia, presenza e un legame
                 sincero. Se qualcosa ha acceso la tua curiosità, forse è il primo passo verso un incontro
                 speciale. Scopri un po’ di più… potrebbe essere il compagno che stavi cercando.</p>
-            <button>Adotta!</button>
+            <form action="adotta.php?id=' . intval($_GET['id']) . '" method="post"> 
+                <button type="submit">Adotta!</button>
+            </form>
             </aside>';
     } else {
         $warningAdozione =
@@ -187,6 +189,17 @@ if (isset($_GET["id"])) {
     http_response_code(404);
     exit();
 }
+
+$messaggioAdozione = '';
+if (isset($_SESSION['messaggio_errore'])) {
+    $messaggioAdozione = "<p class='error-adozione' aria-live='assertive' role='alert'>" . $_SESSION['messaggio_errore'] . " </p>";
+    unset($_SESSION['messaggio_errore']);
+} elseif (isset($_SESSION['messaggio_adozione'])) {
+    $messaggioAdozione = "<p class='confirm-adozione' aria-live='assertive' role='alert'>" . $_SESSION['messaggio_adozione'] . " </p>";
+    unset($_SESSION['messaggio_adozione']);
+}
+$content = str_replace('[adottaMessage]', $messaggioAdozione, $content);
+
 
 $content = str_replace("[pulsanti]", $pulsanti, $content);
 $content = str_replace("[PULSANTE_PREFERITI]", $pulsantePreferiti, $content);

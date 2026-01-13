@@ -99,23 +99,23 @@ class DBAccess
         return false; // O null, se qualcosa è andato storto
     }
 
-    public function getList()
-    {
+    
+    public function getList() {
         $query = "SELECT * FROM animali WHERE adottato = 0 ORDER BY id ASC";
-        //controllo errori sulla query
+        
+        // Controllo errori sulla query
         ($queryResult = mysqli_query($this->connection, $query)) or
             die("Errore in dbConnection: " . mysqli_error($this->connection));
-        //controllo presenza di righe
-        if (mysqli_num_rows($queryResult) != 0) {
-            $result = [];
-            while ($row = mysqli_fetch_assoc($queryResult)) {
-                array_push($result, $row); //array di array associativi
-            }
-            $queryResult->free();
-            return $result;
-        } else {
-            return false;
+        
+        $result = [];
+        
+        // Costruisci l'array dei risultati
+        while ($row = mysqli_fetch_assoc($queryResult)) {
+            array_push($result, $row);
         }
+        
+        $queryResult->free();
+        return $result; // Ritorna sempre un array (vuoto o pieno)
     }
 
     public function eliminaAnimale($id)
@@ -281,6 +281,39 @@ class DBAccess
         }
 
         return $animalData; // Ritorna array di animali (può essere vuoto)
+    }
+
+    public function adottaAnimale($username, $animalId) {
+        $sql = "INSERT INTO adottati (username, id) VALUES (?, ?)";
+        $adozioneRiuscita = false;
+        
+        if ($stmt = mysqli_prepare($this->connection, $sql)) {
+            mysqli_stmt_bind_param($stmt, "si", $username, $animalId);
+            
+            if (mysqli_stmt_execute($stmt)) {
+                // Marca l'animale come adottato
+                $updateQuery = "UPDATE animali SET adottato = 1 WHERE id = ?";
+                
+                if ($updateStmt = mysqli_prepare($this->connection, $updateQuery)) {
+                    mysqli_stmt_bind_param($updateStmt, "i", $animalId);
+                    
+                    if (mysqli_stmt_execute($updateStmt)) {
+                        // Rimuovi dai preferiti se presente
+                        $deleteQuery = "DELETE FROM preferiti WHERE username = ? AND id = ?";
+                        
+                        if ($deleteStmt = mysqli_prepare($this->connection, $deleteQuery)) {
+                            mysqli_stmt_bind_param($deleteStmt, "si", $username, $animalId);
+                            mysqli_stmt_execute($deleteStmt);
+                            mysqli_stmt_close($deleteStmt);
+                        }
+                        $adozioneRiuscita = true;
+                    }
+                    mysqli_stmt_close($updateStmt);
+                }
+            }
+            mysqli_stmt_close($stmt);
+        }
+        return $adozioneRiuscita;
     }
 
     public function searchAnimali($searchTerm)
