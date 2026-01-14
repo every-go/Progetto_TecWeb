@@ -4,6 +4,36 @@ require_once "connectionDB.php";
 use DB\DBAccess;
 
 include "menu.php";
+
+
+
+// Verifica se un URL è sicuro per il redirect (interno al sito).
+function isSafeRedirect($url) {
+    // controllo redirect vuoto
+    if (empty(trim($url))) {
+        return false;
+    }
+
+    // controllo URL assoluto
+    if ($url[0] !== '/') {
+        return false;
+    }
+
+    // Controllo Protocollo: Evitiamo schemi come "http://" o "//"
+    if (substr($url, 0, 2) === '//') {
+        return false;
+    }
+
+    // 4. Controllo  ritorni a capo o caratteri nulli
+    if (preg_match('/[\r\n]/', $url)) {
+        return false;
+    }
+
+    return true;
+}
+
+
+
 $content = file_get_contents("html/login.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
@@ -13,6 +43,9 @@ $errorMessages = [];
 
 // pagina di redirect dopo login
 $redirectPage=isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
+if(!isSafeRedirect($redirectPage)){
+    $redirectPage='index.php';
+}
 // $redirectPage='chiSiamo.php';
 
 // funzioni di validazione
