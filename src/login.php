@@ -135,7 +135,7 @@ foreach (['username','password'] as $campo) {
 $adottaMessage = '';
 if (isset($_SESSION['messaggio_errore'])) {
     $adottaMessage = "<p class='error-login' aria-live='assertive' role='alert'>" .
-                     htmlspecialchars($_SESSION['messaggio_errore'], ENT_QUOTES, "UTF-8") .
+                    $_SESSION['messaggio_errore'] .
                      "</p>";
     unset($_SESSION['messaggio_errore']);
 }
