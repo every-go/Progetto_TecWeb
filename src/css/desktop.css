@@ -597,11 +597,10 @@ button[type="submit"]:hover {
 }
 
 .invisibile {
-    /* height: 1px;
+    height: 1px;
     overflow: hidden;
     position: absolute;
-    width: 1px; */
-    display: none;
+    width: 1px;
 }
 
 .animali {
@@ -990,7 +989,7 @@ fieldset {
 }
 
 #descrizione-animale {
-    border: 2px solid var(--text-color);
+    /* border: 2px solid var(--text-color); */
     border-radius: 2em;
     padding: 1em 3em;
     display: flex;
@@ -1001,7 +1000,7 @@ fieldset {
     background-color: var(--primary-bg);
     border-radius: 24px;
     padding: 1em;
-    margin: 1em 0
+    margin: 1em 0;
 }
 
 /* nasconde gli errori se vuoti */
