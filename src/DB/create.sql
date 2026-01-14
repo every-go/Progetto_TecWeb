@@ -201,16 +201,221 @@ FALSE),
 'Protettore per decenni della Terra dei Draghi, ha deciso di cercare un nuovo legame dopo che il suo antico nido è
     diventato troppo silenzioso. Nonostante l''età, la sua forza è intatta e cerca un custode
     che non tema la sua imponenza ma che sappia rispettare la sua storia millenaria.',
-TRUE);
+TRUE),
+('Rodrigo', 
+'Un gabbiano dall''aria spavalda. 
+    Ha il piumaggio bianco e grigio, il becco giallo con la classica macchia rossa e uno sguardo che punta dritto al tuo panino.',
+'./images/jpg/gabbiano_rodrigo.jpg',
+'Maschio',
+'Reale',
+'Liguria',
+6,
+'Piccola',
+'Difficile',
+'Rodrigo non è un semplice uccello, è un <span lang="en">boss</span> del lungomare. 
+    Estremamente intelligente e opportunista, ha fatto del furto di focaccia un''arte. 
+    Non teme l''uomo, anzi, lo vede come un distributore automatico di cibo con le gambe.',
+'Accesso a scogliere o tetti alti; 
+    Pesce fresco (o avanzi di frittura mista); 
+    Non lasciare mai cibo incustodito in sua presenza; 
+    Tappi per le orecchie per le sue urla mattutine.',
+'Allontanato dal porto vecchio per "condotta molesta" ai danni dei turisti, Rodrigo cerca una nuova zona di caccia o un umano paziente che apprezzi la sua audacia.',
+FALSE),
+('Flavio', 
+'Un piccione di città dal piumaggio grigio iridescente sul collo. 
+    Gli manca qualche piuma sulla coda e cammina con un''andatura ciondolante. 
+    Sembra perennemente confuso.',
+'./images/jpg/piccione_flavio.jpg',
+'Maschio',
+'Reale',
+'Lazio',
+3,
+'Piccola',
+'Facile',
+'Flavio è un cittadino modello. Pacifico, un po'' tonto e amante della vita di piazza. 
+    Passa le giornate a tubare e a fissare le statue. 
+    Non ha grandi pretese, gli basta un marciapiede e qualche briciola.',
+'Compagnia di altri volatili (soffre la solitudine); 
+    Semi misti e granaglie; 
+    Un cornicione riparato dalla pioggia; 
+    Pazienza per il suo tubare incessante.',
+'Salvato dopo essere rimasto incastrato nell''insegna di una pizzeria a Roma. Ha deciso di ritirarsi dalla vita frenetica della capitale.',
+FALSE),
+
+('Gormita', 
+'Una piccola creatura tozza e muscolosa fatta di roccia e magma parzialmente solidificato. 
+    Ha occhi gialli luminosi.',
+'./images/jpg/gormita.jpg',
+'Maschio',
+'Fantasy',
+'Toscana',
+900,
+'Piccola',
+'Moderato',
+'Il potente signore della terra in miniatura. 
+    Parla una lingua antica fatta di grugniti e crede di dover salvare l''isola di Gallipoli, che però confonde con il giardino di casa. 
+    È molto serio e drammatico in tutto ciò che fa.',
+'Un terrario con sassi e vulcani finti; 
+    Non bagnare mai con acqua fredda (si solidifica); 
+    Vasetto di riposo per la notte; 
+    Bisogna chiamarlo "Sommo Luminescente" per farlo mangiare.',
+'È fuggito dal vasetto di un''edicola nel 2008 e ha vagato per anni sotto un divano. Ora cerca nuovi alleati per la battaglia finale.',
+FALSE),
+('Vaporeon', 
+'Un quadrupede elegante con una pelle azzurra liscia. 
+    Ha una grande pinna caudale simile a quella di una sirena e un collare di pinne bianche attorno al collo. 
+    Può sciogliersi nell''acqua diventando invisibile.',
+'./images/jpg/vaporeon.jpg',
+'Maschio', 
+'Fantasy',
+'Veneto',
+5,
+'Media',
+'Moderato',
+'Vaporeon è calmo, fresco e raccolto. 
+    La sua struttura cellulare è simile all''acqua, il che lo rende un maestro del nascondino in piscina. 
+    È leale ma richiede un allenatore che capisca i suoi silenzi.',
+'Piscina o laghetto privato indispensabile; 
+    Pietraidrica per il mantenimento dell''evoluzione; 
+    Lotte amichevoli per scaricare energia.',
+'Catturato per sbaglio da un pescatore a Chioggia che pensava fosse un grosso branzino. È stato liberato ma ha deciso di restare con gli umani.',
+FALSE),
+('Genoveffa', 
+'Non il solito unicorno etereo. Genoveffa è un po'' in sovrappeso, col manto rosa shocking e una criniera piena di glitter naturali. 
+    Il suo corno è leggermente storto e mastica sempre chewing-gum magici.',
+'./images/jpg/unicorna_genoveffa.jpg',
+'Femmina',
+'Fantasy',
+'Lombardia',
+88,
+'Grande',
+'Difficile',
+'Genoveffa è una diva. Si rifiuta di camminare nel fango e pretende di essere ammirata. 
+    Nonostante l''atteggiamento <span lang="en">snob</span>, ha un cuore d''oro e usa la sua magia per raddrizzare i quadri storti nelle case. 
+    È molto rumorosa quando cammina a causa degli zoccoli di diamante.',
+'Stalla riscaldata con specchi; 
+    Zucchero filato e arcobaleni da mangiare; 
+    Manicure agli zoccoli settimanale; 
+    Musica pop in sottofondo.',
+'Espulsa dalla Foresta Incantata perché cantava troppo forte durante l''ora del riposino delle fate. Cerca un ambiente mondano.',
+FALSE),
+
+('Eusbebo', 
+'Un topolino dal pelo verde e scarmigliato. 
+    Gli manca un orecchio e si vede una costola, cammina trascinando una zampetta.',
+'./images/jpg/topo_eusbebo.jpg',
+'Maschio',
+'Fantasy',
+'Piemonte',
+102,
+'Piccola',
+'Facile',
+'Nonostante sia uno zombi, Eusbebo è innocuo. 
+    Non cerca cervelli, ma formaggio stagionato, molto stagionato, quasi ammuffito. 
+    È molto lento e non scappa via, il che lo rende un animale domestico molto tranquillo.',
+'Gabbia a prova di fuga (perde pezzi in giro); 
+    Formaggio gorgonzola o roquefort; 
+    Ambiente fresco (per la conservazione); 
+    Non necessita di dormire, vaga la notte.',
+'Risvegliato da un esperimento culinario andato male in una cantina di vini. Cerca qualcuno che lo ami finché morte non li separi (di nuovo).',
+FALSE),
+('Luna', 
+'Una gatto europea sonnolenta dal manto tigrato grigio e nero, con zampe bianche come se indossasse dei calzini. 
+    Gli occhi sono grandi, di un verde smeraldo intenso.',
+'./images/jpg/gatto_luna.jpg',
+'Femmina',
+'Reale',
+'Lombardia',
+2,
+'Piccola',
+'Facile',
+'Luna è una gatta estremamente indipendente ma che sa regalare momenti di pura dolcezza. 
+    Ama osservare il mondo dalla finestra e cacciare insetti immaginari. 
+    È silenziosa e pulita, ideale per chi lavora da casa e cerca una compagnia discreta ma presente.',
+'Lettiera sempre pulita; 
+    Tiragraffi verticale alto almeno 1 metro; 
+    Cibo umido di qualità alternato a crocchette; 
+    Non necessita di uscire all''aperto.',
+'Trovata in uno scatolone davanti a un supermercato durante un temporale, Luna è stata svezzata da una volontaria e ora è pronta per una casa definitiva.',
+FALSE),
+('Ignis', 
+'Un piccolo drago dalle scaglie rosso rubino che brillano alla luce. 
+    Ha piccole ali membranose ripiegate sulla schiena e una coda che termina con una punta a forma di freccia. 
+    Dalle narici esce un sottile filo di fumo grigio.',
+'./images/jpg/drago_ignis.jpg',
+'Maschio',
+'Fantasy',
+'Campania',
+15,
+'Grande',
+'Difficile',
+'Nonostante l''aspetto intimidatorio, Ignis è un cucciolo (per gli standard dei draghi). 
+    È molto intelligente e protettivo verso i suoi custodi, ma tende ad accumulare oggetti luccicanti sotto la sua cuccia. 
+    Richiede un proprietario con polso fermo e pazienza.',
+'Spazio aperto ignifugo (preferibilmente grotta o garage in pietra); 
+    Alimentazione a base di carbone e carne arrostita; 
+    Lucidatura scaglie mensile con olio apposito; 
+    Attenzione: starnutisce fiamme quando è emozionato.',
+'Ignis è stato recuperato dalle pendici del Vesuvio dove i turisti lo scambiavano per un''attrazione locale. Cerca un castello o una villa isolata.',
+FALSE),
+('Pompon', 
+'Un coniglio ariete nano dal pelo bianco candido e sofficissimo. 
+    Le sue lunghe orecchie pendono ai lati del muso, coprendogli quasi gli occhi neri e rotondi. 
+    Sta sgranocchiando una carota con espressione soddisfatta.',
+'./images/jpg/coniglio_pompon.jpg',
+'Maschio',
+'Reale',
+'Toscana',
+1,
+'Piccola',
+'Moderato',
+'Pompon è un vortice di energia. Adora saltellare per casa e fare il <span id="ff"><dfn lang="en" aria-describedby="ff"> "binky"</dfn> </span>(salti di gioia)</span>. 
+    È molto socievole ma non ama essere sollevato da terra. 
+    Ha bisogno di stimoli mentali costanti per non rosicchiare i mobili.',
+'Fieno fresco illimitato (fondamentale); 
+    Verdure fresche quotidiane (sedano, finocchio); 
+    Recinto spazioso, mai gabbie piccole; 
+    Controllo dentatura veterinario ogni 6 mesi.',
+'Nato in un allevamento sovraffollato, è stato salvato da un''associazione. Ha imparato a usare la lettiera perfettamente.',
+FALSE),
+
+-- 4. UNICORNO (Fantasy)
+('Aura', 
+'Una creatura maestosa simile a un cavallo, con un manto perlaceo che riflette i colori dell''arcobaleno. 
+    Sulla fronte svetta un corno a spirale cristallino. 
+    La criniera è lunga, setosa e sembra muoversi anche in assenza di vento.',
+'./images/jpg/unicorno_aura.jpg',
+'Femmina',
+'Fantasy',
+'Valle d''Aosta',
+120,
+'Media',
+'Difficile',
+'Aura è una creatura antica e saggia. Non si lega facilmente agli umani, ma quando lo fa, il legame è eterno. 
+    È estremamente sensibile alle emozioni negative e non tollera la violenza o le urla. 
+    La sua presenza porta serenità all''ambiente circostante.',
+'Acqua di fonte purissima (non beve acqua del rubinetto); 
+    Mele d''oro o frutta biologica di alta qualità; 
+    Ampie radure boschive per correre; 
+    Spazzolatura della criniera con pettini d''argento.',
+'Aura è apparsa misteriosamente nei boschi alpini, fuggita da un regno in cui la magia stava svanendo. Cerca un rifugio dove la natura è rispettata.',
+FALSE);
+
+
+
+
+
 
 INSERT INTO utenti
-VALUES ('user', 'user', FALSE),
-       ('admin', 'admin', TRUE);
+VALUES  ('user', 'user', FALSE),
+        ('userrr', 'user', FALSE),
+        ('admin', 'admin', TRUE);
 
 INSERT INTO preferiti
 VALUES ('user', 1),
        ('user', 2),
-       ('user', 3);
+       ('user', 3),
+       ('userrr', 3);
 
 INSERT INTO adottati
 VALUES ('user', 6);
