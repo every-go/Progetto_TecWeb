@@ -74,6 +74,7 @@ if (isset($_GET["id"])) {
                     ($animalData["eta"] == 1 ? " anno" : " anni"),
                 $content
             );
+            $content = str_replace("[SESSO_ANIMALE]", $animalData["sesso"], $content);
             $content = str_replace("[LUOGO]", $animalData["luogo"], $content);
             $content = str_replace(
                 "[CARATTERE]",

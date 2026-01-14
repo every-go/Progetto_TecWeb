@@ -678,6 +678,16 @@ button[type="submit"]:hover {
     grid-column: 1 / 3;
 }
 
+.animale-info .nome .sesso {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+
+    /* Da colore panna all'immagine */
+    /* filter: invert(98%) sepia(81%) saturate(496%) hue-rotate(303deg) brightness(107%) contrast(96%); */
+    filter: invert(69%) sepia(30%) saturate(256%) hue-rotate(40deg) brightness(95%) contrast(86%);
+}
+
 /* gestione nelle righe delle informazioni */
 .animale-info .info-box {
     background-color: var(--animalebackground);
@@ -842,6 +852,7 @@ button[type="submit"]:hover {
 }
 
 #animale-main aside {
+    align-self: flex-start;
     margin-left: 10%;
     padding: 1.5em 2.5em;
     background-color: var(--animalebackground);
