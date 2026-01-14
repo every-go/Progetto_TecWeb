@@ -435,7 +435,15 @@ class DBAccess
         if ($stmt = mysqli_prepare($this->connection, $query)) {
             mysqli_stmt_bind_param($stmt, "ss", $username, $password);
 
-            if (mysqli_stmt_execute($stmt) && mysqli_stmt_affected_rows($stmt) > 0) {
+            if (!mysqli_stmt_execute($stmt)) {
+                // Codice errore 1062 = Duplicate entry
+                if (mysqli_errno($this->connection) == 1062) {
+                    error_log("Tentativo di registrazione con username duplicato: $username");
+                    $success = false;
+                } else {
+                    error_log(mysqli_error($this->connection));
+                }
+            } elseif (mysqli_stmt_affected_rows($stmt) > 0) {
                 $success = true;
             }
 
@@ -446,18 +454,21 @@ class DBAccess
 
         return $success;
     }
+
 
     public function checkUsernameEsistente($username)
     {
         $query = "SELECT username FROM utenti WHERE username = ?";
         $success = false;
+
         if ($stmt = mysqli_prepare($this->connection, $query)) {
             mysqli_stmt_bind_param($stmt, "s", $username);
-
-            if (mysqli_stmt_execute($stmt) && mysqli_stmt_affected_rows($stmt) > 0) {
-                $success = true;
+            if (mysqli_stmt_execute($stmt)) {
+                mysqli_stmt_store_result($stmt);           // memorizza risultati
+                if (mysqli_stmt_num_rows($stmt) > 0) {
+                    $success = true;                       // username esiste
+                }
             }
-
             mysqli_stmt_close($stmt);
         } else {
             error_log(mysqli_error($this->connection));
@@ -465,6 +476,7 @@ class DBAccess
 
         return $success;
     }
+
 
 
     public function checkPreferito($username, $idAnimale)

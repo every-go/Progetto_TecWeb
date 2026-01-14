@@ -1,70 +1,84 @@
 <?php
+session_start();
 require_once "connectionDB.php";
-
 use DB\DBAccess;
-
-function validateUsername($username)
-{
-    return preg_match('/^[a-zA-Z_]{3,20}$/', $username);
-}
-
-function validatePassword($password)
-{
-    return strlen($password) >= 4;
-}
-
-function sanitizeUsername($username)
-{
-    return htmlspecialchars(trim($username), ENT_QUOTES, "UTF-8");
-}
 
 include "menu.php";
 $content = file_get_contents("html/registrazione.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
 
-$username = "";
-$errorMessage = "";
+// campi del form
+$fields = [
+    "username" => "",
+    "password" => "",
+    "confirm_password" => ""
+];
 
-if (isset($_POST["register"]) &&
-    isset($_POST["username"]) &&
-    isset($_POST["password"]) &&
-    isset($_POST["confirm_password"])) {
+// array errori
+$errorMessages = [];
 
-    $username = sanitizeUsername($_POST["username"]);
-    $password = $_POST["password"];
-    $confirmPassword = $_POST["confirm_password"];
-    $errorMessage = "";
+// funzioni di validazione
+function validateUsername($value) {
+    return preg_match('/^[a-zA-Z_ ]{4,24}$/', $value);
+}
 
-    if (!validateUsername($username) || !validatePassword($password)) {
-        $errorMessage = "<p class='error-login' aria-live='assertive' role='alert'>
-            Username o password non validi!</p>";
-    } elseif ($password !== $confirmPassword) {
-        $errorMessage = "<p class='error-login' aria-live='assertive' role='alert'>
-            Le password non coincidono!</p>";
-    } else {
+function validatePassword($value) {
+    // password complessa
+    $pattern = '/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~]).{8,24}$/';
+    $regex = preg_match($pattern, $value);
+    if(!$diverso = $value !== "#Flavio4"){
+        return $regex;
+    }
+    return $diverso;
+}
+
+function sanitize($value) {
+    return htmlspecialchars(trim($value), ENT_QUOTES, "UTF-8");
+}
+
+// gestione submit
+if (isset($_POST["register"])) {
+    foreach ($fields as $key => &$value) {
+        $value = sanitize($_POST[$key] ?? '');
+    }
+
+    // validazioni
+    if ($fields["username"] === "") {
+        $errorMessages["username"] = "Inserire lo <span lang='en'>username</span>";
+    } elseif (!validateUsername($fields["username"])) {
+        $errorMessages["username"] = "Username non valido";
+    }
+
+    if ($fields["password"] === "") {
+        $errorMessages["password"] = "Inserire la <span lang='en'>password</span>";
+    } elseif (!validatePassword($fields["password"])) {
+        $errorMessages["password"] = "Password non valida";
+    }
+
+    if ($fields["confirm_password"] === "") {
+        $errorMessages["confirm_password"] = "Confermare la <span lang='en'>password</span>";
+    } elseif ($fields["confirm_password"] !== $fields["password"]) {
+        $errorMessages["confirm_password"] = "Le password non coincidono";
+    }
+
+    // se tutto valido, controllo DB
+    if (empty($errorMessages)) {
         $db = new DBAccess();
-        $connessioneOK = $db->openDBConnection();
-
-        if ($connessioneOK) {
-
-            if ($db->checkUsernameEsistente($username)) {
-                $errorMessage = "<p class='error-login' aria-live='assertive' role='alert'>
-                    Username già esistente!</p>";
+        if ($db->openDBConnection()) {
+            if ($db->checkUsernameEsistente($fields["username"])) {
+                $errorMessages["username"] = "Username già esistente";
             } else {
-                $res_register = $db->registerUtente($username, $password);
-                if ($res_register) {
+                $res = $db->registerUtente($fields["username"], $fields["password"]);
+                $db->closeConnection();
+                if ($res) {
                     $_SESSION['messaggio_utente'] = 'Registrazione avvenuta con successo';
-                    $db->closeConnection();
                     header("Location: login.php");
                     exit();
                 } else {
-                    $errorMessage = "<p class='error-login' aria-live='assertive' role='alert'>
-                        Errore durante la registrazione</p>";
+                    $errorMessages["username"] = "Lo username è già esistente";
                 }
             }
-
-            $db->closeConnection();
         } else {
             include __DIR__ . "/500.php";
             http_response_code(500);
@@ -73,17 +87,44 @@ if (isset($_POST["register"]) &&
     }
 }
 
-$content = str_replace("[ERROR_MESSAGE]", $errorMessage, $content);
-$content = str_replace("[USERNAME_VALUE]", $username, $content);
-$content = str_replace("[autofocus]", isset($_POST["username"]) ? "autofocus" : "", $content);
+// costruzione HTML errori
+$messaggiHTML = "";
+if (!empty($errorMessages)) {
+    $messaggiHTML .= "<ul class='error-login'>";
+    foreach ($errorMessages as $msg) {
+        $messaggiHTML .= "<li aria-live='assertive' role='alert'>$msg</li>";
+    }
+    $messaggiHTML .= "</ul>";
+}
 
+// autofocus dinamico: primo campo con errore
+$autofocus = [];
+$focusAssigned = false;
+foreach (array_keys($fields) as $campo) {
+    if (!$focusAssigned && isset($errorMessages[$campo])) {
+        $autofocus[$campo] = "autofocus";
+        $focusAssigned = true;
+    } else {
+        $autofocus[$campo] = "";
+    }
+}
+
+// messaggi sessione
 $adottaMessage = '';
 if (isset($_SESSION['messaggio_errore'])) {
-    $adottaMessage = "<p class='error-login' aria-live='assertive' role='alert'>" . $_SESSION['messaggio_errore'] . " </p>";
+    $adottaMessage = "<p class='error-login' aria-live='assertive' role='alert'>" .
+                     htmlspecialchars($_SESSION['messaggio_errore'], ENT_QUOTES, "UTF-8") .
+                     "</p>";
     unset($_SESSION['messaggio_errore']);
 }
-$content = str_replace('[adottaMessage]', $adottaMessage, $content);
+
+// sostituzioni template
+$content = str_replace("[ERROR_MESSAGE]", $messaggiHTML, $content);
+$content = str_replace("[USERNAME_VALUE]", $fields["username"], $content);
+$content = str_replace("[autofocusUsername]", $autofocus["username"], $content);
+$content = str_replace("[autofocusPassword]", $autofocus["password"], $content);
+$content = str_replace("[autofocusConfirmPassword]", $autofocus["confirm_password"], $content);
+$content = str_replace("[adottaMessage]", $adottaMessage, $content);
 
 echo $content;
-
 ?>

@@ -1317,7 +1317,11 @@ a.pulsante-torna-su:focus {
 }
 
 
-
+.errorSuggestion {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.9em;
+}
 
 
 @media (max-width: 1200px) {

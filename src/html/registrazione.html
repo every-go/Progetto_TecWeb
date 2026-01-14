@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="./css/mobile.css" type="text/css" media="screen and (max-width:800px)">
 	<link rel="stylesheet" href="./css/print.css" type="text/css" media="print">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+	<script src="./javascript/registrazione.js"></script>
 </head>
 
 <body id="top">
@@ -26,9 +27,9 @@
 			[listaMenu]
 		</nav>
 	</header>
-	<nav id="breadcrumb" aria-label="Breadcrumb">
+	<nav id="breadcrumb" aria-label="percorso">
 		<p>
-			Ti trovi in: <a href="index.php" lang="en">Home</a><span aria-hidden="true"> &gt;&gt; </span><span lang="en">Login</span>
+			Ti trovi in: <a href="index.php" lang="en">Home</a><span aria-hidden="true"> &gt;&gt; </span><a href="login.php"><span lang="en">Login</span></a><span aria-hidden="true"> &gt;&gt; </span>Registrazione
 		</p>
 	</nav>
 	<main id="main-content">
@@ -41,17 +42,27 @@
 
 			<div id="form-reg">
 				<form action="registrazione.php" method="post" id="login-form">
-               <label for="username"><span lang="en">Inserisci il tuo username:</span></label>
-               <input type="text" id="username" name="username" [autofocus] value="[USERNAME_VALUE]" required>
-           
-               <label for="password">Inserisci la tua <span lang="en">password:</span></label>
-               <input type="password" id="password" name="password" required>
-           
-               <label for="confirm_password">Conferma la tua <span lang="en">password:</span></label>
-               <input type="password" id="confirm_password" name="confirm_password" required>
-           
-               <input type="submit" name="register" value="Registrati">
-           </form>
+
+					<div>
+					  <label for="username"><span lang="en">Inserisci il tuo username:</span></label>
+					  <input type="text" id="username" name="username" [autofocusUsername] value="[USERNAME_VALUE]">
+					</div>
+				 
+					<div>
+					  <label for="password">Inserisci la tua <span lang="en">password:</span></label>
+					  <input type="password" id="password" name="password" [autofocusPassword]>
+					</div>
+				 
+					<div>
+					  <label for="confirm_password">Conferma la tua <span lang="en">password:</span></label>
+					  <input type="password" id="confirm_password" name="confirm_password" [autofocusConfirmPassword]>
+					</div>
+				 
+					<div class="form-group">
+					  <input type="submit" name="register" value="Registrati">
+					</div>
+				 
+				</form> 
                       
 				<p> Hai già un <span lang="en">account</span>? <a href="login.php">Esegui il <span lang="en">login</span></a></p>
 			</div>
