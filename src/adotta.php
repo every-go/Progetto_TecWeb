@@ -4,7 +4,7 @@
     use DB\DBAccess;
 
     if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] !== true) {
-        $_SESSION['messaggio_errore'] = "Devi effettuare il <span lang='en'>login</span> per adottare un animale";
+        $_SESSION['messaggio_errore'] = "Devi effettuare il <span lang=\"en\">login</span> per adottare un animale";
 
         // Memorizza la pagina corrente per il reindirizzamento dopo il login
         $pagina_corrente = basename($_SERVER['REQUEST_URI']);

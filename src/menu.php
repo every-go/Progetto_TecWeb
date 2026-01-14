@@ -44,7 +44,7 @@ if (
     if(!isset($_GET['redirect'])){
         $_GET['redirect']=$pagina_corrente;
     }
-    $_GET['redirect']="/".$pagina_corrente;
+    // $_GET['redirect']="/".$pagina_corrente;
     $pages["login.php?".createHttpQuery($_GET,['redirect'])] = ["text" => "Login", "lang" => "en"];
     $pagesFooter["login.php?".createHttpQuery($_GET,['redirect'])] = ["text" => "Login", "lang" => "en"];
     // $pagesFooter["login.php?redirect=" . urlencode($pagina_corrente)] = ["text" => "Login", "lang" => "en"];

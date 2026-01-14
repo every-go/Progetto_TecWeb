@@ -14,10 +14,10 @@ function isSafeRedirect($url) {
         return false;
     }
 
-    // controllo URL assoluto
-    if ($url[0] !== '/') {
-        return false;
-    }
+    // // controllo URL assoluto
+    // if ($url[0] !== '/') {
+    //     return false;
+    // }
 
     // Controllo Protocollo: Evitiamo schemi come "http://" o "//"
     if (substr($url, 0, 2) === '//') {
@@ -46,7 +46,7 @@ $redirectPage=isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
 if(!isSafeRedirect($redirectPage)){
     $redirectPage='index.php';
 }
-// $redirectPage='chiSiamo.php';
+
 
 // funzioni di validazione
 function validateUsername($username) {
