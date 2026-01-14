@@ -11,6 +11,10 @@ $content = str_replace("[listaFooter]", $listaFooter, $content);
 $username = "";
 $errorMessages = [];
 
+// pagina di redirect dopo login
+$redirectPage=isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
+// $redirectPage='chiSiamo.php';
+
 // funzioni di validazione
 function validateUsername($username) {
     return preg_match('/^[a-zA-Z_]{4,24}$/', $username);
@@ -23,6 +27,8 @@ function validatePassword($password) {
 function sanitizeUsername($username) {
     return htmlspecialchars(trim($username), ENT_QUOTES, "UTF-8");
 }
+
+
 
 // login solo se non già loggato
 if (empty($_SESSION["is_logged_in"])) {
@@ -54,7 +60,7 @@ if (empty($_SESSION["is_logged_in"])) {
                 if ($res_login) {
                     $_SESSION['messaggio_utente'] = '<span lang="en">Login</span>&nbsp; avvenuto con successo';
                     $_SESSION['is_logged_in'] = true;
-                    header("Location: index.php");
+                    header("Location:". $redirectPage);
                     exit();
                 } else {
                     $errorMessages['username'] = "<span lang='en'>Username</span> o <span lang='en'>password</span> non validi!";
@@ -68,7 +74,8 @@ if (empty($_SESSION["is_logged_in"])) {
     }
 
 } else {
-    header("Location: index.php");
+
+    header("Location: ".$redirectPage);
     exit();
 }
 
@@ -101,6 +108,13 @@ if (isset($_SESSION['messaggio_errore'])) {
 }
 
 // sostituzioni template
+if(isset($_GET['redirect'])){
+    $redirectPage=htmlspecialchars('redirect='.$_GET['redirect'], ENT_QUOTES, "UTF-8");
+}
+else{
+    $redirectPage='';
+}
+$content = str_replace("[PAGINA_PROVENIENZA]",$redirectPage , $content);
 $content = str_replace("[ERROR_MESSAGE]", $messaggiHTML, $content);
 $content = str_replace("[USERNAME_VALUE]", $username, $content);
 $content = str_replace("[autofocusUsername]", $autofocus['username'], $content);

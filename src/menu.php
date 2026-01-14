@@ -1,4 +1,7 @@
 <?php
+
+require_once "utils/animalFormHandler.php";
+
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
@@ -38,9 +41,13 @@ if (
 } else {
     // Memorizza la pagina corrente per il reindirizzamento dopo il login
     $pagina_corrente = basename($_SERVER['REQUEST_URI']);
+    if(!isset($_GET['redirect'])){
+        $_GET['redirect']=$pagina_corrente;
+    }
+    $pages["login.php?".createHttpQuery($_GET,['redirect'])] = ["text" => "Login", "lang" => "en"];
+    $pagesFooter["login.php?".createHttpQuery($_GET,['redirect'])] = ["text" => "Login", "lang" => "en"];
+    // $pagesFooter["login.php?redirect=" . urlencode($pagina_corrente)] = ["text" => "Login", "lang" => "en"];
 
-    $pages["login.php?redirect=" . urlencode($pagina_corrente)] = ["text" => "Login", "lang" => "en"];
-    $pagesFooter["login.php?redirect=" . urlencode($pagina_corrente)] = ["text" => "Login", "lang" => "en"];
 }
 
 $pagesFooter["crediti.php"] = ["text" => "Crediti"];
@@ -49,7 +56,7 @@ $listaMenu = "<ul>";
 foreach ($pages as $page => $data) {
     $isCurrentPage = false;
 
-    if ($page === $currentPage) {
+    if (strtok($page, '?') === $currentPage) {
         $isCurrentPage = true;
     }
 

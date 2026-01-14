@@ -29,7 +29,7 @@
 	</header>
 	<nav id="breadcrumb" aria-label="percorso">
 		<p>
-			Ti trovi in: <a href="index.php" lang="en">Home</a><span aria-hidden="true"> &gt;&gt; </span><a href="login.php"><span lang="en">Login</span></a><span aria-hidden="true"> &gt;&gt; </span>Registrazione
+			Ti trovi in: <a href="index.php" lang="en">Home</a><span aria-hidden="true"> &gt;&gt; </span><a href="login.php?[PAGINA_PROVENIENZA]"><span lang="en">Login</span></a><span aria-hidden="true"> &gt;&gt; </span>Registrazione
 		</p>
 	</nav>
 	<main id="main-content">
@@ -41,7 +41,7 @@
 			<img class="print-only" src="./images/png/cani.png" alt="">
 
 			<div id="form-reg">
-				<form action="registrazione.php" method="post" id="login-form">
+				<form action="registrazione.php?[PAGINA_PROVENIENZA]" method="post" id="login-form">
 
 					<div>
 					  <label for="username"><span lang="en">Inserisci il tuo username:</span></label>
@@ -64,7 +64,7 @@
 				 
 				</form> 
                       
-				<p> Hai già un <span lang="en">account</span>? <a href="login.php">Esegui il <span lang="en">login</span></a></p>
+				<p> Hai già un <span lang="en">account</span>? <a href="login.php?[PAGINA_PROVENIENZA]">Esegui il <span lang="en">login</span></a></p>
 			</div>
 		</div>
 	</main>

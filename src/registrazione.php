@@ -73,7 +73,8 @@ if (isset($_POST["register"])) {
                 $db->closeConnection();
                 if ($res) {
                     $_SESSION['messaggio_utente'] = 'Registrazione avvenuta con successo';
-                    header("Location: login.php");
+                    $parametersQuery=isset($_GET['redirect']) ? '?redirect='.($_GET['redirect']) : '';
+                    header("Location: login.php".$parametersQuery);
                     exit();
                 } else {
                     $errorMessages["username"] = "Lo username è già esistente";
@@ -117,7 +118,13 @@ if (isset($_SESSION['messaggio_errore'])) {
                      "</p>";
     unset($_SESSION['messaggio_errore']);
 }
-
+if(isset($_GET['redirect'])){
+    $redirectPage=htmlspecialchars('redirect='.$_GET['redirect'], ENT_QUOTES, "UTF-8");
+}
+else{
+    $redirectPage='';
+}
+$content = str_replace("[PAGINA_PROVENIENZA]",$redirectPage , $content);
 // sostituzioni template
 $content = str_replace("[ERROR_MESSAGE]", $messaggiHTML, $content);
 $content = str_replace("[USERNAME_VALUE]", $fields["username"], $content);

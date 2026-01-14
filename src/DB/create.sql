@@ -313,14 +313,14 @@ FALSE),
 'Nonostante sia uno zombi, Eusbebo è innocuo. 
     Non cerca cervelli, ma formaggio stagionato, molto stagionato, quasi ammuffito. 
     È molto lento e non scappa via, il che lo rende un animale domestico molto tranquillo.',
-'Gabbia a prova di fuga (perde pezzi in giro); 
+'Gabbia a prova di fuga; 
     Formaggio gorgonzola o roquefort; 
     Ambiente fresco (per la conservazione); 
     Non necessita di dormire, vaga la notte.',
 'Risvegliato da un esperimento culinario andato male in una cantina di vini. Cerca qualcuno che lo ami finché morte non li separi (di nuovo).',
 FALSE),
 ('Luna', 
-'Una gatto europea sonnolenta dal manto tigrato grigio e nero, con zampe bianche come se indossasse dei calzini. 
+'Una gatta europea sonnolenta dal manto tigrato grigio e nero, con zampe bianche come se indossasse dei calzini. 
     Gli occhi sono grandi, di un verde smeraldo intenso.',
 './images/jpg/gatto_luna.jpg',
 'Femmina',
