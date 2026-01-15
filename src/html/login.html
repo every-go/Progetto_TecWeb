@@ -6,30 +6,38 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="./images/ico/logo.ico">
 	<title>Login - Casa Otium</title>
-	<meta name="keywords" 
-		content="Casa Otium, animali, adozione, login, accesso">
-	<meta name="description"
-		content="Esegui il login su Casa Otium per eseguire l'accesso">
+	<meta name="keywords" content="Casa Otium, animali, adozione, login, accesso">
+	<meta name="description" content="Esegui il login su Casa Otium per eseguire l'accesso">
 	<link rel="stylesheet" href="./css/desktop.css" type="text/css">
 	<link rel="stylesheet" href="./css/mobile.css" type="text/css" media="screen and (max-width:800px)">
 	<link rel="stylesheet" href="./css/print.css" type="text/css" media="print">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+<<<<<<< HEAD
 	<script src="./javascript/login.js" type="module"></script>
+=======
+	<link href="https://fonts.googleapis.com/css2?family=Milonga&display=swap" rel="stylesheet">
+	<script src="javascript/menu.js" defer></script>
+>>>>>>> 13523f6 (fatto menù hamburger)
 </head>
 
 <body id="top">
 	<a class="aiuti" href="#main-content"> Vai al contenuto </a>
 	<header id="container-menu">
 
-		<h1 id="logo-header">Casa Otium</h1>
+		<img src="./images/png/gatto_logo.png" alt="">
+		<h1 style="font-family: 'Milonga', sans-serif;">Casa Otium</h1>
+		<!-- <h1 id="logo-header">Casa Otium</h1> -->
 
-		<nav id="menu">
+		<nav id="menu" aria-label="Menù">
+			<button id="hamburger" aria-label="Apri menù">
+			</button>
 			[listaMenu]
 		</nav>
 	</header>
 	<nav id="breadcrumb" aria-label="Breadcrumb">
 		<p>
-			Ti trovi in: <a href="index.php" lang="en">Home</a><span aria-hidden="true"> &gt;&gt; </span><span lang="en">Login</span>
+			Ti trovi in: <a href="index.php" lang="en">Home</a><span aria-hidden="true"> &gt;&gt; </span><span
+				lang="en">Login</span>
 		</p>
 	</nav>
 	<main id="main-content">
@@ -46,17 +54,18 @@
 						<label for="username">Inserisci il tuo username:</label>
 						<input type="text" id="username" name="username" value="[USERNAME_VALUE]" [autofocusUsername]>
 					</div>
-					 
+
 					<div>
 						<label for="password">Inserisci la tua password:</label>
 						<input type="password" id="password" name="password" [autofocusPassword]>
 					</div>
-					 
+
 
 					<input type="submit" name="login" value="Accedi">
 
 				</form>
-				<p> Non hai un <span lang="en">account</span>? <a href="registrazione.php?[PAGINA_PROVENIENZA]">Registrati</a></p>
+				<p> Non hai un <span lang="en">account</span>? <a
+						href="registrazione.php?[PAGINA_PROVENIENZA]">Registrati</a></p>
 			</div>
 		</div>
 	</main>

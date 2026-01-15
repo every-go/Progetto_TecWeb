@@ -6,30 +6,39 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="./images/ico/logo.ico">
 	<title>Registrazione - Casa Otium</title>
-	<meta name="keywords" 
-		content="Casa Otium, animali, adozione, registrazione, account">
-	<meta name="description"
-		content="Effettua la registrazione su Casa Otium per creare l'account">
+	<meta name="keywords" content="Casa Otium, animali, adozione, registrazione, account">
+	<meta name="description" content="Effettua la registrazione su Casa Otium per creare l'account">
 	<link rel="stylesheet" href="./css/desktop.css" type="text/css">
 	<link rel="stylesheet" href="./css/mobile.css" type="text/css" media="screen and (max-width:800px)">
 	<link rel="stylesheet" href="./css/print.css" type="text/css" media="print">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+<<<<<<< HEAD
 	<script src="./javascript/registrazione.js" type="module"></script>
+=======
+	<link href="https://fonts.googleapis.com/css2?family=Milonga&display=swap" rel="stylesheet">
+	<script src="javascript/menu.js" defer></script>
+	<script src="./javascript/registrazione.js"></script>
+>>>>>>> 13523f6 (fatto menù hamburger)
 </head>
 
 <body id="top">
 	<a class="aiuti" href="#main-content"> Vai al contenuto </a>
 	<header id="container-menu">
+		<img src="./images/png/gatto_logo.png" alt="">
+		<h1 style="font-family: 'Milonga', sans-serif;">Casa Otium</h1>
+		<!-- <h1 id="logo-header">Casa Otium</h1> -->
 
-		<h1 id="logo-header">Casa Otium</h1>
-
-		<nav id="menu">
+		<nav id="menu" aria-label="Menù">
+			<button id="hamburger" aria-label="Apri menù">
+			</button>
 			[listaMenu]
 		</nav>
 	</header>
 	<nav id="breadcrumb" aria-label="percorso">
 		<p>
-			Ti trovi in: <a href="index.php" lang="en">Home</a><span aria-hidden="true"> &gt;&gt; </span><a href="login.php?[PAGINA_PROVENIENZA]"><span lang="en">Login</span></a><span aria-hidden="true"> &gt;&gt; </span>Registrazione
+			Ti trovi in: <a href="index.php" lang="en">Home</a><span aria-hidden="true"> &gt;&gt; </span><a
+				href="login.php?[PAGINA_PROVENIENZA]"><span lang="en">Login</span></a><span aria-hidden="true"> &gt;&gt;
+			</span>Registrazione
 		</p>
 	</nav>
 	<main id="main-content">
@@ -44,27 +53,28 @@
 				<form action="registrazione.php?[PAGINA_PROVENIENZA]" method="post" id="login-form">
 
 					<div>
-					  <label for="username"><span lang="en">Inserisci il tuo username:</span></label>
-					  <input type="text" id="username" name="username" [autofocusUsername] value="[USERNAME_VALUE]">
+						<label for="username"><span lang="en">Inserisci il tuo username:</span></label>
+						<input type="text" id="username" name="username" [autofocusUsername] value="[USERNAME_VALUE]">
 					</div>
-				 
+
 					<div>
-					  <label for="password">Inserisci la tua <span lang="en">password:</span></label>
-					  <input type="password" id="password" name="password" [autofocusPassword]>
+						<label for="password">Inserisci la tua <span lang="en">password:</span></label>
+						<input type="password" id="password" name="password" [autofocusPassword]>
 					</div>
-				 
+
 					<div>
-					  <label for="confirm_password">Conferma la tua <span lang="en">password:</span></label>
-					  <input type="password" id="confirm_password" name="confirm_password" [autofocusConfirmPassword]>
+						<label for="confirm_password">Conferma la tua <span lang="en">password:</span></label>
+						<input type="password" id="confirm_password" name="confirm_password" [autofocusConfirmPassword]>
 					</div>
-				 
+
 					<div class="form-group">
-					  <input type="submit" name="register" value="Registrati">
+						<input type="submit" name="register" value="Registrati">
 					</div>
-				 
-				</form> 
-                      
-				<p> Hai già un <span lang="en">account</span>? <a href="login.php?[PAGINA_PROVENIENZA]">Esegui il <span lang="en">login</span></a></p>
+
+				</form>
+
+				<p> Hai già un <span lang="en">account</span>? <a href="login.php?[PAGINA_PROVENIENZA]">Esegui il <span
+							lang="en">login</span></a></p>
 			</div>
 		</div>
 	</main>

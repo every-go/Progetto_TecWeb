@@ -13,15 +13,21 @@
     <link rel="stylesheet" href="./css/mobile.css" type="text/css" media="screen and (max-width:800px)">
     <link rel="stylesheet" href="./css/print.css" type="text/css" media="print">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Milonga&display=swap" rel="stylesheet">
+    <script src="javascript/menu.js" defer></script>
 </head>
 
 <body id="top">
     <a class="aiuti" href="#main-content">Vai alla presentazione</a>
     <header id="container-menu">
 
-        <h1 id="logo-header">Casa Otium</h1>
+        <img src="./images/png/gatto_logo.png" alt="">
+        <h1 style="font-family: 'Milonga', sans-serif;">Casa Otium</h1>
+        <!-- <h1 id="logo-header">Casa Otium</h1> -->
 
-        <nav id="menu">
+        <nav id="menu" aria-label="Menù">
+            <button id="hamburger" aria-label="Apri menù">
+            </button>
             [listaMenu]
         </nav>
     </header>
@@ -31,7 +37,7 @@
         </p>
     </nav>
     <main id="main-content">
-        
+
         <h1>Casa Otium: il nostro <span lang="en">team</span></h1>
         <hr class="linefirst" aria-hidden="true">
         <article id="cuore" class="txt-img">
@@ -75,20 +81,21 @@
 
         <h2>Contatti</h2>
         <p id="descr-contatti">
-                Questa tabella contiene un elenco dettagliato dei contatti disponibili. 
+            Questa tabella contiene un elenco dettagliato dei contatti disponibili.
 
-                Per ogni contatto sono visualizzati il nome dell'admin, l'indirizzo <span lang="en">email</span> e il numero di telefono associati.
+            Per ogni contatto sono visualizzati il nome dell'admin, l'indirizzo <span lang="en">email</span> e il numero
+            di telefono associati.
         </p>
 
         <table aria-describedby="descr-contatti" id="tabella-contatti">
             <caption>
-                Contatti 
+                Contatti
             </caption>
             <thead>
                 <tr>
                     <th scope="col"><span lang="en">Admin</span></th>
                     <th scope="col"><span lang="en">Email</span></th>
-                    <th abbr="telefono" scope="col" >Numero di telefono</th>
+                    <th abbr="telefono" scope="col">Numero di telefono</th>
                 </tr>
             </thead>
             <tbody>
@@ -97,7 +104,7 @@
                     <th scope="row">Stefano</th>
                     <td data-title="Email"><a href="mailto:stefano@casaotium.it">stefano@casaotium.it</a></td>
                     <td data-title="Numero di telefono"><a href="tel:+XX-123-456-7890">+XX-123-456-7890</a></td>
-                </tr>            
+                </tr>
                 <tr>
                     <th scope="row">Marco</th>
                     <td data-title="Email"><a href="mailto:marco@casaotium.it">marco@casaotium.it</a></td>
@@ -108,15 +115,15 @@
                     <td data-title="Email"><a href="mailto:matteo@casaotium.it">matteo@casaotium.it</a></td>
                     <td data-title="Numero di telefono"><a href="tel:+XX-123-456-7890">+ZZ-123-456-7890</a></td>
                 </tr>
-                
+
                 <tr>
                     <th scope="row">Davide</th>
                     <td data-title="Email"><a href="mailto:davide@casaotium.it">davide@casaotium.it</a></td>
                     <td data-title="Numero di telefono"><a href="tel:+XX-123-456-7890">+HH-123-456-7890</a></td>
                 </tr>
-                
+
             </tbody>
-                
+
         </table>
 
 

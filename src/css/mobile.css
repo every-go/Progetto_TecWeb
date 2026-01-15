@@ -3,15 +3,10 @@ main>article {
 }
 
 body {
+    overflow-x: hidden;
     padding: 0 2em;
 }
 
-#container-menu {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
-}
 
 #logo-header {
     width: 50%;
@@ -20,6 +15,23 @@ body {
 /* #breadcrumb {
     margin-bottom: 0em;
 } */
+
+/* #container-menu h1 {
+    margin-right: 0;
+    margin-left: .5em;
+} */
+
+/* #menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    flex-direction: column;
+    height: 100vh;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+} */
+
 
 #container-adozione {
     width: 100vw;
@@ -73,10 +85,6 @@ body {
 
 #statistiche-card img {
     width: 30%;
-}
-
-#menu {
-    height: 3.5em;
 }
 
 #left-panel {
@@ -189,17 +197,104 @@ Linearizzazione di Aaron Gustafson
 */
 
 /* al momento non stiamo usando tfoot, ma ne dubbio lo lascio */
-#tabella-contatti thead,#tabella-contatti tfoot{
+#tabella-contatti thead,
+#tabella-contatti tfoot {
     display: none;
 }
 
-#tabella-contatti tr,#tabella-contatti th, #tabella-contatti td {
+#tabella-contatti tr,
+#tabella-contatti th,
+#tabella-contatti td {
     display: block;
-    padding:0;
+    padding: 0;
     white-space: normal;
 }
 
-#tabella-contatti th[data-title]:before,#tabella-contatti td[data-title]:before {
+#tabella-contatti th[data-title]:before,
+#tabella-contatti td[data-title]:before {
     content: attr(data-title) ":\00A0";
     font-weight: bold;
+}
+
+/* 731px è il punto di rottura esatto per la navbar */
+@media (max-width:731px) {
+    #container-menu h1 {
+        margin-right: 0;
+        margin-left: .5em;
+    }
+
+    #menu {
+        --height: 40vh;
+        text-align: center;
+
+        z-index: 1;
+        position: fixed;
+        top: calc(50% - calc(var(--height) / 2));
+        left: 100%;
+        padding-block: 1.5em;
+        flex-direction: column;
+        width: 25vw;
+        height: var(--height);
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        transform-origin: center;
+        border: 2px solid var(--verdino);
+        justify-content: center;
+        transition: transform .2s ease-out;
+    }
+
+    #menu.aperto {
+        transform: translateX(-100%);
+    }
+
+    #hamburger {
+        display: block;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+        border: 2px solid var(--verdino);
+        border-right: 2px solid var(--secondary-bg);
+        background-color: var(--secondary-bg);
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        width: 3.8em;
+        height: 3.8em;
+        transform: translateY(-50%);
+    }
+
+    #hamburger:focus {
+        outline: 3px solid var(--arancione);
+    }
+
+    /* Pseudo-elemento per la maschera dell'icona */
+    #hamburger::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        /* riempie tutto l'elemento */
+        background-color: var(--primary-bg);
+        /* colore dell'icona */
+
+        -webkit-mask: url("../images/png/menu.png") no-repeat center;
+        -webkit-mask-size: contain;
+        mask: url("../images/png/menu.png") no-repeat center;
+        mask-size: contain;
+
+        /* non interferisce con click */
+        pointer-events: none;
+    }
+
+    #menu ul {
+        flex-direction: column;
+        gap: 1.5em;
+        font-size: 1.2em;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #menu {
+        transition: none;
+    }
 }
