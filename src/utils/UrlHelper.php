@@ -112,7 +112,10 @@ class UrlHelper
     public static function appendRedirect($targetUrl, $keepParams = [])
     {
         // 1. Calcolo l'URL da cui vengo (pulito)
-        $backUrl = self::getCurrentUrl($keepParams);
+        // $backUrl = self::getCurrentUrl($keepParams);
+
+        $backUrl = "/".self::getCurrentPageName().
+            (empty($keepParams) ? '' : '?' . self::createHttpQuery($_GET, $keepParams, false));
 
         // 2. Se sono in una pagina "nera" (es. login), non aggiungo nulla
         if (!$backUrl) {
