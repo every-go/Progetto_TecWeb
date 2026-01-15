@@ -160,13 +160,14 @@ if (isset($_GET["id"])) {
             '" class="btn-elimina"> Elimina </a>
                     </div>';
     } elseif ($animalData["adottato"] == 0) {
+        $parametriQuery=createHttpQuery($_GET,['pagina','search','id'],false);
         $adottami = '<aside>
             <h2>Adotta!</h2>
             <p>Ogni essere, reale o straordinario, cerca un luogo in cui sentirsi al sicuro.
                 Che la sua natura sia comune o rara, ciò che può offrire è semplice: compagnia, presenza e un legame
                 sincero. Se qualcosa ha acceso la tua curiosità, forse è il primo passo verso un incontro
                 speciale. Scopri un po’ di più… potrebbe essere il compagno che stavi cercando.</p>
-            <form action="adotta.php?id=' . intval($_GET['id']) . '" method="post"> 
+            <form action="adotta.php?' . $parametriQuery . '" method="post"> 
                 <button type="submit">Adotta!</button>
             </form>
         </aside>';

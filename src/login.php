@@ -1,26 +1,12 @@
 <?php
 session_start();
 require_once "connectionDB.php";
+require_once "utils/UrlHelper.php";
 use DB\DBAccess;
 
 include "menu.php";
 
 
-function isSafeRedirect($url) {
-    if (empty(trim($url))) {
-        return false;
-    }
-
-    if (substr($url, 0, 2) === '//') {
-        return false;
-    }
-    
-    if (preg_match('/[\r\n]/', $url)) {
-        return false;
-    }
-
-    return true;
-}
 
 $content = file_get_contents("html/login.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
@@ -30,12 +16,18 @@ $username = "";
 $errorMessages = [];
 
 // pagina di redirect dopo login
-$redirectPage=isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
-if(!isSafeRedirect($redirectPage)){
-    $redirectPage='index.php';
-}
 
+$redirectPage = 'index.php';
+if (isset($_GET['redirect'])) {
+    require_once __DIR__ . '/utils/UrlHelper.php';
+    
+    $redirectPage = $_GET['redirect'];
+    $redirectPage = UrlHelper::getSafeRedirect(urldecode($redirectPage), 'index.php');
+    // $redirectPage = ltrim($redirectPage, '/'); // Rimuovi lo slash iniziale per redirect relativi
+    
+    }
 
+// echo urldecode($redirectPage);
 // funzioni di validazione
 function validateUsername($username) {
     return preg_match('/^[A-Za-z]{8,24}$/', $username) || $username === "user" || $username === "admin";
@@ -120,13 +112,13 @@ if (isset($_SESSION['messaggio_errore'])) {
 }
 
 // sostituzioni template
-if(isset($_GET['redirect'])){
-    $redirectPage=htmlspecialchars('redirect='.$_GET['redirect'], ENT_QUOTES, "UTF-8");
-}
-else{
-    $redirectPage='';
-}
-$content = str_replace("[PAGINA_PROVENIENZA]",$redirectPage , $content);
+// if(isset($_GET['redirect'])){
+//     $redirectPage='redirect='.$_GET['redirect'];
+// }
+// else{
+//     $redirectPage='';
+// }
+$content = str_replace("[PAGINA_PROVENIENZA]","redirect=".urlencode($redirectPage) , $content);
 $content = str_replace("[ERROR_MESSAGE]", $messaggiHTML, $content);
 $content = str_replace("[USERNAME_VALUE]", $username, $content);
 $content = str_replace("[autofocusUsername]", $autofocus['username'], $content);

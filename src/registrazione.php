@@ -77,8 +77,17 @@ if (isset($_POST["register"])) {
                 $db->closeConnection();
                 if ($res) {
                     $_SESSION['messaggio_utente'] = 'Registrazione avvenuta con successo';
-                    $parametersQuery=isset($_GET['redirect']) ? '?redirect='.($_GET['redirect']) : '';
-                    header("Location: login.php".$parametersQuery);
+                    
+                    
+                    // $parametersQuery=isset($_GET['redirect']) ? '?redirect='.($_GET['redirect']) : '';
+                    $redirectPage = 'index.php';
+                    
+                    if (isset($_GET['redirect'])) {}
+                        $redirectPage = $_GET['redirect'];
+                        $redirectPage = UrlHelper::getSafeRedirect(urldecode($redirectPage), 'index.php');
+                        // $redirectPage = ltrim($redirectPage, '/'); // Rimuovi lo slash iniziale per redirect relativi
+                        
+                    header("Location: login.php?redirect=" . urlencode($redirectPage));
                     exit();
                 } else {
                     $errorMessages["username"] = "Lo <span lang='en'>username</span> è già esistente";
@@ -123,7 +132,7 @@ if (isset($_SESSION['messaggio_errore'])) {
     unset($_SESSION['messaggio_errore']);
 }
 if(isset($_GET['redirect'])){
-    $redirectPage=htmlspecialchars('redirect='.$_GET['redirect'], ENT_QUOTES, "UTF-8");
+    $redirectPage=htmlspecialchars('redirect='.urlencode($_GET['redirect']), ENT_QUOTES, "UTF-8");
 }
 else{
     $redirectPage='';
