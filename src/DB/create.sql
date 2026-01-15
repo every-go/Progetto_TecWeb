@@ -408,7 +408,7 @@ FALSE);
 
 INSERT INTO utenti
 VALUES  ('user', 'user', FALSE),
-        ('userrr', 'user', FALSE),
+        ('userrrr', 'User_Saf3', FALSE),
         ('admin', 'admin', TRUE);
 
 INSERT INTO preferiti

@@ -18,7 +18,7 @@ function singleCardBuilder($animale)
     );
     $animaleCard = str_replace(
         "[SESSO_ANIMALE]",
-        "<img src='../images/png/".strtolower($animale["sesso"]).".png' class = 'sesso' style='' alt='Sesso: ".$animale["sesso"]."'>",
+        "<img src='./images/png/".strtolower($animale["sesso"]).".png' class = 'sesso' style='' alt='Sesso: ".$animale["sesso"]."'>",
         $animaleCard );
     $animaleCard = str_replace("[ALT_IMMAGINE]", $animale["alt"], $animaleCard);
     $animaleCard = str_replace(

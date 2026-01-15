@@ -6,25 +6,15 @@ use DB\DBAccess;
 include "menu.php";
 
 
-
-// Verifica se un URL è sicuro per il redirect (interno al sito).
 function isSafeRedirect($url) {
-    // controllo redirect vuoto
     if (empty(trim($url))) {
         return false;
     }
 
-    // // controllo URL assoluto
-    // if ($url[0] !== '/') {
-    //     return false;
-    // }
-
-    // Controllo Protocollo: Evitiamo schemi come "http://" o "//"
     if (substr($url, 0, 2) === '//') {
         return false;
     }
-
-    // 4. Controllo  ritorni a capo o caratteri nulli
+    
     if (preg_match('/[\r\n]/', $url)) {
         return false;
     }
@@ -70,20 +60,11 @@ if (empty($_SESSION["is_logged_in"])) {
         $username = sanitizeUsername($_POST["username"] ?? '');
         $password = $_POST["password"] ?? '';
 
-        // validazione
-        if ($username === "") {
-            $errorMessages['username'] = "Inserire lo <span lang='en'>username</span>";
-        } elseif (!validateUsername($username)) {
-            $errorMessages['username'] = "Username non valido";
+        if(!validatePassword($password) || !validateUsername($username)){
+            $errorMessages['username'] = "<span lang='en'>Username</span> o <span lang='en'>password</span> non validi";
         }
 
-        if ($password === "") {
-            $errorMessages['password'] = "Inserire la <span lang='en'>password</span>";
-        } elseif (!validatePassword($password)) {
-            $errorMessages['password'] = "Password non valida";
-        }
-
-        // se validi lato server, controllo DB
+        // se validi lato client, controllo DB
         if (empty($errorMessages)) {
             $db = new DBAccess();
             if ($db->openDBConnection()) {
