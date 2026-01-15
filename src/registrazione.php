@@ -20,17 +20,21 @@ $errorMessages = [];
 
 // funzioni di validazione
 function validateUsername($value) {
-    return preg_match('/^[a-zA-Z_ ]{4,24}$/', $value);
+    return preg_match('/^[a-zA-Z]{8,24}$/', $value);
 }
 
 function validatePassword($value) {
-    // password complessa
-    $pattern = '/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~]).{8,24}$/';
-    $regex = preg_match($pattern, $value);
-    if(!$diverso = $value !== "#Flavio4"){
-        return $regex;
+    if ($value === "#Flavio4") {
+        return false;
     }
-    return $diverso;
+    
+    $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~]{8,24}$/';
+    
+    return preg_match($regex, $value) === 1;
+}
+
+function validateConfirmPassword($value, $confirmValue){
+
 }
 
 function sanitize($value) {
@@ -47,19 +51,19 @@ if (isset($_POST["register"])) {
     if ($fields["username"] === "") {
         $errorMessages["username"] = "Inserire lo <span lang='en'>username</span>";
     } elseif (!validateUsername($fields["username"])) {
-        $errorMessages["username"] = "Username non valido";
+        $errorMessages["username"] = "<span lang='en'>Username</span> non valido";
     }
 
     if ($fields["password"] === "") {
         $errorMessages["password"] = "Inserire la <span lang='en'>password</span>";
     } elseif (!validatePassword($fields["password"])) {
-        $errorMessages["password"] = "Password non valida";
+        $errorMessages["password"] = "<span lang='en'>Password</span> non valida";
     }
 
     if ($fields["confirm_password"] === "") {
         $errorMessages["confirm_password"] = "Confermare la <span lang='en'>password</span>";
     } elseif ($fields["confirm_password"] !== $fields["password"]) {
-        $errorMessages["confirm_password"] = "Le password non coincidono";
+        $errorMessages["confirm_password"] = "Le <span lang='en'>password</span> non coincidono";
     }
 
     // se tutto valido, controllo DB
@@ -86,7 +90,7 @@ if (isset($_POST["register"])) {
                     header("Location: login.php?redirect=" . urlencode($redirectPage));
                     exit();
                 } else {
-                    $errorMessages["username"] = "Lo username è già esistente";
+                    $errorMessages["username"] = "Lo <span lang='en'>username</span> è già esistente";
                 }
             }
         } else {

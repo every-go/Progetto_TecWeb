@@ -15,10 +15,10 @@ class DBAccess
     //XAMPP localhost mydb root ""
     //Docker db mydb root root
     //mmazzare mmazzare mmazzare password
-    private const HOST_DB = "db";
+    private const HOST_DB = "localhost";
     private const DATABASE_NAME = "mydb";
     private const USERNAME = "root";
-    private const PASSWORD = "root";
+    private const PASSWORD = "";
 
     private $connection;
 
@@ -464,9 +464,9 @@ class DBAccess
         if ($stmt = mysqli_prepare($this->connection, $query)) {
             mysqli_stmt_bind_param($stmt, "s", $username);
             if (mysqli_stmt_execute($stmt)) {
-                mysqli_stmt_store_result($stmt);           // memorizza risultati
+                mysqli_stmt_store_result($stmt);
                 if (mysqli_stmt_num_rows($stmt) > 0) {
-                    $success = true;                       // username esiste
+                    $success = true;            
                 }
             }
             mysqli_stmt_close($stmt);

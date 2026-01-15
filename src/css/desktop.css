@@ -597,11 +597,10 @@ button[type="submit"]:hover {
 }
 
 .invisibile {
-    /* height: 1px;
+    height: 1px;
     overflow: hidden;
     position: absolute;
-    width: 1px; */
-    display: none;
+    width: 1px;
 }
 
 .animali {
@@ -677,6 +676,16 @@ button[type="submit"]:hover {
     font-weight: bold;
     margin-bottom: .3em;
     grid-column: 1 / 3;
+}
+
+.animale-info .nome .sesso {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+
+    /* Da colore panna all'immagine */
+    /* filter: invert(98%) sepia(81%) saturate(496%) hue-rotate(303deg) brightness(107%) contrast(96%); */
+    filter: invert(69%) sepia(30%) saturate(256%) hue-rotate(40deg) brightness(95%) contrast(86%);
 }
 
 /* gestione nelle righe delle informazioni */
@@ -843,6 +852,7 @@ button[type="submit"]:hover {
 }
 
 #animale-main aside {
+    align-self: flex-start;
     margin-left: 10%;
     padding: 1.5em 2.5em;
     background-color: var(--animalebackground);
@@ -990,7 +1000,7 @@ fieldset {
 }
 
 #descrizione-animale {
-    border: 2px solid var(--text-color);
+    /* border: 2px solid var(--text-color); */
     border-radius: 2em;
     padding: 1em 3em;
     display: flex;
@@ -1001,7 +1011,7 @@ fieldset {
     background-color: var(--primary-bg);
     border-radius: 24px;
     padding: 1em;
-    margin: 1em 0
+    margin: 1em 0;
 }
 
 /* nasconde gli errori se vuoti */

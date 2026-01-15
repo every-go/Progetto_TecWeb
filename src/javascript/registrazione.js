@@ -1,12 +1,14 @@
+import {inserisciMessaggioDefault, validazioneForm} from "./funzioni_comuni.js";
+
 var dettagli_form = {
    "username": [
-      "Es: Flavio il Piccione",
-      '/^[a-zA-Z_ ]{4,24}$/',
-      "Lo <span lang='en'>username</span> deve avere minimo 4 caratteri e non contenere numeri."
+      "Es: FlavioPiccione",
+      /^[a-zA-Z]{8,24}$/,
+      "Lo <span lang='en'>username</span> deve avere minimo 8 caratteri e massimo 24. Può contenere solo lettere maiuscole o minuscole."
    ],
    "password": [
       "Es: #Flavio4",
-      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~]).{8,24}$/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~]{8,24}$/,
       "Password non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, numeri e almeno un simbolo, minimo 8, massimo 24 caratteri."
    ],
    "confirm_password": [
@@ -16,40 +18,18 @@ var dettagli_form = {
    ]
 };
 
-function caricamento() {
-   for (var key in dettagli_form) {
-      var input = document.getElementById(key);
-      if (!input) continue;
-
-      // messaggio di default
-      inserisciMessaggioDefault(input);
-
-      // validazione live al blur
-      input.addEventListener("blur", function () {
-         validazioneCampo(this);
-      });
-   }
-
-   var form = document.getElementById("login-form");
-   if (form) {
-      form.onsubmit = function () {
-         return validazioneForm();
-      };
-   }
-}
-
-function validazioneCampo(input) {
+// override di funzione validazione determinato dalla presenza del campo "conferma_password" che non ha una regex comune
+window.validazioneCampo = function(input, dettagli_form) {
    var regex = dettagli_form[input.id][1];
    var text = input.value;
    var parent = input.parentNode;
 
-   // rimuove eventuali messaggi di errore precedenti di QUESTO input
    var existingErrors = parent.querySelectorAll('.errorSuggestion');
    existingErrors.forEach(el => el.remove());
 
    var valido = true;
 
-   var messaggioErrore = dettagli_form[input.id][2]; // default
+   var messaggioErrore = dettagli_form[input.id][2];
 
    if (input.id === "confirm_password") {
       var passwordInput = document.getElementById("password");
@@ -74,31 +54,27 @@ function validazioneCampo(input) {
    }
 
    return true;
-   
 }
 
-function validazioneForm() {
-   var tuttoOk = true;
+// Sovrascrivi caricamento per usare validazioneCampo sovrascritta
+function caricamento(dettagli_form) {
    for (var key in dettagli_form) {
       var input = document.getElementById(key);
       if (!input) continue;
-      var ok = validazioneCampo(input);
-      tuttoOk = tuttoOk && ok;
+
+      inserisciMessaggioDefault(input, dettagli_form);
+
+      input.addEventListener("blur", function () {
+         validazioneCampo(this, dettagli_form);
+      });
    }
-   return tuttoOk;
+
+   var form = document.getElementById("login-form");
+   if (form) {
+      form.onsubmit = function () {
+         return validazioneForm(dettagli_form);
+      };
+   }
 }
 
-function inserisciMessaggioDefault(input) {
-   var parent = input.parentNode;
-   // rimuove eventuale default precedente
-   var existingDefault = parent.querySelector('.default-text');
-   if (existingDefault) existingDefault.remove();
-
-   var node = document.createElement("span");
-   node.className = "default-text";
-   node.textContent = dettagli_form[input.id][0];
-   parent.insertBefore(node, input.nextSibling);
-}
-
-// esegui caricamento al load
-window.onload = caricamento;
+window.onload = () => caricamento(dettagli_form);

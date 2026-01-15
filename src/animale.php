@@ -74,6 +74,7 @@ if (isset($_GET["id"])) {
                     ($animalData["eta"] == 1 ? " anno" : " anni"),
                 $content
             );
+            $content = str_replace("[SESSO_ANIMALE]", $animalData["sesso"], $content);
             $content = str_replace("[LUOGO]", $animalData["luogo"], $content);
             $content = str_replace(
                 "[CARATTERE]",
@@ -203,7 +204,7 @@ if (isset($_GET["id"])) {
                 per il tuo sostegno alla nostra missione di trovare famiglie per tutti i nostri amici a quattro zampe.</p>
             </aside>';
         } else {
-            $adottami = ''; // sei tu che hai adottato → niente messaggio
+            $adottami = '';
         }
     }
 } else {

@@ -408,14 +408,14 @@ FALSE);
 
 INSERT INTO utenti
 VALUES  ('user', 'user', FALSE),
-        ('userrr', 'user', FALSE),
+        ('userrrrr', 'User_Saf3', FALSE),
         ('admin', 'admin', TRUE);
 
 INSERT INTO preferiti
 VALUES ('user', 1),
        ('user', 2),
        ('user', 3),
-       ('userrr', 3);
+       ('userrrrr', 3);
 
 INSERT INTO adottati
 VALUES ('user', 6);

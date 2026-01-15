@@ -8,11 +8,6 @@ include "menu.php";
 
 
 
-// Verifica se un URL è sicuro per il redirect (interno al sito).
-
-
-
-
 $content = file_get_contents("html/login.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
@@ -35,11 +30,11 @@ if (isset($_GET['redirect'])) {
 // echo urldecode($redirectPage);
 // funzioni di validazione
 function validateUsername($username) {
-    return preg_match('/^[a-zA-Z_]{4,24}$/', $username);
+    return preg_match('/^[A-Za-z]{8,24}$/', $username) || $username === "user" || $username === "admin";
 }
 
 function validatePassword($password) {
-    return strlen($password) >= 4;
+    return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~]{8,24}$/', $password) || $password === "user" || $password === "admin";
 }
 
 function sanitizeUsername($username) {
@@ -55,20 +50,11 @@ if (empty($_SESSION["is_logged_in"])) {
         $username = sanitizeUsername($_POST["username"] ?? '');
         $password = $_POST["password"] ?? '';
 
-        // validazione
-        if ($username === "") {
-            $errorMessages['username'] = "Inserire lo <span lang='en'>username</span>";
-        } elseif (!validateUsername($username)) {
-            $errorMessages['username'] = "Username non valido";
+        if(!validatePassword($password) || !validateUsername($username)){
+            $errorMessages['username'] = "<span lang='en'>Username</span> o <span lang='en'>password</span> non validi";
         }
 
-        if ($password === "") {
-            $errorMessages['password'] = "Inserire la <span lang='en'>password</span>";
-        } elseif (!validatePassword($password)) {
-            $errorMessages['password'] = "Password non valida";
-        }
-
-        // se validi lato server, controllo DB
+        // se validi lato client, controllo DB
         if (empty($errorMessages)) {
             $db = new DBAccess();
             if ($db->openDBConnection()) {
