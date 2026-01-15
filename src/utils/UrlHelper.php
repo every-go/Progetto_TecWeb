@@ -114,9 +114,9 @@ class UrlHelper
         // 1. Calcolo l'URL da cui vengo (pulito)
         // $backUrl = self::getCurrentUrl($keepParams);
 
-        $backUrl = "/".self::getCurrentPageName().
+        $backUrl = "./".self::getCurrentPageName().
             (empty($keepParams) ? '' : '?' . self::createHttpQuery($_GET, $keepParams, false));
-
+        // $backUrl = self::getCurrentUrl($keepParams);
         // 2. Se sono in una pagina "nera" (es. login), non aggiungo nulla
         if (!$backUrl) {
             return $targetUrl;
@@ -150,7 +150,7 @@ class UrlHelper
         if (empty($url) || !is_string($url)) return $defaultUrl;
 
         // 2. No esterni o protocolli
-        if ($url[0] !== '/' || substr($url, 0, 2) === '//') return $defaultUrl;
+        if (($url[0] !== '/' && $url[0] !== '.') || substr($url, 0, 2) === '//') return $defaultUrl;
 
         // 3. Loop Check
         if (self::isCurrentPage($url)) return $defaultUrl;
