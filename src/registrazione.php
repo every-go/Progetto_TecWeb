@@ -20,16 +20,17 @@ $errorMessages = [];
 
 // funzioni di validazione
 function validateUsername($value) {
-    return preg_match('/^[a-zA-Z_]{8,24}$/', $value);
+    return preg_match('/^[a-zA-Z]{8,24}$/', $value);
 }
 
 function validatePassword($value) {
-    $pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:'\",.<>\/?\\|`~]).{8,24}$/";
-    $regex = preg_match($pattern, $value);
-    if(!$diverso = ($value !== "#Flavio4")){
-        return $regex;
+    if ($value === "#Flavio4") {
+        return false;
     }
-    return $diverso;
+    
+    $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~]{8,24}$/';
+    
+    return preg_match($regex, $value) === 1;
 }
 
 function sanitize($value) {

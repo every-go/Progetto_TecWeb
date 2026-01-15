@@ -1,4 +1,3 @@
-// funzioni_comuni.js
 export function caricamento(dettagli_form) {
    for (var key in dettagli_form) {
       var input = document.getElementById(key);
@@ -19,26 +18,21 @@ export function caricamento(dettagli_form) {
    }
 }
 
-export function validazioneCampo(input, dettagli_form) {
+function validazioneCampo(input, dettagli_form) {
    var regex = dettagli_form[input.id][1];
    var text = input.value;
    var parent = input.parentNode;
 
-   parent.querySelectorAll('.errorSuggestion').forEach(el => el.remove());
+   var existingErrors = parent.querySelectorAll('.errorSuggestion');
+   existingErrors.forEach(el => el.remove());
 
    var valido = true;
+
    var messaggioErrore = dettagli_form[input.id][2];
 
-   var passwordInput = document.getElementById("password");
-   if (!passwordInput || text !== passwordInput.value) {
-         valido = false;
-   }
-   if (input.id === "password" && text === "#Flavio4") {
+   if (regex instanceof RegExp && !regex.test(text)) {
       valido = false;
-      messaggioErrore = "Non puoi utilizzare la password di esempio.";
-   }
-   else if (regex instanceof RegExp && !regex.test(text)) {
-      valido = false;
+      messaggioErrore = dettagli_form[input.id][2];
    }
 
    if (!valido) {
@@ -52,7 +46,7 @@ export function validazioneCampo(input, dettagli_form) {
    return true;
 }
 
-export function validazioneForm(dettagli_form) {
+function validazioneForm(dettagli_form) {
    var tuttoOk = true;
    for (var key in dettagli_form) {
       var input = document.getElementById(key);
@@ -62,7 +56,7 @@ export function validazioneForm(dettagli_form) {
    return tuttoOk;
 }
 
-export function inserisciMessaggioDefault(input, dettagli_form) {
+function inserisciMessaggioDefault(input, dettagli_form) {
    var parent = input.parentNode;
    var existingDefault = parent.querySelector('.default-text');
    if (existingDefault) existingDefault.remove();

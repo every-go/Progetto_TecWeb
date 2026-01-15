@@ -8,7 +8,7 @@ var dettagli_form = {
    ],
    "password": [
       "Es: #Flavio4",
-      /^(user|admin|(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~]).{8,24})$/,
+      /^(user|admin)$|^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~]{8,24}$/,
       "Ricorda che la <span lang='en'>password</span> è compresa fra 8 e 24 caratteri, ha almeno un numero, una lettera maiuscola, una minuscola e un carattere speciale."
    ]
 };

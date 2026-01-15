@@ -22,8 +22,6 @@ function isSafeRedirect($url) {
     return true;
 }
 
-
-
 $content = file_get_contents("html/login.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
@@ -40,11 +38,11 @@ if(!isSafeRedirect($redirectPage)){
 
 // funzioni di validazione
 function validateUsername($username) {
-    return preg_match('/^[a-zA-Z_]{4,24}$/', $username);
+    return preg_match('/^[A-Za-z]{8,24}$/', $username) || $username === "user" || $username === "admin";
 }
 
 function validatePassword($password) {
-    return strlen($password) >= 4;
+    return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~]{8,24}$/', $password) || $password === "user" || $password === "admin";
 }
 
 function sanitizeUsername($username) {
