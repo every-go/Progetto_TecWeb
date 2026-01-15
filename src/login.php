@@ -2,9 +2,11 @@
 session_start();
 require_once "connectionDB.php";
 require_once "utils/UrlHelper.php";
+require_once "utils/AvvisiHelper.php";
 use DB\DBAccess;
 
 include "menu.php";
+// include "avvisi.php";
 
 
 
@@ -62,7 +64,8 @@ if (empty($_SESSION["is_logged_in"])) {
                 $db->closeConnection();
 
                 if ($res_login) {
-                    $_SESSION['messaggio_utente'] = '<span lang="en">Login</span>&nbsp; avvenuto con successo';
+                    // $_SESSION['messaggio_utente'] = '<span lang="en">Login</span>&nbsp; avvenuto con successo';
+                    AvvisiHelper::set('<span lang="en">Login</span>&nbsp; avvenuto con successo', 'success');
                     $_SESSION['is_logged_in'] = true;
                     header("Location:". $redirectPage);
                     exit();
@@ -124,6 +127,7 @@ $content = str_replace("[USERNAME_VALUE]", $username, $content);
 $content = str_replace("[autofocusUsername]", $autofocus['username'], $content);
 $content = str_replace("[autofocusPassword]", $autofocus['password'], $content);
 $content = str_replace('[adottaMessage]', $adottaMessage, $content);
+// $content = str_replace("[messaggio]", $messaggio, $content);
 
 echo $content;
 ?>

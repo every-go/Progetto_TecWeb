@@ -242,7 +242,7 @@ FALSE),
 'Salvato dopo essere rimasto incastrato nell''insegna di una pizzeria a Roma. Ha deciso di ritirarsi dalla vita frenetica della capitale.',
 FALSE),
 
-('Gormita', 
+('Magmion', 
 'Una piccola creatura tozza e muscolosa fatta di roccia e magma parzialmente solidificato. 
     Ha occhi gialli luminosi.',
 './images/jpg/gormita.jpg',
@@ -260,25 +260,6 @@ FALSE),
     Vasetto di riposo per la notte; 
     Bisogna chiamarlo "Sommo Luminescente" per farlo mangiare.',
 'È fuggito dal vasetto di un''edicola nel 2008 e ha vagato per anni sotto un divano. Ora cerca nuovi alleati per la battaglia finale.',
-FALSE),
-('Vaporeon', 
-'Un quadrupede elegante con una pelle azzurra liscia. 
-    Ha una grande pinna caudale simile a quella di una sirena e un collare di pinne bianche attorno al collo. 
-    Può sciogliersi nell''acqua diventando invisibile.',
-'./images/jpg/vaporeon.jpg',
-'Maschio', 
-'Fantasy',
-'Veneto',
-5,
-'Media',
-'Moderato',
-'Vaporeon è calmo, fresco e raccolto. 
-    La sua struttura cellulare è simile all''acqua, il che lo rende un maestro del nascondino in piscina. 
-    È leale ma richiede un allenatore che capisca i suoi silenzi.',
-'Piscina o laghetto privato indispensabile; 
-    Pietraidrica per il mantenimento dell''evoluzione; 
-    Lotte amichevoli per scaricare energia.',
-'Catturato per sbaglio da un pescatore a Chioggia che pensava fosse un grosso branzino. È stato liberato ma ha deciso di restare con gli umani.',
 FALSE),
 ('Genoveffa', 
 'Non il solito unicorno etereo. Genoveffa è un po'' in sovrappeso, col manto rosa shocking e una criniera piena di glitter naturali. 

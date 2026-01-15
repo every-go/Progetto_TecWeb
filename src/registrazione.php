@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "connectionDB.php";
+require_once "utils".DIRECTORY_SEPARATOR."AvvisiHelper.php";
 use DB\DBAccess;
 
 include "menu.php";
@@ -145,6 +146,7 @@ $content = str_replace("[autofocusUsername]", $autofocus["username"], $content);
 $content = str_replace("[autofocusPassword]", $autofocus["password"], $content);
 $content = str_replace("[autofocusConfirmPassword]", $autofocus["confirm_password"], $content);
 $content = str_replace("[adottaMessage]", $adottaMessage, $content);
+$content = str_replace("[messaggio]", $messaggio, $content);
 
 echo $content;
 ?>

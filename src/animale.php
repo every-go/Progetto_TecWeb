@@ -1,6 +1,8 @@
 <?php
 include "menu.php";
+
 require_once "." . DIRECTORY_SEPARATOR . "connectionDB.php";
+require_once "utils" . DIRECTORY_SEPARATOR . "AvvisiHelper.php";
 
 use DB\DBAccess;
 
@@ -225,6 +227,8 @@ if (isset($_SESSION['messaggio_errore'])) {
 $content = str_replace('[adottaMessage]', $messaggioAdozione, $content);
 
 
+$messaggio= AvvisiHelper::getFormattedHtml();
+$content = str_replace("[messaggio]", $messaggio, $content);
 $content = str_replace("[pulsanti]", $pulsanti, $content);
 $content = str_replace("[PULSANTE_PREFERITI]", $pulsantePreferiti, $content);
 $content = str_replace("[WARNING_ADOZIONE]", $warningAdozione, $content);

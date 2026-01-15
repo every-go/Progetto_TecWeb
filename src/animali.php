@@ -1,5 +1,6 @@
 <?php
 require_once "." . DIRECTORY_SEPARATOR . "connectionDB.php";
+require_once "utils" . DIRECTORY_SEPARATOR . "singleCardBuilder.php";
 require_once "." .
     DIRECTORY_SEPARATOR .
     "utils" .
@@ -7,64 +8,10 @@ require_once "." .
     "pagination.php";
 use DB\DBAccess;
 
-function singleCardBuilder($animale)
-{
-    $animaleCard = file_get_contents("html/animalCardTemplate.html");
-    $animaleCard = str_replace("[ID_ANIMALE]", $animale["id"], $animaleCard);
-    $animaleCard = str_replace(
-        "[NOME_ANIMALE]",
-        $animale["nome"],
-        $animaleCard
-    );
-    $animaleCard = str_replace(
-        "[SESSO_ANIMALE]",
-        "<img src='./images/png/".strtolower($animale["sesso"]).".png' class = 'sesso' style='' alt='Sesso: ".$animale["sesso"]."'>",
-        $animaleCard );
-    $animaleCard = str_replace("[ALT_IMMAGINE]", $animale["alt"], $animaleCard);
-    $animaleCard = str_replace(
-        "[PATH_IMMAGINE]",
-        $animale["immagine"] ? $animale["immagine"] : "./images/png/notfound.png",
-        $animaleCard
-    );
-    $animaleCard = str_replace(
-        "[TIPO]",
-        $animale["tipo_animale"],
-        $animaleCard
-    );
-    $animaleCard = str_replace("[LUOGO]", $animale["luogo"], $animaleCard);
-
-    if ($animale["eta"] == 1) {
-        $animale["eta"] = "1 anno";
-    } else {
-        $animale["eta"] = $animale["eta"] . " anni";
-    }
-    $animaleCard = str_replace("[ETA_ANIMALE]", $animale["eta"], $animaleCard);
-    $animaleCard = str_replace("[TAGLIA]", $animale["taglia"], $animaleCard);
-    $animaleCard = str_replace(
-        "[CARATTERE]",
-        $animale["carattere"],
-        $animaleCard
-    );
-
-    $paramQueryProvenienza = "";
-    if (isset($_GET["pagina"]) && is_numeric($_GET["pagina"])) {
-        $paramQueryProvenienza .= "&pagina=" . $_GET["pagina"];
-    }
-
-    if (isset($_GET["search"]) && !empty(trim($_GET["search"]))) {
-        $paramQueryProvenienza .= "&search=" . $_GET["search"];
-    }
-
-    $animaleCard = str_replace(
-        "[PAGINA_PROVENIENZA]",
-        $paramQueryProvenienza,
-        $animaleCard
-    );
-
-    return $animaleCard;
-}
 
 include "menu.php";
+require_once "utils/AvvisiHelper.php";
+
 $content = file_get_contents("html/animali.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
@@ -143,9 +90,10 @@ if ($connessioneOK) {
             htmlspecialchars($searchTerm) .
             '</strong>": ';
         $messaggioRisultati .=
-            $totaleAnimali .
+            '<span role="status" aria-atomic="true">'.$totaleAnimali .
             " " .
-            ($totaleAnimali === 1 ? "animale trovato" : "animali trovati");
+            ($totaleAnimali === 1 ? "animale trovato" : "animali trovati").
+            "</span>";
         if ($totaleAnimali === 0) {
             $listaAnimali =
                 '<p> Nessun animale trovato. <a href="animali.php">Torna all\'elenco completo</a> </p>';
@@ -183,9 +131,10 @@ if (
     '">
     <span class="material-symbols-outlined" aria-hidden="true">add</span> Aggiungi </a>';
 }
-
+$messaggio= AvvisiHelper::getFormattedHtml();
 $content = str_replace("[addButton]", $pulsanteAdd, $content);
 $content = str_replace("[LISTA_ANIMALI]", $listaAnimali, $content);
+$content = str_replace("[messaggio]", $messaggio, $content);
 
 echo $content;
 ?>

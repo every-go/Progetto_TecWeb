@@ -12,6 +12,7 @@ function pulisciInput($data)
 use DB\DBAccess;
 
 include "menu.php";
+include "avvisi.php";
 
 if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "admin") {
     header("Location: 401.php");
@@ -228,5 +229,6 @@ $content = cleanForm($content);
 
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
+$content = str_replace("[messaggio]", $messaggio, $content);
 
 echo $content;

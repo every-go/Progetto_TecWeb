@@ -9,18 +9,10 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-    $pagina_corrente_con_query = basename($_SERVER['REQUEST_URI']);
-    $currentPage = basename($_SERVER['PHP_SELF']);
+$pagina_corrente_con_query = basename($_SERVER['REQUEST_URI']);
+$currentPage = basename($_SERVER['PHP_SELF']);
 
 
-    $currentPage = basename($_SERVER["PHP_SELF"]);
-
-$pagineSenzaRedirect = [
-    "login.php",
-    "logout.php",
-    "registrazione.php",
-    "area_personale.php",
-];
 
 
 
@@ -48,11 +40,14 @@ if (
 
     $pages["area_personale.php"] = ["text" => "Area Personale"];
     $pagesFooter["area_personale.php"] = ["text" => "Area Personale"];
-    // redirect
-    $urlLogout = UrlHelper::appendRedirect('logout.php', ['redirect',"id","pagina","search"]);
+    // redirect, se siamo nella root il redirect crea problemi
+    if ($currentPage === "index.php") {
+        $urlLogout = "./logout.php";
+    } else {
+        $urlLogout = UrlHelper::appendRedirect('logout.php', ['redirect', "id", "pagina", "search"]);
+    }
     $pages[$urlLogout] = ["text" => "Logout", "lang" => "en"];
     $pagesFooter[$urlLogout] = ["text" => "Logout", "lang" => "en"];
-
 } elseif (
     isset($_SESSION["is_logged_in"]) &&
     $_SESSION["is_logged_in"] === true &&
@@ -61,13 +56,21 @@ if (
 ) {
 
 
-    // redirect
-    $urlLogout = UrlHelper::appendRedirect('logout.php', ['redirect',"id","pagina","search"]);
+    // redirect, se siamo nella root il redirect crea problemi
+    if ($currentPage === "index.php") {
+        $urlLogout = "./logout.php";
+    } else {
+        $urlLogout = UrlHelper::appendRedirect('logout.php', ['redirect', "id", "pagina", "search"]);
+    }
     $pages[$urlLogout] = ["text" => "Logout", "lang" => "en"];
     $pagesFooter[$urlLogout] = ["text" => "Logout", "lang" => "en"];
 } else {
-    // redirect
-    $urlLogin = UrlHelper::appendRedirect('login.php', ['redirect',"id","pagina","search"]);
+    // redirect, se siamo nella root il redirect crea problemi
+    if ($currentPage === "index.php") {
+        $urlLogin = "./login.php";
+    } else {
+        $urlLogin = UrlHelper::appendRedirect('login.php', ['redirect', "id", "pagina", "search"]);
+    }
     $pages[$urlLogin] = ["text" => "Login", "lang" => "en"];
     $pagesFooter[$urlLogin] = ["text" => "Login", "lang" => "en"];
 }

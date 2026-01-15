@@ -6,7 +6,10 @@ session_destroy();
 session_abort();
 
 session_start();
-$_SESSION['messaggio_utente'] = '<span lang="en">  Logout&nbsp;</span>avvenuto con successo';
+require_once __DIR__ . '/utils/UrlHelper.php';
+require_once __DIR__ . '/utils/AvvisiHelper.php';
+// $_SESSION['messaggio_utente'] = '<span lang="en">  Logout&nbsp;</span>avvenuto con successo';
+AvvisiHelper::set('<span lang="en">  Logout&nbsp;</span>avvenuto con successo', 'success');
 
 $redirectUrl = 'index.php';
 if (isset($_GET['redirect'])) {
