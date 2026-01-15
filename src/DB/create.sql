@@ -415,7 +415,7 @@ INSERT INTO preferiti
 VALUES ('user', 1),
        ('user', 2),
        ('user', 3),
-       ('userrr', 3);
+       ('userrrr', 3);
 
 INSERT INTO adottati
 VALUES ('user', 6);
