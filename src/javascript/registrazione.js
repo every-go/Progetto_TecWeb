@@ -1,4 +1,4 @@
-import { caricamento } from "./funzioni_comuni.js";
+import {inserisciMessaggioDefault, validazioneForm} from "./funzioni_comuni.js";
 
 var dettagli_form = {
    "username": [
@@ -8,7 +8,7 @@ var dettagli_form = {
    ],
    "password": [
       "Es: #Flavio4",
-      /^$|^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~]{8,24}$/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~]{8,24}$/,
       "Password non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, numeri e almeno un simbolo, minimo 8, massimo 24 caratteri."
    ],
    "confirm_password": [
@@ -54,7 +54,27 @@ window.validazioneCampo = function(input, dettagli_form) {
    }
 
    return true;
-   
+}
+
+// Sovrascrivi caricamento per usare validazioneCampo sovrascritta
+function caricamento(dettagli_form) {
+   for (var key in dettagli_form) {
+      var input = document.getElementById(key);
+      if (!input) continue;
+
+      inserisciMessaggioDefault(input, dettagli_form);
+
+      input.addEventListener("blur", function () {
+         validazioneCampo(this, dettagli_form);
+      });
+   }
+
+   var form = document.getElementById("login-form");
+   if (form) {
+      form.onsubmit = function () {
+         return validazioneForm(dettagli_form);
+      };
+   }
 }
 
 window.onload = () => caricamento(dettagli_form);

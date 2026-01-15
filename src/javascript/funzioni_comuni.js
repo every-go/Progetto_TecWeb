@@ -18,7 +18,7 @@ export function caricamento(dettagli_form) {
    }
 }
 
-function validazioneCampo(input, dettagli_form) {
+export function validazioneCampo(input, dettagli_form) {
    var regex = dettagli_form[input.id][1];
    var text = input.value;
    var parent = input.parentNode;
@@ -46,7 +46,7 @@ function validazioneCampo(input, dettagli_form) {
    return true;
 }
 
-function validazioneForm(dettagli_form) {
+export function validazioneForm(dettagli_form) {
    var tuttoOk = true;
    for (var key in dettagli_form) {
       var input = document.getElementById(key);
@@ -56,7 +56,7 @@ function validazioneForm(dettagli_form) {
    return tuttoOk;
 }
 
-function inserisciMessaggioDefault(input, dettagli_form) {
+export function inserisciMessaggioDefault(input, dettagli_form) {
    var parent = input.parentNode;
    var existingDefault = parent.querySelector('.default-text');
    if (existingDefault) existingDefault.remove();
