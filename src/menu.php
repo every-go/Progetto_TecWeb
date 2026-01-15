@@ -1,12 +1,29 @@
 <?php
 
+use Soap\Url;
+
 require_once "utils/animalFormHandler.php";
+require_once "utils/UrlHelper.php";
 
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-$currentPage = basename($_SERVER["PHP_SELF"]);
+    $pagina_corrente_con_query = basename($_SERVER['REQUEST_URI']);
+    $currentPage = basename($_SERVER['PHP_SELF']);
+
+
+    $currentPage = basename($_SERVER["PHP_SELF"]);
+
+$pagineSenzaRedirect = [
+    "login.php",
+    "logout.php",
+    "registrazione.php",
+    "area_personale.php",
+];
+
+
+
 
 $pages = [
     "index.php" => ["text" => "Home", "lang" => "en"],
@@ -26,29 +43,33 @@ if (
     isset($_SESSION["role"]) &&
     $_SESSION["role"] === "user"
 ) {
+
+
+
     $pages["area_personale.php"] = ["text" => "Area Personale"];
-    $pages["logout.php"] = ["text" => "Logout", "lang" => "en"];
     $pagesFooter["area_personale.php"] = ["text" => "Area Personale"];
-    $pagesFooter["logout.php"] = ["text" => "Logout", "lang" => "en"];
+    // redirect
+    $urlLogout = UrlHelper::appendRedirect('logout.php', ['redirect',"id","pagina","search"]);
+    $pages[$urlLogout] = ["text" => "Logout", "lang" => "en"];
+    $pagesFooter[$urlLogout] = ["text" => "Logout", "lang" => "en"];
+
 } elseif (
     isset($_SESSION["is_logged_in"]) &&
     $_SESSION["is_logged_in"] === true &&
     isset($_SESSION["role"]) &&
     $_SESSION["role"] === "admin"
 ) {
-    $pages["logout.php"] = ["text" => "Logout", "lang" => "en"];
-    $pagesFooter["logout.php"] = ["text" => "Logout", "lang" => "en"];
-} else {
-    // Memorizza la pagina corrente per il reindirizzamento dopo il login
-    $pagina_corrente = basename($_SERVER['REQUEST_URI']);
-    if(!isset($_GET['redirect'])){
-        $_GET['redirect']=$pagina_corrente;
-    }
-    // $_GET['redirect']="/".$pagina_corrente;
-    $pages["login.php?".createHttpQuery($_GET,['redirect'])] = ["text" => "Login", "lang" => "en"];
-    $pagesFooter["login.php?".createHttpQuery($_GET,['redirect'])] = ["text" => "Login", "lang" => "en"];
-    // $pagesFooter["login.php?redirect=" . urlencode($pagina_corrente)] = ["text" => "Login", "lang" => "en"];
 
+
+    // redirect
+    $urlLogout = UrlHelper::appendRedirect('logout.php', ['redirect',"id","pagina","search"]);
+    $pages[$urlLogout] = ["text" => "Logout", "lang" => "en"];
+    $pagesFooter[$urlLogout] = ["text" => "Logout", "lang" => "en"];
+} else {
+    // redirect
+    $urlLogin = UrlHelper::appendRedirect('login.php', ['redirect',"id","pagina","search"]);
+    $pages[$urlLogin] = ["text" => "Login", "lang" => "en"];
+    $pagesFooter[$urlLogin] = ["text" => "Login", "lang" => "en"];
 }
 
 $pagesFooter["crediti.php"] = ["text" => "Crediti"];

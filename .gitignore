@@ -1,1 +1,7 @@
 .vscode
+src/vendor/*
+composer.phar
+composer.json
+composer.lock
+phpunit.xml
+src/utils/test/*
