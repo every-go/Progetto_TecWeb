@@ -11,6 +11,7 @@ class UrlHelper
         'registrazione.php',
         'logout.php',
         'area_personale.php',
+        'ispeziona_animale.php',
     ];
 
 
