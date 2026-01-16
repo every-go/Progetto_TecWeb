@@ -73,17 +73,18 @@ if (isset($_POST["register"])) {
                 $res = $db->registerUtente($fields["username"], $fields["password"]);
                 $db->closeConnection();
                 if ($res) {
-                    $_SESSION['messaggio_utente'] = 'Registrazione avvenuta con successo';
-                    
+                    // $_SESSION['messaggio_utente'] = 'Registrazione avvenuta con successo';
+                    AvvisiHelper::set('<span>Registrazione</span> &nbsp; avvenuta con successo', 'success');
                     
                     // $parametersQuery=isset($_GET['redirect']) ? '?redirect='.($_GET['redirect']) : '';
                     $redirectPage = 'index.php';
                     
-                    if (isset($_GET['redirect'])) {}
+                    if (isset($_GET['redirect'])) {
                         $redirectPage = $_GET['redirect'];
                         $redirectPage = UrlHelper::getSafeRedirect(urldecode($redirectPage), 'index.php');
                         // $redirectPage = ltrim($redirectPage, '/'); // Rimuovi lo slash iniziale per redirect relativi
-                        
+                    }
+                    
                     header("Location: login.php?redirect=" . urlencode($redirectPage));
                     exit();
                 } else {
