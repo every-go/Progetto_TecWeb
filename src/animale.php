@@ -194,14 +194,19 @@ if (isset($_GET["id"])) {
 
         if ($mostraWarning) {
             $warningAdozione = "<div id='avviso' role='alert'>
-                <p>" . $animalData["nome"] . " è già stato adottato</p>
+                <p>" . $animalData["nome"] . 
+                ($animalData["genere"] === "Maschio" ? " è già stato adottato" : " è già stata adottata")
+                
+                ."</p>
                 <div class='progress-container'>
                     <div class='progress-bar'></div>
                 </div>
             </div>";
 
             $adottami = '<aside>
-                <h2>' . $animalData["nome"] . ' è stato già adottato!</h2>
+                <h2>' . $animalData["nome"] . 
+                ($animalData["genere"] === "Maschio" ? " è stato già adottato!" : " è stata già adottata!").
+                '</h2>
                 <p>' . $animalData["nome"] . ' ha già trovato una casa amorevole. Grazie per il tuo interesse nell\'adottare e per il tuo sostegno alla nostra missione di trovare una famiglia per tutti i nostri amici.</p>
             </aside>';
         } else {
@@ -230,7 +235,7 @@ $content = str_replace('[adottaMessage]', $messaggioAdozione, $content);
 
 
 $messaggio= '';
-// $messaggio= AvvisiHelper::getFormattedHtml();
+$messaggio= AvvisiHelper::getFormattedHtml();
 $content = str_replace("[messaggio]", $messaggio, $content);
 $content = str_replace("[pulsanti]", $pulsanti, $content);
 $content = str_replace("[PULSANTE_PREFERITI]", $pulsantePreferiti, $content);
