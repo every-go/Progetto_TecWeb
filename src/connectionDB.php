@@ -22,26 +22,24 @@ class DBAccess
 
     private $connection;
 
-    public function openDBConnection()
-    {
-        \mysqli_report(\MYSQLI_REPORT_ERROR | \MYSQLI_REPORT_STRICT);
+    public function openDBConnection() {
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-        $this->connection = @mysqli_connect(
-            DBAccess::HOST_DB,
-            DBAccess::USERNAME,
-            DBAccess::PASSWORD,
-            DBAccess::DATABASE_NAME
-        );
+        try {
+            $this->connection = mysqli_connect(
+                self::HOST_DB,
+                self::USERNAME,
+                self::PASSWORD,
+                self::DATABASE_NAME
+            );
+            return true;
 
-        if (!$this->connection) {
-
+        } catch (\mysqli_sql_exception $e) {
             http_response_code(500);
+            // Pagina di errore user-friendly
             include __DIR__ . "/500.php";
-
             exit();
         }
-
-        return true;
     }
 
     public function closeConnection()
