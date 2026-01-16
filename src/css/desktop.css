@@ -192,16 +192,8 @@ header h1 {
     width: 3.75em;
 }
 
-#logo-header {
-    background-image: url("../images/png/gatto_logo.png");
-    min-height: 20%;
-    width: 13%;
-    font-size: 3em;
-    text-indent: -99999em;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    overflow: hidden;
+#title{
+    font-family: Milonga, sans-serif;
 }
 
 #menu {

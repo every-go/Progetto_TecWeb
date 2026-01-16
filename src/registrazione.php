@@ -33,10 +33,6 @@ function validatePassword($value) {
     return preg_match($regex, $value) === 1;
 }
 
-function validateConfirmPassword($value, $confirmValue){
-
-}
-
 function sanitize($value) {
     return htmlspecialchars(trim($value), ENT_QUOTES, "UTF-8");
 }
@@ -51,13 +47,13 @@ if (isset($_POST["register"])) {
     if ($fields["username"] === "") {
         $errorMessages["username"] = "Inserire lo <span lang='en'>username</span>";
     } elseif (!validateUsername($fields["username"])) {
-        $errorMessages["username"] = "<span lang='en'>Username</span> non valido";
+        $errorMessages["username"] = "<span lang='en'>Username</span> non valido, deve avere minimo 8 caratteri e massimo 24. Può contenere solo lettere maiuscole o minuscole.";
     }
 
     if ($fields["password"] === "") {
         $errorMessages["password"] = "Inserire la <span lang='en'>password</span>";
     } elseif (!validatePassword($fields["password"])) {
-        $errorMessages["password"] = "<span lang='en'>Password</span> non valida";
+        $errorMessages["password"] = "Password non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, 1 numero e almeno un carattere speciale, minimo 8, massimo 24 caratteri.";
     }
 
     if ($fields["confirm_password"] === "") {
@@ -77,8 +73,8 @@ if (isset($_POST["register"])) {
                 $db->closeConnection();
                 if ($res) {
                     $_SESSION['messaggio_utente'] = 'Registrazione avvenuta con successo';
-                    $parametersQuery=isset($_GET['redirect']) ? '?redirect='.($_GET['redirect']) : '';
-                    header("Location: login.php".$parametersQuery);
+                    $parametersQuery = isset($_GET['redirect']) ? '?redirect=' . ($_GET['redirect']) : '';
+                    header("Location: login.php" . $parametersQuery);
                     exit();
                 } else {
                     $errorMessages["username"] = "Lo <span lang='en'>username</span> è già esistente";

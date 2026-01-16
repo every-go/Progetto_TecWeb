@@ -197,13 +197,15 @@ if (isset($_GET["id"])) {
                 </div>
             </div>";
 
-            $adottami = '<aside id="adotta">
+            $adottami = '<aside>
                 <h2>' . $animalData["nome"] . ' è stato già adottato!</h2>
-                <p>' . $animalData["nome"] . ' ha già trovato una casa amorevole. Grazie per il tuo interesse nell\'adottare e
-                per il tuo sostegno alla nostra missione di trovare famiglie per tutti i nostri amici a quattro zampe.</p>
+                <p>' . $animalData["nome"] . ' ha già trovato una casa amorevole. Grazie per il tuo interesse nell\'adottare e per il tuo sostegno alla nostra missione di trovare una famiglia per tutti i nostri amici.</p>
             </aside>';
         } else {
-            $adottami = '';
+            $adottami = '<aside>
+                <h2>Grazie per aver adottato! </h2>' .
+                '<p>' . $animalData["nome"] . ' adesso sta molto bene ed è contentissimo di aver trovato una nuova casa. Ti ringraziamo di cuore per il tuo sostegno alla nostra missione di trovare una famiglia per tutti i nostri amici.</p>
+            </aside>';
         }
     }
 } else {

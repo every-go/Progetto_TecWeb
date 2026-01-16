@@ -9,7 +9,7 @@ var dettagli_form = {
    "password": [
       "Es: #Flavio4",
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~]{8,24}$/,
-      "Password non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, numeri e almeno un simbolo, minimo 8, massimo 24 caratteri."
+      "Password non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, 1 numero e almeno un carattere speciale, minimo 8, massimo 24 caratteri."
    ],
    "confirm_password": [
       "",
