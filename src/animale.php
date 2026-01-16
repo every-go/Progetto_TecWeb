@@ -229,7 +229,8 @@ if (isset($_SESSION['messaggio_errore'])) {
 $content = str_replace('[adottaMessage]', $messaggioAdozione, $content);
 
 
-$messaggio= AvvisiHelper::getFormattedHtml();
+$messaggio= '';
+// $messaggio= AvvisiHelper::getFormattedHtml();
 $content = str_replace("[messaggio]", $messaggio, $content);
 $content = str_replace("[pulsanti]", $pulsanti, $content);
 $content = str_replace("[PULSANTE_PREFERITI]", $pulsantePreferiti, $content);

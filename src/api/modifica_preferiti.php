@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../connectionDB.php";
+// require_once "../utils".DIRECTORY_SEPARATOR."AvvisiHelper.php";
 use DB\DBAccess;
 
 session_start();
@@ -38,9 +39,11 @@ if ($connOk) {
         if ($isFavorite) {
             $db->rimuoviPreferito($idUtente, $idAnimale);
             $status = "removed";
+            // AvvisiHelper::set("Animale rimosso dai preferiti.", "success");
         } else {
             $db->aggiungiPreferito($idUtente, $idAnimale);
             $status = "added";
+            // AvvisiHelper::set("Animale aggiunto ai preferiti.", "success");
         }
 
         echo json_encode(["success" => true, "action" => $status]);

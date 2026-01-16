@@ -114,13 +114,17 @@ if (isset($_SESSION['messaggio_errore'])) {
 // else{
 //     $redirectPage='';
 // }
+$messaggio="";
+$messaggio=AvvisiHelper::getFormattedHtml();
+
+
 $content = str_replace("[PAGINA_PROVENIENZA]","redirect=".urlencode($redirectPage) , $content);
 $content = str_replace("[ERROR_MESSAGE]", $messaggiHTML, $content);
 $content = str_replace("[USERNAME_VALUE]", $username, $content);
 $content = str_replace("[autofocusUsername]", $autofocus['username'], $content);
 $content = str_replace("[autofocusPassword]", $autofocus['password'], $content);
 $content = str_replace('[adottaMessage]', $adottaMessage, $content);
-// $content = str_replace("[messaggio]", $messaggio, $content);
+$content = str_replace("[messaggio]", $messaggio, $content);
 
 echo $content;
 ?>
