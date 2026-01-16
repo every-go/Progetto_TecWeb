@@ -11,7 +11,7 @@ CREATE TABLE animali (
     alt          VARCHAR(1023) NOT NULL,
     immagine     VARCHAR(1023),
     sesso        ENUM('Maschio','Femmina') NOT NULL,
-    tipo_animale ENUM('Reale','Fantasy') NOT NULL,
+    tipo_animale ENUM('Reale','Fantastico') NOT NULL,
     luogo        VARCHAR(1023) NOT NULL,
     eta          INT NOT NULL,
     taglia       ENUM('Piccola','Media','Grande') NOT NULL,
@@ -96,10 +96,10 @@ VALUES
     con un temperamento equilibrato che lo aiuta a integrarsi facilmente in ambienti familiari calmi e stimolanti.',
 'Spazzolatura regolare: almeno tre volte alla settimana per evitare nodi nel pelo lungo e mantenere la cute sana;
     Esercizio quotidiano: passeggiate di 30 o 45 minuti o sessioni di gioco all''aperto per canalizzare la sua energia;
-    Alimentazione bilanciata: crocchette premium per cani di taglia media, con integratori per le articolazioni se necessario;
+    Alimentazione bilanciata: crocchette per cani di taglia media, con integratori per le articolazioni se necessario;
     Ambiente ideale: famiglia affettuosa, tollera poco la solitudine (non più di 4 ore al giorno);
     Cure veterinarie: vaccini annuali e controlli oculistici;',
-'Capitano, un mix di Collie di 4 anni, è stato salvato dopo essere stato abbandonato
+'Capitano, è stato salvato dopo essere stato abbandonato
     durante un trasloco della sua vecchia famiglia.
     Inizialmente timido, ha riguadagnato fiducia grazie ai volontari, rivelando un carattere gioioso e affettuoso.
     Adora le passeggiate nei parchi e le coccole sul divano, e ora cerca una casa stabile dove poter offrire la sua fedeltà incondizionata.
@@ -114,7 +114,7 @@ FALSE),
     La muscolatura è ben definita, conferendo all''animale un''andatura regale e soprannaturale.',
 './images/jpg/cavallo_lunare.jpg',
 'Maschio',
-'Fantasy',
+'Fantastico',
 'Crateri lunari',
 5, 
 'Grande',
@@ -163,7 +163,7 @@ FALSE),
     simile a petali di un fiore esotico, con sfumature calde che vanno dal color panna all''arancione tenue.',
 './images/jpg/medusa_lunare.jpg',
 'Femmina',
-'Fantasy',
+'Fantastico',
 'Crateri lunari',
 3,
 'Piccola',
@@ -213,7 +213,7 @@ FALSE),
     Il muso è potente, con narici ampie e una mascella robusta protetta da corna laterali.',
 './images/jpg/drago.jpg',
 'Maschio',
-'Fantasy',
+'Fantastico',
 'Terra dei Draghi',
 100,
 'Grande',
@@ -239,7 +239,7 @@ TRUE),
 6,
 'Piccola',
 'Difficile',
-'Rodrigo non è un semplice uccello, è un <span lang="en">boss</span> del lungomare. 
+'Rodrigo non è un semplice uccello, è il capitano del lungomare. 
     Estremamente intelligente e opportunista, ha fatto del furto di focaccia un''arte. 
     Non teme l''uomo, anzi, lo vede come un distributore automatico di cibo con le gambe.',
 'Accesso a scogliere o tetti alti; 
@@ -249,7 +249,7 @@ TRUE),
 'Allontanato dal porto vecchio per "condotta molesta" ai danni dei turisti, Rodrigo cerca una nuova zona di caccia o un umano paziente che apprezzi la sua audacia.',
 FALSE),
 ('Flavio', 
-'Un piccione di città dal piumaggio grigio iridescente sul collo. 
+'Un piccione di città dal piumaggio grigio iridescente sul collo, indossa delle scarpe con nere con la punta bianca. 
     Gli manca qualche piuma sulla coda e cammina con un''andatura ciondolante. 
     Sembra perennemente confuso.',
 './images/jpg/piccione_flavio.jpg',
@@ -274,7 +274,7 @@ FALSE),
     Ha occhi gialli luminosi.',
 './images/jpg/magmion.jpg',
 'Maschio',
-'Fantasy',
+'Fantastico',
 'Toscana',
 900,
 'Piccola',
@@ -288,24 +288,25 @@ FALSE),
     Bisogna chiamarlo "Sommo Luminescente" per farlo mangiare.',
 'È fuggito dal vasetto di un''edicola nel 2008 e ha vagato per anni sotto un divano. Ora cerca nuovi alleati per la battaglia finale.',
 FALSE),
-('Genoveffa', 
-'Non il solito unicorno etereo. Genoveffa è un po'' in sovrappeso, col manto rosa shocking e una criniera piena di glitter naturali. 
-    Il suo corno è leggermente storto e mastica sempre chewing-gum magici.',
-'./images/jpg/unicorna_genoveffa.jpg',
-'Femmina',
-'Fantasy',
+
+('Genoveffo', 
+'Non il solito unicorno etereo. Genoveffo è un po'' in sovrappeso, col manto rosa shocking e una criniera piena di glitter naturali. 
+    Il suo corno è leggermente storto e mastica sempre gomme da masticare magiche.',
+'./images/jpg/unicorno_genoveffo.jpg',
+'Maschio',
+'Fantastico',
 'Lombardia',
 88,
 'Grande',
 'Difficile',
-'Genoveffa è una diva. Si rifiuta di camminare nel fango e pretende di essere ammirata. 
-    Nonostante l''atteggiamento <span lang="en">snob</span>, ha un cuore d''oro e usa la sua magia per raddrizzare i quadri storti nelle case. 
-    È molto rumorosa quando cammina a causa degli zoccoli di diamante.',
+'Genoveffo è un divo. Si rifiuta di camminare nel fango e pretende di essere ammirato. 
+    Nonostante l''atteggiamento altezzoso, ha un cuore d''oro e usa la sua magia per raddrizzare i quadri storti nelle case. 
+    È molto rumoroso quando cammina a causa degli zoccoli di diamante.',
 'Stalla riscaldata con specchi; 
     Zucchero filato e arcobaleni da mangiare; 
     Manicure agli zoccoli settimanale; 
     Musica pop in sottofondo.',
-'Espulsa dalla Foresta Incantata perché cantava troppo forte durante l''ora del riposino delle fate. Cerca un ambiente mondano.',
+'Espulso dalla Foresta Incantata perché cantava troppo forte durante l''ora del riposino delle fate. Cerca un ambiente mondano.',
 FALSE),
 
 ('Eusbebo', 
@@ -313,7 +314,7 @@ FALSE),
     Gli manca un orecchio e si vede una costola, cammina trascinando una zampetta.',
 './images/jpg/topo_eusbebo.jpg',
 'Maschio',
-'Fantasy',
+'Fantastico',
 'Piemonte',
 102,
 'Piccola',
@@ -322,8 +323,8 @@ FALSE),
     Non cerca cervelli, ma formaggio stagionato, molto stagionato, quasi ammuffito. 
     È molto lento e non scappa via, il che lo rende un animale domestico molto tranquillo.',
 'Gabbia a prova di fuga; 
-    Formaggio gorgonzola o roquefort; 
-    Ambiente fresco (per la conservazione); 
+    Tanto formaggio gorgonzola ; 
+    Ambiente fresco; 
     Non necessita di dormire, vaga la notte.',
 'Risvegliato da un esperimento culinario andato male in una cantina di vini. Cerca qualcuno che lo ami finché morte non li separi (di nuovo).',
 FALSE),
@@ -354,7 +355,7 @@ FALSE),
     Dalle narici esce un sottile filo di fumo grigio.',
 './images/jpg/drago_ignis.jpg',
 'Maschio',
-'Fantasy',
+'Fantastico',
 'Campania',
 15,
 'Grande',
@@ -380,7 +381,7 @@ FALSE),
 1,
 'Piccola',
 'Moderato',
-'Pompon è un vortice di energia. Adora saltellare per casa e fare il <span id="ff"><dfn lang="en" aria-describedby="ff"> "binky"</dfn> </span>(salti di gioia)</span>. 
+'Pompon è un vortice di energia. Adora saltellare per casa e fare salti di gioia. 
     È molto socievole ma non ama essere sollevato da terra. 
     Ha bisogno di stimoli mentali costanti per non rosicchiare i mobili.',
 'Fieno fresco illimitato (fondamentale); 
@@ -396,7 +397,7 @@ FALSE),
     La criniera è lunga, setosa e sembra muoversi anche in assenza di vento.',
 './images/jpg/unicorno_aura.jpg',
 'Femmina',
-'Fantasy',
+'Fantastico',
 'Valle d''Aosta',
 120,
 'Media',
