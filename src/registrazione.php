@@ -21,7 +21,7 @@ $errorMessages = [];
 
 // funzioni di validazione
 function validateUsername($value) {
-    return preg_match('/^[a-zA-Z]{8,24}$/', $value);
+    return preg_match('/^[a-zA-Z]{4,24}$/', $value);
 }
 
 function validatePassword($value) {
@@ -48,7 +48,7 @@ if (isset($_POST["register"])) {
     if ($fields["username"] === "") {
         $errorMessages["username"] = "Inserire lo <span lang='en'>username</span>";
     } elseif (!validateUsername($fields["username"])) {
-        $errorMessages["username"] = "<span lang='en'>Username</span> non valido, deve avere minimo 8 caratteri e massimo 24. Può contenere solo lettere maiuscole o minuscole.";
+        $errorMessages["username"] = "<span lang='en'>Username</span> non valido, deve avere minimo 4 caratteri e massimo 24. Può contenere solo lettere maiuscole o minuscole.";
     }
 
     if ($fields["password"] === "") {

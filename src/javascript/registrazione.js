@@ -3,8 +3,8 @@ import {inserisciMessaggioDefault, validazioneForm} from "./funzioni_comuni.js";
 var dettagli_form = {
    "username": [
       "Es: FlavioPiccione",
-      /^[a-zA-Z]{8,24}$/,
-      "Lo <span lang='en'>username</span> deve avere minimo 8 caratteri e massimo 24. Può contenere solo lettere maiuscole o minuscole."
+      /^[A-Za-z0-9<>()/]{4,24}$/,
+      "Lo <span lang='en'>username</span> deve avere minimo 4 caratteri e massimo 24. Può contenere solo lettere maiuscole o minuscole."
    ],
    "password": [
       "Es: #Flavio4",

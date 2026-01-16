@@ -6,7 +6,7 @@ require_once "utils/animalFormHandler.php";
 
 function pulisciInput($data)
 {
-    return htmlspecialchars(stripslashes(trim($data)));
+    return htmlspecialchars(trim($data));
 }
 
 use DB\DBAccess;
@@ -176,9 +176,6 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
         }
     }
 }
-
-
-
 
 $content = createForm($action, $id);
 

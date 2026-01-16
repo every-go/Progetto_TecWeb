@@ -87,7 +87,7 @@ if ($connessioneOK) {
     if ($isSearch) {
         $messaggioRisultati =
             'Risultati per "<strong>' .
-            htmlspecialchars($searchTerm) .
+            $searchValue .
             '</strong>": ';
         $messaggioRisultati .=
             '<span role="status" aria-atomic="true">'.$totaleAnimali .

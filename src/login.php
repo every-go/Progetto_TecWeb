@@ -32,7 +32,7 @@ if (isset($_GET['redirect'])) {
 // echo urldecode($redirectPage);
 // funzioni di validazione
 function validateUsername($username) {
-    return preg_match('/^[A-Za-z]{8,24}$/', $username) || $username === "user" || $username === "admin";
+    return preg_match('/^[A-Za-z]{4,24}$/', $username);
 }
 
 function sanitizeUsername($username) {
@@ -58,7 +58,6 @@ if (empty($_SESSION["is_logged_in"])) {
                 $db->closeConnection();
 
                 if ($res_login) {
-                    // $_SESSION['messaggio_utente'] = '<span lang="en">Login</span>&nbsp; avvenuto con successo';
                     AvvisiHelper::set('<span lang="en">Login</span>&nbsp; avvenuto con successo', 'success');
                     $_SESSION['is_logged_in'] = true;
                     header("Location:". $redirectPage);
@@ -107,20 +106,12 @@ if (isset($_SESSION['messaggio_errore'])) {
     unset($_SESSION['messaggio_errore']);
 }
 
-// sostituzioni template
-// if(isset($_GET['redirect'])){
-//     $redirectPage='redirect='.$_GET['redirect'];
-// }
-// else{
-//     $redirectPage='';
-// }
 $content = str_replace("[PAGINA_PROVENIENZA]","redirect=".urlencode($redirectPage) , $content);
 $content = str_replace("[ERROR_MESSAGE]", $messaggiHTML, $content);
 $content = str_replace("[USERNAME_VALUE]", $username, $content);
 $content = str_replace("[autofocusUsername]", $autofocus['username'], $content);
 $content = str_replace("[autofocusPassword]", $autofocus['password'], $content);
 $content = str_replace('[adottaMessage]', $adottaMessage, $content);
-// $content = str_replace("[messaggio]", $messaggio, $content);
 
 echo $content;
 ?>

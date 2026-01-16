@@ -3,7 +3,7 @@ import {caricamento} from './funzioni_comuni.js'
 var dettagli_form = {
    "username": [
       "Es: FlavioPiccione",
-      /^(user|admin|[A-Za-z]{8,24})$/,
+      /^[A-Za-z]{4,24}$/,
       "Ricorda che lo <span lang='en'>username</span> deve avere minimo 8 caratteri e massimo 24. Sono consentite solamente lettere maiuscole o minuscole senza spazi, numeri o caratteri speciali."
    ],
    "password": [
