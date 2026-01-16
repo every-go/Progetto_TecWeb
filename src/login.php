@@ -106,13 +106,6 @@ if (isset($_SESSION['messaggio_errore'])) {
     unset($_SESSION['messaggio_errore']);
 }
 
-// sostituzioni template
-// if(isset($_GET['redirect'])){
-//     $redirectPage='redirect='.$_GET['redirect'];
-// }
-// else{
-//     $redirectPage='';
-// }
 $messaggio="";
 $messaggio=AvvisiHelper::getFormattedHtml();
 
