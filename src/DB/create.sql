@@ -44,6 +44,33 @@ CREATE TABLE adottati (
     FOREIGN KEY (id)       REFERENCES animali(id)      ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
+DELIMITER $$
+
+CREATE TRIGGER check_non_admin_preferiti
+BEFORE INSERT ON preferiti
+FOR EACH ROW
+BEGIN
+    DECLARE isAdmin BOOLEAN;
+    SELECT admin INTO isAdmin FROM utenti WHERE username = NEW.username;
+    IF isAdmin THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Gli admin non possono essere inseriti in preferiti';
+    END IF;
+END$$
+
+CREATE TRIGGER check_non_admin_adottati
+BEFORE INSERT ON adottati
+FOR EACH ROW
+BEGIN
+    DECLARE isAdmin BOOLEAN;
+    SELECT admin INTO isAdmin FROM utenti WHERE username = NEW.username;
+    IF isAdmin THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Gli admin non possono essere inseriti in adottati';
+    END IF;
+END$$
+
+DELIMITER ;
+
+
 INSERT INTO animali (nome, alt, immagine, sesso, tipo_animale, luogo, eta, taglia, carattere, descrizione, bisogni, storia, adottato)
 VALUES
 ('Capitano', 
@@ -245,7 +272,7 @@ FALSE),
 ('Magmion', 
 'Una piccola creatura tozza e muscolosa fatta di roccia e magma parzialmente solidificato. 
     Ha occhi gialli luminosi.',
-'./images/jpg/gormita.jpg',
+'./images/jpg/magmion.jpg',
 'Maschio',
 'Fantasy',
 'Toscana',
@@ -300,6 +327,7 @@ FALSE),
     Non necessita di dormire, vaga la notte.',
 'Risvegliato da un esperimento culinario andato male in una cantina di vini. Cerca qualcuno che lo ami finché morte non li separi (di nuovo).',
 FALSE),
+
 ('Luna', 
 'Una gatta europea sonnolenta dal manto tigrato grigio e nero, con zampe bianche come se indossasse dei calzini. 
     Gli occhi sono grandi, di un verde smeraldo intenso.',
@@ -319,6 +347,7 @@ FALSE),
     Non necessita di uscire all''aperto.',
 'Trovata in uno scatolone davanti a un supermercato durante un temporale, Luna è stata svezzata da una volontaria e ora è pronta per una casa definitiva.',
 FALSE),
+
 ('Ignis', 
 'Un piccolo drago dalle scaglie rosso rubino che brillano alla luce. 
     Ha piccole ali membranose ripiegate sulla schiena e una coda che termina con una punta a forma di freccia. 
@@ -339,6 +368,7 @@ FALSE),
     Attenzione: starnutisce fiamme quando è emozionato.',
 'Ignis è stato recuperato dalle pendici del Vesuvio dove i turisti lo scambiavano per un''attrazione locale. Cerca un castello o una villa isolata.',
 FALSE),
+
 ('Pompon', 
 'Un coniglio ariete nano dal pelo bianco candido e sofficissimo. 
     Le sue lunghe orecchie pendono ai lati del muso, coprendogli quasi gli occhi neri e rotondi. 
@@ -360,7 +390,6 @@ FALSE),
 'Nato in un allevamento sovraffollato, è stato salvato da un''associazione. Ha imparato a usare la lettiera perfettamente.',
 FALSE),
 
--- 4. UNICORNO (Fantasy)
 ('Aura', 
 'Una creatura maestosa simile a un cavallo, con un manto perlaceo che riflette i colori dell''arcobaleno. 
     Sulla fronte svetta un corno a spirale cristallino. 
@@ -383,20 +412,16 @@ FALSE),
 FALSE);
 
 
+INSERT INTO utenti (username, password, admin) VALUES
+('user',  '$2y$12$K2R1ELDMEzDLHGrJc3Naae2ETOBZ1TLwbpON4yBqohfsyKl8AdLDe', 0),
+('admin', '$2y$10$VOI/xswYwipUU0kwauXl4uxygOZbhl9L4QeJYptmEipkHnkkRP0Ua', 1),
+('userrrrr', '$2y$10$NfqEqEV5ktu6/D6rsxD4YuFVfeOjoXDTZF9fYry7gXme9IU2uMqRK', 0);
 
-
-
-
-INSERT INTO utenti
-VALUES  ('user', 'user', FALSE),
-        ('userrrrr', 'User_Saf3', FALSE),
-        ('admin', 'admin', TRUE);
-
-INSERT INTO preferiti
+INSERT INTO preferiti (username, id)
 VALUES ('user', 1),
        ('user', 2),
        ('user', 3),
-       ('userrrrr', 3);
+       ('userrrrr', 6);
 
-INSERT INTO adottati
+INSERT INTO adottati (username, id)
 VALUES ('user', 6);

@@ -35,15 +35,9 @@ function validateUsername($username) {
     return preg_match('/^[A-Za-z]{8,24}$/', $username) || $username === "user" || $username === "admin";
 }
 
-function validatePassword($password) {
-    return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~]{8,24}$/', $password) || $password === "user" || $password === "admin";
-}
-
 function sanitizeUsername($username) {
-    return htmlspecialchars(trim($username), ENT_QUOTES, "UTF-8");
+    return trim($username);
 }
-
-
 
 // login solo se non già loggato
 if (empty($_SESSION["is_logged_in"])) {
@@ -52,8 +46,8 @@ if (empty($_SESSION["is_logged_in"])) {
         $username = sanitizeUsername($_POST["username"] ?? '');
         $password = $_POST["password"] ?? '';
 
-        if(!validatePassword($password) || !validateUsername($username)){
-            $errorMessages['username'] = "<span lang='en'>Username</span> o <span lang='en'>password</span> non validi";
+        if(!validateUsername($username)){
+            $errorMessages['username'] = "<span lang='en'>Username</span> non valido";
         }
 
         // se validi lato client, controllo DB
@@ -91,7 +85,6 @@ $messaggiHTML = "";
 if (!empty($errorMessages)) {
     $messaggiHTML .= "<ul class='error-login'>";
     foreach ($errorMessages as $msg) {
-        // messaggi statici di sistema → non escapare
         $messaggiHTML .= "<li aria-live='assertive' role='alert'>$msg</li>";
     }
     $messaggiHTML .= "</ul>";

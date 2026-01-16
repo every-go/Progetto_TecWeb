@@ -22,26 +22,24 @@ class DBAccess
 
     private $connection;
 
-    public function openDBConnection()
-    {
-        mysqli_report(MYSQLI_REPORT_ERROR);
+    public function openDBConnection() {
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-        $this->connection = @mysqli_connect(
-            DBAccess::HOST_DB,
-            DBAccess::USERNAME,
-            DBAccess::PASSWORD,
-            DBAccess::DATABASE_NAME
-        );
+        try {
+            $this->connection = mysqli_connect(
+                self::HOST_DB,
+                self::USERNAME,
+                self::PASSWORD,
+                self::DATABASE_NAME
+            );
+            return true;
 
-        if (!$this->connection) {
-
+        } catch (\mysqli_sql_exception $e) {
             http_response_code(500);
+            // Pagina di errore user-friendly
             include __DIR__ . "/500.php";
-
             exit();
         }
-
-        return true;
     }
 
     public function closeConnection()
@@ -396,8 +394,7 @@ class DBAccess
 
     function loginUtente($username, $passwordInserita)
     {
-        $sql =
-            "SELECT username, password, admin FROM utenti WHERE username = ?";
+        $sql = "SELECT username, password, admin FROM utenti WHERE username = ?";
 
         if ($stmt = mysqli_prepare($this->connection, $sql)) {
             mysqli_stmt_bind_param($stmt, "s", $username);
@@ -407,21 +404,15 @@ class DBAccess
             $row = mysqli_fetch_assoc($result);
             mysqli_free_result($result);
             mysqli_stmt_close($stmt);
-            if ($row) {
 
-                if ($passwordInserita === $row["password"]) {
-                    session_regenerate_id(true);
+            if ($row && password_verify($passwordInserita, $row["password"])) {
+                session_regenerate_id(true);
 
-                    $_SESSION["username"] = $row["username"];
-                    $_SESSION["is_logged_in"] = true;
-                    if ($row["admin"]) {
-                        $_SESSION["role"] = "admin";
-                    } else {
-                        $_SESSION["role"] = "user";
-                    }
+                $_SESSION["username"] = $row["username"];
+                $_SESSION["is_logged_in"] = true;
+                $_SESSION["role"] = $row["admin"] ? "admin" : "user";
 
-                    return true;
-                }
+                return true;
             }
         }
         return false;
@@ -432,11 +423,29 @@ class DBAccess
         $query = "INSERT INTO utenti (username, password) VALUES (?, ?)";
         $success = false;
 
+        // DEBUG DETTAGLIATO
+        file_put_contents('/tmp/debug.log', "=== INIZIO registerUtente ===\n", FILE_APPEND);
+        file_put_contents('/tmp/debug.log', "Username: '$username'\n", FILE_APPEND);
+        file_put_contents('/tmp/debug.log', "Password ricevuta: '$password'\n", FILE_APPEND);
+        file_put_contents('/tmp/debug.log', "Tipo password: " . gettype($password) . "\n", FILE_APPEND);
+        file_put_contents('/tmp/debug.log', "Lunghezza password: " . strlen($password) . "\n", FILE_APPEND);
+        
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        
+        file_put_contents('/tmp/debug.log', "Hash DOPO password_hash: '$passwordHash'\n", FILE_APPEND);
+        file_put_contents('/tmp/debug.log', "Tipo hash: " . gettype($passwordHash) . "\n", FILE_APPEND);
+        file_put_contents('/tmp/debug.log', "Lunghezza hash: " . strlen($passwordHash) . "\n", FILE_APPEND);
+        
         if ($stmt = mysqli_prepare($this->connection, $query)) {
-            mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+            
+            file_put_contents('/tmp/debug.log', "Prepare OK\n", FILE_APPEND);
+            
+            mysqli_stmt_bind_param($stmt, "ss", $username, $passwordHash);
+            
+            file_put_contents('/tmp/debug.log', "Bind OK\n", FILE_APPEND);
 
             if (!mysqli_stmt_execute($stmt)) {
-                // Codice errore 1062 = Duplicate entry
+                file_put_contents('/tmp/debug.log', "Execute FALLITO: " . mysqli_error($this->connection) . "\n", FILE_APPEND);
                 if (mysqli_errno($this->connection) == 1062) {
                     error_log("Tentativo di registrazione con username duplicato: $username");
                     $success = false;
@@ -444,13 +453,17 @@ class DBAccess
                     error_log(mysqli_error($this->connection));
                 }
             } elseif (mysqli_stmt_affected_rows($stmt) > 0) {
+                file_put_contents('/tmp/debug.log', "Execute OK - Righe inserite: " . mysqli_stmt_affected_rows($stmt) . "\n", FILE_APPEND);
                 $success = true;
             }
 
             mysqli_stmt_close($stmt);
         } else {
+            file_put_contents('/tmp/debug.log', "Prepare FALLITO: " . mysqli_error($this->connection) . "\n", FILE_APPEND);
             error_log(mysqli_error($this->connection));
         }
+        
+        file_put_contents('/tmp/debug.log', "Success: " . ($success ? "TRUE" : "FALSE") . "\n\n", FILE_APPEND);
 
         return $success;
     }

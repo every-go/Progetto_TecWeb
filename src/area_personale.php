@@ -1,7 +1,6 @@
 <?php
 
 
-
 require_once "." . DIRECTORY_SEPARATOR . "connectionDB.php";
 use DB\DBAccess;
 
