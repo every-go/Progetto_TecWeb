@@ -1,5 +1,6 @@
 <?php
 
+
 function singleCardBuilder($animale)
 {
     $animaleCard = file_get_contents("html/animalCardTemplate.html");
@@ -9,10 +10,14 @@ function singleCardBuilder($animale)
         $animale["nome"],
         $animaleCard
     );
+    $animaleCard = str_replace(
+        "[SESSO_ANIMALE]",
+        "<img src='./images/png/".strtolower($animale["sesso"]).".png' class = 'sesso' style='' alt='Sesso: ".$animale["sesso"]."'>",
+        $animaleCard );
     $animaleCard = str_replace("[ALT_IMMAGINE]", $animale["alt"], $animaleCard);
     $animaleCard = str_replace(
         "[PATH_IMMAGINE]",
-        $animale["immagine"],
+        $animale["immagine"] ? $animale["immagine"] : "./images/png/notfound.png",
         $animaleCard
     );
     $animaleCard = str_replace(
@@ -21,6 +26,7 @@ function singleCardBuilder($animale)
         $animaleCard
     );
     $animaleCard = str_replace("[LUOGO]", $animale["luogo"], $animaleCard);
+
     if ($animale["eta"] == 1) {
         $animale["eta"] = "1 anno";
     } else {
@@ -34,15 +40,20 @@ function singleCardBuilder($animale)
         $animaleCard
     );
 
+    $paramQueryProvenienza = "";
     if (isset($_GET["pagina"]) && is_numeric($_GET["pagina"])) {
-        $animaleCard = str_replace(
-            "[PAGINA_PROVENIENZA]",
-            "&pagina=" . $_GET["pagina"],
-            $animaleCard
-        );
-    } else {
-        $animaleCard = str_replace("[PAGINA_PROVENIENZA]", "", $animaleCard);
+        $paramQueryProvenienza .= "&pagina=" . $_GET["pagina"];
     }
+
+    if (isset($_GET["search"]) && !empty(trim($_GET["search"]))) {
+        $paramQueryProvenienza .= "&search=" . $_GET["search"];
+    }
+
+    $animaleCard = str_replace(
+        "[PAGINA_PROVENIENZA]",
+        $paramQueryProvenienza,
+        $animaleCard
+    );
 
     return $animaleCard;
 }
