@@ -192,7 +192,7 @@ header h1 {
     width: 3.75em;
 }
 
-#title{
+#title {
     font-family: Milonga, sans-serif;
 }
 
@@ -977,7 +977,7 @@ fieldset {
 
 /* Form ispeziona_animale */
 
-.required{
+.required {
     color: #E10000;
 }
 
@@ -1347,11 +1347,13 @@ a.pulsante-torna-su:focus {
 
 
 @media (max-width: 1200px) {
-    main>article#container-adozione {
+    #container-adozione {
         margin-inline: -2em;
+        border-radius: 0;
     }
 
-    #container-adozione {
+    #impegno {
+        margin-inline: -2em;
         border-radius: 0;
     }
 }

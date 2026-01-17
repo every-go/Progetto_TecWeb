@@ -7,31 +7,18 @@ body {
     padding: 0 2em;
 }
 
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
 
 #logo-header {
     width: 50%;
 }
-
-/* #breadcrumb {
-    margin-bottom: 0em;
-} */
-
-/* #container-menu h1 {
-    margin-right: 0;
-    margin-left: .5em;
-} */
-
-/* #menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    transform: translateX(100%);
-    flex-direction: column;
-    height: 100vh;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-} */
-
 
 #container-adozione {
     width: 100vw;
@@ -46,10 +33,24 @@ body {
 
 #impegno h2 {
     margin-bottom: 1em;
+    font-size: 1.5em;
 }
 
-#impegno ul {
-    margin: 0;
+#impegno p {
+    font-size: 1em;
+}
+
+#impegno .linesecond {
+    width: 100%;
+}
+
+#impegno>div {
+    margin-top: 0;
+    width: 100%;
+}
+
+#search-container {
+    flex-direction: column;
 }
 
 #search-form {
@@ -150,9 +151,6 @@ body {
     margin-top: 1em;
 }
 
-#search-container {
-    flex-direction: column-reverse;
-}
 
 #txt-form {
     flex-direction: column;
