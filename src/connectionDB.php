@@ -66,7 +66,7 @@ class DBAccess
         if ($stmt = mysqli_prepare($this->connection, $query)) {
             mysqli_stmt_bind_param(
                 $stmt,
-                "ssssssssssss",
+                "ssssssisssss",
                 $nome,
                 $alt,
                 $immagine,

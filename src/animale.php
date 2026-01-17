@@ -226,7 +226,6 @@ echo $_SESSION['messaggio_adozione'];
 $content = str_replace('[adottaMessage]', $messaggioAdozione, $content);
 
 
-$messaggio= '';
 $messaggio= AvvisiHelper::getFormattedHtml();
 $content = str_replace("[messaggio]", $messaggio, $content);
 $content = str_replace("[pulsanti]", $pulsanti, $content);

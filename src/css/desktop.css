@@ -979,6 +979,12 @@ fieldset {
     margin: 0;
 }
 
+/* Form ispeziona_animale */
+
+.required{
+    color: #E10000;
+}
+
 #form-main form {
     display: flex;
     flex-direction: column;

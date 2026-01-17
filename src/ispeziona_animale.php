@@ -226,6 +226,5 @@ $content = cleanForm($content);
 
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
-$content = str_replace("[messaggio]", $messaggio, $content);
 
 echo $content;

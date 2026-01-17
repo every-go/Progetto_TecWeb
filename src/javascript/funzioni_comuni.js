@@ -51,7 +51,9 @@ export function validazioneForm(dettagli_form) {
    for (var key in dettagli_form) {
       var input = document.getElementById(key);
       if (!input) continue;
-      tuttoOk = tuttoOk && validazioneCampo(input, dettagli_form);
+      
+      var campoValido = validazioneCampo(input, dettagli_form);
+      tuttoOk = tuttoOk && campoValido;
    }
    return tuttoOk;
 }
