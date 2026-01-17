@@ -87,8 +87,9 @@ if ($connessioneOK) {
     $baseURL = "animali.php?";
     if ($isSearch) {
         // Messaggio risultati ricerca
-        $messaggioRisultati = 'Risultati per <strong>' . htmlspecialchars($searchTerm) . '</strong>: ';
+        $messaggioRisultati = '<p> Risultati per <strong>' . htmlspecialchars($searchTerm) . '</strong>: ';
         $messaggioRisultati .= $totaleAnimali . ' ' . ($totaleAnimali === 1 ? 'animale trovato' : 'animali trovati');
+        $messaggioRisultati .= '</p>';
         
         if($totaleAnimali === 0){
             $listaAnimali = '<p> Nessun animale trovato. <a href="animali.php">Torna all\'elenco completo</a> </p>';
