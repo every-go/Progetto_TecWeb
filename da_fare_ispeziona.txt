@@ -1,4 +1,0 @@
-nome
-eta
-sesso (fieldset)
-alt
