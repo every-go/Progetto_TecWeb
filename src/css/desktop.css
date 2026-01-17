@@ -115,7 +115,6 @@ hr.linefirst {
     width: 100%;
 }
 
-/* Questo è valido per tutti gli hr linesecond */
 hr.linesecond {
     background-color: var(--primary-bg);
     border: 1px solid var(--primary-bg);
@@ -126,7 +125,6 @@ hr.linesecond {
     MENU
 */
 
-/* Così lo stile di h1 non interferisce */
 header h1 {
     margin: 0;
 }
@@ -174,7 +172,6 @@ header h1 {
     justify-content: center;
     align-items: center;
     padding-top: 2em;
-    /* gap: 1em; */
 }
 
 #container-menu h1 {
@@ -226,7 +223,6 @@ header h1 {
     border-radius: 1em;
     display: inline-block;
     transition: all 0.3s ease;
-    /* Transizione fluida */
 }
 
 #menu a:hover {
@@ -262,7 +258,6 @@ header h1 {
 }
 
 #avviso p {
-    /* gap: 1em; */
     align-items: center;
     display: flex;
     padding: 1em 1em 0 1em;
@@ -438,14 +433,12 @@ header h1 {
     display: flex;
     justify-content: space-between;
     gap: 2em;
-    /* align-items: center; */
     background-color: var(--secondary-bg);
     color: var(--primary-bg);
     border-radius: 24px;
 }
 
 #impegno .linesecond {
-    /* Serve sennò questo hr collassa e diventa piccolissimo */
     align-self: stretch;
     width: 1px;
 }
@@ -643,11 +636,8 @@ button[type="submit"]:hover {
     color: inherit;
     display: block;
     flex: 0 1 20%;
-    /* Base 22%, cresce e si restringe */
     min-width: 18rem;
-    /* Larghezza minima prima di andare a capo */
     max-width: 25%;
-    /* Massimo 4 per riga */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 

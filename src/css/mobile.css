@@ -170,10 +170,6 @@ a.pulsante-torna-su {
     bottom: 1.5em;
 }
 
-footer img {
-    display: none;
-}
-
 footer {
     display: flex;
     flex-direction: column;

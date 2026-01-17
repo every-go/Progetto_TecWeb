@@ -59,7 +59,7 @@ export function inserisciMessaggioDefault(input, dettagli_form) {
 
     const node = document.createElement("span");
     node.className = "default-text";
-    node.textContent = dettagli_form[key][0];
+    node.innerHTML = dettagli_form[key][0];
     parent.insertBefore(node, input.nextSibling);
 }
 
@@ -87,7 +87,7 @@ export function validazioneCampo(input, dettagli_form) {
    if (!valido) {
        const node = document.createElement("div");
        node.className = "errorSuggestion";
-       node.textContent = messaggioErrore;
+       node.innerHTML = messaggioErrore;
        parent.appendChild(node);
        return false;
    }
