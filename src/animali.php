@@ -82,6 +82,7 @@ if ($connessioneOK) {
         $listaAnimali = '<ul class="animali">' . $listaAnimali . "</ul>";
     }
     
+    $messaggioRisultati = "";
     $indicatorePagina = "";
     $baseURL = "animali.php?";
     if ($isSearch) {

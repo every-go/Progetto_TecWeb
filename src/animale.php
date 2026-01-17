@@ -220,8 +220,6 @@ if (isset($_SESSION['messaggio_errore'])) {
     unset($_SESSION['messaggio_adozione']);
 }
 
-echo $_SESSION['messaggio_adozione'];
-
 $content = str_replace('[adottaMessage]', $messaggioAdozione, $content);
 
 
