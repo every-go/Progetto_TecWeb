@@ -601,10 +601,6 @@ button[type="submit"]:hover {
     font-size: 1.3em;
 }
 
-#animali-content {
-    top: auto;
-}
-
 .invisibile {
     height: 1px;
     overflow: hidden;
@@ -1343,6 +1339,7 @@ a.pulsante-torna-su:focus {
 
 
 .errorSuggestion {
+    font-weight: bold;
     display: block;
     margin-top: 4px;
     font-size: 0.9em;

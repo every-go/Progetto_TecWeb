@@ -1,70 +1,150 @@
+// funzioni_comuni.js
 export function caricamento(dettagli_form) {
-   for (var key in dettagli_form) {
-      var input = document.getElementById(key);
-      if (!input) continue;
 
-      inserisciMessaggioDefault(input, dettagli_form);
+    const form = document.querySelector("form");
+    if (!form) {
+        return;
+    }
 
-      input.addEventListener("blur", function () {
-         validazioneCampo(this, dettagli_form);
-      });
-   }
+    // Disabilita validazione HTML5 nativa
+    form.setAttribute("novalidate", true);
 
-   var form = document.getElementById("login-form");
-   if (form) {
+    // Input text, number, file, textarea
+    const inputs = form.querySelectorAll('input:not([type="radio"]), textarea');
+    inputs.forEach(input => {
+        const key = input.id || input.name;
+
+        // Inserimento messaggio default
+        if (dettagli_form[key]) {
+            inserisciMessaggioDefault(input, dettagli_form);
+        }
+
+        // Blur listener
+        input.addEventListener("blur", function () {
+            console.log(`caricamento: blur su input "${key}"`);
+            if (dettagli_form[key]) {
+               var ok= validazioneCampo(this, dettagli_form);
+            }
+            if(key == "nome"){
+               console.log(ok);
+            }
+        });
+    });
+
+    // Radio
+    const radios = form.querySelectorAll('input[type="radio"]');
+    const radioGroups = {};
+    radios.forEach(radio => {
+        if (!radioGroups[radio.name]) radioGroups[radio.name] = [];
+        radioGroups[radio.name].push(radio);
+    });
+
+    Object.values(radioGroups).forEach(group => {
+        const groupName = group[0].name;
+    });
+
+    // Submit listener
+    if (form) {
       form.onsubmit = function () {
          return validazioneForm(dettagli_form);
       };
    }
 }
 
+export function inserisciMessaggioDefault(input, dettagli_form) {
+    const key = input.id || input.name;
+    const parent = input.parentNode;
+    const existingDefault = parent.querySelector(".default-text");
+    if (existingDefault) existingDefault.remove();
+
+    const node = document.createElement("span");
+    node.className = "default-text";
+    node.textContent = dettagli_form[key][0];
+    parent.insertBefore(node, input.nextSibling);
+}
+
 export function validazioneCampo(input, dettagli_form) {
-   var regex = dettagli_form[input.id][1];
-   var text = input.value;
-   var parent = input.parentNode;
+   const key = input.id;
+   const regex = dettagli_form[key][1];
+   const text = input.value;
+   const parent = input.parentNode;
 
-   var existingErrors = parent.querySelectorAll('.errorSuggestion');
-   existingErrors.forEach(el => el.remove());
+   parent.querySelectorAll(".errorSuggestion").forEach(el => el.remove());
 
-   var valido = true;
+   let valido = true;
+   let messaggioErrore = dettagli_form[key][2];
 
-   var messaggioErrore = dettagli_form[input.id][2];
+   // Controllo file
+   if (input.type === "file" && input.files.length === 0) {
+       valido = false;
+   }
 
-   if (regex instanceof RegExp && !regex.test(text)) {
-      valido = false;
-      messaggioErrore = dettagli_form[input.id][2];
+   // Controllo regex solo per gli altri tipi
+   if (regex instanceof RegExp && input.type !== "file" && !regex.test(text)) {
+       valido = false;
    }
 
    if (!valido) {
-      var node = document.createElement("strong");
-      node.className = "errorSuggestion";
-      node.innerHTML = messaggioErrore;
-      parent.appendChild(node);
-      return false;
+       const node = document.createElement("div");
+       node.className = "errorSuggestion";
+       node.textContent = messaggioErrore;
+       parent.appendChild(node);
+       return false;
    }
 
    return true;
 }
 
-export function validazioneForm(dettagli_form) {
-   var tuttoOk = true;
-   for (var key in dettagli_form) {
-      var input = document.getElementById(key);
-      if (!input) continue;
-      
-      var campoValido = validazioneCampo(input, dettagli_form);
-      tuttoOk = tuttoOk && campoValido;
-   }
-   return tuttoOk;
+export function validazioneCampoRadio(group, dettagli_form) {
+    const groupName = group[0].name;
+    const fieldset = group[0].closest("fieldset");
+    if (!fieldset) return true;
+
+    fieldset.querySelectorAll(".errorSuggestion").forEach(el => el.remove());
+
+    const almenoUnoSelezionato = group.some(r => r.checked);
+
+    if (!almenoUnoSelezionato) {
+        const node = document.createElement("div");
+        node.className = "errorSuggestion";
+        node.innerHTML = dettagli_form[groupName][2];
+        fieldset.appendChild(node);
+        return false;
+    }
+
+    return true;
 }
 
-export function inserisciMessaggioDefault(input, dettagli_form) {
-   var parent = input.parentNode;
-   var existingDefault = parent.querySelector('.default-text');
-   if (existingDefault) existingDefault.remove();
+export function validazioneForm(dettagli_form) {
+    let tuttoOk = true;
 
-   var node = document.createElement("span");
-   node.className = "default-text";
-   node.textContent = dettagli_form[input.id][0];
-   parent.insertBefore(node, input.nextSibling);
+    const form = document.querySelector("form");
+
+    // Text, number, file, textarea
+    const inputs = form.querySelectorAll('input:not([type="radio"]), textarea');
+    inputs.forEach(input => {
+        const key = input.id;
+        console.log(key);
+        if (dettagli_form[key]) {
+            const campoValido = validazioneCampo(input, dettagli_form);
+            console.log("Campo valido=" + campoValido);
+            tuttoOk = tuttoOk && campoValido;
+            console.log("tuttoOk=" + tuttoOk);
+        }
+    });
+
+    // Radio
+    const radios = form.querySelectorAll('input[type="radio"]');
+    const radioGroups = {};
+    radios.forEach(radio => {
+        if (!radioGroups[radio.name]) radioGroups[radio.name] = [];
+        radioGroups[radio.name].push(radio);
+    });
+
+    Object.values(radioGroups).forEach(group => {
+        const campoValido = validazioneCampoRadio(group, dettagli_form);
+        tuttoOk = tuttoOk && campoValido;
+    });
+
+    return tuttoOk;
 }

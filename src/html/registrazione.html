@@ -38,8 +38,7 @@
 		</p>
 	</nav>
 	<main id="main-content">
-		[messaggio]
-		[adottaMessage]
+		<!-- [adottaMessage]-->
 		[ERROR_MESSAGE]
 
 		<div id="txt-form">
@@ -51,17 +50,17 @@
 
 					<div>
 						<label for="username"><span lang="en">Inserisci il tuo username:</span></label>
-						<input type="text" id="username" name="username" [autofocusUsername] value="[USERNAME_VALUE]">
+						<input type="text" id="username" name="username" [autofocusUsername] value="[USERNAME_VALUE]" required>
 					</div>
 
 					<div>
 						<label for="password">Inserisci la tua <span lang="en">password:</span></label>
-						<input type="password" id="password" name="password" [autofocusPassword]>
+						<input type="password" id="password" name="password" [autofocusPassword] required>
 					</div>
 
 					<div>
 						<label for="confirm_password">Conferma la tua <span lang="en">password:</span></label>
-						<input type="password" id="confirm_password" name="confirm_password" [autofocusConfirmPassword]>
+						<input type="password" id="confirm_password" name="confirm_password" [autofocusConfirmPassword] required>
 					</div>
 
 					<div class="form-group">

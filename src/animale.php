@@ -211,7 +211,6 @@ if (isset($_GET["id"])) {
     exit();
 }
 
-
 $messaggioAdozione = '';
 if (isset($_SESSION['messaggio_errore'])) {
     $messaggioAdozione = "<p class='error-adozione' aria-live='assertive' role='alert'>" . $_SESSION['messaggio_errore'] . " </p>";

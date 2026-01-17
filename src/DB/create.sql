@@ -7,12 +7,12 @@ DROP TABLE IF EXISTS animali;
 
 CREATE TABLE animali (
     id           INT AUTO_INCREMENT PRIMARY KEY,
-    nome         VARCHAR(1023) NOT NULL,
-    alt          VARCHAR(1023) NOT NULL,
-    immagine     VARCHAR(1023) NOT NULL,
+    nome         VARCHAR(24) NOT NULL,
+    alt          VARCHAR(1024) NOT NULL,
+    immagine     VARCHAR(1024) NOT NULL,
     sesso        ENUM('Maschio','Femmina') NOT NULL,
     tipo_animale ENUM('Reale','Fantastico') NOT NULL,
-    luogo        VARCHAR(1023) NOT NULL,
+    luogo        VARCHAR(100) NOT NULL,
     eta          INT NOT NULL,
     taglia       ENUM('Piccola','Media','Grande') NOT NULL,
     carattere    ENUM('Facile','Moderato','Difficile') NOT NULL,

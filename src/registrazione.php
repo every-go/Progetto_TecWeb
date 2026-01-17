@@ -122,13 +122,7 @@ foreach (array_keys($fields) as $campo) {
 }
 
 // messaggi sessione
-$adottaMessage = '';
-if (isset($_SESSION['messaggio_errore'])) {
-    $adottaMessage = "<p class='error-login' aria-live='assertive' role='alert'>" .
-                     htmlspecialchars($_SESSION['messaggio_errore'], ENT_QUOTES, "UTF-8") .
-                     "</p>";
-    unset($_SESSION['messaggio_errore']);
-}
+
 if(isset($_GET['redirect'])){
     $redirectPage=htmlspecialchars('redirect='.urlencode($_GET['redirect']), ENT_QUOTES, "UTF-8");
 }
@@ -142,8 +136,6 @@ $content = str_replace("[USERNAME_VALUE]", $fields["username"], $content);
 $content = str_replace("[autofocusUsername]", $autofocus["username"], $content);
 $content = str_replace("[autofocusPassword]", $autofocus["password"], $content);
 $content = str_replace("[autofocusConfirmPassword]", $autofocus["confirm_password"], $content);
-$content = str_replace("[adottaMessage]", $adottaMessage, $content);
-$content = str_replace("[messaggio]", $messaggio, $content);
 
 echo $content;
 ?>

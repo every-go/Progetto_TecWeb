@@ -79,7 +79,7 @@ class campiDatiAnimale
         ],
         "tipo_animale" => [
             "form" => "tipo_animale",
-            "opzioni" => ["Reale" => "checkReale", "Fantasy" => "checkFantasy"],
+            "opzioni" => ["Reale" => "checkReale", "Fantastico" => "checkFantastico"],
             "errPlaceholder" => "tipoAnimaleErr",
             "ariaInvalidPlaceholder" => "ariaInvalidTipoAnimale",
         ],
@@ -160,15 +160,13 @@ function populateForm($animalData, $content)
             "[immagineCorrente]",
             '<img src="' .
                 htmlspecialchars($animalData["immagine"]) .
-                '" alt="' .
-                htmlspecialchars($animalData["alt"]) .
-                '" class="current-image">',
+                '" alt="">',
             $content
         );
     } else {
         $content = str_replace(
             "[immagineCorrente]",
-            "",
+            '<img id=immagineCorrente alt="">',
             $content
         );
     }
@@ -197,7 +195,7 @@ function renderRadio($html, $datiUtente)
         "sesso" => ["Maschio" => "checkMaschio", "Femmina" => "checkFemmina"],
         "tipo_animale" => [
             "Reale" => "checkReale",
-            "Fantasy" => "checkFantasy",
+            "Fantastico" => "checkFantastico",
         ],
         "taglia" => [
             "Piccola" => "checkTagliaP",
@@ -305,7 +303,7 @@ function removeFormDataPlaceholders($html)
         "checkMaschio",
         "checkFemmina",
         "checkReale",
-        "checkFantasy",
+        "checkFantastico",
         "checkTagliaP",
         "checkTagliaM",
         "checkTagliaG",

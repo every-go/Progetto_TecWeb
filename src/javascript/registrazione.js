@@ -58,23 +58,38 @@ window.validazioneCampo = function(input, dettagli_form) {
 
 // Sovrascrivi caricamento per usare validazioneCampo sovrascritta
 function caricamento(dettagli_form) {
-   for (var key in dettagli_form) {
-      var input = document.getElementById(key);
-      if (!input) continue;
+
+   const form = document.querySelector("form");
+   if (!form) {
+      return;
+   }
+
+   // disattiva validazione HTML5 una sola volta
+   form.noValidate = true;
+
+   // input e textarea (NO radio)
+   const inputs = form.querySelectorAll("input:not([type='radio']), textarea");
+
+   inputs.forEach(input => {
+      const key = input.name || input.id;
+
+      if (!dettagli_form[key]) {
+         return;
+      }
 
       inserisciMessaggioDefault(input, dettagli_form);
 
       input.addEventListener("blur", function () {
          validazioneCampo(this, dettagli_form);
       });
-   }
+   });
 
-   var form = document.getElementById("login-form");
-   if (form) {
-      form.onsubmit = function () {
-         return validazioneForm(dettagli_form);
-      };
-   }
+   // submit
+   form.onsubmit = function () {
+
+      const valido = validazioneForm(dettagli_form);
+      return valido;
+   };
 }
 
 window.onload = () => caricamento(dettagli_form);
