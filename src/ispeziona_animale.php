@@ -1,9 +1,4 @@
 <?php
-<<<<<<< HEAD
-//file_put_contents(__DIR__ . '/test_scrittura.log', 'File PHP caricato: ' . date('Y-m-d H:i:s') . "\n", FILE_APPEND);
-
-=======
->>>>>>> 03b3f8fa3b0122e14144cdddec399994debf4c4c
 require_once "connectionDB.php";
 require_once "utils/imageHandler.php";
 require_once "utils/validator.php";
@@ -67,23 +62,12 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 } else {
     // Log file
     $logFile = __DIR__ . "/log/debug.log";
-<<<<<<< HEAD
-    //file_put_contents($logFile, "=== INIZIO DEBUG " . date('Y-m-d H:i:s') . " ===\n", FILE_APPEND);
-=======
->>>>>>> 03b3f8fa3b0122e14144cdddec399994debf4c4c
     
     foreach ($campiFormSemplici as $campo) {
         $valori[$campo] = pulisciInput($_POST[$campo] ?? "");
     }
 
-<<<<<<< HEAD
-    //file_put_contents($logFile, "Valori POST ricevuti: " . print_r($valori, true) . "\n", FILE_APPEND);
-
     $errori = checkForm($valori);
-    //file_put_contents($logFile, "Errori validazione: " . print_r($errori, true) . "\n", FILE_APPEND);
-=======
-    $errori = checkForm($valori);
->>>>>>> 03b3f8fa3b0122e14144cdddec399994debf4c4c
     
     $imgError = null;
     $hasNewImage = false;
