@@ -21,12 +21,8 @@ export function caricamento(dettagli_form) {
 
         // Blur listener
         input.addEventListener("blur", function () {
-            console.log(`caricamento: blur su input "${key}"`);
             if (dettagli_form[key]) {
                var ok= validazioneCampo(this, dettagli_form);
-            }
-            if(key == "nome"){
-               console.log(ok);
             }
         });
     });
@@ -129,12 +125,9 @@ export function validazioneForm(dettagli_form) {
     const inputs = form.querySelectorAll('input:not([type="radio"]), textarea');
     inputs.forEach(input => {
         const key = input.id;
-        console.log(key);
         if (dettagli_form[key]) {
             const campoValido = validazioneCampo(input, dettagli_form);
-            console.log("Campo valido=" + campoValido);
             tuttoOk = tuttoOk && campoValido;
-            console.log("tuttoOk=" + tuttoOk);
         }
     });
 
