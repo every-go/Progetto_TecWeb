@@ -1,15 +1,24 @@
-const input = document.getElementById('immagine');
 const img = document.getElementById('immagineCorrente');
 
+// Al caricamento pagina
+window.addEventListener('DOMContentLoaded', () => {
+    if (img.src && img.src.trim() !== "") {
+        img.dataset.hasCurrent = "true";
+    }
+});
+
+// Al cambio immagine
+const input = document.getElementById('immagine');
 input.addEventListener('change', () => {
-    console.log("Immagine cambiata");
     const file = input.files[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = e => img.src = e.target.result;
+    reader.onload = e => {
+        img.src = e.target.result;
+        img.dataset.hasCurrent = "true";
+    };
     reader.readAsDataURL(file);
 });
-
 
 import { caricamento } from "./funzioni_comuni.js";
 
