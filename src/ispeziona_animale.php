@@ -61,8 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
         }
     }
 } else {
-    // Log file
-    $logFile = __DIR__ . "/log/debug.log";
     
     foreach ($campiFormSemplici as $campo) {
         $valori[$campo] = pulisciInput($_POST[$campo] ?? "");
