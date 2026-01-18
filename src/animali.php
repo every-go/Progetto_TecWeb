@@ -82,28 +82,19 @@ if ($connessioneOK) {
         $listaAnimali = '<ul class="animali">' . $listaAnimali . "</ul>";
     }
     
+    $messaggioRisultati = "";
     $indicatorePagina = "";
     $baseURL = "animali.php?";
     if ($isSearch) {
-        $messaggioRisultati =
-            'Risultati per "<strong>' .
-            $searchValue .
-            '</strong>": ';
-        $messaggioRisultati .=
-            '<span role="status" aria-atomic="true">'.$totaleAnimali .
-            " " .
-            ($totaleAnimali === 1 ? "animale trovato" : "animali trovati").
-            "</span>";
-        if ($totaleAnimali === 0) {
-            $listaAnimali =
-                '<p> Nessun animale trovato. <a href="animali.php">Torna all\'elenco completo</a> </p>';
+        // Messaggio risultati ricerca
+        $messaggioRisultati = '<p> Risultati per <strong>' . htmlspecialchars($searchTerm) . '</strong>: ';
+        $messaggioRisultati .= $totaleAnimali . ' ' . ($totaleAnimali === 1 ? 'animale trovato' : 'animali trovati');
+        $messaggioRisultati .= '</p>';
+        
+        if($totaleAnimali === 0){
+            $listaAnimali = '<p> Nessun animale trovato. <a href="animali.php">Torna all\'elenco completo</a> </p>';
         }
 
-        $content = str_replace(
-            '<p id="animali-content"> Ecco tutti i nostri amici! </p>',
-            '<p id="animali-content">' . $messaggioRisultati . "</p>",
-            $content
-        );
         $baseURL .= "search=" . urlencode($searchTerm) . "&";
     }
 
@@ -135,6 +126,7 @@ $messaggio= AvvisiHelper::getFormattedHtml();
 $content = str_replace("[addButton]", $pulsanteAdd, $content);
 $content = str_replace("[LISTA_ANIMALI]", $listaAnimali, $content);
 $content = str_replace("[messaggio]", $messaggio, $content);
+$content = str_replace("[risultatoRicerca]", $messaggioRisultati, $content);
 
 echo $content;
 ?>

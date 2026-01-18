@@ -3,7 +3,7 @@ import {inserisciMessaggioDefault, validazioneForm} from "./funzioni_comuni.js";
 var dettagli_form = {
    "username": [
       "Es: FlavioPiccione",
-      /^[A-Za-z0-9<>()/]{4,24}$/,
+      /^[A-Za-z]{4,24}$/,
       "Lo <span lang='en'>username</span> deve avere minimo 4 caratteri e massimo 24. Può contenere solo lettere maiuscole o minuscole."
    ],
    "password": [
@@ -14,7 +14,7 @@ var dettagli_form = {
    "confirm_password": [
       "",
       null,
-      "La conferma non è uguale alla <span lang='en'>password</span> inserita in precedenza"
+      "La conferma non è uguale alla <span lang='en'>password</span> inserita in precedenza."
    ]
 };
 
@@ -58,23 +58,46 @@ window.validazioneCampo = function(input, dettagli_form) {
 
 // Sovrascrivi caricamento per usare validazioneCampo sovrascritta
 function caricamento(dettagli_form) {
-   for (var key in dettagli_form) {
-      var input = document.getElementById(key);
-      if (!input) continue;
+
+   const form = document.querySelector("form");
+   if (!form) {
+      return;
+   }
+
+   // disattiva validazione HTML5 una sola volta
+   form.noValidate = true;
+
+   // input e textarea (NO radio)
+   const inputs = form.querySelectorAll("input:not([type='radio']), textarea");
+
+   inputs.forEach(input => {
+      const key = input.name || input.id;
+
+      if (!dettagli_form[key]) {
+         return;
+      }
 
       inserisciMessaggioDefault(input, dettagli_form);
 
       input.addEventListener("blur", function () {
          validazioneCampo(this, dettagli_form);
       });
-   }
+   });
 
-   var form = document.getElementById("login-form");
-   if (form) {
-      form.onsubmit = function () {
-         return validazioneForm(dettagli_form);
-      };
-   }
+   // submit
+   form.onsubmit = function () {
+      let valido = validazioneForm(dettagli_form);
+
+      const password = document.getElementById("password");
+      const confirm  = document.getElementById("confirm_password");
+
+      if (password && confirm && password.value !== confirm.value) {
+         validazioneCampo(confirm, dettagli_form);
+         valido = false;
+      }
+
+      return valido;
+   };
 }
 
 window.onload = () => caricamento(dettagli_form);

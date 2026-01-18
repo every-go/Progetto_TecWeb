@@ -1,94 +1,114 @@
 <?php
 session_start();
 require_once "connectionDB.php";
-require_once "utils".DIRECTORY_SEPARATOR."AvvisiHelper.php";
+require_once "utils" . DIRECTORY_SEPARATOR . "AvvisiHelper.php";
+require_once "utils" . DIRECTORY_SEPARATOR . "UrlHelper.php";
+
 use DB\DBAccess;
 
 include "menu.php";
+
 $content = file_get_contents("html/registrazione.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
 
-// campi del form
 $fields = [
     "username" => "",
     "password" => "",
     "confirm_password" => ""
 ];
 
-// array errori
-$errorMessages = [];
+$errorMessages = [
+    'username' => '',
+    'password' => '',
+    'confirm_password' => '',
+    'usernamenotvalid' => ''
+];
 
-// funzioni di validazione
-function validateUsername($value) {
-    return preg_match('/^[a-zA-Z]{4,24}$/', $value);
+function validateUsername(string $value): bool {
+    return (bool) preg_match('/^[a-zA-Z]{4,24}$/', $value);
 }
 
-function validatePassword($value) {
+function validatePassword(string $value): bool {
     if ($value === "#Flavio4") {
         return false;
     }
-    
-    $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~]{8,24}$/';
-    
-    return preg_match($regex, $value) === 1;
+
+    $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=$begin:math:display$$end:math:display${};:\'",.<>\/?\\|`~]{8,24}$/';
+    return (bool) preg_match($regex, $value);
 }
 
-function sanitize($value) {
+function sanitize(string $value): string {
     return htmlspecialchars(trim($value), ENT_QUOTES, "UTF-8");
 }
 
-// gestione submit
-if (isset($_POST["register"])) {
+if (empty($_SESSION["is_logged_in"]) && isset($_POST["register"])) {
+
+    // sanitizzazione input
     foreach ($fields as $key => &$value) {
         $value = sanitize($_POST[$key] ?? '');
     }
 
-    // validazioni
-    if ($fields["username"] === "") {
-        $errorMessages["username"] = "Inserire lo <span lang='en'>username</span>";
-    } elseif (!validateUsername($fields["username"])) {
-        $errorMessages["username"] = "<span lang='en'>Username</span> non valido, deve avere minimo 4 caratteri e massimo 24. Può contenere solo lettere maiuscole o minuscole.";
+    // username
+    if (!validateUsername($fields["username"])) {
+        $errorMessages["username"] =
+            '<div id="errUsername" class="errorSuggestion" role="alert">
+                Lo <span lang="en">username</span> deve contenere solo lettere (4–24).
+             </div>';
     }
 
-    if ($fields["password"] === "") {
-        $errorMessages["password"] = "Inserire la <span lang='en'>password</span>";
-    } elseif (!validatePassword($fields["password"])) {
-        $errorMessages["password"] = "Password non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, 1 numero e almeno un carattere speciale, minimo 8, massimo 24 caratteri.";
+    // password
+    if (!validatePassword($fields["password"])) {
+        $errorMessages["password"] =
+            '<div id="errPassword" class="errorSuggestion" role="alert">
+                <span lang="en">Password</span> non valida.
+             </div>';
     }
 
-    if ($fields["confirm_password"] === "") {
-        $errorMessages["confirm_password"] = "Confermare la <span lang='en'>password</span>";
+    // conferma password
+    if ($fields["confirm_password"] === '') {
+        $errorMessages["confirm_password"] =
+            '<div id="errConfirmPassword" class="errorSuggestion" role="alert">
+                Confermare la <span lang="en">password</span>
+             </div>';
     } elseif ($fields["confirm_password"] !== $fields["password"]) {
-        $errorMessages["confirm_password"] = "Le <span lang='en'>password</span> non coincidono";
+        $errorMessages["confirm_password"] =
+            '<div id="errConfirmPassword" class="errorSuggestion" role="alert">
+                Le <span lang="en">password</span> non coincidono
+             </div>';
     }
 
-    // se tutto valido, controllo DB
-    if (empty($errorMessages)) {
+    // controllo DB solo se NON ci sono errori lato client
+    if ($errorMessages['username'] === '' && $errorMessages['password'] === '' && $errorMessages['confirm_password'] === '') {
         $db = new DBAccess();
+
         if ($db->openDBConnection()) {
+
             if ($db->checkUsernameEsistente($fields["username"])) {
-                $errorMessages["username"] = "Username già esistente";
+
+                $errorMessages["usernamenotvalid"] =
+                    '<div class="errorSuggestion" role="alert">
+                        <span lang="en">Username</span> già esistente
+                     </div>';
+
             } else {
+
                 $res = $db->registerUtente($fields["username"], $fields["password"]);
                 $db->closeConnection();
+
                 if ($res) {
-                    // $_SESSION['messaggio_utente'] = 'Registrazione avvenuta con successo';
-                    AvvisiHelper::set('<span>Registrazione</span> &nbsp; avvenuta con successo', 'success');
-                    
-                    // $parametersQuery=isset($_GET['redirect']) ? '?redirect='.($_GET['redirect']) : '';
+                    AvvisiHelper::set('Registrazione avvenuta con successo', 'success');
+
                     $redirectPage = 'index.php';
-                    
                     if (isset($_GET['redirect'])) {
-                        $redirectPage = $_GET['redirect'];
-                        $redirectPage = UrlHelper::getSafeRedirect(urldecode($redirectPage), 'index.php');
-                        // $redirectPage = ltrim($redirectPage, '/'); // Rimuovi lo slash iniziale per redirect relativi
+                        $redirectPage = UrlHelper::getSafeRedirect(
+                            urldecode($_GET['redirect']),
+                            'index.php'
+                        );
                     }
-                    
+
                     header("Location: login.php?redirect=" . urlencode($redirectPage));
                     exit();
-                } else {
-                    $errorMessages["username"] = "Lo <span lang='en'>username</span> è già esistente";
                 }
             }
         } else {
@@ -99,51 +119,38 @@ if (isset($_POST["register"])) {
     }
 }
 
-// costruzione HTML errori
-$messaggiHTML = "";
-if (!empty($errorMessages)) {
-    $messaggiHTML .= "<ul class='error-login'>";
-    foreach ($errorMessages as $msg) {
-        $messaggiHTML .= "<li aria-live='assertive' role='alert'>$msg</li>";
-    }
-    $messaggiHTML .= "</ul>";
-}
-
-// autofocus dinamico: primo campo con errore
 $autofocus = [];
-$focusAssigned = false;
-foreach (array_keys($fields) as $campo) {
-    if (!$focusAssigned && isset($errorMessages[$campo])) {
-        $autofocus[$campo] = "autofocus";
-        $focusAssigned = true;
-    } else {
-        $autofocus[$campo] = "";
+$focusTarget = null;
+
+// password ha priorità
+if ($errorMessages['password'] !== '' || $errorMessages['confirm_password'] !== '') {
+    $focusTarget = 'password';
+} else {
+    foreach (array_keys($fields) as $campo) {
+        if ($errorMessages[$campo] !== '') {
+            $focusTarget = $campo;
+            break;
+        }
     }
 }
 
-// messaggi sessione
-$adottaMessage = '';
-if (isset($_SESSION['messaggio_errore'])) {
-    $adottaMessage = "<p class='error-login' aria-live='assertive' role='alert'>" .
-                     htmlspecialchars($_SESSION['messaggio_errore'], ENT_QUOTES, "UTF-8") .
-                     "</p>";
-    unset($_SESSION['messaggio_errore']);
+foreach (array_keys($fields) as $campo) {
+    $autofocus[$campo] = ($campo === $focusTarget) ? 'autofocus' : '';
 }
-if(isset($_GET['redirect'])){
-    $redirectPage=htmlspecialchars('redirect='.urlencode($_GET['redirect']), ENT_QUOTES, "UTF-8");
+
+$redirectParam = '';
+if (isset($_GET['redirect'])) {
+    $redirectParam = 'redirect=' . urlencode($_GET['redirect']);
 }
-else{
-    $redirectPage='';
-}
-$content = str_replace("[PAGINA_PROVENIENZA]",$redirectPage , $content);
-// sostituzioni template
-$content = str_replace("[ERROR_MESSAGE]", $messaggiHTML, $content);
+
+$content = str_replace("[PAGINA_PROVENIENZA]", $redirectParam, $content);
+$content = str_replace("[errUsername]", $errorMessages["username"], $content);
+$content = str_replace("[errPassword]", $errorMessages["password"], $content);
+$content = str_replace("[errConfirmPassword]", $errorMessages["confirm_password"], $content);
+$content = str_replace("[ERROR_MESSAGE]", $errorMessages["usernamenotvalid"], $content);
 $content = str_replace("[USERNAME_VALUE]", $fields["username"], $content);
 $content = str_replace("[autofocusUsername]", $autofocus["username"], $content);
 $content = str_replace("[autofocusPassword]", $autofocus["password"], $content);
-$content = str_replace("[autofocusConfirmPassword]", $autofocus["confirm_password"], $content);
-$content = str_replace("[adottaMessage]", $adottaMessage, $content);
-$content = str_replace("[messaggio]", $messaggio, $content);
 
 echo $content;
 ?>

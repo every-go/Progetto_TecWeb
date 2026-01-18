@@ -1,4 +1,6 @@
 <?php
+file_put_contents(__DIR__ . '/test_scrittura.log', 'File PHP caricato: ' . date('Y-m-d H:i:s') . "\n", FILE_APPEND);
+
 require_once "connectionDB.php";
 require_once "utils/imageHandler.php";
 require_once "utils/validator.php";
@@ -41,7 +43,6 @@ $dbImagePath = "";
 $oldImagepath = null;
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-
     if ($isModifica) {
         $db = new DBAccess();
 
@@ -62,13 +63,22 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
         }
     }
 } else {
+    // Log file
+    $logFile = __DIR__ . "/log/debug.log";
+    file_put_contents($logFile, "=== INIZIO DEBUG " . date('Y-m-d H:i:s') . " ===\n", FILE_APPEND);
+    
     foreach ($campiFormSemplici as $campo) {
         $valori[$campo] = pulisciInput($_POST[$campo] ?? "");
     }
 
+    file_put_contents($logFile, "Valori POST ricevuti: " . print_r($valori, true) . "\n", FILE_APPEND);
+
     $errori = checkForm($valori);
+    file_put_contents($logFile, "Errori validazione: " . print_r($errori, true) . "\n", FILE_APPEND);
+    
     $imgError = null;
     $hasNewImage = false;
+    
     if (
         isset($_FILES["immagine"]) &&
         $_FILES["immagine"]["error"] !== UPLOAD_ERR_NO_FILE
@@ -78,26 +88,55 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
             $hasNewImage = true;
         }
     }
+    
+    file_put_contents($logFile, "hasNewImage: " . ($hasNewImage ? 'SI' : 'NO') . "\n", FILE_APPEND);
+    file_put_contents($logFile, "imgError: " . ($imgError ?? 'NULL') . "\n", FILE_APPEND);
 
     if (empty($errori) && $imgError === null) {
+        file_put_contents($logFile, "Validazione OK, procedo con salvataggio\n", FILE_APPEND);
+        
         if ($isModifica) {
+            file_put_contents($logFile, "Modalità: MODIFICA (ID: $id)\n", FILE_APPEND);
+            
             $db = new DBAccess();
 
             if ($db->openDBConnection()) {
-                $oldImagepath = $db->getAnimalById($id)["immagine"];
+                file_put_contents($logFile, "DB connesso\n", FILE_APPEND);
+                
+                $datiDB = $db->getAnimalById($id);
+                
+                if (!$datiDB) {
+                    file_put_contents($logFile, "ERRORE: Animale non trovato\n", FILE_APPEND);
+                    $db->closeConnection();
+                    include __DIR__ . "/500.php";
+                    exit();
+                }
+                
+                file_put_contents($logFile, "Dati animale recuperati dal DB\n", FILE_APPEND);
+                $oldImagepath = $datiDB["immagine"];
+                file_put_contents($logFile, "Vecchio path immagine: $oldImagepath\n", FILE_APPEND);
+                
+                // Gestione immagine PRIMA dell'update
                 if ($hasNewImage) {
+                    file_put_contents($logFile, "Salvataggio nuova immagine...\n", FILE_APPEND);
                     $newImagePath = $imgHandler->save($_FILES["immagine"]);
                     if ($newImagePath !== false) {
                         $valori["immagine"] = $newImagePath;
-
                         $imgHandler->delete($oldImagepath);
+                        file_put_contents($logFile, "Immagine salvata: $newImagePath\n", FILE_APPEND);
                     } else {
-                        $errori[campiDatiAnimale::$files["immagine"]["errPlaceholder"]] = "Errore nel salvataggio dell'immagine.";
+                        file_put_contents($logFile, "ERRORE: Salvataggio immagine fallito\n", FILE_APPEND);
+                        $errori[campiDatiAnimale::$files["immagine"]["errPlaceholder"]] = 
+                            "Errore nel salvataggio dell'immagine.";
                         $valori["immagine"] = $oldImagepath;
                     }
                 } else {
+                    file_put_contents($logFile, "Nessuna nuova immagine, mantengo: $oldImagepath\n", FILE_APPEND);
                     $valori["immagine"] = $oldImagepath;
                 }
+                
+                file_put_contents($logFile, "Chiamata aggiornaAnimale con path: " . $valori["immagine"] . "\n", FILE_APPEND);
+                
                 $esitoOperazione = $db->aggiornaAnimale(
                     $id,
                     $valori["nome"],
@@ -113,21 +152,28 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
                     $valori["bisogni"],
                     $valori["storia"]
                 );
+                
+                file_put_contents($logFile, "Esito aggiornaAnimale: " . ($esitoOperazione ? 'SUCCESS' : 'FAIL') . "\n", FILE_APPEND);
+                
                 $db->closeConnection();
 
                 if ($esitoOperazione) {
-                    header("Location: animale.php?" . createHttpQuery($_GET, ['pagina', 'search', 'id'],false));
+                    file_put_contents($logFile, "Redirect a animale.php\n", FILE_APPEND);
+                    header("Location: animale.php?" . createHttpQuery($_GET, ['pagina', 'search', 'id'], false));
                     exit();
                 } else {
-                    $errori["erroreGenerale"] =
-                        "Errore durante l'aggiornamento dell'animale.";
+                    file_put_contents($logFile, "ERRORE: Update fallito\n", FILE_APPEND);
+                    $errori["erroreGenerale"] = "Errore durante l'aggiornamento dell'animale.";
                 }
-                $db->closeConnection();
             } else {
+                file_put_contents($logFile, "ERRORE: Connessione DB fallita\n", FILE_APPEND);
                 include __DIR__ . "/500.php";
                 exit();
             }
         } else {
+            // INSERIMENTO nuovo animale
+            file_put_contents($logFile, "Modalità: INSERIMENTO\n", FILE_APPEND);
+            
             $db = new DBAccess();
 
             if ($db->openDBConnection()) {
@@ -135,12 +181,16 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
                     $newImagePath = $imgHandler->save($_FILES["immagine"]);
                     if ($newImagePath !== false) {
                         $valori["immagine"] = $newImagePath;
+                        file_put_contents($logFile, "Immagine salvata: $newImagePath\n", FILE_APPEND);
                     } else {
-                        $errori[campiDatiAnimale::$files["immagine"]["errPlaceholder"]] = "Errore nel salvataggio dell'immagine.";
+                        file_put_contents($logFile, "ERRORE: Salvataggio immagine fallito\n", FILE_APPEND);
+                        $errori[campiDatiAnimale::$files["immagine"]["errPlaceholder"]] = 
+                            "Errore nel salvataggio dell'immagine.";
                     }
                 } else {
                     $valori["immagine"] = null;
                 }
+                
                 $nuovoId = $db->inserisciAnimale(
                     $valori["nome"],
                     $valori["alt"],
@@ -155,15 +205,17 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
                     $valori["bisogni"],
                     $valori["storia"]
                 );
+                
+                file_put_contents($logFile, "Nuovo ID: " . ($nuovoId ? $nuovoId : 'NULL') . "\n", FILE_APPEND);
+                
                 $db->closeConnection();
 
                 if ($nuovoId) {
                     $_GET["id"] = $nuovoId;
-                    header("Location: animale.php?" . createHttpQuery($_GET, ['pagina', 'search', 'id'],false));
+                    header("Location: animale.php?" . createHttpQuery($_GET, ['pagina', 'search', 'id'], false));
                     exit();
                 } else {
-                    $errori["erroreGenerale"] =
-                        "Errore durante l'inserimento dell'animale.";
+                    $errori["erroreGenerale"] = "Errore durante l'inserimento dell'animale.";
                 }
             } else {
                 include __DIR__ . "/500.php";
@@ -171,22 +223,18 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
             }
         }
     } else {
+        file_put_contents($logFile, "Validazione FALLITA - non procedo con salvataggio\n", FILE_APPEND);
         if ($imgError !== null) {
             $errori[campiDatiAnimale::$files["immagine"]["errPlaceholder"]] = $imgError;
         }
     }
+    
+    file_put_contents($logFile, "=== FINE DEBUG ===\n\n", FILE_APPEND);
 }
 
 $content = createForm($action, $id);
 
 $content = populateForm($valori, $content);
-
-$htmlImg = $dbImagePath
-    ? '<img src="' .
-    $dbImagePath .
-    '" alt="" class="img-preview">'
-    : "";
-$content = str_replace("[immagineCorrente]", $htmlImg, $content);
 
 $content = replaceErrorPlaceholders($content, $errori);
 
@@ -226,6 +274,6 @@ $content = cleanForm($content);
 
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
-$content = str_replace("[messaggio]", $messaggio, $content);
 
 echo $content;
+?>

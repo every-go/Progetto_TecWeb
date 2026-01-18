@@ -5,3 +5,4 @@ composer.json
 composer.lock
 phpunit.xml
 src/utils/test/*
+log/

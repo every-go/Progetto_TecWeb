@@ -115,7 +115,6 @@ hr.linefirst {
     width: 100%;
 }
 
-/* Questo è valido per tutti gli hr linesecond */
 hr.linesecond {
     background-color: var(--primary-bg);
     border: 1px solid var(--primary-bg);
@@ -126,7 +125,6 @@ hr.linesecond {
     MENU
 */
 
-/* Così lo stile di h1 non interferisce */
 header h1 {
     margin: 0;
 }
@@ -174,7 +172,6 @@ header h1 {
     justify-content: center;
     align-items: center;
     padding-top: 2em;
-    /* gap: 1em; */
 }
 
 #container-menu h1 {
@@ -192,7 +189,7 @@ header h1 {
     width: 3.75em;
 }
 
-#title{
+#title {
     font-family: Milonga, sans-serif;
 }
 
@@ -226,7 +223,6 @@ header h1 {
     border-radius: 1em;
     display: inline-block;
     transition: all 0.3s ease;
-    /* Transizione fluida */
 }
 
 #menu a:hover {
@@ -262,7 +258,6 @@ header h1 {
 }
 
 #avviso p {
-    /* gap: 1em; */
     align-items: center;
     display: flex;
     padding: 1em 1em 0 1em;
@@ -438,14 +433,12 @@ header h1 {
     display: flex;
     justify-content: space-between;
     gap: 2em;
-    /* align-items: center; */
     background-color: var(--secondary-bg);
     color: var(--primary-bg);
     border-radius: 24px;
 }
 
 #impegno .linesecond {
-    /* Serve sennò questo hr collassa e diventa piccolissimo */
     align-self: stretch;
     width: 1px;
 }
@@ -484,6 +477,66 @@ header h1 {
     margin-bottom: 1em;
 }
 
+table {
+    border-collapse: separate;
+    width: 100%;
+    border-spacing: 0;
+    margin-top: 1em;
+}
+
+thead {
+    background-color: var(--verdescuro);
+}
+
+thead th {
+    text-align: left;
+    font-weight: 600;
+    padding: 16px 30px 16px 0;
+    border-bottom: none;
+    font-size: 1em;
+    color: var(--panna);
+}
+
+ thead th:first-child {
+    padding-left: 20px;
+    border-top-left-radius: 12px;
+}
+
+thead th:last-child {
+    border-top-right-radius: 12px;
+}
+
+tbody th {
+    text-align: left;
+    font-weight: 600;
+    padding: 14px 30px 14px 0;
+    border: none;
+    vertical-align: top;
+    color: var(--verdescuro);
+}
+
+tbody th:first-child {
+    padding-left: 20px;
+}
+
+tbody td {
+    padding: 14px 30px 14px 0;
+    border: none;
+    vertical-align: top;
+}
+
+tbody td, tbody th {
+    border-bottom: 1px solid var(--grigio);
+}
+
+tbody tr:last-child td, tbody tr:last-child th {
+    border-bottom: none;
+}
+
+/* Rimuove il padding destro dall'ultima colonna */
+th:last-child, td:last-child {
+    padding-right: 20px;
+}
 
 /*
     ANIMALI
@@ -601,10 +654,6 @@ button[type="submit"]:hover {
     font-size: 1.3em;
 }
 
-#animali-content {
-    top: auto;
-}
-
 .invisibile {
     height: 1px;
     overflow: hidden;
@@ -647,11 +696,8 @@ button[type="submit"]:hover {
     color: inherit;
     display: block;
     flex: 0 1 20%;
-    /* Base 22%, cresce e si restringe */
     min-width: 18rem;
-    /* Larghezza minima prima di andare a capo */
     max-width: 25%;
-    /* Massimo 4 per riga */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -979,6 +1025,12 @@ fieldset {
     margin: 0;
 }
 
+/* Form ispeziona_animale */
+
+.required {
+    color: #E10000;
+}
+
 #form-main form {
     display: flex;
     flex-direction: column;
@@ -1279,7 +1331,7 @@ footer #disclaimer p:first-of-type {
 }
 
 
-a.pulsante-torna-su {
+a#pulsante-torna-su {
     position: fixed;
     bottom: 3em;
     right: 3em;
@@ -1319,8 +1371,8 @@ a.pulsante-torna-su {
     transition: all 0.3s ease-in-out;
 }
 
-a.pulsante-torna-su:hover,
-a.pulsante-torna-su:focus {
+a#pulsante-torna-su:hover,
+a#pulsante-torna-su:focus {
     /*Rimuovi il bordo blu/nero standard del browser */
     outline: none;
 
@@ -1337,6 +1389,7 @@ a.pulsante-torna-su:focus {
 
 
 .errorSuggestion {
+    font-weight: bold;
     display: block;
     margin-top: 4px;
     font-size: 0.9em;
@@ -1344,11 +1397,13 @@ a.pulsante-torna-su:focus {
 
 
 @media (max-width: 1200px) {
-    main>article#container-adozione {
+    #container-adozione {
         margin-inline: -2em;
+        border-radius: 0;
     }
 
-    #container-adozione {
+    #impegno {
+        margin-inline: -2em;
         border-radius: 0;
     }
 }

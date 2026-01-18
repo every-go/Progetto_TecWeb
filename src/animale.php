@@ -51,7 +51,6 @@ $sezioneAdottami = "";
 $animalData = "";
 $adottami = "";
 $aiutoadozione = "";
-$warningAdozione = "";
 
 if (isset($_GET["id"])) {
     $db = new DBAccess();
@@ -161,55 +160,47 @@ if (isset($_GET["id"])) {
             $params .
             '" class="btn-elimina"> Elimina </a>
                     </div>';
-    } elseif ($animalData["adottato"] == 0) {
+    } 
+    
+    elseif ($animalData["adottato"] == 0) {
         $parametriQuery=createHttpQuery($_GET,['pagina','search','id'],false);
         $adottami = '<aside>
             <h2>Adotta!</h2>
             <p>Ogni essere, reale o straordinario, cerca un luogo in cui sentirsi al sicuro.
                 Che la sua natura sia comune o rara, ciò che può offrire è semplice: compagnia, presenza e un legame
                 sincero. Se qualcosa ha acceso la tua curiosità, forse è il primo passo verso un incontro
-                speciale. Scopri un po’ di più… potrebbe essere il compagno che stavi cercando.</p>
+                speciale. Scopri un po\' di più… potrebbe essere il compagno che stavi cercando.</p>
             <form action="adotta.php?' . $parametriQuery . '" method="post"> 
                 <button type="submit">Adotta!</button>
             </form>
         </aside>';
-    } else {
-        $mostraWarning = true;
+    } 
+    
+    else {
+        $adottatoDaUtente = true;
 
         if (isset($_SESSION['username'])) {
             $db = new DBAccess();
             $db->openDBConnection();
-
             $adozioneUsername = $db->getAdottatoDa($_GET["id"]);
-
+            $db->closeConnection();
             if (
                 $adozioneUsername &&
                 $adozioneUsername === $_SESSION['username']
             ) {
-                $mostraWarning = false;
+                $adottatoDaUtente = false;
             }
-
-            $db->closeConnection();
         }
 
-        if ($mostraWarning) {
-            $warningAdozione = "<div id='avviso' role='alert'>
-                <p>" . $animalData["nome"] . 
-                ($animalData["genere"] === "Maschio" ? " è già stato adottato" : " è già stata adottata")
-                
-                ."</p>
-                <div class='progress-container'>
-                    <div class='progress-bar'></div>
-                </div>
-            </div>";
-
+if ($adottatoDaUtente) {
             $adottami = '<aside>
                 <h2>' . $animalData["nome"] . 
                 ($animalData["genere"] === "Maschio" ? " è stato già adottato!" : " è stata già adottata!").
                 '</h2>
                 <p>' . $animalData["nome"] . ' ha già trovato una casa amorevole. Grazie per il tuo interesse nell\'adottare e per il tuo sostegno alla nostra missione di trovare una famiglia per tutti i nostri amici.</p>
             </aside>';
-        } else {
+        }
+        else {
             $adottami = '<aside>
                 <h2>Grazie per aver adottato! </h2>' .
                 '<p>' . $animalData["nome"] . ' adesso sta molto bene ed è contentissimo di aver trovato una nuova casa. Ti ringraziamo di cuore per il tuo sostegno alla nostra missione di trovare una famiglia per tutti i nostri amici.</p>
@@ -222,7 +213,6 @@ if (isset($_GET["id"])) {
     exit();
 }
 
-
 $messaggioAdozione = '';
 if (isset($_SESSION['messaggio_errore'])) {
     $messaggioAdozione = "<p class='error-adozione' aria-live='assertive' role='alert'>" . $_SESSION['messaggio_errore'] . " </p>";
@@ -231,6 +221,7 @@ if (isset($_SESSION['messaggio_errore'])) {
     $messaggioAdozione = "<p class='confirm-adozione' aria-live='assertive' role='alert'>" . $_SESSION['messaggio_adozione'] . " </p>";
     unset($_SESSION['messaggio_adozione']);
 }
+
 $content = str_replace('[adottaMessage]', $messaggioAdozione, $content);
 
 
@@ -239,7 +230,7 @@ $messaggio= AvvisiHelper::getFormattedHtml();
 $content = str_replace("[messaggio]", $messaggio, $content);
 $content = str_replace("[pulsanti]", $pulsanti, $content);
 $content = str_replace("[PULSANTE_PREFERITI]", $pulsantePreferiti, $content);
-$content = str_replace("[WARNING_ADOZIONE]", $warningAdozione, $content);
 $content = str_replace("[adottami]", $adottami, $content);
 
 echo $content;
+?>

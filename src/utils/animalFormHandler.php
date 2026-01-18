@@ -16,11 +16,6 @@ function createHttpQuery($source, $allowedKeys, $htmlChars = true)
         http_build_query($filtered);
 }
 
-
-
-
-
-
 class campiDatiAnimale
 {
     public static $testi = [
@@ -79,7 +74,7 @@ class campiDatiAnimale
         ],
         "tipo_animale" => [
             "form" => "tipo_animale",
-            "opzioni" => ["Reale" => "checkReale", "Fantasy" => "checkFantasy"],
+            "opzioni" => ["Reale" => "checkReale", "Fantastico" => "checkFantastico"],
             "errPlaceholder" => "tipoAnimaleErr",
             "ariaInvalidPlaceholder" => "ariaInvalidTipoAnimale",
         ],
@@ -158,20 +153,17 @@ function populateForm($animalData, $content)
     if (!empty($animalData["immagine"])) {
         $content = str_replace(
             "[immagineCorrente]",
-            '<img src="' .
-                htmlspecialchars($animalData["immagine"]) .
-                '" alt="' .
-                htmlspecialchars($animalData["alt"]) .
-                '" class="current-image">',
+            '<img id="immagineCorrente" src="' . htmlspecialchars($animalData["immagine"], ENT_QUOTES) . '" alt="">',
             $content
         );
     } else {
         $content = str_replace(
             "[immagineCorrente]",
-            "",
+            '<img id="immagineCorrente" src="" alt="">',
             $content
         );
     }
+
     return $content;
 }
 
@@ -197,7 +189,7 @@ function renderRadio($html, $datiUtente)
         "sesso" => ["Maschio" => "checkMaschio", "Femmina" => "checkFemmina"],
         "tipo_animale" => [
             "Reale" => "checkReale",
-            "Fantasy" => "checkFantasy",
+            "Fantastico" => "checkFantastico",
         ],
         "taglia" => [
             "Piccola" => "checkTagliaP",
@@ -305,7 +297,7 @@ function removeFormDataPlaceholders($html)
         "checkMaschio",
         "checkFemmina",
         "checkReale",
-        "checkFantasy",
+        "checkFantastico",
         "checkTagliaP",
         "checkTagliaM",
         "checkTagliaG",
@@ -367,11 +359,6 @@ function checkForm($data)
         "Bisogni"
     );
 
-    $errori[$confTesti["storia"]["errPlaceholder"]] = checkEmptyString(
-        $data["storia"],
-        "Storia"
-    );
-
     $errori[$confTesti["alt"]["errPlaceholder"]] = checkEmptyString(
         $data["alt"],
         "Descrizione Immagine"
@@ -395,3 +382,5 @@ function checkForm($data)
 
     return array_filter($errori);
 }
+
+?>
