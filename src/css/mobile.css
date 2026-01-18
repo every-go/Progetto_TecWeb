@@ -106,6 +106,24 @@ h2 {
     padding: 2em 2em;
 }
 
+tbody tr {  
+    margin-bottom: 1.5em;
+}
+
+tbody th, tbody td {
+    display: block;
+    text-align: left;
+    padding: 0.5em 0;
+    border: none;
+}
+    
+tbody th {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid var(--grigio) !important;
+}
+
 #adozione {
     flex-direction: column;
     justify-content: center;
