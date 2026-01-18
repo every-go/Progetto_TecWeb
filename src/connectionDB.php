@@ -422,30 +422,14 @@ class DBAccess
     {
         $query = "INSERT INTO utenti (username, password) VALUES (?, ?)";
         $success = false;
-
-        // DEBUG DETTAGLIATO
-        file_put_contents('/tmp/debug.log', "=== INIZIO registerUtente ===\n", FILE_APPEND);
-        file_put_contents('/tmp/debug.log', "Username: '$username'\n", FILE_APPEND);
-        file_put_contents('/tmp/debug.log', "Password ricevuta: '$password'\n", FILE_APPEND);
-        file_put_contents('/tmp/debug.log', "Tipo password: " . gettype($password) . "\n", FILE_APPEND);
-        file_put_contents('/tmp/debug.log', "Lunghezza password: " . strlen($password) . "\n", FILE_APPEND);
         
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         
-        file_put_contents('/tmp/debug.log', "Hash DOPO password_hash: '$passwordHash'\n", FILE_APPEND);
-        file_put_contents('/tmp/debug.log', "Tipo hash: " . gettype($passwordHash) . "\n", FILE_APPEND);
-        file_put_contents('/tmp/debug.log', "Lunghezza hash: " . strlen($passwordHash) . "\n", FILE_APPEND);
-        
         if ($stmt = mysqli_prepare($this->connection, $query)) {
             
-            file_put_contents('/tmp/debug.log', "Prepare OK\n", FILE_APPEND);
-            
             mysqli_stmt_bind_param($stmt, "ss", $username, $passwordHash);
-            
-            file_put_contents('/tmp/debug.log', "Bind OK\n", FILE_APPEND);
 
             if (!mysqli_stmt_execute($stmt)) {
-                file_put_contents('/tmp/debug.log', "Execute FALLITO: " . mysqli_error($this->connection) . "\n", FILE_APPEND);
                 if (mysqli_errno($this->connection) == 1062) {
                     error_log("Tentativo di registrazione con username duplicato: $username");
                     $success = false;
@@ -453,17 +437,13 @@ class DBAccess
                     error_log(mysqli_error($this->connection));
                 }
             } elseif (mysqli_stmt_affected_rows($stmt) > 0) {
-                file_put_contents('/tmp/debug.log', "Execute OK - Righe inserite: " . mysqli_stmt_affected_rows($stmt) . "\n", FILE_APPEND);
                 $success = true;
             }
 
             mysqli_stmt_close($stmt);
         } else {
-            file_put_contents('/tmp/debug.log', "Prepare FALLITO: " . mysqli_error($this->connection) . "\n", FILE_APPEND);
             error_log(mysqli_error($this->connection));
         }
-        
-        file_put_contents('/tmp/debug.log', "Success: " . ($success ? "TRUE" : "FALSE") . "\n\n", FILE_APPEND);
 
         return $success;
     }

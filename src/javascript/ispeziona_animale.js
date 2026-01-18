@@ -16,7 +16,7 @@ import { caricamento } from "./funzioni_comuni.js";
 var dettagli_form = {
    "nome": [
       "Es: Flavio",
-      /^[\p{L} ]{2,24}$/u,   // false
+      /^[\p{L} ]{2,24}$/u,
       "Il nome deve avere tra 2 e 24 caratteri. Può contenere solo lettere (anche accentate) e spazi."
    ],
    "eta": [
