@@ -6,7 +6,6 @@ require_once "utils/AvvisiHelper.php";
 use DB\DBAccess;
 
 include "menu.php";
-// include "avvisi.php";
 
 $content = file_get_contents("html/login.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);

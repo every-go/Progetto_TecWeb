@@ -6,6 +6,7 @@ use DB\DBAccess;
 
 include "menu.php";
 require_once "utils/AvvisiHelper.php";
+require_once "utils/DataSanitizer.php";
 require_once "utils/singleCardBuilder.php";
 $content = file_get_contents("html/area_personale.html");
 
@@ -28,7 +29,9 @@ if ($connessioneOK) {
     $h2Adottati = "";
     $noAnimali = "";
     $stringaPreferiti = $db->getPreferiti($_SESSION["username"]);
+    $stringaPreferiti = DataSanitizer::pulisciLista($stringaPreferiti);
     $stringaAdottati = $db->getAdottati($_SESSION["username"]);
+    $stringaAdottati = DataSanitizer::pulisciLista($stringaAdottati);
     $db->closeConnection();
 
     if (!empty($stringaPreferiti)) {

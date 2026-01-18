@@ -9,8 +9,10 @@ require_once "." .
 use DB\DBAccess;
 
 
+
 include "menu.php";
 require_once "utils/AvvisiHelper.php";
+require_once "utils/DataSanitizer.php";
 
 $content = file_get_contents("html/animali.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
@@ -49,6 +51,8 @@ if ($connessioneOK) {
     } else {
         $stringaAnimali = $db->getList();
         $db->closeConnection();
+
+        $stringaAnimali = DataSanitizer::pulisciLista($stringaAnimali);
     }
 
     if ($stringaAnimali === false) {

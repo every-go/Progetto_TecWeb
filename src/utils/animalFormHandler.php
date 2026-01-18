@@ -40,7 +40,7 @@ class campiDatiAnimale
         "descrizione" => [
             "form" => "descrizione",
             "placeholder" => "descrizione",
-            "errPlaceholder" => "descrizioneErr",
+            "errPlaceholder" => "errDescrizione",
             "ariaInvalidPlaceholder" => "ariaInvalidDesc",
         ],
         "alt" => [

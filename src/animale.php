@@ -102,10 +102,10 @@ if (isset($_GET["id"])) {
                 $content
             );
 
-            $bisogni = $animalData["bisogni"];
-
+            $bisogni = html_entity_decode($animalData["bisogni"]);
+            
             $arrayBisogni = array_filter(
-                array_map('trim', explode(';', $bisogni)),
+                array_map(function($value) { return htmlspecialchars(trim($value)); }, explode(';', $bisogni)),
                 fn($value) => $value !== ''
             );
 
