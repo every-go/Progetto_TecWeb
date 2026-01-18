@@ -153,3 +153,4 @@ $content = str_replace("[autofocusUsername]", $autofocus["username"], $content);
 $content = str_replace("[autofocusPassword]", $autofocus["password"], $content);
 
 echo $content;
+?>

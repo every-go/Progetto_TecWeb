@@ -132,3 +132,4 @@ foreach ($pagesFooter as $page => $data) {
     }
 }
 $listaFooter .= "</ul>";
+?>

@@ -1,8 +1,4 @@
 <?php
-
-
-
-
 class UrlHelper
 {
     // Pagine a cui non fare redirect

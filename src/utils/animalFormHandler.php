@@ -359,11 +359,6 @@ function checkForm($data)
         "Bisogni"
     );
 
-    $errori[$confTesti["storia"]["errPlaceholder"]] = checkEmptyString(
-        $data["storia"],
-        "Storia"
-    );
-
     $errori[$confTesti["alt"]["errPlaceholder"]] = checkEmptyString(
         $data["alt"],
         "Descrizione Immagine"
@@ -387,3 +382,5 @@ function checkForm($data)
 
     return array_filter($errori);
 }
+
+?>

@@ -276,3 +276,4 @@ $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
 
 echo $content;
+?>

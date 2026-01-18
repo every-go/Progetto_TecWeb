@@ -49,3 +49,5 @@ function checkListaBisogni($input, $nomeCampo = null)
 
     return $errore;
 }
+
+?>

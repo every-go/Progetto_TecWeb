@@ -230,3 +230,4 @@ $content = str_replace("[PULSANTE_PREFERITI]", $pulsantePreferiti, $content);
 $content = str_replace("[adottami]", $adottami, $content);
 
 echo $content;
+?>
