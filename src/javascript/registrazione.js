@@ -86,8 +86,16 @@ function caricamento(dettagli_form) {
 
    // submit
    form.onsubmit = function () {
+      let valido = validazioneForm(dettagli_form);
 
-      const valido = validazioneForm(dettagli_form);
+      const password = document.getElementById("password");
+      const confirm  = document.getElementById("confirm_password");
+
+      if (password && confirm && password.value !== confirm.value) {
+         validazioneCampo(confirm, dettagli_form);
+         valido = false;
+      }
+
       return valido;
    };
 }

@@ -17,7 +17,11 @@ $fields = [
     "username" => "",
     "password" => ""
 ];
-$errorMessages = [];
+$errorMessages = [
+    'username' => '',
+    'password' => '',
+    'usernameorpassword' => ''
+];
 
 // pagina di redirect dopo login
 
@@ -66,7 +70,7 @@ if (empty($_SESSION["is_logged_in"])) {
         }
 
         // se validi lato client, controllo DB
-        if (empty($errorMessages)) {
+        if ( $errorMessages['username'] === '' && $errorMessages['password'] === '') {
             $db = new DBAccess();
             if ($db->openDBConnection()) {
                 $res_login = $db->loginUtente($username, $password);
