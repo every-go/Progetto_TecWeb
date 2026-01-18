@@ -34,7 +34,7 @@ function validatePassword(string $value): bool {
         return false;
     }
 
-    $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=$begin:math:display$$end:math:display${};:\'",.<>\/?\\|`~]{8,24}$/';
+    $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:\'",.<>\/?\\|`~]{8,24}$/';
     return (bool) preg_match($regex, $value);
 }
 
@@ -53,16 +53,16 @@ if (empty($_SESSION["is_logged_in"]) && isset($_POST["register"])) {
     if (!validateUsername($fields["username"])) {
         $errorMessages["username"] =
             '<div id="errUsername" class="errorSuggestion" role="alert">
-                Lo <span lang="en">username</span> deve contenere solo lettere (4–24).
-             </div>';
+                Lo <span lang="en">username</span> deve avere minimo 4 caratteri e massimo 24. Può contenere solo lettere maiuscole o minuscole.
+            </div>';
     }
 
     // password
     if (!validatePassword($fields["password"])) {
         $errorMessages["password"] =
             '<div id="errPassword" class="errorSuggestion" role="alert">
-                <span lang="en">Password</span> non valida.
-             </div>';
+                <span lang="en">Password</span> non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, 1 numero e almeno un carattere speciale, minimo 8, massimo 24 caratteri.
+            </div>';
     }
 
     // conferma password
@@ -90,6 +90,8 @@ if (empty($_SESSION["is_logged_in"]) && isset($_POST["register"])) {
                     '<div class="errorSuggestion" role="alert">
                         <span lang="en">Username</span> già esistente
                      </div>';
+
+                $db->closeConnection();
 
             } else {
 

@@ -11,7 +11,8 @@ $content = file_get_contents("html/login.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
 
-$username = "";
+$username = '';
+
 $fields = [
     "username" => "",
     "password" => ""
@@ -98,15 +99,16 @@ if (empty($_SESSION["is_logged_in"])) {
 }
 
 // gestione autofocus dinamico: solo il primo errore
-
 $autofocus = ['username' => '', 'password' => ''];
 
-foreach (['username', 'password'] as $campo) {
-    if (isset($errorMessages[$campo])) {
-        $autofocus[$campo] = 'autofocus';
-        break;
-    }
+if ($errorMessages['username'] !== '') {
+    $autofocus['username'] = 'autofocus';
+} elseif ($errorMessages['password'] !== '') {
+    $autofocus['password'] = 'autofocus';
+} elseif ($errorMessages['usernameorpassword'] !== '') {
+    $autofocus['username'] = 'autofocus';
 }
+
 
 $adottaMessage = '';
 if (isset($_SESSION['messaggio_errore'])) {
