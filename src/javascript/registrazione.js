@@ -14,7 +14,7 @@ var dettagli_form = {
    "confirm_password": [
       "",
       null,
-      "La conferma non è uguale alla <span lang='en'>password</span> inserita in precedenza"
+      "La conferma non è uguale alla <span lang='en'>password</span> inserita in precedenza."
    ]
 };
 

@@ -38,8 +38,6 @@
 		</p>
 	</nav>
 	<main id="main-content">
-		<!-- [adottaMessage]-->
-		[ERROR_MESSAGE]
 
 		<div id="txt-form">
 			<img class="screen-only" src="./images/jpg/cani.jpg" alt="">
@@ -50,27 +48,36 @@
 
 					<div>
 						<label for="username"><span lang="en">Inserisci il tuo username:</span></label>
-						<input type="text" id="username" name="username" [autofocusUsername] value="[USERNAME_VALUE]" required>
+						<input type="text" id="username" name="username" value="[USERNAME_VALUE]" [autofocusUsername] required aria-describedby="errUsername">
+						<noscript>
+							[errUsername]
+						</noscript>
 					</div>
 
 					<div>
 						<label for="password">Inserisci la tua <span lang="en">password:</span></label>
-						<input type="password" id="password" name="password" [autofocusPassword] required>
+						<input type="password" id="password" name="password" [autofocusPassword] required aria-describedby="errPassword">
+						<noscript>
+							[errPassword]
+						</noscript>
 					</div>
 
 					<div>
 						<label for="confirm_password">Conferma la tua <span lang="en">password:</span></label>
-						<input type="password" id="confirm_password" name="confirm_password" [autofocusConfirmPassword] required>
+						<input type="password" id="confirm_password" name="confirm_password" required aria-describedby="errConfirmPassword">
+						<noscript>
+							[errConfirmPassword]
+						</noscript>
 					</div>
 
 					<div class="form-group">
 						<input type="submit" name="register" value="Registrati">
 					</div>
+					[ERROR_MESSAGE]
 
 				</form>
 
-				<p> Hai già un <span lang="en">account</span>? <a href="login.php?[PAGINA_PROVENIENZA]">Esegui il <span
-							lang="en">login</span></a></p>
+				<p> Hai già un <span lang="en">account</span>? <a href="login.php?[PAGINA_PROVENIENZA]">Esegui il <span lang="en">login</span></a></p>
 			</div>
 		</div>
 	</main>

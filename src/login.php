@@ -8,13 +8,15 @@ use DB\DBAccess;
 include "menu.php";
 // include "avvisi.php";
 
-
-
 $content = file_get_contents("html/login.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
 
 $username = "";
+$fields = [
+    "username" => "",
+    "password" => ""
+];
 $errorMessages = [];
 
 // pagina di redirect dopo login
@@ -25,29 +27,42 @@ if (isset($_GET['redirect'])) {
     
     $redirectPage = $_GET['redirect'];
     $redirectPage = UrlHelper::getSafeRedirect(urldecode($redirectPage), 'index.php');
-    // $redirectPage = ltrim($redirectPage, '/'); // Rimuovi lo slash iniziale per redirect relativi
-    
-    }
+}
 
-// echo urldecode($redirectPage);
-// funzioni di validazione
 function validateUsername($username) {
     return preg_match('/^[A-Za-z]{4,24}$/', $username);
 }
 
-function sanitizeUsername($username) {
-    return trim($username);
+function validatePassword($password) {
+    return preg_match(
+        '/^(user|admin|(?=(?:.*[a-z]))(?=(?:.*[A-Z]))(?=(?:.*\d))(?=(?:.*[!@#$%^&*()_\\-+=\\[\\]{};:\'",.<>\/?\\\\|`~]))[A-Za-z\d!@#$%^&*()_\\/\-+=\\[\\]{};:\'",.<>\/?\\\\|`~]{8,24})$/',
+        $password
+    );
+}
+
+
+function sanitize($value) {
+    return htmlspecialchars(trim($value), ENT_QUOTES, "UTF-8");
 }
 
 // login solo se non già loggato
 if (empty($_SESSION["is_logged_in"])) {
 
     if (isset($_POST["login"])) {
-        $username = sanitizeUsername($_POST["username"] ?? '');
-        $password = $_POST["password"] ?? '';
 
-        if(!validateUsername($username)){
-            $errorMessages['username'] = "<span lang='en'>Username</span> non valido";
+        $fields['username'] = isset($_POST['username']) ? sanitize($_POST['username']) : $fields['username'];
+        $fields['password'] = isset($_POST['password']) ? sanitize($_POST['password']) : '';
+        
+        // aggiornamento per il template
+        $username = $fields['username'];
+        $password = $fields['password'];
+
+        if(!validateUsername($fields["username"])){
+            $errorMessages['username'] = '<div id="errUsername" class="errorSuggestion" role="alert">Ricorda che lo <span lang="en">username</span> deve avere minimo 4 caratteri e massimo 24. Sono consentite solamente lettere maiuscole o minuscole senza spazi, numeri o caratteri speciali.</div>';
+        }
+
+        if(!validatePassword($fields["password"])){
+            $errorMessages['password'] = '<div id="errPassword" class="errorSuggestion" role="alert" aria-live="assertive">Ricorda che la <span lang="en">password</span> è compresa fra 8 e 24 caratteri, ha almeno un numero, una lettera maiuscola, una minuscola e un carattere speciale</div>';
         }
 
         // se validi lato client, controllo DB
@@ -63,7 +78,7 @@ if (empty($_SESSION["is_logged_in"])) {
                     header("Location:". $redirectPage);
                     exit();
                 } else {
-                    $errorMessages['username'] = "<span lang='en'>Username</span> o <span lang='en'>password</span> non validi!";
+                    $errorMessages['usernameorpassword'] = '<div class="errorSuggestion" role="alert" ><span lang="en">Username</span> o <span lang="en">password</span> non validi!</div>';
                 }
             } else {
                 include __DIR__ . "/500.php";
@@ -79,21 +94,13 @@ if (empty($_SESSION["is_logged_in"])) {
     exit();
 }
 
-// costruzione HTML errori
-$messaggiHTML = "";
-if (!empty($errorMessages)) {
-    $messaggiHTML .= "<ul class='error-login'>";
-    foreach ($errorMessages as $msg) {
-        $messaggiHTML .= "<li aria-live='assertive' role='alert'>$msg</li>";
-    }
-    $messaggiHTML .= "</ul>";
-}
-
 // gestione autofocus dinamico: solo il primo errore
-$autofocus = ['username'=>'','password'=>''];
-foreach (['username','password'] as $campo) {
+
+$autofocus = ['username' => '', 'password' => ''];
+
+foreach (['username', 'password'] as $campo) {
     if (isset($errorMessages[$campo])) {
-        $autofocus[$campo] = "autofocus";
+        $autofocus[$campo] = 'autofocus';
         break;
     }
 }
@@ -108,11 +115,13 @@ if (isset($_SESSION['messaggio_errore'])) {
 
 
 $content = str_replace("[PAGINA_PROVENIENZA]","redirect=".urlencode($redirectPage) , $content);
-$content = str_replace("[ERROR_MESSAGE]", $messaggiHTML, $content);
+$content = str_replace('[adottaMessage]', $adottaMessage, $content);
 $content = str_replace("[USERNAME_VALUE]", $username, $content);
 $content = str_replace("[autofocusUsername]", $autofocus['username'], $content);
+$content = str_replace("[errUsername]", $errorMessages['username'], $content);
 $content = str_replace("[autofocusPassword]", $autofocus['password'], $content);
-$content = str_replace('[adottaMessage]', $adottaMessage, $content);
+$content = str_replace("[errPassword]", $errorMessages['password'], $content);
+$content = str_replace("[ERROR_MESSAGE]", $errorMessages['usernameorpassword'], $content);
 
 echo $content;
 ?>

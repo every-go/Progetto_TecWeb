@@ -165,7 +165,7 @@ h2 {
     width: 100%;
 }
 
-a.pulsante-torna-su {
+a#pulsante-torna-su {
     right: 1.5em;
     bottom: 1.5em;
 }

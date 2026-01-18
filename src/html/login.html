@@ -42,7 +42,6 @@
 	<main id="main-content">
 
 		[adottaMessage]
-		[ERROR_MESSAGE]
 		<div id="txt-form">
 			<img class="screen-only" src="./images/jpg/cane_login.jpg" alt="">
 			<img class="print-only" src="./images/png/cane_login.png" alt="">
@@ -51,20 +50,25 @@
 				<form action="login.php?[PAGINA_PROVENIENZA]" method="post" id="login-form">
 					<div>
 						<label for="username">Inserisci il tuo username:</label>
-						<input type="text" id="username" name="username" value="[USERNAME_VALUE]" [autofocusUsername] autocomplete="[USERNAME_VALUE]" required>
+						<input type="text" id="username" name="username" value="[USERNAME_VALUE]" [autofocusUsername] autocomplete="[USERNAME_VALUE]" required aria-describedby="errUsername">
+						<noscript>
+							[errUsername]
+						</noscript>
 					</div>
 
 					<div>
 						<label for="password">Inserisci la tua password:</label>
-						<input type="password" id="password" name="password" [autofocusPassword] required>
+						<input type="password" id="password" name="password" [autofocusPassword] required aria-describedby="errPassword">
+						<noscript>
+							[errPassword]
+						</noscript>
 					</div>
 
 
 					<input type="submit" name="login" value="Accedi">
-
+					[ERROR_MESSAGE]
 				</form>
-				<p> Non hai un <span lang="en">account</span>? <a
-						href="registrazione.php?[PAGINA_PROVENIENZA]">Registrati</a></p>
+				<p> Non hai un <span lang="en">account</span>? <a href="registrazione.php?[PAGINA_PROVENIENZA]">Registrati</a></p>
 			</div>
 		</div>
 	</main>

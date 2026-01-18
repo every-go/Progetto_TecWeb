@@ -47,19 +47,19 @@
     <div id="form-main">
       <form action="[actionForm]" method="post" enctype="multipart/form-data">
         <div>
-          <label for="nome">Inserisci il nome: <span class="required" aria-label = "Obbligatorio">*</span></label>
+          <label for="nome">Inserisci il nome: <span class="required">*</span></label>
           <input type="text" id="nome" name="nome" value="[nomeAnimale]" required aria-describedby="errNome"
           [ariaInvalidNome] />
         </div>
 
         <div>
-          <label for="eta">Inserisci l'età in anni: <span class="required" aria-label = "Obbligatorio">*</span></label>
+          <label for="eta">Inserisci l'età in anni: <span class="required">*</span></label>
           <input type="number" id="eta" name="eta" value="[etaAnimale]" required min="0" aria-describedby="errEta"
             [ariaInvalidEta] />
         </div>
 
         <fieldset>
-          <legend>Seleziona il sesso dell'animale: <span class="required" aria-label = "Obbligatorio">*</span></legend>
+          <legend>Seleziona il sesso dell'animale: <span class="required">*</span></legend>
           <div class="radio">
             <div class="radio-item">
               <input type="radio" id="sesso_m" name="sesso" value="Maschio" [checkMaschio] />
@@ -73,7 +73,7 @@
         </fieldset>
 
         <fieldset>
-          <legend>Seleziona la tipologia dell'animale: <span class="required" aria-label = "Obbligatorio">*</span></legend>
+          <legend>Seleziona la tipologia dell'animale: <span class="required">*</span></legend>
           <div class="radio">
             <div class="radio-item">
               <input type="radio" id="tipo_reale" name="tipo_animale" value="Reale" [checkReale] />
@@ -89,25 +89,25 @@
 
         [immagineCorrente]
         <div>
-        <label for="immagine">Seleziona un'immagine dell'animale (formati accettati: JPG, JPEG, PNG): <span class="required" aria-label = "Obbligatorio">*</span></label>
-        <input type="file" id="immagine" name="immagine" accept="image/jpg, image/jpeg, image/png"
+          <label for="immagine">Seleziona un'immagine dell'animale (formati accettati: JPG, JPEG, PNG): <span class="required">*</span></label>
+          <input type="file" id="immagine" name="immagine" accept="image/jpg, image/jpeg, image/png"
           aria-describedby="errImmagine" [ariaInvalidImmagine]>
         </div>
           
         <div>
-        <label for="alt">Descrizione fisica dell'animale: <span class="required" aria-label = "Obbligatorio">*</span></label>
-        <input type="text" id="alt" name="alt" value="[altImmagine]" required aria-describedby="errAlt"
+          <label for="alt">Descrizione fisica dell'animale: <span class="required">*</span></label>
+          <input type="text" id="alt" name="alt" value="[altImmagine]" required aria-describedby="errAlt"
           [ariaInvalidAlt] />
         </div>
 
         <div>
-        <label for="luogo">Luogo in cui puoi trovare l'animale: <span class="required" aria-label = "Obbligatorio">*</span></label>
-        <input type="text" id="luogo" name="luogo" value="[luogoAnimale]" required aria-describedby="errLuogo"
+          <label for="luogo">Luogo in cui puoi trovare l'animale: <span class="required">*</span></label>
+          <input type="text" id="luogo" name="luogo" value="[luogoAnimale]" required aria-describedby="errLuogo"
           [ariaInvalidLuogo] />
         </div>
 
         <fieldset>
-          <legend>Seleziona la taglia dell'animale: <span class="required" aria-label = "Obbligatorio">*</span></legend>
+          <legend>Seleziona la taglia dell'animale: <span class="required">*</span></legend>
           <div class="radio">
             <div class="radio-item">
               <input type="radio" id="taglia_p" name="taglia" value="Piccola" [checkTagliaP] />
@@ -127,7 +127,7 @@
         </fieldset>
 
         <fieldset>
-          <legend>Seleziona il tipo di carattere dell'animale: <span class="required" aria-label = "Obbligatorio">*</span></legend>
+          <legend>Seleziona il tipo di carattere dell'animale: <span class="required">*</span></legend>
           <div class="radio">
             <div class="radio-item">
               <input type="radio" id="car_f" name="carattere" value="Facile" [checkCarF] />
@@ -150,19 +150,23 @@
           <legend>Descrizioni</legend>
           <div id="descrizione-animale">
             <div>
-            <label for="descrizione">Inserisci la descrizione del carattere dell'animale: <span class="required" aria-label = "Obbligatorio">*</span></label>
-            <textarea id="descrizione" name="descrizione" rows="5" cols="10" required aria-describedby="errDesc"
-              [ariaInvalidDesc]>[descrizione]</textarea>
+              <label for="descrizione">Inserisci la descrizione del carattere dell'animale: <span class="required">*</span></label>
+              <textarea id="descrizione" name="descrizione" rows="5" cols="10" required aria-describedby="errDesc"
+                [ariaInvalidDesc]>[descrizione]</textarea>
+              <noscript>
+                [errDescrizione]
+              </noscript>  
             </div>
 
             <div>
-            <label for="bisogni">Inserisci i bisogni dell'animale. Separa con il ; ogni bisogno: <span class="required" aria-label = "Obbligatorio">*</span></label>
+            <label for="bisogni">Inserisci i bisogni dell'animale. Separa con il ; ogni bisogno: <span class="required">*</span></label>
             <textarea id="bisogni" name="bisogni" rows="5" cols="10" required aria-describedby="errBisogni"
               [ariaInvalidBisogni]>[bisogni]</textarea>
             </div>
             
+            
             <div>
-            <label for="storia">Inserisci una breve storia dell'animale: <span class="required" aria-label = "Facoltativo"></span></label>
+            <label for="storia">Inserisci una breve storia dell'animale (facoltativo):</label>
             <textarea id="storia" name="storia" rows="5" cols="10" aria-describedby="errStoria"
               [ariaInvalidStoria]>[storia]</textarea>
             </div>
@@ -174,7 +178,7 @@
     </div>
   </main>
   <footer>
-    <a href="#top" class="pulsante-torna-su" aria-label="Torna a inizio della pagina"> ⇪ </a>
+    <a href="#top" id="pulsante-torna-su" aria-label="Torna a inizio della pagina"> ⇪ </a>
     <div>
       <nav aria-label="Mappa del sito">
         <h2>Mappa del sito web</h2>

@@ -16,11 +16,6 @@ function createHttpQuery($source, $allowedKeys, $htmlChars = true)
         http_build_query($filtered);
 }
 
-
-
-
-
-
 class campiDatiAnimale
 {
     public static $testi = [
@@ -158,18 +153,17 @@ function populateForm($animalData, $content)
     if (!empty($animalData["immagine"])) {
         $content = str_replace(
             "[immagineCorrente]",
-            '<img src="' .
-                htmlspecialchars($animalData["immagine"]) .
-                '" alt="">',
+            '<img id="immagineCorrente" src="' . htmlspecialchars($animalData["immagine"], ENT_QUOTES) . '" alt="">',
             $content
         );
     } else {
         $content = str_replace(
             "[immagineCorrente]",
-            '<img id=immagineCorrente alt="">',
+            '<img id="immagineCorrente" src="" alt="">',
             $content
         );
     }
+
     return $content;
 }
 

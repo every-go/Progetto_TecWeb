@@ -75,9 +75,13 @@ export function validazioneCampo(input, dettagli_form) {
    let messaggioErrore = dettagli_form[key][2];
 
    // Controllo file
-   if (input.type === "file" && input.files.length === 0) {
+   if (input.type === "file") {
+    const hasCurrent = document.getElementById("immagineCorrente")?.dataset.hasCurrent === "true";
+    if (!hasCurrent && input.files.length === 0) {
        valido = false;
+    }
    }
+
 
    // Controllo regex solo per gli altri tipi
    if (regex instanceof RegExp && input.type !== "file" && !regex.test(text)) {
@@ -87,6 +91,7 @@ export function validazioneCampo(input, dettagli_form) {
    if (!valido) {
        const node = document.createElement("div");
        node.className = "errorSuggestion";
+       node.role = "alert";
        node.innerHTML = messaggioErrore;
        parent.appendChild(node);
        return false;
