@@ -47,16 +47,16 @@
 				<form action="registrazione.php?[PAGINA_PROVENIENZA]" method="post" id="login-form">
 
 					<div>
-						<label for="username"><span lang="en">Inserisci il tuo username:</span></label>
-						<input type="text" id="username" name="username" value="[USERNAME_VALUE]" [autofocusUsername] required aria-describedby="errUsername">
+						<label for="nuovoUsername"><span lang="en">Inserisci il tuo username:</span></label>
+						<input type="text" id="nuovoUsername" name="nuovoUsername" value="[USERNAME_VALUE]" [autofocusUsername] required aria-describedby="errUsername">
 						<noscript>
 							[errUsername]
 						</noscript>
 					</div>
 
 					<div>
-						<label for="password">Inserisci la tua <span lang="en">password:</span></label>
-						<input type="password" id="password" name="password" [autofocusPassword] required aria-describedby="errPassword">
+						<label for="nuovaPassword">Inserisci la tua <span lang="en">password:</span></label>
+						<input type="password" id="nuovaPassword" name="nuovaPassword" [autofocusPassword] required aria-describedby="errPassword">
 						<noscript>
 							[errPassword]
 						</noscript>
@@ -71,7 +71,7 @@
 					</div>
 
 					<div class="form-group">
-						<input type="submit" name="register" value="Registrati">
+						<input type="submit" name="register" value="Registrati" aria-describedby="error_message">
 					</div>
 					[ERROR_MESSAGE]
 

@@ -89,6 +89,18 @@ h2 {
     color: var(--primary-title-color);
 }
 
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: var(--primary-title-color);
+}
+
+h4{
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: var(--primary-title-color);
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -264,7 +276,6 @@ header h1 {
 }
 
 #avviso p::before {
-    content: "✓";
     font-size: 1.5em;
     font-weight: bold;
     flex-shrink: 0;
@@ -396,7 +407,7 @@ header h1 {
     border-radius: 2em;
 }
 
-#adozione .card h2 {
+#adozione .card h3 {
     color: var(--secondary-bg);
     margin-bottom: .2em;
     text-align: center;

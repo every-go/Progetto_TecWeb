@@ -25,7 +25,6 @@ class AvvisiHelper {
     public static function get() {
         if (isset($_SESSION[self::SESSION_KEY])) {
             $message = $_SESSION[self::SESSION_KEY];
-            // FONDAMENTALE: Lo cancelliamo subito dopo averlo letto
             unset($_SESSION[self::SESSION_KEY]); 
             return $message;
         }

@@ -11,7 +11,7 @@ $content = file_get_contents("html/login.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
 
-$username = '';
+$username = "";
 
 $fields = [
     "username" => "",
@@ -77,12 +77,12 @@ if (empty($_SESSION["is_logged_in"])) {
                 $db->closeConnection();
 
                 if ($res_login) {
-                    AvvisiHelper::set('<span lang="en">Login</span>&nbsp; avvenuto con successo', 'success');
+                    AvvisiHelper::set('<span aria-hidden="true">✓</span>&nbsp;<span lang="en">Login</span>&nbsp; avvenuto con successo', 'success');
                     $_SESSION['is_logged_in'] = true;
                     header("Location:". $redirectPage);
                     exit();
                 } else {
-                    $errorMessages['usernameorpassword'] = '<div class="errorSuggestion" role="alert" ><span lang="en">Username</span> o <span lang="en">password</span> non validi!</div>';
+                    $errorMessages['usernameorpassword'] = '<div class="errorSuggestion" role="alert" id="error_message"><span lang="en">Username</span> o <span lang="en">password</span> non validi!</div>';
                 }
             } else {
                 include __DIR__ . "/500.php";

@@ -68,7 +68,6 @@ export function validazioneCampo(input, dettagli_form) {
    parent.querySelectorAll(".errorSuggestion").forEach(el => el.remove());
 
    let valido = true;
-   let messaggioErrore = dettagli_form[key][2];
 
    // Controllo file
    if (input.type === "file") {
@@ -88,7 +87,8 @@ export function validazioneCampo(input, dettagli_form) {
        const node = document.createElement("div");
        node.className = "errorSuggestion";
        node.role = "alert";
-       node.innerHTML = messaggioErrore;
+       node.innerHTML = dettagli_form[key][2];
+       node.id = dettagli_form[key][3];
        parent.appendChild(node);
        return false;
    }
@@ -108,7 +108,9 @@ export function validazioneCampoRadio(group, dettagli_form) {
     if (!almenoUnoSelezionato) {
         const node = document.createElement("div");
         node.className = "errorSuggestion";
+        node.role = "alert";
         node.innerHTML = dettagli_form[groupName][2];
+        node.id = dettagli_form[groupName][3];
         fieldset.appendChild(node);
         return false;
     }

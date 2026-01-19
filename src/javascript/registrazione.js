@@ -4,17 +4,20 @@ var dettagli_form = {
    "username": [
       "Es: FlavioPiccione",
       /^[A-Za-z]{4,24}$/,
-      "Lo <span lang='en'>username</span> deve avere minimo 4 caratteri e massimo 24. Può contenere solo lettere maiuscole o minuscole."
+      'Lo <span lang="en">username</span> deve avere minimo 4 caratteri e massimo 24. Può contenere solo lettere maiuscole o minuscole.',
+      "errUsername"
    ],
    "password": [
       "Es: #Flavio4",
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~]{8,24}$/,
-      "Password non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, 1 numero e almeno un carattere speciale, minimo 8, massimo 24 caratteri."
+      "Password non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, 1 numero e almeno un carattere speciale, minimo 8, massimo 24 caratteri.",
+      "errPassword"
    ],
    "confirm_password": [
       "",
       null,
-      "La conferma non è uguale alla <span lang='en'>password</span> inserita in precedenza."
+      "La conferma non è uguale alla <span lang='en'>password</span> inserita in precedenza.",
+      "errConfirmPassword"
    ]
 };
 
@@ -49,6 +52,7 @@ window.validazioneCampo = function(input, dettagli_form) {
       var node = document.createElement("strong");
       node.className = "errorSuggestion";
       node.innerHTML = messaggioErrore;
+      node.id = dettagli_form[input.id][3];
       parent.appendChild(node);
       return false;
    }

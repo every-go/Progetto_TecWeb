@@ -8,8 +8,7 @@ session_abort();
 session_start();
 require_once __DIR__ . '/utils/UrlHelper.php';
 require_once __DIR__ . '/utils/AvvisiHelper.php';
-// $_SESSION['messaggio_utente'] = '<span lang="en">  Logout&nbsp;</span>avvenuto con successo';
-AvvisiHelper::set('<span lang="en">  Logout&nbsp;</span>avvenuto con successo', 'success');
+AvvisiHelper::set('<span aria-hidden="true">✓</span>&nbsp;<span lang="en">Logout</span>&nbsp;avvenuto con successo', 'success');
 
 $redirectUrl = 'index.php';
 if (isset($_GET['redirect'])) {

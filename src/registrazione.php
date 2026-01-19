@@ -12,6 +12,8 @@ $content = file_get_contents("html/registrazione.html");
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
 
+$username = "";
+
 $fields = [
     "username" => "",
     "password" => "",
@@ -49,8 +51,12 @@ if (empty($_SESSION["is_logged_in"]) && isset($_POST["register"])) {
         $value = sanitize($_POST[$key] ?? '');
     }
 
+    $username = $fields["username"];
+    $password = $fields["password"];
+    $confirm_password = $fields["confirm_password"];
+
     // username
-    if (!validateUsername($fields["username"])) {
+    if (!validateUsername($username)) {
         $errorMessages["username"] =
             '<div id="errUsername" class="errorSuggestion" role="alert">
                 Lo <span lang="en">username</span> deve avere minimo 4 caratteri e massimo 24. Può contenere solo lettere maiuscole o minuscole.
@@ -58,7 +64,7 @@ if (empty($_SESSION["is_logged_in"]) && isset($_POST["register"])) {
     }
 
     // password
-    if (!validatePassword($fields["password"])) {
+    if (!validatePassword($password)) {
         $errorMessages["password"] =
             '<div id="errPassword" class="errorSuggestion" role="alert">
                 <span lang="en">Password</span> non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, 1 numero e almeno un carattere speciale, minimo 8, massimo 24 caratteri.
@@ -66,12 +72,12 @@ if (empty($_SESSION["is_logged_in"]) && isset($_POST["register"])) {
     }
 
     // conferma password
-    if ($fields["confirm_password"] === '') {
+    if ($confirm_password === '') {
         $errorMessages["confirm_password"] =
             '<div id="errConfirmPassword" class="errorSuggestion" role="alert">
                 Confermare la <span lang="en">password</span>
              </div>';
-    } elseif ($fields["confirm_password"] !== $fields["password"]) {
+    } elseif ($password !== $confirm_password) {
         $errorMessages["confirm_password"] =
             '<div id="errConfirmPassword" class="errorSuggestion" role="alert">
                 Le <span lang="en">password</span> non coincidono
@@ -84,10 +90,10 @@ if (empty($_SESSION["is_logged_in"]) && isset($_POST["register"])) {
 
         if ($db->openDBConnection()) {
 
-            if ($db->checkUsernameEsistente($fields["username"])) {
+            if ($db->checkUsernameEsistente($username)) {
 
                 $errorMessages["usernamenotvalid"] =
-                    '<div class="errorSuggestion" role="alert">
+                    '<div class="errorSuggestion" role="alert" id="error_message">
                         <span lang="en">Username</span> già esistente
                      </div>';
 
@@ -95,7 +101,7 @@ if (empty($_SESSION["is_logged_in"]) && isset($_POST["register"])) {
 
             } else {
 
-                $res = $db->registerUtente($fields["username"], $fields["password"]);
+                $res = $db->registerUtente($username, $password);
                 $db->closeConnection();
 
                 if ($res) {
@@ -146,11 +152,11 @@ if (isset($_GET['redirect'])) {
 }
 
 $content = str_replace("[PAGINA_PROVENIENZA]", $redirectParam, $content);
+$content = str_replace("[USERNAME_VALUE]", $username, $content);
 $content = str_replace("[errUsername]", $errorMessages["username"], $content);
 $content = str_replace("[errPassword]", $errorMessages["password"], $content);
 $content = str_replace("[errConfirmPassword]", $errorMessages["confirm_password"], $content);
 $content = str_replace("[ERROR_MESSAGE]", $errorMessages["usernamenotvalid"], $content);
-$content = str_replace("[USERNAME_VALUE]", $fields["username"], $content);
 $content = str_replace("[autofocusUsername]", $autofocus["username"], $content);
 $content = str_replace("[autofocusPassword]", $autofocus["password"], $content);
 
