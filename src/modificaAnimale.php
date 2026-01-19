@@ -161,8 +161,8 @@ $content = createForm('Modifica', $id);
 
 
 $content = populateForm($valori, $content);
+$content = renderErrorsWithAria($content, $errori);
 
-$content = replaceErrorPlaceholders($content, $errori);
 
 $content = addAriaInvalid($content, $errori);
 

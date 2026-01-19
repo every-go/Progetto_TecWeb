@@ -119,8 +119,8 @@ if (isset($_POST['Aggiungi'])) {
 $content = createForm('Aggiungi');
 
 $content = populateForm($valori, $content);
+$content = renderErrorsWithAria($content, $errori);
 
-$content = replaceErrorPlaceholders($content, $errori);
 
 $content = addAriaInvalid($content, $errori);
 
@@ -141,7 +141,6 @@ $content = str_replace("[ANIMALI_LINK_BREADCRUMB]", '<a href="animali.php?' .
 $content = str_replace("[ANIMALE_LINK_BREADCRUMB]", '', $content);
 $content = str_replace("[BREADCRUMB_SEPARATOR]", '', $content);
 
-$content = renderErrorsWithAria($content, $errori);
 
 
 $content = str_replace("[listaMenu]", $listaMenu, $content);
