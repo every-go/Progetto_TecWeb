@@ -55,7 +55,8 @@
 							[autofocusUsername] 
 							required 
 							aria-describedby="errUsername"
-							>
+							autocomplete="off"
+						>
 						<noscript>
 							[errUsername]
 						</noscript>
@@ -63,12 +64,14 @@
 
 					<div>
 						<label for="password">Inserisci la tua <span lang="en">password:</span></label>
-						<input type="password" 
-						id="password" 
-						name="password" 
-						[autofocusPassword] 
-						required 
-						aria-describedby="errPassword"
+						<input 
+							type="password" 
+							id="password" 
+							name="password" 
+							[autofocusPassword] 
+							required 
+							aria-describedby="errPassword" 
+							autocomplete="off"
 						>
 						<noscript>
 							[errPassword]
@@ -77,11 +80,13 @@
 
 					<div>
 						<label for="confirm_password">Conferma la tua <span lang="en">password:</span></label>
-						<input type="password" 
-						id="confirm_password" 
-						name="confirm_password" 
-						required 
-						aria-describedby="errConfirmPassword"
+						<input 
+							type="password" 
+							id="confirm_password" 
+							name="confirm_password" 
+							required 
+							aria-describedby="errConfirmPassword" 
+							autocomplete="off"
 						>
 						<noscript>
 							[errConfirmPassword]
@@ -92,7 +97,6 @@
 						<input type="submit" name="register" value="Registrati" aria-describedby="error_message">
 					</div>
 					[ERROR_MESSAGE]
-<!-- <script>alert(1)</script>A -->
 				</form>
 
 				<p> Hai già un <span lang="en">account</span>? <a href="login.php?[PAGINA_PROVENIENZA]">Esegui il <span lang="en">login</span></a></p>

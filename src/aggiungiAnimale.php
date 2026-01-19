@@ -139,15 +139,17 @@ $content = str_replace("[ANIMALI_LINK_BREADCRUMB]", '<a href="animali.php?' .
     htmlspecialchars(http_build_query($parametriQuery)) .
     '">Animali</a>', $content);
 
-    // breadcrumb aggiungi animale
-    $content = str_replace("[ANIMALE_LINK_BREADCRUMB]", '', $content);
-    $content = str_replace("[BREADCRUMB_SEPARATOR]", '', $content);
+// breadcrumb aggiungi animale
+$content = str_replace("[ANIMALE_LINK_BREADCRUMB]", '', $content);
+$content = str_replace("[BREADCRUMB_SEPARATOR]", '', $content);
 
 
 
 
 
 $content = cleanForm($content);
+
+$content = renderErrorsWithAria($content, $errori);
 
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);

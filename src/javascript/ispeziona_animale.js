@@ -28,11 +28,11 @@ input.addEventListener('change', () => {
         const node = document.createElement("div");
         node.className = "errorSuggestion";
         node.role = "alert";
-        node.innerHTML = "File troppo grande (Max 2MB)";
+        node.innerHTML = "File troppo grande (massimo 2 <abbr title=\"megabyte\">MB</abbr>)";
         parent.appendChild(node);
         input.setAttribute('aria-invalid', 'true');
-        input.value = ''; // Resetta l'input
-        // Ripristina l'immagine precedente se c'era
+        input.value = '';
+        
         if (!img.dataset.hasCurrent) {
             img.src = '';
         }
@@ -91,8 +91,8 @@ var dettagli_form = {
    ],
    "alt": [
       "Es: Flavio è un piccione con delle piume bianche, ha un becco lungo e indossa delle scarpe nere con la punta bianca",
-      /^[\p{L}0-9 ,:;'."()]{1,1024}$/u,
-      "La descrizione fisica dell'animale può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura : . , ; \" ' ( ). Non deve essere più lunga di 1024 caratteri"
+      /^[\p{L}0-9 ,:;'."()\n]{1,1024}$/u,
+      "La descrizione fisica dell'animale può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura : . , ; \" ' ( ). Non deve essere più lunga di 1024 caratteri e non si può andare a capo"
    ],
    "luogo": [
       "Es: Sopra l'edificio in via Flavio numero 8/B",

@@ -1,53 +1,50 @@
 <?php
 
-function checkEmptyString($input, $nomeCampo = null)
-{
-    if (empty(trim($input))) {
-        if ($nomeCampo !== null) {
-            return "Il campo $nomeCampo è obbligatorio.";
-        } else {
-            return "Questo campo è obbligatorio.";
-        }
-    }
+const REGEX = [
+    "nome"        => '/^[\p{L} ]{2,24}$/u',
+    "eta"         => '/^(0|[1-9][0-9]{0,4})$/',
+    "alt"         => '/^[\p{L}0-9 ,:;\'."\(\)]{1,1024}$/u',
+    "luogo"       => '/^[\p{L}0-9 ,\/\'"]{1,100}$/u',
+    "descrizione" => '/^[\p{L}0-9 ,:;\'."\(\)\?\!\n]{1,}$/u',
+    "bisogni"     => '/^[\p{L}0-9 ,:;\'."\(\)\?\!\n]{1,}$/u',
+    "storia"      => '/^[\p{L}0-9 ,:;\'."\(\)\?\!\n]{0,}$/u',
+];
 
-    return null;
+function validateTextField(string $value, string $pattern): bool
+{
+    return preg_match($pattern, $value) === 1;
 }
 
-function checkNotNaturalNumber($input, $nomeCampo = null)
+function validateNumberField(string $value, string $pattern): bool
 {
-    if (
-        filter_var($input, FILTER_VALIDATE_INT) !== false &&
-        intval($input) >= 0
-    ) {
-        return null;
-    } else {
-        if ($nomeCampo !== null) {
-            return "Il campo '$nomeCampo' deve essere un numero naturale.";
-        } else {
-            return "Questo campo deve essere un numero naturale.";
-        }
-    }
+    return preg_match($pattern, $value) === 1;
 }
 
-function checkListaBisogni($input, $nomeCampo = null)
+function validateRadioField(?string $value, array $allowedValues): bool
 {
-    $errore = checkEmptyString($input, $nomeCampo);
-    if ($errore === null) {
-        $arrayBisogni = array_filter(
-            array_map('trim', explode(';', $input)),
-            fn($value) => $value !== ''
-        );
+    return $value !== null && in_array($value, $allowedValues, true);
+}
 
-        if (count($arrayBisogni) === 0) {
-            if ($nomeCampo !== null) {
-                return "Il campo '$nomeCampo' deve contenere almeno un bisogno.";
-            } else {
-                return "Questo campo deve contenere almeno un bisogno.";
-            }
-        }
+function validateFileField(array $file, int $maxSize, array $allowedMimeTypes): bool
+{
+    if (!isset($file["tmp_name"], $file["size"], $file["type"])) {
+        return false;
     }
 
-    return $errore;
+    if ($file["size"] > $maxSize) {
+        return false;
+    }
+
+    if (!in_array($file["type"], $allowedMimeTypes, true)) {
+        return false;
+    }
+
+    return true;
+}
+
+function validateTextareaField(string $value, string $pattern): bool
+{
+    return preg_match($pattern, $value) === 1;
 }
 
 ?>

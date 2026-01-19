@@ -22,44 +22,37 @@ class campiDatiAnimale
         "nome" => [
             "form" => "nome",
             "placeholder" => "nomeAnimale",
-            "errPlaceholder" => "nomeErr",
-            "ariaInvalidPlaceholder" => "ariaInvalidNome",
+            "errPlaceholder" => "errNome"
         ],
         "eta" => [
             "form" => "eta",
             "placeholder" => "etaAnimale",
-            "errPlaceholder" => "etaErr",
-            "ariaInvalidPlaceholder" => "ariaInvalidEta",
-        ],
-        "luogo" => [
-            "form" => "luogo",
-            "placeholder" => "luogoAnimale",
-            "errPlaceholder" => "luogoErr",
-            "ariaInvalidPlaceholder" => "ariaInvalidLuogo",
-        ],
-        "descrizione" => [
-            "form" => "descrizione",
-            "placeholder" => "descrizione",
-            "errPlaceholder" => "errDescrizione",
-            "ariaInvalidPlaceholder" => "ariaInvalidDesc",
+            "errPlaceholder" => "errEta"
         ],
         "alt" => [
             "form" => "alt",
             "placeholder" => "altImmagine",
-            "errPlaceholder" => "imageErr",
-            "ariaInvalidPlaceholder" => "ariaInvalidAlt",
+            "errPlaceholder" => "errAlt"
+        ],
+        "luogo" => [
+            "form" => "luogo",
+            "placeholder" => "luogoAnimale",
+            "errPlaceholder" => "errLuogo"
+        ],
+        "descrizione" => [
+            "form" => "descrizione",
+            "placeholder" => "descrizione",
+            "errPlaceholder" => "errDesc"
         ],
         "bisogni" => [
             "form" => "bisogni",
             "placeholder" => "bisogni",
-            "errPlaceholder" => "bisogniErr",
-            "ariaInvalidPlaceholder" => "ariaInvalidBisogni",
+            "errPlaceholder" => "errBisogni"
         ],
         "storia" => [
             "form" => "storia",
             "placeholder" => "storia",
-            "errPlaceholder" => "storiaErr",
-            "ariaInvalidPlaceholder" => "ariaInvalidStoria",
+            "errPlaceholder" => "errStoria"
         ],
     ];
     public static $radio = [
@@ -70,13 +63,11 @@ class campiDatiAnimale
                 "Femmina" => "checkFemmina",
             ],
             "errPlaceholder" => "sessoErr",
-            "ariaInvalidPlaceholder" => "ariaInvalidSesso",
         ],
         "tipo_animale" => [
             "form" => "tipo_animale",
             "opzioni" => ["Reale" => "checkReale", "Fantastico" => "checkFantastico"],
             "errPlaceholder" => "tipoAnimaleErr",
-            "ariaInvalidPlaceholder" => "ariaInvalidTipoAnimale",
         ],
         "taglia" => [
             "form" => "taglia",
@@ -86,7 +77,6 @@ class campiDatiAnimale
                 "Grande" => "checkTagliaG",
             ],
             "errPlaceholder" => "tagliaErr",
-            "ariaInvalidPlaceholder" => "ariaInvalidTaglia",
         ],
         "carattere" => [
             "form" => "carattere",
@@ -96,7 +86,6 @@ class campiDatiAnimale
                 "Difficile" => "checkCarD",
             ],
             "errPlaceholder" => "carattereErr",
-            "ariaInvalidPlaceholder" => "ariaInvalidCarattere",
         ],
     ];
     public static $files = [
@@ -104,9 +93,24 @@ class campiDatiAnimale
             "form" => "immagine",
             "placeholder" => "immagineCorrente",
             "errPlaceholder" => "fileErr",
-            "ariaInvalidPlaceholder" => "ariaInvalidImmagine",
         ],
     ];
+
+    const ARIA_MAP = [
+        "errNome"         => "errNome",
+        "errEta"          => "errEta",
+        "errSesso"        => "errSesso",
+        "errTipoAnimale"  => "errTipoAnimale",
+        "errImmagine"     => "errImmagine",
+        "errAlt"          => "errAlt",
+        "errLuogo"        => "errLuogo",
+        "errTaglia"       => "errTaglia",
+        "errCarattere"    => "errCarattere",
+        "errDesc"         => "errDesc",
+        "errBisogni"      => "errBisogni",
+        "errStoria"       => "errStoria",
+    ];
+
 }
 
 function createForm($azione, $id = null)
@@ -166,6 +170,26 @@ function populateForm($animalData, $content)
     }
 
     return $content;
+}
+
+function buildAriaAlert(string $id, string $msg): string
+{
+    return '<div role="alert" id="' . htmlspecialchars($id, ENT_QUOTES) . '">' .
+           htmlspecialchars($msg, ENT_QUOTES) .
+           '</div>';
+}
+
+function renderErrorsWithAria(string $html, array $errors): string
+{
+    foreach (CampiDatiAnimale::ARIA_MAP as $placeholder => $ariaId) {
+        if (!empty($errors[$placeholder])) {
+            $replacement = buildAriaAlert($ariaId, $errors[$placeholder]);
+        } else {
+            $replacement = "";
+        }
+        $html = str_replace("[$placeholder]", $replacement, $html);
+    }
+    return $html;
 }
 
 function cleanForm($content)
@@ -329,59 +353,83 @@ function checkSelection($input, $allowedValues, $nomeCampo)
 
 function checkForm($data)
 {
-    $errori = [];
+    $errori = [
+        "errNome" => "",
+        "errEta" => "",
+        "errSesso" => "",
+        "errTipoAnimale" => "",
+        "errImmagine" => "",
+        "errAlt" => "",
+        "errLuogo" => "",
+        "errTaglia" => "",
+        "errCarattere" => "",
+        "errDesc" => "",
+        "errBisogni" => "",
+        "errStoria" => "",
+    ];
 
     $confTesti = campiDatiAnimale::$testi;
     $confRadio = campiDatiAnimale::$radio;
     $confFiles = campiDatiAnimale::$files;
 
-    $errori[$confTesti["nome"]["errPlaceholder"]] = checkEmptyString(
-        $data["nome"],
-        "Nome"
-    );
+    $errori[$confTesti["nome"]["errPlaceholder"]] =
+        validateTextField($data["nome"] ?? "", REGEX["nome"])
+            ? null
+            : "Nome non valido";
 
-    $errori[$confTesti["luogo"]["errPlaceholder"]] = checkEmptyString(
-        $data["luogo"],
-        "Luogo"
-    );
+    $errori[$confTesti["luogo"]["errPlaceholder"]] =
+        validateTextField($data["luogo"] ?? "", REGEX["luogo"])
+            ? null
+            : "Luogo non valido";
 
-    $errori[$confTesti["eta"]["errPlaceholder"]] = checkNotNaturalNumber(
-        $data["eta"],
-        "Età"
-    );
+    $errori[$confTesti["eta"]["errPlaceholder"]] =
+        validateNumberField($data["eta"] ?? "", REGEX["eta"])
+            ? null
+            : "Età non valida";
 
-    $errori[$confTesti["descrizione"]["errPlaceholder"]] = checkEmptyString(
-        $data["descrizione"],
-        "Descrizione"
-    );
+    $errori[$confTesti["descrizione"]["errPlaceholder"]] =
+        validateTextareaField($data["descrizione"] ?? "", REGEX["descrizione"])
+            ? null
+            : "Descrizione non valida";
 
-    $errori[$confTesti["bisogni"]["errPlaceholder"]] = checkListaBisogni(
-        $data["bisogni"],
-        "Bisogni"
-    );
+    $errori[$confTesti["bisogni"]["errPlaceholder"]] =
+        validateTextareaField($data["bisogni"] ?? "", REGEX["bisogni"])
+            ? null
+            : "Bisogni non validi";
 
-    $errori[$confTesti["alt"]["errPlaceholder"]] = checkEmptyString(
-        $data["alt"],
-        "Descrizione Immagine"
-    );
+    $errori[$confTesti["alt"]["errPlaceholder"]] =
+        validateTextareaField($data["alt"] ?? "", REGEX["alt"])
+            ? null
+            : "Descrizione immagine non valida";
+
+    $errori[$confTesti["storia"]["errPlaceholder"]] =
+        validateTextareaField($data["storia"] ?? "", REGEX["storia"])
+            ? null
+            : "Storia non valida";
 
     foreach ($confRadio as $dbKey => $config) {
-        $inputName = isset($config["form"]) ? $config["form"] : $dbKey;
-
+        $inputName = $config["form"] ?? $dbKey;
         $errKey = $config["errPlaceholder"];
-
         $valoriAmmessi = array_keys($config["opzioni"]);
-
         $label = ucfirst(str_replace("_", " ", $dbKey));
 
-        $errori[$errKey] = checkSelection(
-            $data[$inputName] ?? "",
-            $valoriAmmessi,
-            $label
-        );
+        $errori[$errKey] =
+            validateRadioField($data[$inputName] ?? null, $valoriAmmessi)
+                ? null
+                : "$label non valido";
     }
 
+    $errori["errImmagine"] =
+        validateFileField(
+            $_FILES["immagine"] ?? [],
+            2 * 1024 * 1024,
+            ["image/jpeg", "image/jpg", "image/png"]
+        )
+            ? null
+            : "Immagine non valida";
+
     return array_filter($errori);
+
 }
 
 ?>

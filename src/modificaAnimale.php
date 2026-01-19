@@ -18,8 +18,6 @@ if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "admin") {
     exit();
 }
 
-
-
 use DB\DBAccess;
 
 //configurazione dei percorsi di upload delle immagini
@@ -69,7 +67,6 @@ if (!isset($_POST['Modifica'])) {
 
 }
 else{
-    
     foreach ($campiFormSemplici as $campo) {
         $valori[$campo] = pulisciInput($_POST[$campo] ?? "");
     }
@@ -174,15 +171,16 @@ $content = str_replace("[ANIMALI_LINK_BREADCRUMB]", '<a href="animali.php?' .
     htmlspecialchars(http_build_query($parametriQuery)) .
     '">Animali</a>', $content);
 
-    // breadcrumb aggiungi animale
-    $content = str_replace("[ANIMALE_LINK_BREADCRUMB]", '', $content);
-    $content = str_replace("[BREADCRUMB_SEPARATOR]", '', $content);
-
-
-
-
+$parametriQuery["id"] = $id;
+// breadcrumb modifica animale
+$content = str_replace("[ANIMALE_LINK_BREADCRUMB]", '<a href="animale.php?' .
+    htmlspecialchars(http_build_query($parametriQuery)) .
+    '">' . $valori["nome"] . '</a>', $content);
+$content = str_replace("[BREADCRUMB_SEPARATOR]", '<span aria-hidden="true"> &gt;&gt; </span>', $content);
 
 $content = cleanForm($content);
+
+$content = renderErrorsWithAria($content, $errori);
 
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
