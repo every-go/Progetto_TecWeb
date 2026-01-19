@@ -47,16 +47,31 @@
 				<form action="registrazione.php?[PAGINA_PROVENIENZA]" method="post" id="login-form">
 
 					<div>
-						<label for="nuovoUsername"><span lang="en">Inserisci il tuo username:</span></label>
-						<input type="text" id="nuovoUsername" name="nuovoUsername" value="[USERNAME_VALUE]" [autofocusUsername] required aria-describedby="errUsername">
+						<label for="username">Inserisci il tuo <span lang="en">username:</span></label>
+						<input 
+							type="text" id="username" 
+							name="username" 
+							value="[USERNAME_VALUE]" 
+							[autofocusUsername] 
+							required 
+							aria-describedby="errUsername"
+							autocomplete="off"
+							>
 						<noscript>
 							[errUsername]
 						</noscript>
 					</div>
 
 					<div>
-						<label for="nuovaPassword">Inserisci la tua <span lang="en">password:</span></label>
-						<input type="password" id="nuovaPassword" name="nuovaPassword" [autofocusPassword] required aria-describedby="errPassword">
+						<label for="password">Inserisci la tua <span lang="en">password:</span></label>
+						<input type="password" 
+						id="password" 
+						name="password" 
+						[autofocusPassword] 
+						required 
+						aria-describedby="errPassword"
+						autocomplete="off"
+						>
 						<noscript>
 							[errPassword]
 						</noscript>
@@ -64,7 +79,13 @@
 
 					<div>
 						<label for="confirm_password">Conferma la tua <span lang="en">password:</span></label>
-						<input type="password" id="confirm_password" name="confirm_password" required aria-describedby="errConfirmPassword">
+						<input type="password" 
+						id="confirm_password" 
+						name="confirm_password" 
+						required 
+						aria-describedby="errConfirmPassword"
+						autocomplete="off"
+						>
 						<noscript>
 							[errConfirmPassword]
 						</noscript>
@@ -74,7 +95,7 @@
 						<input type="submit" name="register" value="Registrati" aria-describedby="error_message">
 					</div>
 					[ERROR_MESSAGE]
-
+<!-- <script>alert(1)</script>A -->
 				</form>
 
 				<p> Hai già un <span lang="en">account</span>? <a href="login.php?[PAGINA_PROVENIENZA]">Esegui il <span lang="en">login</span></a></p>
