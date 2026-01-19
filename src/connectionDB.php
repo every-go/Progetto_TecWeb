@@ -13,7 +13,7 @@ use exception;
 class DBAccess
 {
     //XAMPP localhost mydb root ""
-    //Docker localhost mydb root
+    //Docker db mydb root root
     //mmazzare mmazzare mmazzare password
     private const HOST_DB = "localhost";
     private const DATABASE_NAME = "mydb";
