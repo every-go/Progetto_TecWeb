@@ -47,19 +47,23 @@
     <div id="form-main">
       <form action="[actionForm]" method="post" enctype="multipart/form-data">
         <div>
-          <label for="nome">Inserisci il nome: <span class="required">*</span></label>
-          <input type="text" id="nome" name="nome" value="[nomeAnimale]" required aria-describedby="errNome"
-          [ariaInvalidNome] />
+          <label for="nome">Inserisci il nome: <span class="required" aria-hidden="true">*</span></label>
+          <input type="text" id="nome" name="nome" value="[nomeAnimale]" required aria-describedby="errNome">
         </div>
+        <noscript>
+          [errNome]
+        </noscript>
 
         <div>
-          <label for="eta">Inserisci l'età in anni: <span class="required">*</span></label>
-          <input type="number" id="eta" name="eta" value="[etaAnimale]" required min="0" aria-describedby="errEta"
-            [ariaInvalidEta] />
+          <label for="eta">Inserisci l'età in anni: <span class="required" aria-hidden="true">*</span></label>
+          <input type="number" id="eta" name="eta" value="[etaAnimale]" required min="0" max="99999" aria-describedby="errEta">
         </div>
+        <noscript>
+          [errEta]
+        </noscript>
 
         <fieldset>
-          <legend>Seleziona il sesso dell'animale: <span class="required">*</span></legend>
+          <legend>Seleziona il sesso dell'animale: <span class="required" aria-hidden="true">*</span></legend>
           <div class="radio">
             <div class="radio-item">
               <input type="radio" id="sesso_m" name="sesso" value="Maschio" [checkMaschio] />
@@ -73,7 +77,7 @@
         </fieldset>
 
         <fieldset>
-          <legend>Seleziona la tipologia dell'animale: <span class="required">*</span></legend>
+          <legend>Seleziona la tipologia dell'animale: <span class="required" aria-hidden="true">*</span></legend>
           <div class="radio">
             <div class="radio-item">
               <input type="radio" id="tipo_reale" name="tipo_animale" value="Reale" [checkReale] />
@@ -89,26 +93,26 @@
 
         [immagineCorrente]
         <div>
-          <label for="immagine">Seleziona un'immagine dell'animale (formati accettati: JPG, JPEG, PNG). L'immagine non può essere più grande di 2MB <span class="required">*</span></label>
+          <label for="immagine">Seleziona un'immagine dell'animale (formati accettati: JPG, JPEG, PNG). L'immagine non può essere più grande di 2MB <span class="required" aria-hidden="true">*</span></label>
           <input type="file" id="immagine" name="immagine" accept="image/jpg, image/jpeg, image/png"
           aria-describedby="errImmagine" [ariaInvalidImmagine]>
         </div>
           
         <div>
-          <label for="alt">Descrizione fisica dell'animale: <span class="required">*</span></label>
+          <label for="alt">Descrizione fisica dell'animale: <span class="required" aria-hidden="true">*</span></label>
           <textarea id="alt" name="alt" rows="5" cols="10" required aria-describedby="errAlt"
                 [ariaInvalidAlt]>[altImmagine]</textarea>
 
         </div>
 
         <div>
-          <label for="luogo">Luogo in cui puoi trovare l'animale: <span class="required">*</span></label>
+          <label for="luogo">Luogo in cui puoi trovare l'animale: <span class="required" aria-hidden="true">*</span></label>
           <input type="text" id="luogo" name="luogo" value="[luogoAnimale]" required aria-describedby="errLuogo"
           [ariaInvalidLuogo] />
         </div>
 
         <fieldset>
-          <legend>Seleziona la taglia dell'animale: <span class="required">*</span></legend>
+          <legend>Seleziona la taglia dell'animale: <span class="required" aria-hidden="true">*</span></legend>
           <div class="radio">
             <div class="radio-item">
               <input type="radio" id="taglia_p" name="taglia" value="Piccola" [checkTagliaP] />
@@ -128,7 +132,7 @@
         </fieldset>
 
         <fieldset>
-          <legend>Seleziona il tipo di carattere dell'animale: <span class="required">*</span></legend>
+          <legend>Seleziona il tipo di carattere dell'animale: <span class="required" aria-hidden="true">*</span></legend>
           <div class="radio">
             <div class="radio-item">
               <input type="radio" id="car_f" name="carattere" value="Facile" [checkCarF] />
@@ -151,13 +155,13 @@
           <legend>Descrizioni</legend>
           <div id="descrizione-animale">
             <div>
-              <label for="descrizione">Inserisci la descrizione del carattere dell'animale: <span class="required">*</span></label>
+              <label for="descrizione">Inserisci la descrizione del carattere dell'animale: <span class="required" aria-hidden="true">*</span></label>
               <textarea id="descrizione" name="descrizione" rows="5" cols="10" required aria-describedby="errDesc"
                 [ariaInvalidDesc]>[descrizione]</textarea>
             </div>
 
             <div>
-            <label for="bisogni">Inserisci i bisogni dell'animale. Separa con il ; ogni bisogno: <span class="required">*</span></label>
+            <label for="bisogni">Inserisci i bisogni dell'animale. Separa con il ; ogni bisogno: <span class="required" aria-hidden="true">*</span></label>
             <textarea id="bisogni" name="bisogni" rows="5" cols="10" required aria-describedby="errBisogni"
               [ariaInvalidBisogni]>[bisogni]</textarea>
             </div>
