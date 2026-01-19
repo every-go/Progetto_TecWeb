@@ -351,7 +351,8 @@ function checkSelection($input, $allowedValues, $nomeCampo)
     return null;
 }
 
-function checkForm($data)
+// FUNZIONE CORRETTA - AGGIUNTO PARAMETRO $isModifica
+function checkForm($data, $isModifica = false)
 {
     $errori = [
         "errNome" => "",
@@ -419,17 +420,20 @@ function checkForm($data)
                 : "$label non valido";
     }
 
-    $errori["errImmagine"] =
-        validateFileField(
-            $_FILES["immagine"] ?? [],
-            2 * 1024 * 1024,
-            ["image/jpeg", "image/jpg", "image/png"]
-        )
-            ? null
-            : "Immagine non valida";
+    // CORREZIONE: Valida l'immagine solo se NON è una modifica
+    // In modifica, l'immagine è opzionale (viene gestita separatamente in modificaAnimale.php)
+    if (!$isModifica) {
+        $errori["errImmagine"] =
+            validateFileField(
+                $_FILES["immagine"] ?? [],
+                2 * 1024 * 1024,
+                ["image/jpeg", "image/jpg", "image/png"]
+            )
+                ? null
+                : "Immagine non valida";
+    }
 
     return array_filter($errori);
-
 }
 
 ?>

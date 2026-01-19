@@ -91,7 +91,7 @@ var dettagli_form = {
    ],
    "alt": [
       "Es: Flavio è un piccione con delle piume bianche, ha un becco lungo e indossa delle scarpe nere con la punta bianca",
-      /^[\p{L}0-9 ,:;'."()\n]{1,1024}$/u,
+      /^[\p{L}0-9 ,:;'."()\s]{1,1024}$/u,
       "La descrizione fisica dell'animale può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura : . , ; \" ' ( ). Non deve essere più lunga di 1024 caratteri e non si può andare a capo"
    ],
    "luogo": [
@@ -111,17 +111,17 @@ var dettagli_form = {
    ],
    "descrizione": [
       "Es: A Flavio piace tubare in giro e farsi dare le briciole di pane ai passanti. Tranquillo, non sporcherà la tua macchina",
-      /^[\p{L}0-9 ,:;'."()?!\n]{1,}$/u,
+      /^[\p{L}0-9 ,:;'."()?!\s]{1,}$/u,
       "La descrizione del carattere può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . ; , : ' \" ? ! ( )"
    ],
    "bisogni": [
       "Es: Un tetto stabile; Briciole di pane sempre a portata di becco;",
-      /^[\p{L}0-9 ,:;'."()?!\n]{1,}$/u,
+      /^[\p{L}0-9 ,:;'."()?!\s]{1,}$/u,
       "I bisogni possono contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . , : ' \" ? ! ( ), qualsiasi punto e virgola ; sarà letto come un separatore"
    ],
    "storia": [
       "Es: Flavio è nato su un tetto vicino alla stazione. Da piccolo adorava osservare i treni partire.",
-      /^[\p{L}0-9 ,:;'."()?!\n]{0,}$/u,
+      /^[\p{L}0-9 ,:;'."()?!\s]{0,}$/u,
       "La storia può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . ; , : ' \" ? ! ( )"
    ]
 };

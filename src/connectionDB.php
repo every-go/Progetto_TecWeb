@@ -235,7 +235,6 @@ class DBAccess
             mysqli_stmt_close($stmt);
         }
         return array_map( 'htmlspecialchars', $animalData);
-        return $animalData;
     }
 
     function getPreferiti($username)

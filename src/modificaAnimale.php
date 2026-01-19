@@ -33,6 +33,7 @@ if($id === null){
     include __DIR__ . "/404.php";
     exit();
 }
+
 // Inizializzazione delle variabili per il form
 $campiFormSemplici = array_merge(
     array_keys(campiDatiAnimale::$testi),
@@ -67,11 +68,13 @@ if (!isset($_POST['Modifica'])) {
 
 }
 else{
+    
     foreach ($campiFormSemplici as $campo) {
         $valori[$campo] = pulisciInput($_POST[$campo] ?? "");
     }
 
-    $errori = checkForm($valori);
+    // CORREZIONE: Passa true come secondo parametro per indicare che è una modifica
+    $errori = checkForm($valori, true);
     
     $imgError = null;
     $hasNewImage = false;
@@ -87,6 +90,7 @@ else{
     }
 
     if (empty($errori) && $imgError === null) {
+            
             $db = new DBAccess();
 
             if ($db->openDBConnection()) {
@@ -144,6 +148,10 @@ else{
                 include __DIR__ . "/500.php";
                 exit();
             }
+    } else {
+        if ($imgError !== null) {
+            $errori[campiDatiAnimale::$files["immagine"]["errPlaceholder"]] = $imgError;
+        }
     }
 
 }
