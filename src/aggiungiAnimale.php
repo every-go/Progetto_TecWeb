@@ -143,10 +143,10 @@ $content = str_replace("[BREADCRUMB_SEPARATOR]", '', $content);
 
 $content = renderErrorsWithAria($content, $errori);
 
-$content = cleanForm($content);
 
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
 
+$content = cleanForm($content);
 echo $content;
 ?>
