@@ -8,14 +8,11 @@ La pagina "Crediti" è accessibile solo dalla mappa della navigazione presente i
 
 La massima profondità è di 4 livelli, percorribile solo dall'Admin, tramite il percorso Home>>Animali>>Animale>>Modifica.
 
-Comunuque, quel percorso è percorribile anche tramite Home>>Animali>>Modifica.
-
-
 #figure(caption: "Albero delle interazioni nel sito web")[
   #image("../images/albero.png", width: 80%)
 ]
 
-Da notare che, per semplicità, non sono state rappresentate le pagine di errore (401, 404, 500).
+Da notare che, per semplicità, non sono state rappresentate le pagine di errore (401, 404, 500) e i collegamenti dal livello 3 e 4 verso le pagine "Crediti" e "Chi Siamo" (l'Admin non può accedere a "Login" essendo già loggato e "Preferiti").
 
 Ogni linea ha un'etichetta che rappresenta chi può effettuare quella interazione, da una pagina all'altra è possibile spostarsi tramite link o bottoni.
 

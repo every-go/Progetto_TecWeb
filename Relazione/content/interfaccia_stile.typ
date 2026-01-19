@@ -11,6 +11,14 @@ In "animale" abbiamo usato le grid per il layout perché nella fase di design av
 
 La stessa cosa vale per "ispeziona_animale", dato che è una variante della pagina "animale" e quindi il design originale.
 
+== Progettazione mobile
+Per quanto riguarda la progettazione mobile non sono stati fatti grandissimi cambiamenti tranne quelli utili all'evitare lo scroll orizzontale. È però da segnalare il fatto che il menù ad hamburger è stato fatto ad altezza pollice propiziando l'utilizzo da parte dell'utente. Infatti la convenzione esterna è rotta ma è portato ad una convenzione interna che rende molto più comodo l'utilizzo ad una mano del nostro sito web.
+
+== Sistema di notifiche
+<notifiche>
+Il nostro sito è dotato di un metodo di redirect, descritto nella @redirect, il quale è susseguito da una notifica. Questa notifica ha una progress bar che viene considerato come un indicatore visivo non essenziale, animato via CSS, disattivabile tramite prefers-reduced-motion. La notifica è temporanea (meno di 5 secondi) e non richiede azioni, dunque non necessità di pulsanti di stop o pausa
+
+
 == Colore e Contrasti
 <colore>
 

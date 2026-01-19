@@ -54,8 +54,8 @@ A.A. 2025-2026
   columns: (1fr, 1fr, 1fr),
 table.header([Ruolo],[Username],[Password]),
 [Utente],[user],[user],
+[Utente],[username],[User_Saf3],
 [Amministratore],[admin],[admin],
-
 )
 #strong()[Autori:]
 #set table(
@@ -106,8 +106,6 @@ table.header([Nome],[Matricola]),
 
 #include "content/intro.typ"
 
-#pagebreak()
-
 #include "content/requisiti.typ"
 
 #include "content/progettazione.typ"
@@ -116,12 +114,12 @@ table.header([Nome],[Matricola]),
 
 #include "content/interfaccia_stile.typ"
 
-#include "content/accessibility_usability.typ"
-
-DA SCRIVERE TUTTA
-
 #include "content/js.typ"
 
 #include "content/php.typ"
 
+#include "content/form.typ"
+
 #include "content/test.typ"
+
+#include "content/note.typ"
