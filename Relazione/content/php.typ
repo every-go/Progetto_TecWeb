@@ -104,11 +104,8 @@ Come l'utente si aspetta, il passaggio tra le pagine non cancella i termini di r
 
 La Pagina corrente non è un link e contiene una label che la segnala come pagina corrente.
 
-*Nota*
+== Redirect
+<redirect>
+Abbiamo deciso di adottare una nostra convenzione interna non presente su tutti i siti, ovvero che, ogni volta che si esegue il login o il logout da una pagina, si viene reindirizzati alla pagina da cui si è arrivati.
 
-A causa della mancanza di tanti animali nel DB e la scelta di visualizzare 3 animali a pagina, questa cosa non si nota benissimo.
-
-Cambiando la variabile animaliperPagina ad 1 si può notare questa cosa in maniera più diretta
-
-== Logout
-Il logout è gestito con un file semplice "logout.php", però ad ogni onclick() del tasto logout con una funzione JavaScript si avvisa l'utente che verrà reindirizzato alla home, per permettere di conoscere ciò che avviene dopo il logout ed impedire  il disorientamento dell'utente.
+Ad esempio se sono nella pagina "Chi siamo" ed eseguo il login comparirà la notifica "Login avvenuto con successo" però mi ritrovo nella pagina "Chi siamo" senza essere reindirizzato alla home.

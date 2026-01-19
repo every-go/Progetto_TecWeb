@@ -1,7 +1,7 @@
 <?php
 class ImageHandler
 {
-    private static $MAX_FILE_SIZE = 1 * 1024 * 1024;
+    private static $MAX_FILE_SIZE = 2 * 1024 * 1024;
     private $uploadDir;
     private $allowedMime = ["image/jpeg", "image/png", "image/jpg"];
 

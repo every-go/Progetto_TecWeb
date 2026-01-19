@@ -1,1 +1,0 @@
-= Accessibilità e Usabilità
