@@ -16,9 +16,9 @@ CREATE TABLE animali (
     eta          INT NOT NULL,
     taglia       ENUM('Piccola','Media','Grande') NOT NULL,
     carattere    ENUM('Facile','Moderato','Difficile') NOT NULL,
-    descrizione  TEXT NOT NULL,
-    bisogni      TEXT NOT NULL,
-    storia       TEXT,
+    descrizione  VARCHAR(1024) NOT NULL,
+    bisogni      VARCHAR(1024) NOT NULL,
+    storia       VARCHAR(1024),
     adottato     BOOLEAN DEFAULT FALSE
 ) ENGINE=InnoDB;
 

@@ -33,7 +33,8 @@ $imgHandler = new ImageHandler($uploadDirSystem, $uploadDirWeb);
 // Inizializzazione delle variabili per il form
 $campiFormSemplici = array_merge(
     array_keys(campiDatiAnimale::$testi),
-    array_keys(campiDatiAnimale::$radio)
+    array_keys(campiDatiAnimale::$radio),
+    array_keys(campiDatiAnimale::$files)
 );
 
 $valori = array_fill_keys($campiFormSemplici, "");
@@ -65,9 +66,7 @@ if (isset($_POST['Aggiungi'])) {
         }
     }
 
-    // Se non ci sono errori, procedi con l'inserimento nel database
     if (empty($errori) && $imgError === null) {
-        // INSERIMENTO nuovo animale
         $db = new DBAccess();
 
         if ($db->openDBConnection()) {
@@ -119,7 +118,6 @@ if (isset($_POST['Aggiungi'])) {
 //creazione del form html per l'aggiunta di un animale
 $content = createForm('Aggiungi');
 
-
 $content = populateForm($valori, $content);
 
 $content = replaceErrorPlaceholders($content, $errori);
@@ -143,15 +141,12 @@ $content = str_replace("[ANIMALI_LINK_BREADCRUMB]", '<a href="animali.php?' .
 $content = str_replace("[ANIMALE_LINK_BREADCRUMB]", '', $content);
 $content = str_replace("[BREADCRUMB_SEPARATOR]", '', $content);
 
-
-
-
+$content = renderErrorsWithAria($content, $errori);
 
 $content = cleanForm($content);
-
-$content = renderErrorsWithAria($content, $errori);
 
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);
 
 echo $content;
+?>

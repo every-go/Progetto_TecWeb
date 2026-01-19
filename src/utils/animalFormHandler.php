@@ -150,28 +150,30 @@ function populateForm($animalData, $content)
     ];
     $content = replaceTextPlaceholder($content, $placeholders);
     $content = renderRadio($content, $animalData);
-    if (!empty($animalData["immagine"])) {
+    if ($animalData["immagine"] !== "") {
         $content = str_replace(
             "[immagineCorrente]",
-            '<img id="immagineCorrente" src="' . htmlspecialchars($animalData["immagine"], ENT_QUOTES) . '" alt="">',
+            '<img id="immagineCorrente" src="' . htmlspecialchars($animalData["immagine"], ENT_QUOTES) . '" alt="" data-has-current="true">',
             $content
         );
     } else {
         $content = str_replace(
             "[immagineCorrente]",
-            '<img id="immagineCorrente" src="" alt="">',
+            '<img id="immagineCorrente" src="" alt="" data-has-current="false">',
             $content
         );
     }
+
 
     return $content;
 }
 
 function buildAriaAlert(string $id, string $msg): string
 {
-    return '<div role="alert" id="' . htmlspecialchars($id, ENT_QUOTES) . '">' .
-        htmlspecialchars($msg, ENT_QUOTES) .
-        '</div>';
+    return '<div class="errorSuggestion" role="alert" id="' .
+           htmlspecialchars($id, ENT_QUOTES) . '">' .
+           htmlspecialchars($msg, ENT_QUOTES) .
+           '</div>';
 }
 
 function renderErrorsWithAria(string $html, array $errors): string
@@ -189,10 +191,7 @@ function renderErrorsWithAria(string $html, array $errors): string
 
 function cleanForm($content)
 {
-    $content = removeFormDataPlaceholders($content);
-    $content = removeErrorPlaceholders($content);
-    $content = removeAriaInvalidPlaceholders($content);
-    return $content;
+    return preg_replace('/\[[a-zA-Z0-9_]+\]/', '', $content);
 }
 
 function replaceTextPlaceholder($html, $placeholders)
@@ -313,7 +312,6 @@ function removeFormDataPlaceholders($html)
         "altImmagine",
         "bisogni",
         "storia",
-        "immagineCorrente",
         "checkMaschio",
         "checkFemmina",
         "checkReale",
@@ -332,6 +330,7 @@ function removeFormDataPlaceholders($html)
             $html = str_replace("[$key]", "", $html);
         }
     }
+
     return $html;
 }
 
@@ -346,7 +345,23 @@ function checkSelection($input, $allowedValues, $nomeCampo)
     return null;
 }
 
-function checkForm($data)
+const ERROR_MSG = [
+    "nome" => "Il nome deve avere tra 2 e 24 caratteri. Può contenere solo lettere (anche accentate) e spazi.",
+    "eta" => "L'età deve essere un numero valido intero da 0 a 99999 senza zeri iniziali.",
+    "sesso" => "Devi selezionare il sesso dell'animale.",
+    "tipo_animale" => "Devi selezionare se l'animale è reale o fantastico.",
+    "immagine" => "Devi selezionare un'immagine valida (formati accettati: jpg, jpeg, png; dimensione massima: 2 MB).",
+    "alt" => "La descrizione fisica dell'animale può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura : . , ; \" ' ( ). Non deve essere più lunga di 1024 caratteri e non si può andare a capo.",
+    "luogo" => "Il luogo può contenere lettere (anche accentate), spazi, numeri e i caratteri , / ' \". Non deve essere più lungo di 100 caratteri.",
+    "taglia" => "Devi selezionare la taglia dell'animale.",
+    "carattere" => "Devi selezionare la difficoltà di gestione dell'animale.",
+    "descrizione" => "La descrizione del carattere dell'animale non può essere più lunga di 1024 caratteri e può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . ; , : ' \" ? ! ( )",
+    "bisogni" => "I bisogni non possono essere più lunghi di 1024 caratteri e possono contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . , : ' \" ? ! ( ), qualsiasi punto e virgola ; sarà letto come un separatore.",
+    "storia" => "La storia non può essere più lunga di 1024 caratteri e può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . ; , : ' \" ? ! ( )",
+];
+
+
+function checkForm($data, $isModifica = false)
 {
 
     $errori = [
@@ -371,62 +386,67 @@ function checkForm($data)
     $errori[$confTesti["nome"]["errPlaceholder"]] =
         validateTextField($data["nome"] ?? "", REGEX["nome"])
         ? null
-        : "Nome non valido";
+        : ERROR_MSG["nome"];
 
     $errori[$confTesti["luogo"]["errPlaceholder"]] =
         validateTextField($data["luogo"] ?? "", REGEX["luogo"])
         ? null
-        : "Luogo non valido";
+        : ERROR_MSG["luogo"];
 
     $errori[$confTesti["eta"]["errPlaceholder"]] =
         validateNumberField($data["eta"] ?? "", REGEX["eta"])
         ? null
-        : "Età non valida";
+        : ERROR_MSG["eta"];
 
     $errori[$confTesti["descrizione"]["errPlaceholder"]] =
         validateTextareaField($data["descrizione"] ?? "", REGEX["descrizione"])
         ? null
-        : "Descrizione non valida";
+        : ERROR_MSG["descrizione"];
 
     $errori[$confTesti["bisogni"]["errPlaceholder"]] =
         validateTextareaField($data["bisogni"] ?? "", REGEX["bisogni"])
         ? null
-        : "Bisogni non validi";
+        : ERROR_MSG["bisogni"];
 
     $errori[$confTesti["alt"]["errPlaceholder"]] =
         validateTextareaField($data["alt"] ?? "", REGEX["alt"])
         ? null
-        : "Descrizione immagine non valida";
+        : ERROR_MSG["alt"];
 
     $errori[$confTesti["storia"]["errPlaceholder"]] =
         validateTextareaField($data["storia"] ?? "", REGEX["storia"])
         ? null
-        : "Storia non valida";
+        : ERROR_MSG["storia"];
 
     foreach ($confRadio as $dbKey => $config) {
         $inputName = $config["form"] ?? $dbKey;
         $errKey = $config["errPlaceholder"];
         $valoriAmmessi = array_keys($config["opzioni"]);
-        $label = ucfirst(str_replace("_", " ", $dbKey));
 
-        $errori[$errKey] =
-            validateRadioField($data[$inputName] ?? null, $valoriAmmessi)
-            ? null
-            : "$label non valido";
+        if (!validateRadioField($data[$inputName] ?? null, $valoriAmmessi)) {
+            $errori[$errKey] = ERROR_MSG[$dbKey];
+        }
     }
 
-    if (
-        isset($_FILES["immagine"]) &&
-        $_FILES["immagine"]["error"] !== UPLOAD_ERR_NO_FILE
-    ) {
-        $errori["errImmagine"] =
-            validateFileField(
-                $_FILES["immagine"] ?? [],
-                2 * 1024 * 1024,
-                ["image/jpeg", "image/jpg", "image/png"]
-            )
-                ? null
-                : "Immagine non valida";
+
+    // Validazione immagine
+    if (!$isModifica) {
+        // INSERIMENTO: immagine OBBLIGATORIA
+        if (
+            isset($_FILES["immagine"]) &&
+            $_FILES["immagine"]["error"] !== UPLOAD_ERR_NO_FILE
+        ) {
+            $errori["errImmagine"] =
+                validateFileField(
+                    $_FILES["immagine"],
+                    2 * 1024 * 1024,
+                    ["image/jpeg", "image/jpg", "image/png"]
+                )
+                    ? null
+                    : ERROR_MSG["immagine"];
+        } else {
+            $errori["errImmagine"] = ERROR_MSG["immagine"];
+        }
     }
 
     return array_filter($errori);

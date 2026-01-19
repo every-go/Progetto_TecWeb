@@ -39,7 +39,8 @@ if($id === null){
 // Inizializzazione delle variabili per il form
 $campiFormSemplici = array_merge(
     array_keys(campiDatiAnimale::$testi),
-    array_keys(campiDatiAnimale::$radio)
+    array_keys(campiDatiAnimale::$radio),
+    array_keys(campiDatiAnimale::$files)
 );
 
 $valori = array_fill_keys($campiFormSemplici, "");

@@ -1,4 +1,3 @@
-// funzioni_comuni.js
 export function caricamento(dettagli_form) {
 
     const form = document.querySelector("form");
@@ -6,28 +5,36 @@ export function caricamento(dettagli_form) {
         return;
     }
 
-    // Disabilita validazione HTML5 nativa
     form.setAttribute("novalidate", true);
 
-    // Input text, number, file, textarea
-    const inputs = form.querySelectorAll('input:not([type="radio"]), textarea');
+    const inputs = form.querySelectorAll('input:not([type="radio"]):not([type="file"]), textarea');
+    
     inputs.forEach(input => {
         const key = input.id || input.name;
 
-        // Inserimento messaggio default
         if (dettagli_form[key]) {
             inserisciMessaggioDefault(input, dettagli_form);
         }
 
-        // Blur listener
         input.addEventListener("blur", function () {
             if (dettagli_form[key]) {
-               var ok= validazioneCampo(this, dettagli_form);
+               validazioneCampo(this, dettagli_form);
             }
         });
     });
 
-    // Radio
+    // AGGIUNTO: Event listener per il campo file
+    const fileInput = form.querySelector('input[type="file"]');
+    
+    if (fileInput) {
+        
+        if (dettagli_form[fileInput.id]) {
+            fileInput.addEventListener("blur", function() {
+                const risultato = validazioneCampo(this, dettagli_form);
+            });
+        }
+    }
+
     const radios = form.querySelectorAll('input[type="radio"]');
     const radioGroups = {};
     radios.forEach(radio => {
@@ -36,15 +43,18 @@ export function caricamento(dettagli_form) {
     });
 
     Object.values(radioGroups).forEach(group => {
-        const groupName = group[0].name;
+        group.forEach(radio => {
+            radio.addEventListener("blur", function() {
+                validazioneCampoRadio(group, dettagli_form);
+            });
+        });
     });
 
-    // Submit listener
     if (form) {
       form.onsubmit = function () {
          return validazioneForm(dettagli_form);
       };
-   }
+    }
 }
 
 export function inserisciMessaggioDefault(input, dettagli_form) {
@@ -61,6 +71,7 @@ export function inserisciMessaggioDefault(input, dettagli_form) {
 
 export function validazioneCampo(input, dettagli_form) {
    const key = input.id;
+   
    const regex = dettagli_form[key][1];
    const text = input.value;
    const parent = input.parentNode;
@@ -69,16 +80,16 @@ export function validazioneCampo(input, dettagli_form) {
 
    let valido = true;
 
-   // Controllo file
    if (input.type === "file") {
-    const hasCurrent = document.getElementById("immagineCorrente")?.dataset.hasCurrent === "true";
-    if (!hasCurrent && input.files.length === 0) {
-       valido = false;
+        const imgCorrente = document.getElementById("immagineCorrente");
+        const hasCurrent = imgCorrente?.dataset.hasCurrent === "true";
+        
+        // Se non c'è immagine corrente, il file è obbligatorio
+        if (!hasCurrent && input.files.length === 0) {
+            valido = false;
+        }
     }
-   }
 
-
-   // Controllo regex solo per gli altri tipi
    if (regex instanceof RegExp && input.type !== "file" && !regex.test(text)) {
        valido = false;
    }
@@ -123,7 +134,6 @@ export function validazioneForm(dettagli_form) {
 
     const form = document.querySelector("form");
 
-    // Text, number, file, textarea
     const inputs = form.querySelectorAll('input:not([type="radio"]), textarea');
     inputs.forEach(input => {
         const key = input.id;
