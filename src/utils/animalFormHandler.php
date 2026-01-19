@@ -126,10 +126,11 @@ function createForm($azione, $id = null)
 
     if ($azione === "Aggiungi") {
 
-        $actionForm = "ispeziona_animale.php?".createHttpQuery($_GET, ['pagina', 'search']);
+        // $actionForm = "ispeziona_animale.php?".createHttpQuery($_GET, ['pagina', 'search']);
+        $actionForm = "./aggiungiAnimale.php?" . createHttpQuery($_GET, ['pagina', 'search']);
         $content = str_replace("[actionForm]", $actionForm, $content);
     } elseif ($azione === "Modifica") {
-        $actionForm = "ispeziona_animale.php?" . createHttpQuery($_GET, ['pagina', 'search', 'id']);
+        $actionForm = "modificaAnimale.php?" . createHttpQuery($_GET, ['pagina', 'search', 'id']);
         $content = str_replace("[actionForm]", $actionForm, $content);
     }
 

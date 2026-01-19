@@ -153,7 +153,7 @@ if (isset($_GET["id"])) {
         $params = htmlspecialchars(http_build_query($_GET));
         $pulsanti .=
             '<div class="admin-buttons">
-                    <a role="button" href="ispeziona_animale.php?' .
+                    <a role="button" href="modificaAnimale.php?' .
             $params .
             '" class="btn-modifica">Modifica</a>
                     <a role="button" href="elimina.php?' .

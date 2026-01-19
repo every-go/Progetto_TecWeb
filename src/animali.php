@@ -121,7 +121,7 @@ if (
     $_SESSION["role"] === "admin"
 ) {
     $parametriQuery = $_GET;
-    $pulsanteAdd = '<a id="add-animal-btn" role="button" href="ispeziona_animale.php?' . 
+    $pulsanteAdd = '<a id="add-animal-btn" role="button" href="aggiungiAnimale.php?' . 
     htmlspecialchars(http_build_query($parametriQuery)) . 
     '">
     <span class="material-symbols-outlined" aria-hidden="true">add</span> Aggiungi </a>';

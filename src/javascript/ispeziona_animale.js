@@ -76,7 +76,7 @@ var dettagli_form = {
    "bisogni": [
       "Es: Un tetto stabile; Briciole di pane sempre a portata di becco;",
       /^[\p{L}0-9 ,:;'."()?!\n]{1,}$/u,
-      "I bisogni possono contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . ; , : ' \" ? ! ( )"
+      "I bisogni possono contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . , : ' \" ? ! ( ), qualsiasi punto e virgola ; sarà letto come un separatore"
    ],
    "storia": [
       "Es: Flavio è nato su un tetto vicino alla stazione. Da piccolo adorava osservare i treni partire.",

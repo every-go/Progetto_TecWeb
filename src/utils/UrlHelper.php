@@ -8,6 +8,8 @@ class UrlHelper
         'logout.php',
         'area_personale.php',
         'ispeziona_animale.php',
+        'aggiungiAnimale.php',
+        'modificaAnimale.php',
     ];
 
 
