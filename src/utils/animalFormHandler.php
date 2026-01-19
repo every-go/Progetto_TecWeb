@@ -1,18 +1,15 @@
 <?php
+require_once __DIR__ . "/validator.php";
+require_once "utils/imageHandler.php";
 
-//helper per la creazione delle query dei parametri http
 function createHttpQuery($source, $allowedKeys, $htmlChars = true)
 {
-    // Converto la lista di chiavi ['chiave', 'valore'] in un array associativo ['id'=>0, 'nome'=>1]
-    // Questo serve per poter fare l'intersezione basata sulle chiavi.
     $whitelist = array_flip($allowedKeys);
 
-    // Prendo da $source SOLO le chiavi che esistono in $whitelist.
     $filtered = array_intersect_key($source, $whitelist);
 
-    // Costruisco la query, considerando se devo fare l'escape dei caratteri HTML.
-    return $htmlChars ? 
-        htmlspecialchars(http_build_query($filtered)) : 
+    return $htmlChars ?
+        htmlspecialchars(http_build_query($filtered)) :
         http_build_query($filtered);
 }
 
@@ -110,7 +107,6 @@ class campiDatiAnimale
         "errBisogni"      => "errBisogni",
         "errStoria"       => "errStoria",
     ];
-
 }
 
 function createForm($azione, $id = null)
@@ -130,7 +126,6 @@ function createForm($azione, $id = null)
 
     if ($azione === "Aggiungi") {
 
-        // $actionForm = "ispeziona_animale.php?".createHttpQuery($_GET, ['pagina', 'search']);
         $actionForm = "./aggiungiAnimale.php?" . createHttpQuery($_GET, ['pagina', 'search']);
         $content = str_replace("[actionForm]", $actionForm, $content);
     } elseif ($azione === "Modifica") {
@@ -175,8 +170,8 @@ function populateForm($animalData, $content)
 function buildAriaAlert(string $id, string $msg): string
 {
     return '<div role="alert" id="' . htmlspecialchars($id, ENT_QUOTES) . '">' .
-           htmlspecialchars($msg, ENT_QUOTES) .
-           '</div>';
+        htmlspecialchars($msg, ENT_QUOTES) .
+        '</div>';
 }
 
 function renderErrorsWithAria(string $html, array $errors): string
@@ -351,9 +346,9 @@ function checkSelection($input, $allowedValues, $nomeCampo)
     return null;
 }
 
-// FUNZIONE CORRETTA - AGGIUNTO PARAMETRO $isModifica
-function checkForm($data, $isModifica = false)
+function checkForm($data)
 {
+
     $errori = [
         "errNome" => "",
         "errEta" => "",
@@ -375,38 +370,38 @@ function checkForm($data, $isModifica = false)
 
     $errori[$confTesti["nome"]["errPlaceholder"]] =
         validateTextField($data["nome"] ?? "", REGEX["nome"])
-            ? null
-            : "Nome non valido";
+        ? null
+        : "Nome non valido";
 
     $errori[$confTesti["luogo"]["errPlaceholder"]] =
         validateTextField($data["luogo"] ?? "", REGEX["luogo"])
-            ? null
-            : "Luogo non valido";
+        ? null
+        : "Luogo non valido";
 
     $errori[$confTesti["eta"]["errPlaceholder"]] =
         validateNumberField($data["eta"] ?? "", REGEX["eta"])
-            ? null
-            : "Età non valida";
+        ? null
+        : "Età non valida";
 
     $errori[$confTesti["descrizione"]["errPlaceholder"]] =
         validateTextareaField($data["descrizione"] ?? "", REGEX["descrizione"])
-            ? null
-            : "Descrizione non valida";
+        ? null
+        : "Descrizione non valida";
 
     $errori[$confTesti["bisogni"]["errPlaceholder"]] =
         validateTextareaField($data["bisogni"] ?? "", REGEX["bisogni"])
-            ? null
-            : "Bisogni non validi";
+        ? null
+        : "Bisogni non validi";
 
     $errori[$confTesti["alt"]["errPlaceholder"]] =
         validateTextareaField($data["alt"] ?? "", REGEX["alt"])
-            ? null
-            : "Descrizione immagine non valida";
+        ? null
+        : "Descrizione immagine non valida";
 
     $errori[$confTesti["storia"]["errPlaceholder"]] =
         validateTextareaField($data["storia"] ?? "", REGEX["storia"])
-            ? null
-            : "Storia non valida";
+        ? null
+        : "Storia non valida";
 
     foreach ($confRadio as $dbKey => $config) {
         $inputName = $config["form"] ?? $dbKey;
@@ -416,13 +411,14 @@ function checkForm($data, $isModifica = false)
 
         $errori[$errKey] =
             validateRadioField($data[$inputName] ?? null, $valoriAmmessi)
-                ? null
-                : "$label non valido";
+            ? null
+            : "$label non valido";
     }
 
-    // CORREZIONE: Valida l'immagine solo se NON è una modifica
-    // In modifica, l'immagine è opzionale (viene gestita separatamente in modificaAnimale.php)
-    if (!$isModifica) {
+    if (
+        isset($_FILES["immagine"]) &&
+        $_FILES["immagine"]["error"] !== UPLOAD_ERR_NO_FILE
+    ) {
         $errori["errImmagine"] =
             validateFileField(
                 $_FILES["immagine"] ?? [],
@@ -435,5 +431,3 @@ function checkForm($data, $isModifica = false)
 
     return array_filter($errori);
 }
-
-?>
