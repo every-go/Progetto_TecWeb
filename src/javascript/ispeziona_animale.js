@@ -1,4 +1,6 @@
 const img = document.getElementById('immagineCorrente');
+const input = document.getElementById('immagine');
+const maxSize = 2 * 1024 * 1024; // 2MB
 
 // Al caricamento pagina
 window.addEventListener('DOMContentLoaded', () => {
@@ -8,10 +10,49 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // Al cambio immagine
-const input = document.getElementById('immagine');
 input.addEventListener('change', () => {
     const file = input.files[0];
+    const parent = input.parentElement;
+    
+    // Rimuovi eventuali errori precedenti
+    const oldError = parent.querySelector('.errorSuggestion');
+    if (oldError) {
+        oldError.remove();
+    }
+    input.removeAttribute('aria-invalid');
+    
     if (!file) return;
+    
+    // Validazione dimensione
+    if (file.size > maxSize) {
+        const node = document.createElement("div");
+        node.className = "errorSuggestion";
+        node.role = "alert";
+        node.innerHTML = "File troppo grande (Max 2MB)";
+        parent.appendChild(node);
+        input.setAttribute('aria-invalid', 'true');
+        input.value = ''; // Resetta l'input
+        // Ripristina l'immagine precedente se c'era
+        if (!img.dataset.hasCurrent) {
+            img.src = '';
+        }
+        return;
+    }
+    
+    // Validazione tipo file
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+    if (!allowedTypes.includes(file.type)) {
+        const node = document.createElement("div");
+        node.className = "errorSuggestion";
+        node.role = "alert";
+        node.innerHTML = "Formato non valido (solo JPG, JPEG, PNG)";
+        parent.appendChild(node);
+        input.setAttribute('aria-invalid', 'true');
+        input.value = '';
+        return;
+    }
+    
+    // Se tutto ok, mostra preview
     const reader = new FileReader();
     reader.onload = e => {
         img.src = e.target.result;
