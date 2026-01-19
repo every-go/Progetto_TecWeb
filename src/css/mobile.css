@@ -117,11 +117,19 @@ tbody th, tbody td {
     border: none;
 }
     
-tbody th {
+table tbody th {
     font-size: 1.2em;
     margin-bottom: 0.5em;
     padding-bottom: 0.5em;
-    border-bottom: 1px solid var(--grigio) !important;
+    border-bottom: 1px solid var(--grigio);
+}
+
+tbody tr:last-child th {
+    border-bottom: 1px solid var(--grigio);
+}
+
+tbody tr td:last-child {
+    border-bottom: none;
 }
 
 #adozione {
