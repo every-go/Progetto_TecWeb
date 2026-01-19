@@ -6,4 +6,4 @@ composer.lock
 phpunit.xml
 src/utils/test/*
 log/
-src/images/uploads/
+src/images/uploads/*
