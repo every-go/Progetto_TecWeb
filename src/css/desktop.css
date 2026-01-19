@@ -1019,6 +1019,109 @@ button[type="submit"]:hover {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--primary-bg);
+    padding: 5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    animation: slideIn 0.3s ease;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1em;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.btn-conferma-adozione,
+.btn-annulla-adozione {
+    padding: 0.8em 2em;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-conferma-adozione {
+    background-color: var(--secondary-bg);
+    color: var(--primary-bg);
+}
+
+.btn-conferma-adozione:hover {
+    background-color: var(--verdescuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-conferma-adozione:visited {
+    color: var(--primary-bg);
+}
+
+.btn-annulla-adozione:visited {
+    color: var(--secondary-bg);
+}
+
+.btn-annulla-adozione {
+    background-color: var(--primary-bg);
+    color: var(--secondary-bg);
+    border: 2px solid var(--secondary-bg);
+}
+
+.btn-annulla-adozione:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-conferma-adozione:focus,
+.btn-annulla-adozione:focus {
+    outline: 3px solid var(--grigio);
+    outline-offset: 2px;
+}
+
+.btn-conferma-adozione:active,
+.btn-annulla-adozione:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
 fieldset {
     border: none;
     padding: 0;

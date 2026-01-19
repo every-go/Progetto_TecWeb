@@ -17,6 +17,7 @@
     <script src="javascript/gestisci_preferiti.js"></script>
     <script src="javascript/avviso.js"></script>
     <script src="javascript/menu.js" defer></script>
+    <script src="javascript/adotta.js" defer></script>
 </head>
 
 <body id="top" onload="caricaGestoriEventi()">
@@ -82,6 +83,16 @@
         </section>
         [adottami]
     </main>
+    <div id="modal-conferma" class="modal" role="dialog" aria-labelledby="modal-titolo" aria-describedby="modal-descrizione" aria-modal="true">
+        <div class="modal-content">
+            <h3 id="modal-titolo">Conferma adozione</h3>
+            <p id="modal-descrizione">Sei sicuro di voler procedere con l'adozione?</p>
+            <div class="modal-buttons">
+                <button class="btn-conferma-adozione" id="conferma-si">Sì, procedi</button>
+                <button class="btn-annulla-adozione" id="conferma-no">Annulla</button>
+            </div>
+        </div>
+    </div>
     <footer>
         <a href="#top" id="pulsante-torna-su" aria-label="Torna a inizio della pagina">
             ⇪

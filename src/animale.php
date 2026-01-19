@@ -170,8 +170,8 @@ if (isset($_GET["id"])) {
                 Che la sua natura sia comune o rara, ciò che può offrire è semplice: compagnia, presenza e un legame
                 sincero. Se qualcosa ha acceso la tua curiosità, forse è il primo passo verso un incontro
                 speciale. Scopri un po\' di più… potrebbe essere il compagno che stavi cercando.</p>
-            <form action="adotta.php?' . $parametriQuery . '" method="post"> 
-                <button type="submit">Adotta!</button>
+            <form class="form-adozione" action="adotta.php?' . $parametriQuery . '" method="post"> 
+                <button type="submit" class="bottone-adotta">Adotta!</button>
             </form>
         </aside>';
     } 
