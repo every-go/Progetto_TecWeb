@@ -74,14 +74,7 @@ DELIMITER ;
 INSERT INTO animali (nome, alt, immagine, sesso, tipo_animale, luogo, eta, taglia, carattere, descrizione, bisogni, storia, adottato)
 VALUES
 ('Capitano', 
-'Un cane di taglia media, simile a un mix di Shetland Sheepdog o Collie, 
-    con un lungo e folto doppio mantello nei toni del marrone e bianco. 
-    Il pelo è dritto e denso intorno al collo. 
-    La testa presenta un muso stretto con una lista bianca che corre dalla fronte fino al naso.
-    Gli occhi sono di un caldo colore ambra marrone, attenti e con uno sguardo diretto.
-    Le orecchie sono semi erette, piegate in avanti, con pelo piumoso lungo i bordi.
-    Il naso è nero e umido, la bocca mostra qualche
-    piccolo granello sul labbro inferiore, conferendo un''espressione gentile e curiosa.',
+'Un cane di taglia media a pelo lungo',
 './images/jpg/animali/capitano.jpg',
 'Maschio',
 'Reale',
@@ -107,11 +100,7 @@ VALUES
 FALSE),
 
 ('Cavallo Lunare',
-'Un maestoso cavallo dalla corporatura possente, caratterizzato da un mantello scuro e polveroso che emula la superficie lunare,
-    costellato di crateri circolari e sfumature argenteo metalliche.
-    La criniera e la coda sono lunghe, fluenti e di un bianco luminoso quasi etereo,
-    che sembra risplendere di luce propria.
-    La muscolatura è ben definita, conferendo all''animale un''andatura regale e soprannaturale.',
+'Un cavallo possente e forte',
 './images/jpg/animali/cavallo_lunare.jpg',
 'Maschio',
 'Fantastico',
@@ -131,12 +120,8 @@ FALSE),
     Cerca una famiglia che sappia apprezzare la magia del silenzio e che abbia un cuore grande quanto l''universo.',
 FALSE),
 
-('Procione',
-'Un procione disteso su un grosso tronco d''albero, con il muso rivolto verso il basso.
-    Presenta la classica mascherina di pelo nero che avvolge gli occhi scuri e lucidi, contrastata da strisce di pelo bianco
-    puro sopra e sotto gli occhi. Il naso è piccolo e nero.
-    La pelliccia è folta e variegata, con una miscela di peli grigi, neri e biancastri che gli conferiscono un aspetto soffice.
-    Si intravede una piccola zampa nera con dita agili appoggiata al legno.',
+('Sly',
+'Un procione',
 './images/jpg/animali/procione.jpg',
 'Femmina',
 'Reale',
@@ -154,13 +139,8 @@ FALSE),
     Cerca una famiglia che capisca la sua natura selvatica ma sappia offrirle il calore di una casa sicura.',
 FALSE),
 
-('Medusa Lunare',
-'Una medusa sospesa sopra un suolo roccioso e grigio.
-    Presenta una grande cupola traslucida e bioluminescente, decorata con piccoli punti luminosi simili a stelle.
-    Dalla parte inferiore del corpo si dipartono numerosi tentacoli sottili e lunghi, di colore bianco e rosa pallido,
-    che fluttuano nell''aria come fili di seta.
-    Al centro, sotto la cupola, si trova una struttura più densa e frastagliata,
-    simile a petali di un fiore esotico, con sfumature calde che vanno dal color panna all''arancione tenue.',
+('Ursula',
+'Una medusa spaziale fluttuante',
 './images/jpg/animali/medusa_lunare.jpg',
 'Femmina',
 'Fantastico',
@@ -183,10 +163,7 @@ FALSE),
 FALSE),
 
 ('Paffuta',
-'Una gattina di circa tre anni con una pelliccia estremamente soffice e folta.
-    Il colore dominante è un nero delicato.
-    Gli occhi sono grandi, di un giallo intenso, che gli conferiscono un''espressione di perenne stupore.
-    Le orecchie sono piccole e leggermente arrotondate, mentre il musetto è corto con un piccolo naso nero.',
+'Una gattina di circa tre anni',
 './images/jpg/animali/paffuta.jpg',
 'Femmina',
 'Reale',
@@ -206,19 +183,16 @@ FALSE),
     Ora aspetta solo una casa dove poter diventare la regina del divano.',
 FALSE),
 
-('Drago',
-'Un drago maestoso. La pelle è coperta da scaglie spesse e sovrapposte di colore verde bosco e bruno, con riflessi dorati.
-    Una cresta di aculei ossei corre lungo la sommità del capo e del collo.
-    Gli occhi sono piccoli, di un arancione infuocato con pupilla verticale, e trasmettono un senso di antica saggezza.
-    Il muso è potente, con narici ampie e una mascella robusta protetta da corna laterali.',
+('Metallicana',
+'Un grande drago della mitologia occidentale, coperto di aculei',
 './images/jpg/animali/drago.jpg',
 'Maschio',
 'Fantastico',
 'Terra dei Draghi',
-100,
+1000,
 'Grande',
 'Difficile',
-'È una creatura di immensa dignità e pazienza, come ci si aspetta dai suoi 100 anni di età.
+'È una creatura di immensa dignità e pazienza, come ci si aspetta dai suoi 1000 anni di età.
     È un osservatore silenzioso che predilige la solitudine delle vette montuose,
     ma dimostra un''incredibile lealtà verso chi considera degno della sua fiducia.
     Il suo temperamento è difficile solo perché richiede molto tempo per aprirsi.',
@@ -230,8 +204,7 @@ FALSE),
     che non tema la sua imponenza ma che sappia rispettare la sua storia millenaria.',
 TRUE),
 ('Rodrigo', 
-'Un gabbiano dall''aria spavalda. 
-    Ha il piumaggio bianco e grigio, il becco giallo con la classica macchia rossa e uno sguardo che punta dritto al tuo panino.',
+'Un gabbiano',
 './images/jpg/animali/rodrigo.jpg',
 'Maschio',
 'Reale',
@@ -249,9 +222,7 @@ TRUE),
 'Allontanato dal porto vecchio per "condotta molesta" ai danni dei turisti, Rodrigo cerca una nuova zona di caccia o un umano paziente che apprezzi la sua audacia.',
 FALSE),
 ('Flavio', 
-'Un piccione di città dal piumaggio grigio iridescente sul collo, indossa delle scarpe con nere con la punta bianca. 
-    Gli manca qualche piuma sulla coda e cammina con un''andatura ciondolante. 
-    Sembra perennemente confuso.',
+'Un piccione con delle scarpe',
 './images/jpg/animali/flavio.jpg',
 'Maschio',
 'Reale',
@@ -270,8 +241,7 @@ FALSE),
 FALSE),
 
 ('Magmion', 
-'Una piccola creatura tozza e muscolosa fatta di roccia e magma parzialmente solidificato. 
-    Ha occhi gialli luminosi.',
+'Una piccola creatura tozza e muscolosa fatta di roccia e magma parzialmente solidificato',
 './images/jpg/animali/magmion.jpg',
 'Maschio',
 'Fantastico',
@@ -290,8 +260,7 @@ FALSE),
 FALSE),
 
 ('Genoveffo', 
-'Non il solito unicorno etereo. Genoveffo è un po'' in sovrappeso, col manto rosa shocking e una criniera piena di glitter naturali. 
-    Il suo corno è leggermente storto e mastica sempre gomme da masticare magiche.',
+'Unicorno sovrappeso, col manto pieno di glitter naturali',
 './images/jpg/animali/genoveffo.jpg',
 'Maschio',
 'Fantastico',
@@ -310,7 +279,7 @@ FALSE),
 FALSE),
 
 ('Eusbebo', 
-'Un topolino dal pelo verde e scarmigliato. 
+'Un topolino non morto. 
     Gli manca un orecchio e si vede una costola, cammina trascinando una zampetta.',
 './images/jpg/animali/eusbebo.jpg',
 'Maschio',
@@ -330,8 +299,7 @@ FALSE),
 FALSE),
 
 ('Luna', 
-'Una gatta europea sonnolenta dal manto tigrato grigio e nero, con zampe bianche come se indossasse dei calzini. 
-    Gli occhi sono grandi, di un verde smeraldo intenso.',
+'Una gatta europea',
 './images/jpg/animali/luna.jpg',
 'Femmina',
 'Reale',
@@ -350,9 +318,7 @@ FALSE),
 FALSE),
 
 ('Ignis', 
-'Un piccolo drago dalle scaglie rosso rubino che brillano alla luce. 
-    Ha piccole ali membranose ripiegate sulla schiena e una coda che termina con una punta a forma di freccia. 
-    Dalle narici esce un sottile filo di fumo grigio.',
+'Un piccolo di drago rubino',
 './images/jpg/animali/ignis.jpg',
 'Maschio',
 'Fantastico',
@@ -371,9 +337,7 @@ FALSE),
 FALSE),
 
 ('Pompon', 
-'Un coniglio ariete nano dal pelo bianco candido e sofficissimo. 
-    Le sue lunghe orecchie pendono ai lati del muso, coprendogli quasi gli occhi neri e rotondi. 
-    Sta sgranocchiando una carota con espressione soddisfatta.',
+'Un soffice coniglio ariete nano',
 './images/jpg/animali/pompon.jpg',
 'Maschio',
 'Reale',
@@ -392,9 +356,7 @@ FALSE),
 FALSE),
 
 ('Aura', 
-'Una creatura maestosa simile a un cavallo, con un manto perlaceo che riflette i colori dell''arcobaleno. 
-    Sulla fronte svetta un corno a spirale cristallino. 
-    La criniera è lunga, setosa e sembra muoversi anche in assenza di vento.',
+'Un unicorno dalla lunga criniera.',
 './images/jpg/animali/aura.jpg',
 'Femmina',
 'Fantastico',
@@ -416,7 +378,7 @@ FALSE);
 INSERT INTO utenti (username, password, admin) VALUES
 ('user',  '$2y$12$K2R1ELDMEzDLHGrJc3Naae2ETOBZ1TLwbpON4yBqohfsyKl8AdLDe', 0),
 ('admin', '$2y$10$VOI/xswYwipUU0kwauXl4uxygOZbhl9L4QeJYptmEipkHnkkRP0Ua', 1),
-('userrrrr', '$2y$10$NfqEqEV5ktu6/D6rsxD4YuFVfeOjoXDTZF9fYry7gXme9IU2uMqRK', 0);
+('username', '$2y$10$NfqEqEV5ktu6/D6rsxD4YuFVfeOjoXDTZF9fYry7gXme9IU2uMqRK', 0);
 
 INSERT INTO preferiti (username, id)
 VALUES ('user', 1),
