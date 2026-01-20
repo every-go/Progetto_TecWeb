@@ -99,7 +99,7 @@ VALUES
     Con il suo spirito resiliente, Capitano è pronto a diventare il cuore di una nuova famiglia.',
 FALSE),
 
-('Cavallo Lunare',
+('Alberto',
 'Un cavallo possente e forte',
 './images/jpg/animali/cavallo_lunare.jpg',
 'Maschio',
