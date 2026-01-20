@@ -3,8 +3,8 @@ import {caricamento} from './funzioni_comuni.js'
 var dettagli_form = {
    "username": [
       "Es: FlavioPiccione",
-      /^[A-Za-z]{4,24}$/,
-      "Ricorda che lo <span lang='en'>username</span> deve avere minimo 4 caratteri e massimo 24. Sono consentite solamente lettere maiuscole o minuscole senza spazi, numeri o caratteri speciali",
+      /^[A-Za-z ]{4,24}$/,
+      "Ricorda che lo <span lang='en'>username</span> deve avere minimo 4 caratteri e massimo 24. Sono consentite solo lettere maiuscole, minuscole e spazi.",
       "errUsername"
    ],
    "password": [
