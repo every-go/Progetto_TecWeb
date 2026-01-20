@@ -153,13 +153,13 @@ function populateForm($animalData, $content)
     if ($animalData["immagine"] !== "") {
         $content = str_replace(
             "[immagineCorrente]",
-            '<img id="immagineCorrente" src="' . htmlspecialchars($animalData["immagine"], ENT_QUOTES) . '" alt="" data-has-current="true">',
+            '<img id="immagineCorrente" src="' . htmlspecialchars($animalData["immagine"], ENT_QUOTES) . '" alt="" data-has-current="true" />',
             $content
         );
     } else {
         $content = str_replace(
             "[immagineCorrente]",
-            '<img id="immagineCorrente" src="" alt="" data-has-current="false">',
+            '<img id="immagineCorrente" src="" alt="" data-has-current="false" />',
             $content
         );
     }

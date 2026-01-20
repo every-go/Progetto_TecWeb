@@ -120,7 +120,7 @@ if (isset($_GET["id"])) {
                     '<button id="bottone-preferiti" aria-label="Rimuovi dai preferiti" data-id="' .
                     intval($_GET["id"]) .
                     '">
-                        <img src="./images/png/heart_filled.png" alt="Icona preferiti" id="icona-preferiti">
+                        <img src="./images/png/heart_filled.png" alt="Icona preferiti" id="icona-preferiti" />
                     </button>';
             } elseif (
                 $animalData["adottato"] === 0 &&
@@ -130,7 +130,7 @@ if (isset($_GET["id"])) {
                     '<button id="bottone-preferiti" aria-label="Aggiungi ai preferiti" data-id="' .
                     intval($_GET["id"]) .
                     '">
-                        <img src="./images/png/heart.png" alt="Icona preferiti" id="icona-preferiti">
+                        <img src="./images/png/heart.png" alt="Icona preferiti" id="icona-preferiti" />
                     </button>';
             }
         } else {
