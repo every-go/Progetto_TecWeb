@@ -29,7 +29,7 @@ $errorMessages = [
 
 function validateUsername(string $value): bool
 {
-    return (bool) preg_match('/^[a-zA-Z]{4,24}$/', $value);
+    return (bool) preg_match('/^[a-zA-Z ]{4,24}$/', $value);
 }
 
 function validatePassword(string $value): bool
@@ -63,7 +63,7 @@ if ((!isset($_SESSION["is_logged_in"]) || empty($_SESSION["is_logged_in"])) && i
         $errorMessages["username"] =
             '<div id="errUsername" class="errorSuggestion" role="alert">
                 Lo <span lang="en">username</span> deve avere minimo 4 caratteri e massimo 24. 
-                Può contenere solo lettere maiuscole o minuscole.
+                Può contenere solo lettere maiuscole, minuscole e spazi senza numeri o caratteri speciali.
             </div>';
     }
 

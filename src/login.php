@@ -34,7 +34,7 @@ if (isset($_GET['redirect'])) {
 }
 
 function validateUsername($username) {
-    return preg_match('/^[A-Za-z]{4,24}$/', $username);
+    return preg_match('/^[A-Za-z ]{4,24}$/', $username);
 }
 
 function validatePassword($password) {
@@ -62,7 +62,7 @@ if (empty($_SESSION["is_logged_in"])) {
         $password = $fields['password'];
 
         if(!validateUsername($fields["username"])){
-            $errorMessages['username'] = '<div id="errUsername" class="errorSuggestion" role="alert">Ricorda che lo <span lang="en">username</span> deve avere minimo 4 caratteri e massimo 24. Sono consentite solamente lettere maiuscole o minuscole senza spazi, numeri o caratteri speciali.</div>';
+            $errorMessages['username'] = '<div id="errUsername" class="errorSuggestion" role="alert">Ricorda che lo <span lang="en">username</span> deve avere minimo 4 caratteri e massimo 24. Sono consentite solamente lettere maiuscole o minuscole e spazi, senza numeri o caratteri speciali.</div>';
         }
 
         if(!validatePassword($fields["password"])){
