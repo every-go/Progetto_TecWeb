@@ -99,8 +99,8 @@ VALUES
     Con il suo spirito resiliente, Capitano è pronto a diventare il cuore di una nuova famiglia.',
 FALSE),
 
-('Alberto',
-'Un cavallo possente e forte',
+('Destriero',
+'Un cavallo possente e forte proveniente dalla Luna',
 './images/jpg/animali/cavallo_lunare.jpg',
 'Maschio',
 'Fantastico',
@@ -121,7 +121,7 @@ FALSE),
 FALSE),
 
 ('Sly',
-'Un procione',
+'Un procione terrestre',
 './images/jpg/animali/procione.jpg',
 'Femmina',
 'Reale',
@@ -163,7 +163,7 @@ FALSE),
 FALSE),
 
 ('Paffuta',
-'Una gattina di circa tre anni',
+'Una piccola gatta a pelo corto',
 './images/jpg/animali/paffuta.jpg',
 'Femmina',
 'Reale',
@@ -203,8 +203,9 @@ FALSE),
     diventato troppo silenzioso. Nonostante l''età, la sua forza è intatta e cerca un custode
     che non tema la sua imponenza ma che sappia rispettare la sua storia millenaria.',
 TRUE),
+
 ('Rodrigo', 
-'Un gabbiano',
+'Un piccolo gabbiano molto rompiscatole',
 './images/jpg/animali/rodrigo.jpg',
 'Maschio',
 'Reale',
@@ -221,6 +222,7 @@ TRUE),
     Tappi per le orecchie per le sue urla mattutine.',
 'Allontanato dal porto vecchio per "condotta molesta" ai danni dei turisti, Rodrigo cerca una nuova zona di caccia o un umano paziente che apprezzi la sua audacia.',
 FALSE),
+
 ('Flavio', 
 'Un piccione con delle scarpe',
 './images/jpg/animali/flavio.jpg',
@@ -279,8 +281,7 @@ FALSE),
 FALSE),
 
 ('Eusbebo', 
-'Un topolino non morto. 
-    Gli manca un orecchio e si vede una costola, cammina trascinando una zampetta.',
+'Un topolino non morto. Gli manca un orecchio e si vede una costola, cammina trascinando una zampetta.',
 './images/jpg/animali/eusbebo.jpg',
 'Maschio',
 'Fantastico',
@@ -299,7 +300,7 @@ FALSE),
 FALSE),
 
 ('Luna', 
-'Una gatta europea',
+'Una piccola gatta europea',
 './images/jpg/animali/luna.jpg',
 'Femmina',
 'Reale',
@@ -384,7 +385,7 @@ INSERT INTO preferiti (username, id)
 VALUES ('user', 1),
        ('user', 2),
        ('user', 3),
-       ('userrrrr', 6);
+       ('username', 6);
 
 INSERT INTO adottati (username, id)
 VALUES ('user', 6);
