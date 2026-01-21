@@ -123,7 +123,7 @@ if (isset($_GET["id"])) {
                         <img src="./images/png/heart_filled.png" alt="Icona preferiti" id="icona-preferiti" />
                     </button>';
             } elseif (
-                $animalData["adottato"] === 0 &&
+                $animalData["adottato"] == 0 &&
                 (!isset($_SESSION["role"]) || $_SESSION["role"] !== "admin")
             ) {
                 $pulsantePreferiti .=
