@@ -14,10 +14,9 @@
     <link rel="stylesheet" href="./css/print.css" type="text/css" media="print">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Milonga&display=swap" rel="stylesheet">
-    <script src="javascript/gestisci_preferiti.js"></script>
+    <script src="javascript/gestisci_preferiti.js" defer></script>
     <script src="javascript/avviso.js"></script>
     <script src="javascript/menu.js" defer></script>
-    <script src="javascript/adotta.js" defer></script>
 </head>
 
 <body id="top" onload="caricaGestoriEventi()">
@@ -83,6 +82,18 @@
         </section>
         [adottami]
     </main>
+
+    <div id="modal-avviso" class="modal" role="dialog" aria-labelledby="modal-titolo" aria-describedby="modal-descrizione" aria-modal="true">
+        <div class="modal-content">
+            <h3 id="modal-titolo">Devi avere effettuate l'accesso </h3>
+            <p id="modal-descrizione">Per aggiungere ai preferiti devi prima accedere </p>
+            <div class="modal-buttons">
+                <button class="btn-accedi" id="vai-accedi" aria-label="Accedi"> Accedi </button>
+                <button class="btn-annulla" id="annulla-accedi" aria-label="Annulla">Annulla</button>
+            </div>
+        </div>
+    </div>
+
     <div id="modal-conferma" class="modal" role="dialog" aria-labelledby="modal-titolo" aria-describedby="modal-descrizione" aria-modal="true">
         <div class="modal-content">
             <h3 id="modal-titolo">Conferma adozione</h3>

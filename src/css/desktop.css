@@ -1075,7 +1075,7 @@ button[type="submit"]:hover {
 }
 
 .btn-conferma-adozione,
-.btn-annulla-adozione {
+.btn-annulla-adozione, .btn-accedi, .btn-annulla{
     padding: 0.8em 2em;
     font-size: 1em;
     font-weight: bold;
@@ -1087,44 +1087,44 @@ button[type="submit"]:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.btn-conferma-adozione {
+.btn-conferma-adozione, .btn-accedi{
     background-color: var(--secondary-bg);
     color: var(--primary-bg);
 }
 
-.btn-conferma-adozione:hover {
+.btn-conferma-adozione:hover, .btn-accedi:hover {
     background-color: var(--verdescuro);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.btn-conferma-adozione:visited {
+.btn-conferma-adozione:visited, .btn-accedi:visited{
     color: var(--primary-bg);
 }
 
-.btn-annulla-adozione:visited {
+.btn-annulla-adozione:visited, .btn-annulla:visited {
     color: var(--secondary-bg);
 }
 
-.btn-annulla-adozione {
+.btn-annulla-adozione, .btn-annulla{
     background-color: var(--primary-bg);
     color: var(--secondary-bg);
     border: 2px solid var(--secondary-bg);
 }
 
-.btn-annulla-adozione:hover {
+.btn-annulla-adozione:hover, .btn-annulla:hover{
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .btn-conferma-adozione:focus,
-.btn-annulla-adozione:focus {
+.btn-annulla-adozione:focus, .btn-accedi:focus, .btn-annulla:focus{
     outline: 3px solid var(--grigio);
     outline-offset: 2px;
 }
 
 .btn-conferma-adozione:active,
-.btn-annulla-adozione:active {
+.btn-annulla-adozione:active, .btn-accedi:active, .btn-annulla:active {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
