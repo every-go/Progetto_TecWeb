@@ -74,7 +74,16 @@ if (!isset($_POST['Modifica'])) {
         $valori[$campo] = pulisciInput($_POST[$campo] ?? "");
     }
 
-    // CORREZIONE: Passa true come secondo parametro per indicare che è una modifica
+    $db = new DBAccess();
+    if ($db->openDBConnection()) {
+        $datiDB = $db->getImmagineById($id);
+        $db->closeConnection();
+        
+        if ($datiDB) {
+            $valori["immagine"] = $datiDB["immagine"];
+        }
+    }
+
     $errori = checkForm($valori, true);
 
     $imgError = null;
@@ -179,12 +188,13 @@ $content = str_replace("[ANIMALI_LINK_BREADCRUMB]", '<a href="animali.php?' .
     htmlspecialchars(http_build_query($parametriQuery)) .
     '">Animali</a>', $content);
 
-// breadcrumb aggiungi animale
-$content = str_replace("[ANIMALE_LINK_BREADCRUMB]", '', $content);
-$content = str_replace("[BREADCRUMB_SEPARATOR]", '', $content);
+// breadcrumb modifica animale
+// breadcrumb dettaglio animale
+$parametriQuery["id"] = $id;
+$content = str_replace("[ANIMALE_LINK_BREADCRUMB]", '<a href="animale.php?' .
+    htmlspecialchars(http_build_query($parametriQuery)) . '">' . $valori["nome"] . '</a>', $content);
 
-
-
+$content = str_replace("[BREADCRUMB_SEPARATOR]", '<span aria-hidden="true">&gt;&gt;</span> ', $content);
 
 
 

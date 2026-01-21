@@ -237,6 +237,33 @@ class DBAccess
         return array_map( 'htmlspecialchars', $animalData);
     }
 
+    public function getImmagineById($id){
+        if (!filter_var($id, FILTER_VALIDATE_INT) || $id <= 0) {
+            return false;
+        }
+
+        $animalData = false;
+
+        $query = "SELECT immagine FROM animali WHERE id = ?";
+
+        if ($stmt = mysqli_prepare($this->connection, $query)) {
+            mysqli_stmt_bind_param($stmt, "i", $id);
+
+            if (mysqli_stmt_execute($stmt)) {
+                $queryResult = mysqli_stmt_get_result($stmt);
+
+                if ($queryResult) {
+                    if (mysqli_num_rows($queryResult) > 0) {
+                        $animalData = mysqli_fetch_assoc($queryResult);
+                    }
+                    mysqli_free_result($queryResult);
+                }
+            }
+            mysqli_stmt_close($stmt);
+        }
+        return $animalData;
+    }
+
     function getPreferiti($username)
     {
         $sql = 'SELECT AN.id, AN.nome, AN.alt, AN.immagine, AN.sesso, AN.tipo_animale, AN.luogo, AN.eta,
