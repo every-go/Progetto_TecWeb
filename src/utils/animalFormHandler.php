@@ -351,13 +351,13 @@ const ERROR_MSG = [
     "sesso" => "Devi selezionare il sesso dell'animale.",
     "tipo_animale" => "Devi selezionare se l'animale è reale o fantastico.",
     "immagine" => "Devi selezionare un'immagine valida (formati accettati: jpg, jpeg, png; dimensione massima: 2 MB).",
-    "alt" => "Il testo alternativo dell'immagine può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura : . , ; \" ' ( ). Non deve essere più lunga di 1024 caratteri e non si può andare a capo.",
-    "luogo" => "Il luogo può contenere lettere (anche accentate), spazi, numeri e i caratteri , / ' \". Non deve essere più lungo di 100 caratteri.",
+    "alt" => "Il testo alternativo dell'immagine può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura : . , ; \" ' ’ ʼ ʻ ` ′ ( ). Non deve essere più lunga di 1024 caratteri e non si può andare a capo.",
+    "luogo" => "Il luogo può contenere lettere (anche accentate), spazi, numeri e i caratteri , / ' ’ ʼ ʻ ` ′ \". Non deve essere più lungo di 100 caratteri.",
     "taglia" => "Devi selezionare la taglia dell'animale.",
     "carattere" => "Devi selezionare la difficoltà di gestione dell'animale.",
-    "descrizione" => "La descrizione del carattere dell'animale non può essere più lunga di 1024 caratteri e può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . ; , : ' \" ? ! ( )",
+    "descrizione" => "La descrizione del carattere dell'animale non può essere più lunga di 1024 caratteri e può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . ; , : ' ’ ʼ ʻ ` ′ \" ? ! ( )",
     "bisogni" => "I bisogni non possono essere più lunghi di 1024 caratteri e possono contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . , : ' \" ? ! ( ), qualsiasi punto e virgola ; sarà letto come un separatore.",
-    "storia" => "La storia non può essere più lunga di 1024 caratteri e può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . ; , : ' \" ? ! ( )",
+    "storia" => "La storia non può essere più lunga di 1024 caratteri e può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . ; , : ' ’ ʼ ʻ ` ′ \" ? ! ( )",
 ];
 
 
