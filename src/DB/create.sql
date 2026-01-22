@@ -373,7 +373,7 @@ FALSE),
     Ampie radure boschive per correre; 
     Spazzolatura della criniera con pettini d''argento.',
 'Aura è apparsa misteriosamente nei boschi alpini, fuggita da un regno in cui la magia stava svanendo. Cerca un rifugio dove la natura è rispettata.',
-FALSE),
+FALSE);
 
 
 INSERT INTO utenti (username, password, admin) VALUES
