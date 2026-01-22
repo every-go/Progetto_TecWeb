@@ -87,7 +87,6 @@ if (btnAnnullaAvviso) {
     });
 }
 
-
 // modal conferma
 const modalConferma = document.getElementById('modal-conferma');
 const btnConferma = document.getElementById('conferma-si');
@@ -98,8 +97,21 @@ let elementoPrecedenteConferma = null;
 document.querySelectorAll('.form-adozione').forEach(form => {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        formDaInviare = this;
-        apriModalConferma();
+        
+        fetch('./api/verifica_sessione.php')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.logged_in) { // se non loggato mostra modal di avviso
+                    apriModalAvviso();
+                } else { // se loggato mostra modal di conferma
+                    formDaInviare = this;
+                    apriModalConferma();
+                }
+            })
+            .catch(error => {
+                console.error('Errore:', error);
+                alert("Errore di connessione");
+            });
     });
 });
 
