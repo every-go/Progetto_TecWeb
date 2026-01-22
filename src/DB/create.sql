@@ -375,20 +375,6 @@ FALSE),
 'Aura è apparsa misteriosamente nei boschi alpini, fuggita da un regno in cui la magia stava svanendo. Cerca un rifugio dove la natura è rispettata.',
 FALSE),
 
-('<script>alert(1)</script>',
-'<script>alert(1)</script>',
-'./images/jpg/animali/capitano.jpg',
-'Maschio',
-'Reale',
-'<script>alert(1)</script>',
-1,
-'Media',
-'Difficile',
-'<script>alert(1)</script>',
-'<script>alert(1)</script>',
-'<script>alert(1)</script>',
-FALSE);
-
 
 INSERT INTO utenti (username, password, admin) VALUES
 ('user',  '$2y$12$K2R1ELDMEzDLHGrJc3Naae2ETOBZ1TLwbpON4yBqohfsyKl8AdLDe', 0),
