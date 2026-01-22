@@ -49,7 +49,12 @@ if ($connessioneOK) {
         }
         $db->closeConnection();
     } else {
-        $stringaAnimali = $db->getList();
+        if (isset($_SESSION["role"]) && $_SESSION["role"] === "admin"){
+            $stringaAnimali = $db->getAllList();
+        }
+        else{
+            $stringaAnimali = $db->getList();
+        }
         $db->closeConnection();
 
         $stringaAnimali = DataSanitizer::pulisciLista($stringaAnimali);

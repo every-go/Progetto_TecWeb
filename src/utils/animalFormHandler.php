@@ -153,7 +153,7 @@ function populateForm($animalData, $content)
     if ($animalData["immagine"] !== "") {
         $content = str_replace(
             "[immagineCorrente]",
-            '<img id="immagineCorrente" src="' . htmlspecialchars($animalData["immagine"], ENT_QUOTES) . '" alt="" data-has-current="true" />',
+            '<img id="immagineCorrente" src="' . htmlspecialchars($animalData["immagine"], ENT_QUOTES) . '" alt="' . $animalData["alt"] . '" data-has-current="true" />',
             $content
         );
     } else {
@@ -351,7 +351,7 @@ const ERROR_MSG = [
     "sesso" => "Devi selezionare il sesso dell'animale.",
     "tipo_animale" => "Devi selezionare se l'animale è reale o fantastico.",
     "immagine" => "Devi selezionare un'immagine valida (formati accettati: jpg, jpeg, png; dimensione massima: 2 MB).",
-    "alt" => "La descrizione fisica dell'animale può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura : . , ; \" ' ( ). Non deve essere più lunga di 1024 caratteri e non si può andare a capo.",
+    "alt" => "Il testo alternativo dell'immagine può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura : . , ; \" ' ( ). Non deve essere più lunga di 1024 caratteri e non si può andare a capo.",
     "luogo" => "Il luogo può contenere lettere (anche accentate), spazi, numeri e i caratteri , / ' \". Non deve essere più lungo di 100 caratteri.",
     "taglia" => "Devi selezionare la taglia dell'animale.",
     "carattere" => "Devi selezionare la difficoltà di gestione dell'animale.",

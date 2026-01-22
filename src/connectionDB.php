@@ -14,7 +14,7 @@ class DBAccess
 {
     //XAMPP localhost mydb root ""
     //Docker db mydb root root
-    //mmazzare mmazzare mmazzare password
+    //localhost mmazzare mmazzare password
     private const HOST_DB = "localhost";
     private const DATABASE_NAME = "mydb";
     private const USERNAME = "root";
@@ -95,7 +95,7 @@ class DBAccess
     }
 
 
-    public function getList()
+    function getList()
     {
         $query = "SELECT * FROM animali WHERE adottato = 0 ORDER BY id ASC";
 
@@ -111,7 +111,22 @@ class DBAccess
         return $result;
     }
 
-    public function eliminaAnimale($id)
+    function getAllList(){
+        $query = "SELECT * FROM animali ORDER BY id ASC";
+
+        ($queryResult = mysqli_query($this->connection, $query)) or
+            die("Errore in dbConnection: " . mysqli_error($this->connection));
+
+        $result = [];
+
+        while ($row = mysqli_fetch_assoc($queryResult)) {
+            array_push($result, $row);
+        }
+        $queryResult->free();
+        return $result;
+    }
+
+    function eliminaAnimale($id)
     {
         $risultato = false;
         $immagine = null;
@@ -161,7 +176,7 @@ class DBAccess
     }
 
 
-    public function aggiornaAnimale(
+    function aggiornaAnimale(
         $id,
         $nome,
         $alt,
@@ -210,7 +225,7 @@ class DBAccess
         return $risultato;
     }
 
-    public function getAnimalById($id)
+    function getAnimalById($id)
     {
         if (!filter_var($id, FILTER_VALIDATE_INT) || $id <= 0) {
             return false;
@@ -237,14 +252,14 @@ class DBAccess
         return array_map( 'htmlspecialchars', $animalData);
     }
 
-    public function getImmagineById($id){
+    function getImmagineById($id){
         if (!filter_var($id, FILTER_VALIDATE_INT) || $id <= 0) {
             return false;
         }
 
         $animalData = false;
 
-        $query = "SELECT immagine FROM animali WHERE id = ?";
+        $query = "SELECT immagine, alt FROM animali WHERE id = ?";
 
         if ($stmt = mysqli_prepare($this->connection, $query)) {
             mysqli_stmt_bind_param($stmt, "i", $id);
@@ -590,35 +605,6 @@ class DBAccess
         }
 
         return $success;
-    }
-
-    public function getListaLuoghi()
-    {
-        $query = "SELECT DISTINCT luogo 
-                    FROM animali 
-                    WHERE luogo IS NOT NULL AND luogo <> '' 
-                    ORDER BY luogo ASC";
-
-        $luoghi = [];
-
-        $result = mysqli_query($this->connection, $query);
-
-        if (!$result) {
-
-            return null;
-        }
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            $luogoPulito = ucfirst(strtolower($row['luogo']));
-
-            if (!in_array($luogoPulito, $luoghi)) {
-                $luoghi[] = $luogoPulito;
-            }
-        }
-
-        mysqli_free_result($result);
-
-        return $luoghi;
     }
 
     public function getAdottatoDa($id)

@@ -89,7 +89,7 @@ var dettagli_form = {
    "alt": [
       "Es: Flavio è un piccione con delle piume bianche, ha un becco lungo e indossa delle scarpe nere con la punta bianca",
       /^[\p{L}0-9 ,:;'."()]{1,1024}$/u,
-      "La descrizione fisica dell'animale può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura : . , ; \" ' ( ). Non deve essere più lunga di 1024 caratteri e non si può andare a capo.",
+      "Il testo alternativo dell'immagine può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura : . , ; \" ' ( ). Non deve essere più lunga di 1024 caratteri e non si può andare a capo.",
       "errAlt"
    ],
    "luogo": [

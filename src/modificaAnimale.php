@@ -10,7 +10,7 @@ require_once "utils/animalFormHandler.php";
 //funzione per pulire l'input dell'utente
 function pulisciInput($data)
 {
-    return htmlspecialchars(trim($data));
+    return trim($data);
 }
 
 if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "admin") {
