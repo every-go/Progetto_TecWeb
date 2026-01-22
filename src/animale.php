@@ -223,10 +223,10 @@ if ($adottatoDaUtente) {
 
 $messaggioAdozione = '';
 if (isset($_SESSION['messaggio_errore'])) {
-    $messaggioAdozione = "<p class='error-adozione' aria-live='assertive' role='alert'>" . $_SESSION['messaggio_errore'] . " </p>";
+    $messaggioAdozione = "<p id='error-adozione' role='alert'>" . $_SESSION['messaggio_errore'] . " </p>";
     unset($_SESSION['messaggio_errore']);
 } elseif (isset($_SESSION['messaggio_adozione'])) {
-    $messaggioAdozione = "<p class='confirm-adozione' aria-live='assertive' role='alert'>" . $_SESSION['messaggio_adozione'] . " </p>";
+    $messaggioAdozione = "<p id='confirm-adozione' role='alert'>" . $_SESSION['messaggio_adozione'] . " </p>";
     unset($_SESSION['messaggio_adozione']);
 }
 

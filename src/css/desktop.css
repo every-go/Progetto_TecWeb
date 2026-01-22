@@ -781,6 +781,14 @@ button[type="submit"]:hover {
     vertical-align: middle;
 }
 
+#confirm-adozione{
+    text-indent: -99999em;
+}
+
+#errore-adozione{
+    text-indent: -99999em;
+}
+
 .pages-buttons {
     display: flex;
     gap: 3em;
@@ -1061,6 +1069,15 @@ button[type="submit"]:hover {
 .modal-buttons {
     display: flex;
     gap: 1em;
+}
+
+#modal-incipit{
+    font-size: 2em;
+}
+
+#modal-descrizione-avviso{
+    font-size: 2em;
+    text-align: center;
 }
 
 @keyframes slideIn {
@@ -1522,7 +1539,6 @@ a#pulsante-torna-su:focus {
     margin-top: 0.3em;
     font-size: 0.9em;
 }
-
 
 @media (max-width: 1200px) {
     #container-adozione {
