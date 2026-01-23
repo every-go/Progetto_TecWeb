@@ -163,7 +163,7 @@ if (isset($_GET["id"])) {
         if($animalData["adottato"] == 1){
             $adottami = '<aside>
                         <h2>' . $animalData["nome"] . 
-                        ($animalData["genere"] === "Maschio" ? " è stato già adottato!" : " è stata già adottata!").
+                        ($animalData["sesso"] === "Maschio" ? " è stato già adottato!" : " è stata già adottata!").
                         '</h2>
                         <p>Essendo l\'animale già stato adottato, ogni modifica che farai verrà visualizzata solo agli utenti che lo hanno adottato oppure che lo hanno aggiunto ai preferiti prima che venisse adottato. Vedi tu se conviene farlo!</p>
                         </aside>';
