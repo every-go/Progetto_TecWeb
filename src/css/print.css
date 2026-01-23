@@ -1,6 +1,6 @@
 *{
-   padding: 0em;
-   margin: 0em;
+   padding: 0em !important;
+   margin: 0em !important;
    background: none !important;
    color: black !important;
 }
@@ -21,6 +21,10 @@ header{
 
 footer{
    display: none;
+}
+
+p, ol, ul {
+   font-size: 11pt !important;
 }
 
 a.pulsante-torna-su{
@@ -70,16 +74,12 @@ img.print-only{
 }
 
 .txt-img {
-   margin: 0;
    margin-bottom: 0.5cm;
    flex-direction: column;
    text-align: center;
    gap: 0cm;
 }
 
-.pulsante { 
-   margin-top: 0cm;
-}
 
 .txt-img p{
    width: 100%;
@@ -93,19 +93,9 @@ img.print-only{
 }
 
 #adozione .card {
-   margin: 0 auto;
-   padding: 0;
    width: 100%;
    break-inside: avoid;
    -webkit-break-inside: avoid;
-}
-
-#adozione .card li {
-   padding: 0;
-}
-
-#adozione .card dt {
-   padding: 0;
 }
 
 #statistiche {
@@ -128,6 +118,8 @@ img.print-only{
 
 .animale-card {
    border: 1px solid black;
+   page-break-inside: avoid;
+   break-inside: avoid;
 }
 
 .animale-card img {
@@ -137,6 +129,7 @@ img.print-only{
 .animali {
    gap: 2em;
    break-before: avoid;
+   page-break-before: avoid;
 }
 
 .pagination { 
@@ -151,17 +144,9 @@ img.print-only{
    display: unset;
 }
 
-#info-principali dd {
-   margin-bottom: 0;
-}
-
 #description {
    break-before: always;
    page-break-before: always;
-}
-
-#description header {
-   margin-bottom: 0;
 }
 
 #animale-main aside {
@@ -172,4 +157,25 @@ img.print-only{
 #animale-main aside button {
    margin-top: 1cm;
    border: 1px solid black;
+}
+
+#impegno {
+   display: unset;
+   text-align: center;
+}
+
+#impegno > div {
+   width: 100%;
+
+}
+
+
+#impegno ul {
+   display: inline-block;
+}
+
+
+
+#impegno li {
+   width: fit-content;
 }
