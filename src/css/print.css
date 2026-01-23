@@ -125,3 +125,51 @@ img.print-only{
 .stat {
    font-size: 40px;
 }
+
+.animale-card {
+   border: 1px solid black;
+}
+
+.animale-card img {
+   height: 150px;
+}
+
+.animali {
+   gap: 2em;
+   break-before: avoid;
+}
+
+.pagination { 
+   display: none;
+}
+
+#search-form {
+   display: none;
+}
+
+#animale-main {
+   display: unset;
+}
+
+#info-principali dd {
+   margin-bottom: 0;
+}
+
+#description {
+   break-before: always;
+   page-break-before: always;
+}
+
+#description header {
+   margin-bottom: 0;
+}
+
+#animale-main aside {
+   margin: 1cm 0 0 0;
+   border: 1px solid black;
+}
+
+#animale-main aside button {
+   margin-top: 1cm;
+   border: 1px solid black;
+}
