@@ -304,8 +304,6 @@ Linearizzazione di Aaron Gustafson
         background-color: var(--primary-bg);
         /* colore dell'icona */
 
-        -webkit-mask: url("../images/png/menu.png") no-repeat center;
-        -webkit-mask-size: contain;
         mask: url("../images/png/menu.png") no-repeat center;
         mask-size: contain;
 
