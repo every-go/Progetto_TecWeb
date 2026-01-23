@@ -145,13 +145,18 @@ img.print-only{
 }
 
 #description {
-   break-before: always;
-   page-break-before: always;
+   break-before: page;
+   page-break-before: page;
+   border: none;
+}
+
+.form-adozione {
+   display: none;
 }
 
 #animale-main aside {
    margin: 1cm 0 0 0;
-   border: 1px solid black;
+   border: none;
 }
 
 #animale-main aside button {
