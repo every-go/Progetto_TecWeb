@@ -1,15 +1,18 @@
 *{
    padding: 0em;
    margin: 0em;
+   background: none !important;
+   color: black !important;
 }
 
 main>article{
-   min-height: 0vh;
+   min-height: auto;
 }
 
 html, body{
-   font-size: 12pt;
+   font-size: 11pt;
    font-family: 'Times New Roman', Times, serif;
+   background: none;
 }
 
 header{
@@ -21,6 +24,32 @@ footer{
 }
 
 a.pulsante-torna-su{
+   display: none;
+}
+
+hr {
+   display: none;
+}
+
+h1 {
+   font-size: 18pt;
+   margin: 0;
+   padding: 0;
+}
+
+h2 {
+   font-size: 16pt;
+   margin: 0;
+   padding: 0;
+}
+
+h3 {
+   font-size: 14pt;
+   margin: 0;
+   padding: 0;
+}
+
+#menu {
    display: none;
 }
 
@@ -38,4 +67,61 @@ Gestione immagini e contenuti print-only e screen only
 
 img.print-only{
    border: none;
+}
+
+.txt-img {
+   margin: 0;
+   margin-bottom: 0.5cm;
+   flex-direction: column;
+   text-align: center;
+   gap: 0cm;
+}
+
+.pulsante { 
+   margin-top: 0cm;
+}
+
+.txt-img p{
+   width: 100%;
+}
+
+
+#adozione {
+   display: flex;
+   flex-direction: column;
+   gap: 0cm
+}
+
+#adozione .card {
+   margin: 0 auto;
+   padding: 0;
+   width: 100%;
+   break-inside: avoid;
+   -webkit-break-inside: avoid;
+}
+
+#adozione .card li {
+   padding: 0;
+}
+
+#adozione .card dt {
+   padding: 0;
+}
+
+#statistiche {
+   margin-bottom: 4cm;
+}
+
+#statistiche-card li{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+#statistiche-card img{
+   width: 50%;
+}
+
+.stat {
+   font-size: 40px;
 }
