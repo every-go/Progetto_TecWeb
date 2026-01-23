@@ -197,7 +197,12 @@ function cleanForm($content)
 function replaceTextPlaceholder($html, $placeholders)
 {
     foreach ($placeholders as $key => $value) {
-        $html = str_replace("[$key]", $value, $html);
+        if ($key !== "etaAnimale") {
+            $html = str_replace("[$key]", $value, $html);
+        }
+        else{
+            $html = str_replace("[$key]", "0", $html);
+        }
     }
     return $html;
 }
