@@ -8,12 +8,7 @@ function apriModalAvviso() {
     elementoPrecedenteAvviso = document.activeElement;
     modalAvviso.style.display = 'flex';
     document.body.classList.add('modal-open');
-    
-    const mainContent = document.getElementById('animale-main');
-    if (mainContent) {
-        mainContent.setAttribute('aria-hidden', 'true');
-    }
-    
+ 
     setTimeout(() => {
         if (btnAccedi) {
             btnAccedi.focus();
@@ -27,11 +22,6 @@ function apriModalAvviso() {
 function chiudiModalAvviso() {
     modalAvviso.style.display = 'none';
     document.body.classList.remove('modal-open');
-    
-    const mainContent = document.getElementById('animale-main');
-    if (mainContent) {
-        mainContent.removeAttribute('aria-hidden');
-    }
     
     if (elementoPrecedenteAvviso) {
         elementoPrecedenteAvviso.focus();
@@ -133,12 +123,7 @@ function apriModalConferma() {
     elementoPrecedenteConferma = document.activeElement;
     modalConferma.style.display = 'flex';
     document.body.classList.add('modal-open');
-    
-    const mainContent = document.getElementById('animale-main');
-    if (mainContent) {
-        mainContent.setAttribute('aria-hidden', 'true');
-    }
-    
+
     setTimeout(() => {
         if (btnConferma) {
             btnConferma.focus();
@@ -152,11 +137,6 @@ function apriModalConferma() {
 function chiudiModalConferma() {
     modalConferma.style.display = 'none';
     document.body.classList.remove('modal-open');
-    
-    const mainContent = document.getElementById('animale-main');
-    if (mainContent) {
-        mainContent.removeAttribute('aria-hidden');
-    }
     
     if (elementoPrecedenteConferma) {
         elementoPrecedenteConferma.focus();
