@@ -107,18 +107,16 @@ export function validazioneCampoRadio(group, dettagli_form) {
     const fieldset = group[0].closest("fieldset");
     if (!fieldset) return true;
 
-    fieldset.querySelectorAll(".errorSuggestion").forEach(el => el.remove());
+    const node = document.getElementById(dettagli_form[groupName][3]);
+    if (!node) return true;
 
     const almenoUnoSelezionato = group.some(r => r.checked);
 
     if (!almenoUnoSelezionato) {
-        const node = document.createElement("div");
-        node.className = "errorSuggestion";
-        node.role = "alert";
         node.innerHTML = dettagli_form[groupName][2];
-        node.id = dettagli_form[groupName][3];
-        fieldset.appendChild(node);
         return false;
+    } else {
+        node.textContent = "";
     }
 
     return true;
