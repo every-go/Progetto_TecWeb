@@ -74,8 +74,6 @@ export function validazioneCampo(input, dettagli_form) {
    const text = input.value.trim();
    const parent = input.parentNode;
 
-   parent.querySelectorAll(".errorSuggestion").forEach(el => el.remove());
-
    let valido = true;
 
    if (input.type === "file") {
@@ -92,15 +90,14 @@ export function validazioneCampo(input, dettagli_form) {
        valido = false;
    }
 
-   if (!valido) {
-       const node = document.createElement("div");
-       node.className = "errorSuggestion";
-       node.role = "alert";
-       node.innerHTML = dettagli_form[key][2];
-       node.id = dettagli_form[key][3];
-       parent.appendChild(node);
-       return false;
-   }
+   const node = document.getElementById(dettagli_form[key][3]);
+
+    if (!valido) {
+        node.innerHTML = dettagli_form[key][2];
+    } else {
+        node.textContent = "";
+    }
+
 
    return true;
 }

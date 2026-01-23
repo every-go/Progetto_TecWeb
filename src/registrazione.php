@@ -103,7 +103,6 @@ if ((!isset($_SESSION["is_logged_in"]) || empty($_SESSION["is_logged_in"])) && i
                 $db->closeConnection();
 
                 if ($res) {
-                    AvvisiHelper::set('Registrazione avvenuta con successo', 'success');
 
                     $redirectPage = 'index.php';
                     if (isset($_GET['redirect'])) {
