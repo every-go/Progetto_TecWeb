@@ -5,8 +5,6 @@ export function caricamento(dettagli_form) {
         return;
     }
 
-    form.setAttribute("novalidate", true);
-
     const inputs = form.querySelectorAll('input:not([type="radio"]):not([type="file"]), textarea');
     
     inputs.forEach(input => {

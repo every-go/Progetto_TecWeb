@@ -62,11 +62,11 @@ if (empty($_SESSION["is_logged_in"])) {
         $password = $fields['password'];
 
         if(!validateUsername($fields["username"])){
-            $errorMessages['username'] = '<div id="errUsername" class="errorSuggestion" role="alert">Ricorda che lo <span lang="en">username</span> deve avere minimo 4 caratteri e massimo 24. Sono consentite solamente lettere maiuscole o minuscole e spazi, senza numeri o caratteri speciali.</div>';
+            $errorMessages['username'] = 'Ricorda che lo <span lang="en">username</span> deve avere minimo 4 caratteri e massimo 24. Sono consentite solamente lettere maiuscole o minuscole e spazi, senza numeri o caratteri speciali.';
         }
 
         if(!validatePassword($fields["password"])){
-            $errorMessages['password'] = '<div id="errPassword" class="errorSuggestion" role="alert" aria-live="assertive">Ricorda che la <span lang="en">password</span> è compresa fra 8 e 24 caratteri, ha almeno un numero, una lettera maiuscola, una minuscola e un carattere speciale</div>';
+            $errorMessages['password'] = 'Ricorda che la <span lang="en">password</span> è compresa fra 8 e 24 caratteri, ha almeno un numero, una lettera maiuscola, una minuscola e un carattere speciale.';
         }
 
         // se validi lato client, controllo DB
@@ -82,7 +82,7 @@ if (empty($_SESSION["is_logged_in"])) {
                     header("Location:". $redirectPage);
                     exit();
                 } else {
-                    $errorMessages['usernameorpassword'] = '<div class="errorSuggestion" role="alert" id="error_message"><span lang="en">Username</span> o <span lang="en">password</span> non validi!</div>';
+                    $errorMessages['usernameorpassword'] = '<span lang="en">Username</span> o <span lang="en">password</span> non validi!';
                 }
             } else {
                 include __DIR__ . "/500.php";

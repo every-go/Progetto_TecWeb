@@ -51,21 +51,26 @@
 					<div>
 						<label for="username">Inserisci il tuo username:</label>
 						<input type="text" id="username" name="username" value="[USERNAME_VALUE]" [autofocusUsername] autocomplete="username" required aria-describedby="errUsername" />
-						<noscript>
-							[errUsername]
-						</noscript>
+						<div class="errorSuggestion" role="alert" id="errUsername">
+							<noscript>
+								[errUsername]
+							</noscript>
+						</div>
+						
 					</div>
 
 					<div>
 						<label for="password">Inserisci la tua password:</label>
 						<input type="password" id="password" name="password" [autofocusPassword] autocomplete="current-password" required aria-describedby="errPassword" />
-						<noscript>
-							[errPassword]
-						</noscript>
+						<div class="errorSuggestion" role="alert" id="errPassword">
+							<noscript>
+								[errPassword]
+							</noscript>
+						</div>
 					</div>
 
 					<input type="submit" name="login" value="Accedi" aria-describedby="error_message" />
-					[ERROR_MESSAGE]
+					<div class="errorSuggestion" role="alert" id="error_message">[ERROR_MESSAGE]</div>
 				</form>
 				<p> Non hai un <span lang="en">account</span>? <a href="registrazione.php?[PAGINA_PROVENIENZA]">Registrati</a></p>
 			</div>

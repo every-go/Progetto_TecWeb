@@ -61,36 +61,28 @@ if ((!isset($_SESSION["is_logged_in"]) || empty($_SESSION["is_logged_in"])) && i
     // username
     if (!validateUsername($username)) {
         $errorMessages["username"] =
-            '<div id="errUsername" class="errorSuggestion" role="alert">
-                Lo <span lang="en">username</span> deve avere minimo 4 caratteri e massimo 24. 
-                Può contenere solo lettere maiuscole, minuscole e spazi senza numeri o caratteri speciali.
-            </div>';
+            'Lo <span lang="en">username</span> deve avere minimo 4 caratteri e massimo 24. 
+                Può contenere solo lettere maiuscole, minuscole e spazi senza numeri o caratteri speciali.';
     }
 
     // password
     if (!validatePassword($password)) {
         $errorMessages["password"] =
-            '<div id="errPassword" class="errorSuggestion" role="alert">
-                <span lang="en">Password</span> non valida. 
+            '<span lang="en">Password</span> non valida. 
                 Deve contenere almeno 1 lettera maiuscola, 
                 1 lettera minuscola, 
                 1 numero e 
                 almeno un carattere speciale, 
-                minimo 8, massimo 24 caratteri.
-            </div>';
+                minimo 8, massimo 24 caratteri.';
     }
 
     // conferma password
     if ($confirm_password === '') {
         $errorMessages["confirm_password"] =
-            '<div id="errConfirmPassword" class="errorSuggestion" role="alert">
-                Confermare la <span lang="en">password</span>
-             </div>';
+            'Confermare la <span lang="en">password</span>.';
     } elseif ($password !== $confirm_password) {
         $errorMessages["confirm_password"] =
-            '<div id="errConfirmPassword" class="errorSuggestion" role="alert">
-                Le <span lang="en">password</span> non coincidono
-             </div>';
+            'Le <span lang="en">password</span> non coincidono.';
     }
 
     // controllo DB solo se NON ci sono errori lato client
@@ -102,9 +94,7 @@ if ((!isset($_SESSION["is_logged_in"]) || empty($_SESSION["is_logged_in"])) && i
             if ($db->checkUsernameEsistente($username)) {
 
                 $errorMessages["usernamenotvalid"] =
-                    '<div class="errorSuggestion" role="alert" id="error_message">
-                        <span lang="en">Username</span> già esistente
-                     </div>';
+                    '<span lang="en">Username</span> già esistente.';
 
                 $db->closeConnection();
             } else {
