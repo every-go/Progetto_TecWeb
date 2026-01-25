@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Milonga&display=swap" rel="stylesheet">
   <script src="javascript/menu.js" defer></script>
-	<script src="javascript/avviso.js" defer></script>
+  <script src="javascript/avviso.js" defer></script>
   <script src="javascript/ispeziona_animale.js" type="module"></script>
 
 </head>
@@ -24,7 +24,7 @@
   <header id="container-menu">
     <a href="./index.php" tabindex="-1"><img src="./images/png/gatto_logo.png" alt="" /></a>
     <h1 id="title">Casa Otium</h1>
-        
+
 
     <nav id="menu" aria-label="Menù">
       <button id="hamburger" aria-label="Apri menù">
@@ -45,8 +45,37 @@
   </nav>
   <main id="main-content">
     <h2>[Azione]</h2>
-    <div id="form-main">
-      <form action="[actionForm]" method="post" enctype="multipart/form-data">
+    <form id="form-main" action="[actionForm]" method="post" enctype="multipart/form-data">
+      <fieldset>
+        <legend>Immagine</legend>
+        [immagineCorrente]
+        <div>
+          <label for="immagine">Seleziona un'immagine dell'animale se non l'hai già selezionata o vuoi cambiarla
+            (formati accettati: JPG, JPEG, PNG). L'immagine non può essere più grande di 2MB <span class="required"
+              aria-hidden="true">*</span></label>
+          <input type="file" id="immagine" name="immagine" accept="image/jpg, image/jpeg, image/png"
+            aria-describedby="errImmagine" />
+        </div>
+        <div class="errorSuggestion" role="alert" id="errImmagine">
+          <noscript>
+            [errImmagine]
+          </noscript>
+        </div>
+
+        <div>
+          <label for="alt">Inserisci il testo alternativo dell'immagine: <span class="required"
+              aria-hidden="true">*</span></label>
+          <input id="alt" name="alt" type="text" value="[altImmagine]" required aria-describedby="errAlt" />
+        </div>
+        <div class="errorSuggestion" role="alert" id="errAlt">
+          <noscript>
+            [errAlt]
+          </noscript>
+        </div>
+
+      </fieldset>
+      <fieldset>
+        <legend>Generalità</legend>
         <div>
           <label for="nome">Inserisci il nome: <span class="required" aria-hidden="true">*</span></label>
           <input type="text" id="nome" name="nome" value="[nomeAnimale]" required aria-describedby="errNome" />
@@ -59,7 +88,8 @@
 
         <div>
           <label for="eta">Inserisci l'età in anni: <span class="required" aria-hidden="true">*</span></label>
-          <input type="number" id="eta" name="eta" value="[etaAnimale]" required min="0" max="99999" aria-describedby="errEta" />
+          <input type="number" id="eta" name="eta" value="[etaAnimale]" required min="0" max="99999"
+            aria-describedby="errEta" />
         </div>
         <div class="errorSuggestion" role="alert" id="errEta">
           <noscript>
@@ -67,7 +97,18 @@
           </noscript>
         </div>
 
-        <fieldset aria-describedby="errSesso">
+        <div>
+          <label for="luogo">Luogo in cui puoi trovare l'animale: <span class="required"
+              aria-hidden="true">*</span></label>
+          <input type="text" id="luogo" name="luogo" value="[luogoAnimale]" required aria-describedby="errLuogo" />
+        </div>
+        <div class="errorSuggestion" role="alert" id="errLuogo">
+          <noscript>
+            [errLuogo]
+          </noscript>
+        </div>
+
+        <fieldset class="radio-fieldset" aria-describedby="errSesso">
           <legend>Seleziona il sesso dell'animale: <span class="required" aria-hidden="true">*</span></legend>
           <div class="radio">
             <div class="radio-item">
@@ -86,14 +127,14 @@
           </noscript>
         </div>
 
-        <fieldset aria-describedby="errTipoAnimale">
+        <fieldset class="radio-fieldset" aria-describedby="errTipoAnimale">
           <legend>Seleziona la tipologia dell'animale: <span class="required" aria-hidden="true">*</span></legend>
           <div class="radio">
             <div class="radio-item">
               <input type="radio" id="tipo_reale" name="tipo_animale" value="Reale" [checkReale] required />
               <label for="tipo_reale">Reale</label>
             </div>
-            
+
             <div class="radio-item">
               <input type="radio" id="tipo_fantastico" name="tipo_animale" value="Fantastico" [checkFantastico] />
               <label for="tipo_fantastico">Fantastico</label>
@@ -106,38 +147,7 @@
           </noscript>
         </div>
 
-        [immagineCorrente]
-        <div>
-          <label for="immagine">Seleziona un'immagine dell'animale se non l'hai già selezionata o vuoi cambiarla (formati accettati: JPG, JPEG, PNG). L'immagine non può essere più grande di 2MB <span class="required" aria-hidden="true">*</span></label>
-          <input type="file" id="immagine" name="immagine" accept="image/jpg, image/jpeg, image/png" aria-describedby="errImmagine" />
-        </div>
-        <div class="errorSuggestion" role="alert" id="errImmagine">
-          <noscript>
-            [errImmagine]
-          </noscript>
-        </div>
-          
-        <div>
-          <label for="alt">Inserisci il testo alternativo dell'immagine: <span class="required" aria-hidden="true">*</span></label>
-          <input type="text" id="alt" name="alt" value="[altImmagine]" required aria-describedby="errAlt" />
-        </div>
-        <div class="errorSuggestion" role="alert" id="errAlt">
-          <noscript>
-            [errAlt]
-          </noscript>
-        </div>
-
-        <div>
-          <label for="luogo">Luogo in cui puoi trovare l'animale: <span class="required" aria-hidden="true">*</span></label>
-          <input type="text" id="luogo" name="luogo" value="[luogoAnimale]" required aria-describedby="errLuogo" />
-        </div>
-        <div class="errorSuggestion" role="alert" id="errLuogo">
-          <noscript>
-            [errLuogo]
-          </noscript>
-        </div>
-
-        <fieldset aria-describedby="errTaglia">
+        <fieldset class="radio-fieldset" aria-describedby="errTaglia">
           <legend>Seleziona la taglia dell'animale: <span class="required" aria-hidden="true">*</span></legend>
           <div class="radio">
             <div class="radio-item">
@@ -162,14 +172,15 @@
           </noscript>
         </div>
 
-        <fieldset aria-describedby="errCarattere">
-          <legend>Seleziona il tipo di carattere dell'animale: <span class="required" aria-hidden="true">*</span></legend>
+        <fieldset class="radio-fieldset" aria-describedby="errCarattere">
+          <legend>Seleziona il tipo di carattere dell'animale: <span class="required" aria-hidden="true">*</span>
+          </legend>
           <div class="radio">
             <div class="radio-item">
               <input type="radio" id="car_f" name="carattere" value="Facile" [checkCarF] required />
               <label for="car_f">Facile</label>
             </div>
-            
+
             <div class="radio-item">
               <input type="radio" id="car_m" name="carattere" value="Moderato" [checkCarM] />
               <label for="car_m">Moderato</label>
@@ -187,48 +198,52 @@
           </noscript>
         </div>
 
-        <fieldset>
-          <legend>Descrizioni</legend>
-          <div id="descrizione-animale">
-            <div>
-              <label for="descrizione">Inserisci la descrizione del carattere dell'animale: <span class="required" aria-hidden="true">*</span></label>
-              <!-- NON INDENTARE LA TEXTAREA (by Matteo) -->
-              <textarea id="descrizione" name="descrizione" rows="5" cols="10" required aria-describedby="errDesc">[descrizione]</textarea>
-            </div>
-            <div class="errorSuggestion" role="alert" id="errDesc">
-              <noscript>
-                [errDesc]
-              </noscript>
-            </div>
+      </fieldset>
 
-            <div>
-            <label for="bisogni">Inserisci i bisogni dell'animale. Separa con il ; ogni bisogno: <span class="required" aria-hidden="true">*</span></label>
-            <!-- NON INDENTARE LA TEXTAREA (by Matteo) -->
-            <textarea id="bisogni" name="bisogni" rows="5" cols="10" required aria-describedby="errBisogni">[bisogni]</textarea>
-            </div>
-            <div class="errorSuggestion" role="alert" id="errBisogni">
-              <noscript>
-                [errBisogni]
-              </noscript>
-            </div>
-            
-            <div>
-            <label for="storia">Inserisci una breve storia dell'animale (facoltativo):</label>
-            <!-- NON INDENTARE LA TEXTAREA (by Matteo) -->
-            <textarea id="storia" name="storia" rows="5" cols="10" aria-describedby="errStoria">[storia]</textarea>
-            </div>
-            <div class="errorSuggestion" role="alert" id="errStoria">
-              <noscript>
-                [errStoria]
-              </noscript>
-            </div>
-          </div>
-        </fieldset>
 
-        <input type="submit" name="[Azione]" value="[pulsanteAzione]" />
+      <fieldset id="descrizione-animale">
+        <legend>Descrizioni</legend>
+        <div>
+          <label for="descrizione">Inserisci la descrizione del carattere dell'animale: <span class="required"
+              aria-hidden="true">*</span></label>
+          <!-- NON INDENTARE LA TEXTAREA (by Matteo) -->
+          <textarea id="descrizione" name="descrizione" rows="5" cols="10" required
+            aria-describedby="errDesc">[descrizione]</textarea>
+        </div>
+        <div class="errorSuggestion" role="alert" id="errDesc">
+          <noscript>
+            [errDesc]
+          </noscript>
+        </div>
+        <hr class="linefirst">
+        <div>
+          <label for="bisogni">Inserisci i bisogni dell'animale (separa con <abbr title="il punto e virgola">";"</abbr>
+            ogni bisogno): <span class="required" aria-hidden="true">*</span></label>
+          <!-- NON INDENTARE LA TEXTAREA (by Matteo) -->
+          <textarea placeholder="Separa con ; ogni bisogno" id="bisogni" name="bisogni" rows="5" cols="10" required
+            aria-describedby="errBisogni">[bisogni]</textarea>
+        </div>
+        <div class="errorSuggestion" role="alert" id="errBisogni">
+          <noscript>
+            [errBisogni]
+          </noscript>
+        </div>
+        <hr class="linefirst">
+        <div>
+          <label for="storia">Inserisci una breve storia dell'animale (facoltativo):</label>
+          <!-- NON INDENTARE LA TEXTAREA (by Matteo) -->
+          <textarea id="storia" name="storia" rows="5" cols="10" aria-describedby="errStoria">[storia]</textarea>
+        </div>
+        <div class="errorSuggestion" role="alert" id="errStoria">
+          <noscript>
+            [errStoria]
+          </noscript>
+        </div>
+      </fieldset>
 
-      </form>
-    </div>
+      <input type="submit" name="[Azione]" value="[pulsanteAzione]" />
+
+    </form>
   </main>
   <footer>
     <a href="#top" id="pulsante-torna-su" aria-label="Torna aLL'inizio della pagina"> ⇪ </a>

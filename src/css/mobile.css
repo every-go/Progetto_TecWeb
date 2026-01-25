@@ -106,17 +106,18 @@ h2 {
     padding: 2em 2em;
 }
 
-tbody tr {  
+tbody tr {
     margin-bottom: 1.5em;
 }
 
-tbody th, tbody td {
+tbody th,
+tbody td {
     display: block;
     text-align: left;
     padding: 0.5em 0;
     border: none;
 }
-    
+
 table tbody th {
     font-size: 1.2em;
     margin-bottom: 0.5em;
@@ -196,6 +197,19 @@ a#pulsante-torna-su {
     bottom: 1.5em;
 }
 
+#form-main {
+    display: block;
+    padding: 0 .5em;
+}
+
+#form-main fieldset {
+    margin-bottom: 1em;
+}
+
+#form-main .radio {
+    flex-direction: column;
+}
+
 footer {
     display: flex;
     flex-direction: column;
@@ -250,18 +264,15 @@ Linearizzazione di Aaron Gustafson
     }
 
     #menu {
-        --height: 50vh;
         text-align: center;
 
         z-index: 1;
         position: fixed;
-        /* top: calc(50% - calc(var(--height) / 2)); */
         top: 50%;
         left: 100%;
         padding-block: 1.5em;
         flex-direction: column;
         width: 25vw;
-        /* min-height: var(--height); */
         height: auto;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
