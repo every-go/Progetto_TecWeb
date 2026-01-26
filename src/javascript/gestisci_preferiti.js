@@ -67,10 +67,22 @@ if (modalAvviso) {
 
 if (btnAccedi) {
     btnAccedi.addEventListener('click', function() {
-        window.location.href = './login.php';
+        
+        //Recupera il percorso 
+        const path = window.location.pathname;
+        
+        //Recupera i parametri GET attuali 
+        const search = window.location.search;
+
+        const relativeUrl = path + search;
+
+        // 4. Codifica il risultato per passarlo in sicurezza
+        const redirectParam = encodeURIComponent(relativeUrl);
+
+        // 5. Reindirizza
+        window.location.href = './login.php?redirect=' + redirectParam;
     });
 }
-
 if (btnAnnullaAvviso) {
     btnAnnullaAvviso.addEventListener('click', function() {
         chiudiModalAvviso();

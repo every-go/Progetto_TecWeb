@@ -49,8 +49,8 @@ window.validazioneCampo = function(input, dettagli_form) {
    }
 
    if (!valido) {
-      var node = document.createElement("strong");
-      node.className = "errorSuggestion";
+      var node = document.createElement("div");
+      node.className = "errorSuggestion screen-only";
       node.innerHTML = messaggioErrore;
       node.id = dettagli_form[input.id][3];
       parent.appendChild(node);

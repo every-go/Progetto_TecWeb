@@ -132,6 +132,13 @@ if (
     <span class="material-symbols-outlined" aria-hidden="true">add</span> Aggiungi </a>';
 }
 $messaggio= AvvisiHelper::getFormattedHtml();
+if(!$isSearch){
+    $content = str_replace("[QUERY_RICERCA]", "Animali", $content);
+    }
+    else{
+    $content = str_replace("[QUERY_RICERCA]", $searchTerm, $content); 
+}
+$content = str_replace("[INDICATORE_PAGINA]", "-".$paginaCorrente." ", $content); 
 $content = str_replace("[addButton]", $pulsanteAdd, $content);
 $content = str_replace("[LISTA_ANIMALI]", $listaAnimali, $content);
 $content = str_replace("[messaggio]", $messaggio, $content);
