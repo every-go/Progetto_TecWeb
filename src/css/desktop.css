@@ -864,16 +864,6 @@ button[type="submit"]:hover {
     border: 1px solid var(--text-color);
 }
 
-
-/*
-#animale-name {
-    text-align: left;
-    font-size: 1em;
-    margin: 0 0 .5em 0;
-    font-weight: bold;
-}
-*/
-
 #animale-main h2 {
     margin: 0;
 }
@@ -1332,7 +1322,7 @@ input[type="submit"]:focus {
     object-fit: contain;
 }
 
-#contenuto {
+#errore {
     width: 65%;
     background-color: var(--contenutobackground);
     display: flex;
@@ -1344,15 +1334,8 @@ input[type="submit"]:focus {
 }
 
 #logo {
-    background-image: url("../images/png/gatto_logo.png");
-    min-height: 20%;
-    width: 100%;
-    font-size: 3em;
-    text-indent: -99999em;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    overflow: hidden;
+    min-height: 50%;
+    width: 50%;
 }
 
 #contenuto h2 {
