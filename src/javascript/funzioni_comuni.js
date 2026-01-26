@@ -72,7 +72,6 @@ export function validazioneCampo(input, dettagli_form) {
 
     const regex = dettagli_form[key][1];
     const text = input.value.trim();
-    const parent = input.parentNode;
 
     let valido = true;
 

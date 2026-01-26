@@ -57,13 +57,13 @@ import { caricamento } from "./funzioni_comuni.js";
 
 var dettagli_form = {
    "nome": [
-      "Es: Flavio",
+      "<abbr title='Esempio>Es</abbr>: Flavio",
       /^[\p{L} ]{2,24}$/u,
       "Il nome deve avere tra 2 e 24 caratteri. Può contenere solo lettere (anche accentate) e spazi.",
       "errNome"
    ],
    "eta": [
-      "Es: 9",
+      "<abbr title='Esempio>Es</abbr>: 9",
       /^(0|[1-9][0-9]{0,4})$/,
       "L'età deve essere un numero valido da 0 a 99999 senza zeri iniziali.",
       "errEta"
@@ -87,13 +87,13 @@ var dettagli_form = {
       "errImmagine"
    ],
    "alt": [
-      "Es: Flavio è un piccione con delle piume bianche, ha un becco lungo e indossa delle scarpe nere con la punta bianca",
+      "<abbr title='Esempio>Es</abbr>: Flavio è un piccione, ha un becco lungo e indossa delle scarpe",
       /^[\p{L}0-9 ,:;'’ʼʻ`′."()]{1,1024}$/u,
       "Il testo alternativo dell'immagine può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura : . , ; \" ' ’ ʼ ʻ ` ′ ( ). Non deve essere più lunga di 1024 caratteri e non si può andare a capo.",
       "errAlt"
    ],
    "luogo": [
-      "Es: Sopra l'edificio in via Flavio numero 8/B",
+      "<abbr title='Esempio>Es</abbr>: Sopra l'edificio in via Flavio numero 8/B",
       /^[\p{L}0-9 ,/'’ʼʻ`′"]{1,100}$/u,
       "Il luogo può contenere lettere (anche accentate), spazi, numeri e i caratteri , / ' ’ ʼ ʻ ` ′ \". Non deve essere più lungo di 100 caratteri.",
       "errLuogo"
@@ -111,19 +111,19 @@ var dettagli_form = {
       "errCarattere"
    ],
    "descrizione": [
-      "Es: A Flavio piace tubare in giro e farsi dare le briciole di pane ai passanti. Tranquillo, non sporcherà la tua macchina.",
+      "<abbr title='Esempio>Es</abbr>: A Flavio piace tubare in giro e farsi dare le briciole di pane ai passanti. Tranquillo, non sporcherà la tua macchina.",
       /^[\p{L}0-9 ,:;'’ʼʻ`′."()?!\s]{1,1024}$/u,
       "La descrizione del carattere dell'animale non può essere più lunga di 1024 caratteri e può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . ; , : ' ’ ʼ ʻ ` ′ \" ? ! ( )",
       "errDesc"
    ],
    "bisogni": [
-      "Es: Un tetto stabile; Briciole di pane sempre a portata di becco;",
+      "<abbr title='Esempio>Es</abbr>: Un tetto stabile; Briciole di pane sempre a portata di becco;",
       /^[\p{L}0-9 ,:;'’ʼʻ`′."()?!\s]{1,1024}$/u,
       "I bisogni non possono essere più lunghi di 1024 caratteri e possono contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . , : ' ’ ʼ ʻ ` ′ \" ? ! ( ), qualsiasi punto e virgola ; sarà letto come un separatore.",
       "errBisogni"
    ],
    "storia": [
-      "Es: Flavio è nato su un tetto vicino alla stazione. Da piccolo adorava osservare i treni partire.",
+      "<abbr title='Esempio>Es</abbr>: Flavio è nato su un tetto vicino alla stazione. Da piccolo adorava osservare i treni partire.",
       /^[\p{L}0-9 ,:;'’ʼʻ`′."()?!\s]{0,1024}$/u,
       "La storia non può essere più lunga di 1024 caratteri e può contenere lettere (anche accentate), spazi, numeri e i segni di punteggiatura . ; , : ' ’ ʼ ʻ ` ′ \" ? ! ( )",
       "errStoria"

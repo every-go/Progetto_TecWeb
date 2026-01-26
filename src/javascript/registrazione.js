@@ -2,13 +2,13 @@ import {inserisciMessaggioDefault, validazioneForm} from "./funzioni_comuni.js";
 
 var dettagli_form = {
    "username": [
-      "Es: FlavioPiccione",
+      "<abbr title='Esempio'>Es</abbr>: FlavioPiccione",
       /^[A-Za-z ]{4,24}$/,
       'Lo <span lang="en">username</span> deve avere minimo 4 caratteri e massimo 24. Può contenere solo lettere maiuscole, minuscole e spazi senza numeri o caratteri speciali.',
       "errUsername"
    ],
    "password": [
-      "Es: #Flavio4",
+      "<abbr title='Esempio'>Es</abbr>: #Flavio4",
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~]{8,24}$/,
       "Password non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, 1 numero e almeno un carattere speciale, minimo 8, massimo 24 caratteri.",
       "errPassword"
@@ -27,9 +27,6 @@ window.validazioneCampo = function(input, dettagli_form) {
    var text = input.value;
    var parent = input.parentNode;
 
-   var existingErrors = parent.querySelectorAll('.errorSuggestion');
-   existingErrors.forEach(el => el.remove());
-
    var valido = true;
 
    var messaggioErrore = dettagli_form[input.id][2];
@@ -38,23 +35,20 @@ window.validazioneCampo = function(input, dettagli_form) {
       var passwordInput = document.getElementById("password");
       if (!passwordInput || text !== passwordInput.value) {
          valido = false;
-         messaggioErrore = dettagli_form[input.id][2];
       }
    } else if (input.id === "password" && text === "#Flavio4") {
       valido = false;
       messaggioErrore = "Non puoi utilizzare la password di esempio.";
    } else if (regex instanceof RegExp && !regex.test(text)) {
       valido = false;
-      messaggioErrore = dettagli_form[input.id][2];
    }
 
+   const node = document.getElementById(dettagli_form[input.id][3]);
+
    if (!valido) {
-      var node = document.createElement("div");
-      node.className = "errorSuggestion screen-only";
       node.innerHTML = messaggioErrore;
-      node.id = dettagli_form[input.id][3];
-      parent.appendChild(node);
-      return false;
+   } else {
+      node.textContent = "";
    }
 
    return true;

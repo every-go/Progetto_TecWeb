@@ -23,7 +23,7 @@
 	<a class="aiuti" href="#main-content"> Vai al contenuto </a>
 	<header id="container-menu">
 
-		<a href="./index.php" tabindex="-1"><img src="./images/png/gatto_logo.png" alt="" /></a>
+		<a href="./index.php" tabindex="-1" aria-hidden="true"><img src="./images/png/gatto_logo.png" alt="" /></a>
       <h1 id="title">Casa Otium</h1>
 
 		<nav id="menu" aria-label="Menù">
@@ -51,20 +51,26 @@
 					<div>
 						<label for="username">Inserisci il tuo username:</label>
 						<input type="text" id="username" name="username" value="[USERNAME_VALUE]" [autofocusUsername] autocomplete="username" required aria-describedby="errUsername" />
-						<div class="errorSuggestion" role="alert" id="errUsername">
+						<div class="errorSuggestion screen-only" role="alert" id="errUsername">
 							<noscript>
 								[errUsername]
 							</noscript>
+						</div>
+						<div class="print-only">
+							Ricorda che lo <span lang='en'>username</span> deve avere minimo 4 caratteri e massimo 24. Sono consentite solo lettere maiuscole, minuscole e spazi.
 						</div>
 					</div>
 
 					<div>
 						<label for="password">Inserisci la tua password:</label>
 						<input type="password" id="password" name="password" [autofocusPassword] autocomplete="current-password" required aria-describedby="errPassword" />
-						<div class="errorSuggestion" role="alert" id="errPassword">
+						<div class="errorSuggestion screen-only" role="alert" id="errPassword">
 							<noscript>
 								[errPassword]
 							</noscript>
+						</div>
+						<div class="print-only">
+							Ricorda che la <span lang="en">password</span> è compresa fra 8 e 24 caratteri, ha almeno un numero, una lettera maiuscola, una minuscola e un carattere speciale.
 						</div>
 					</div>
 

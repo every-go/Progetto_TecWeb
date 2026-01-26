@@ -26,7 +26,7 @@
 <body id="top">
     <a class="aiuti" href="#main-content"> Vai al contenuto </a>
     <header id="container-menu">
-        <a href="./index.php" tabindex="-1"><img src="./images/png/gatto_logo.png" alt="" /></a>
+        <a href="./index.php" tabindex="-1" aria-hidden="true"><img src="./images/png/gatto_logo.png" alt="" /></a>
         <h1 id="title">Casa Otium</h1>
         
         <nav id="menu" aria-label="Menù">
@@ -47,9 +47,8 @@
             <form id="search-form" method="get" action="animali.php" role="search">
                 <div id="search">
                     <span id="search-icon" class="material-symbols-outlined" aria-hidden="true">search</span>
-                    <!-- <label for="search-input">Cerca il tuo futuro amico</label>-->
-                    <input id="search-input" name="search" type="search" aria-label="Cerca il tuo futuro amico..."
-                        placeholder="Cerca il tuo futuro amico..." value="[SEARCH_VALUE]" />
+                    <input id="search-input" name="search" type="search" aria-label="Cerca l'animale per nome"
+                        placeholder="Cerca l'animale per nome" value="[SEARCH_VALUE]" />
                 </div>
                 <div>
                     <button type="submit"> Cerca </button>
