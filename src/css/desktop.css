@@ -95,7 +95,7 @@ h3 {
     color: var(--primary-title-color);
 }
 
-h4{
+h4 {
     font-size: 1.2em;
     margin-bottom: 0.5em;
     color: var(--primary-title-color);
@@ -131,6 +131,10 @@ hr.linesecond {
     background-color: var(--primary-bg);
     border: 1px solid var(--primary-bg);
     border-radius: 100px;
+}
+
+abbr {
+    text-decoration: none;
 }
 
 /*
@@ -508,7 +512,7 @@ thead th {
     color: var(--panna);
 }
 
- thead th:first-child {
+thead th:first-child {
     padding-left: 1.6em;
     border-top-left-radius: 12px;
 }
@@ -536,16 +540,19 @@ tbody td {
     vertical-align: top;
 }
 
-tbody td, tbody th {
+tbody td,
+tbody th {
     border-bottom: 1px solid var(--grigio);
 }
 
-tbody tr:last-child td, tbody tr:last-child th {
+tbody tr:last-child td,
+tbody tr:last-child th {
     border-bottom: none;
 }
 
 /* Rimuove il padding destro dall'ultima colonna */
-th:last-child, td:last-child {
+th:last-child,
+td:last-child {
     padding-right: 1.6em;
 }
 
@@ -742,6 +749,9 @@ button[type="submit"]:hover {
     font-weight: bold;
     margin-bottom: .3em;
     grid-column: 1 / 3;
+    display: flex;
+    align-items: center;
+    gap: .4em;
 }
 
 .animale-info .nome .sesso {
@@ -781,11 +791,11 @@ button[type="submit"]:hover {
     vertical-align: middle;
 }
 
-#confirm-adozione{
+#confirm-adozione {
     text-indent: -99999em;
 }
 
-#errore-adozione{
+#errore-adozione {
     text-indent: -99999em;
 }
 
@@ -1071,11 +1081,11 @@ button[type="submit"]:hover {
     gap: 1em;
 }
 
-#modal-incipit{
+#modal-incipit {
     font-size: 2em;
 }
 
-#modal-descrizione-avviso{
+#modal-descrizione-avviso {
     font-size: 2em;
     text-align: center;
 }
@@ -1085,6 +1095,7 @@ button[type="submit"]:hover {
         transform: translateY(-50px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -1092,7 +1103,9 @@ button[type="submit"]:hover {
 }
 
 .btn-conferma-adozione,
-.btn-annulla-adozione, .btn-accedi, .btn-annulla{
+.btn-annulla-adozione,
+.btn-accedi,
+.btn-annulla {
     padding: 0.8em 2em;
     font-size: 1em;
     font-weight: bold;
@@ -1104,44 +1117,54 @@ button[type="submit"]:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.btn-conferma-adozione, .btn-accedi{
+.btn-conferma-adozione,
+.btn-accedi {
     background-color: var(--secondary-bg);
     color: var(--primary-bg);
 }
 
-.btn-conferma-adozione:hover, .btn-accedi:hover {
+.btn-conferma-adozione:hover,
+.btn-accedi:hover {
     background-color: var(--verdescuro);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.btn-conferma-adozione:visited, .btn-accedi:visited{
+.btn-conferma-adozione:visited,
+.btn-accedi:visited {
     color: var(--primary-bg);
 }
 
-.btn-annulla-adozione:visited, .btn-annulla:visited {
+.btn-annulla-adozione:visited,
+.btn-annulla:visited {
     color: var(--secondary-bg);
 }
 
-.btn-annulla-adozione, .btn-annulla{
+.btn-annulla-adozione,
+.btn-annulla {
     background-color: var(--primary-bg);
     color: var(--secondary-bg);
     border: 2px solid var(--secondary-bg);
 }
 
-.btn-annulla-adozione:hover, .btn-annulla:hover{
+.btn-annulla-adozione:hover,
+.btn-annulla:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .btn-conferma-adozione:focus,
-.btn-annulla-adozione:focus, .btn-accedi:focus, .btn-annulla:focus{
+.btn-annulla-adozione:focus,
+.btn-accedi:focus,
+.btn-annulla:focus {
     outline: 3px solid var(--grigio);
     outline-offset: 2px;
 }
 
 .btn-conferma-adozione:active,
-.btn-annulla-adozione:active, .btn-accedi:active, .btn-annulla:active {
+.btn-annulla-adozione:active,
+.btn-accedi:active,
+.btn-annulla:active {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
@@ -1150,22 +1173,24 @@ body.modal-open {
     overflow: hidden;
 }
 
-fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
-}
 
 /* Form ispeziona_animale */
+
+#form-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2em;
+    row-gap: 2em;
+}
 
 .required {
     color: #E10000;
 }
 
-#form-main form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+#form-main>fieldset {
+    border: 2px solid var(--text-color);
+    border-radius: 1.5em;
+    padding: 1em 3em;
 }
 
 #form-main .radio {
@@ -1176,9 +1201,35 @@ fieldset {
     justify-content: center;
 }
 
+input[type="radio"] {
+    accent-color: var(--secondary-bg);
+}
+
+#form-main>fieldset>legend {
+    /* margin: 2em 0; */
+    padding: 0 .5em;
+    font-size: 1.5em;
+}
+
+.radio-fieldset {
+    border: 1.5px solid var(--text-color);
+    border-radius: 1em;
+    padding: 1em 0;
+}
+
+.radio-fieldset legend {
+    margin: 0 1em;
+    padding: 0 .5em;
+}
+
+/* label che non sono adiacenti ad input di tipo radio */
+#form-main label:not(input[type="radio"] + label),
 #form-main legend {
-    text-align: center;
-    margin: 0.8em 0;
+    font-weight: bold;
+}
+
+.default-text {
+    font-style: italic;
 }
 
 #form-main .radio-item {
@@ -1188,37 +1239,49 @@ fieldset {
 }
 
 #form-main img {
-    width: 60%;
+    width: 100%;
+    border-radius: 1em;
 }
 
-#descrizione-animale {
-    /* border: 2px solid var(--text-color); */
-    border-radius: 2em;
-    padding: 1em 3em;
-    display: flex;
-    flex-direction: column;
-}
-
-#descrizione-animale textarea {
+#form-main textarea {
     background-color: var(--primary-bg);
     border-radius: 24px;
     padding: 1em;
     margin: 1em 0;
     /* Dimensioni GIGANTI */
     width: 100%;
-    height: 400px; /* o più grande */
+    height: 25em;
+    /* o più grande */
     min-height: 300px;
     max-height: 600px;
-    
+
     /* Font grande */
     font-size: 1.2rem;
     line-height: 1.6;
-    
+
     /* Miglioramenti visivi */
     border: 2px solid var(--accent-color);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    resize: vertical; /* permette di ridimensionare solo in verticale */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    resize: vertical;
+    /* permette di ridimensionare solo in verticale */
 }
+
+#alt {
+    width: 100%;
+}
+
+#descrizione-animale {
+    grid-column: 1 / 3;
+    /* border: 2px solid var(--text-color); */
+
+    /* border-radius: 1.5em;
+    padding: 1em 3em; */
+}
+
+#descrizione-animale hr {
+    margin: 2em 0;
+}
+
 
 /* nasconde gli errori se vuoti */
 div[id^="err"]:empty {
@@ -1412,18 +1475,19 @@ input[type="submit"]:focus {
     font-size: 1.4em;
 }
 
-#login-form input[type="text"],
-#login-form input[type="password"] {
+input[type="text"],
+input[type="password"],
+input[type="number"] {
     background-color: var(--primary-bg);
-    padding: 0.5em;
+    /* padding: 0 0.5em 0 0; */
     border: none;
     border-bottom: 1px solid var(--grigio);
     font-size: 1em;
 }
 
 
-#login-form input[type="text"]:focus,
-#login-form input[type="password"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
     outline: 1px solid var(--grigio);
     border-color: var(--grigio);
 }
@@ -1534,6 +1598,7 @@ a#pulsante-torna-su:focus {
 
 
 .errorSuggestion {
+    color: #E10000;
     font-weight: bold;
     display: block;
     margin-top: 0.3em;
