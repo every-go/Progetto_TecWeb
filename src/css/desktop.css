@@ -744,26 +744,28 @@ button[type="submit"]:hover {
     list-style: none;
 }
 
-.animale-info .nome {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: .3em;
-    grid-column: 1 / 3;
-    display: block;
-    position: relative;
-    padding-right: 2em;
-    max-width: 80%;
-    
+.limit {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+.animale-info .nome {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: .3em;
+    grid-column: 1 / 3;
+    display: flex;
+    align-items: center;
+    padding-right: 2em;
+    gap: .5em;
+}
+
+.animale-info .nome .limit {
+    max-width: 80%;
+}
+
 .animale-info .nome .sesso {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
     display: inline-block;
     width: 1.5em;
     height: 1.5em;
@@ -782,6 +784,9 @@ button[type="submit"]:hover {
     justify-content: center;
     gap: 0.3em;
     font-size: 1em;
+
+    /*   Serve per quegli info-box che hanno il luogo troppo lungo   */
+    min-width: 0;
 }
 
 /* gestione loghi */
