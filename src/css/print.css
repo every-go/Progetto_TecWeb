@@ -1,6 +1,4 @@
 *{
-   padding: 0em !important;
-   margin: 0em !important;
    background: none !important;
    color: black !important;
 }
@@ -23,7 +21,7 @@ footer{
    display: none;
 }
 
-p, ol, ul {
+p, ol, ul, legend, dt, dl {
    font-size: 11pt !important;
 }
 
@@ -85,7 +83,6 @@ img.print-only{
    width: 100%;
 }
 
-
 #adozione {
    display: flex;
    flex-direction: column;
@@ -94,6 +91,8 @@ img.print-only{
 
 #adozione .card {
    width: 100%;
+   padding: 0;
+   margin: 0;
    break-inside: avoid;
    -webkit-break-inside: avoid;
 }
@@ -145,18 +144,19 @@ img.print-only{
 }
 
 #description {
-   break-before: page;
-   page-break-before: page;
    border: none;
+   padding: 0;
 }
 
-.form-adozione {
-   display: none;
+#description  dt:nth-of-type(2) {
+   break-before: always;
+   page-break-before: always;
 }
 
 #animale-main aside {
    margin: 1cm 0 0 0;
    border: none;
+   padding: 0;
 }
 
 #animale-main aside button {
@@ -174,13 +174,48 @@ img.print-only{
 
 }
 
+#container-adozione {
+   width: 100%;
+}
 
 #impegno ul {
    display: inline-block;
 }
 
-
-
 #impegno li {
    width: fit-content;
+}
+
+#form-main>fieldset {
+   padding: 1em 3em;
+}
+
+#form-main textarea {
+   min-height: 0;
+   font-size: 11pt;
+   height: 100px;
+}
+
+#form-main textarea::placeholder {
+   color: transparent;
+}
+
+
+#descrizione-animale {
+   break-before: always;
+   page-break-before: always;
+}
+
+.radio-fieldset {
+   border: none;
+}
+
+.radio-fieldset legend {
+   margin: 0;
+   padding: 0;
+}
+
+.btn-modifica, .btn-elimina, #add-animal-btn, input[type="submit"],
+.form-adozione, .modal-content {
+   display: none;
 }
