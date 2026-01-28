@@ -311,14 +311,14 @@ Linearizzazione di Aaron Gustafson
         content: '';
         position: absolute;
         inset: 0;
-        /* riempie tutto l'elemento */
+    
         background-color: var(--primary-bg);
-        /* colore dell'icona */
-
-        mask: url("../images/png/menu.png") no-repeat center;
+    
+        mask-image: url("../images/png/menu.png");
+        mask-repeat: no-repeat;
+        mask-position: center;
         mask-size: contain;
-
-        /* non interferisce con click */
+    
         pointer-events: none;
     }
 

@@ -1308,6 +1308,9 @@ input[type="submit"]:focus {
     outline-offset: 3px;
 }
 
+#immagineCorrente{
+    max-height: 25em;
+}
 
 /*
     ERRORI 
