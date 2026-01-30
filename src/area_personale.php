@@ -54,8 +54,9 @@ if ($connessioneOK) {
     }
 
     if(empty($stringaAdottati) && empty($stringaPreferiti)){
-        $noAnimali = "<p> Non hai animali né preferiti né adottati </p>"
-            . "<p>Vai nella sezione <a href='animali.php'>animali</a> per vedere tutti i nostri animali!";
+        $noAnimali = 
+            "<h2>Non hai né preferiti né adottati</h2>"
+            . "<p>Vai alla sezione <a href='animali.php'>animali</a> per vedere tutti i nostri animali!";
     }
 
 } else {
