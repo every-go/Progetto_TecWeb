@@ -61,18 +61,15 @@ class UrlHelper
         return $currentPath . ($queryString ? '?' . $queryString : '');
     }
 
-    // Genera la stringa di redirect in modo SICURO
     // Esclude automaticamente login, logout, ecc. per evitare loop
     public static function getRedirectParam()
     {
         $current = self::getCurrentPageName();
 
-        // Se sono in una pagina "nera", non voglio tornare qui dopo il login
         if (in_array($current, self::BLACK_LIST)) {
-            return ''; // Ritorna stringa vuota
+            return '';
         }
 
-        // Altrimenti ritorno l'URL completo codificato
         return urlencode(self::getCurrentUrl());
     }
 

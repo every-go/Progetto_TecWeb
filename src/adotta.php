@@ -6,9 +6,8 @@ require_once "." . DIRECTORY_SEPARATOR . "connectionDB.php";
 use DB\DBAccess;
 
 if (!isset($_SESSION["is_logged_in"]) || $_SESSION["is_logged_in"] !== true) {
-    $_SESSION['messaggio_errore'] = "Devi effettuare il <span lang=\"en\">login</span> per adottare un animale";
-
-    // Memorizza la pagina corrente per il reindirizzamento dopo il login
+    $_SESSION['messaggio_errore'] = "Devi effettuare il <span lang='en'>login</span> per adottare un animale";
+    
     $paginaTarget = "./adotta.php?" . createHttpQuery($_GET, ['pagina', 'search', 'id'], false);
     header("Location: login.php?redirect=" . urlencode($paginaTarget));
     exit();
