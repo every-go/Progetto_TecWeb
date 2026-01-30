@@ -1212,6 +1212,11 @@ input[type="radio"] {
     font-size: 1.5em;
 }
 
+#immagine{
+    min-height: 24px;
+    min-width: 24px;
+}
+
 .radio-fieldset {
     border: 1.5px solid var(--text-color);
     border-radius: 1em;
@@ -1237,6 +1242,11 @@ input[type="radio"] {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#form-main .radio-item label{
+    min-width: 24px;
+    min-height: 24px;
 }
 
 #form-main img {

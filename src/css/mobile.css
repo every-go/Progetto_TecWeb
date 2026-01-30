@@ -210,6 +210,11 @@ a#pulsante-torna-su {
     flex-direction: column;
 }
 
+#form-main .radio-item label{
+    min-width: 44px;
+    min-height: 44px;
+}
+
 footer {
     display: flex;
     flex-direction: column;
