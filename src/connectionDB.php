@@ -36,7 +36,6 @@ class DBAccess
 
         } catch (\mysqli_sql_exception $e) {
             http_response_code(500);
-            // Pagina di errore user-friendly
             include __DIR__ . "/500.php";
             exit();
         }

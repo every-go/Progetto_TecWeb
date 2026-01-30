@@ -125,7 +125,6 @@ $content = renderErrorsWithAria($content, $errori);
 
 $content = addAriaInvalid($content, $errori);
 
-// Gestione http query per sticky parameters nella per la navigazione
 $parametriQuery = [];
 
 //imposta breadcrumb della pagina di modifica, con Sticky Parameters
@@ -141,8 +140,6 @@ $content = str_replace("[ANIMALI_LINK_BREADCRUMB]", '<a href="animali.php?' .
 // breadcrumb aggiungi animale
 $content = str_replace("[ANIMALE_LINK_BREADCRUMB]", '', $content);
 $content = str_replace("[BREADCRUMB_SEPARATOR]", '', $content);
-
-
 
 $content = str_replace("[listaMenu]", $listaMenu, $content);
 $content = str_replace("[listaFooter]", $listaFooter, $content);

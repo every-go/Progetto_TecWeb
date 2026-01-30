@@ -204,3 +204,4 @@ $content = str_replace("[listaFooter]", $listaFooter, $content);
 $content = cleanForm($content);
 
 echo $content;
+?>
