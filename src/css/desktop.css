@@ -1308,6 +1308,9 @@ input[type="submit"]:focus {
     outline-offset: 3px;
 }
 
+#immagineCorrente{
+    max-height: 25em;
+}
 
 /*
     ERRORI 
@@ -1473,7 +1476,7 @@ input[type="text"],
 input[type="password"],
 input[type="number"] {
     background-color: var(--primary-bg);
-    /* padding: 0 0.5em 0 0; */
+    padding: 0 0 0 0.5em;
     border: none;
     border-bottom: 1px solid var(--grigio);
     font-size: 1em;
