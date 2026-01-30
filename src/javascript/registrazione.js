@@ -10,7 +10,7 @@ var dettagli_form = {
    "password": [
       "<abbr title='Esempio'>Es</abbr>: #Flavio4",
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[\]{};:'",.<>\/?\\|`~]{8,24}$/,
-      "Password non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, 1 numero e almeno un carattere speciale, minimo 8, massimo 24 caratteri.",
+      "<span lang=\"en\">Password</span> non valida. Deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, 1 numero e almeno un carattere speciale, minimo 8, massimo 24 caratteri.",
       "errPassword"
    ],
    "confirm_password": [
@@ -38,7 +38,7 @@ window.validazioneCampo = function(input, dettagli_form) {
       }
    } else if (input.id === "password" && text === "#Flavio4") {
       valido = false;
-      messaggioErrore = "Non puoi utilizzare la password di esempio.";
+      messaggioErrore = "Non puoi utilizzare la <span lang=\"en\">password</span> di esempio.";
    } else if (regex instanceof RegExp && !regex.test(text)) {
       valido = false;
    }
