@@ -14,7 +14,7 @@ $redirectUrl = 'index.php';
 if (isset($_GET['redirect'])) {
     require_once __DIR__ . '/utils/UrlHelper.php';
     $safeRedirect = UrlHelper::getSafeRedirect($_GET['redirect'], 'index.php');
-    $redirectUrl = ltrim($safeRedirect, '/'); // Rimuovi lo slash iniziale per redirect relativi
+    $redirectUrl = ltrim($safeRedirect, '/');
 }
 
 

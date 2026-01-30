@@ -98,7 +98,6 @@ if (empty($_SESSION["is_logged_in"])) {
     exit();
 }
 
-// gestione autofocus dinamico: solo il primo errore
 $autofocus = ['username' => '', 'password' => ''];
 
 if ($errorMessages['username'] !== '') {

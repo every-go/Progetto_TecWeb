@@ -436,7 +436,6 @@ function checkForm($data, $isModifica = false)
 
     // Validazione immagine
     if (!$isModifica) {
-        // INSERIMENTO: immagine OBBLIGATORIA
         if (
             isset($_FILES["immagine"]) &&
             $_FILES["immagine"]["error"] !== UPLOAD_ERR_NO_FILE
@@ -456,3 +455,4 @@ function checkForm($data, $isModifica = false)
 
     return array_filter($errori);
 }
+?>
