@@ -11,8 +11,6 @@ Per comodità, divideremo in 3 categorie la seguente tabella per indicare le fun
 
 Da notare che tutte le funzionalità dell'utente non autenticato sono disponibili anche per l'utente autenticato e per l'amministratore.
 
-Le funzionalità dell'utente "Logged-in" sono disponibili anche per l'amministratore.
-
 #set figure(placement: auto) // Opzionale: permette il posizionamento automatico
 
 #table(
@@ -33,8 +31,8 @@ Le funzionalità dell'utente "Logged-in" sono disponibili anche per l'amministra
   [Utente], [Visualizzare le informazioni su come adottare un animale, sui suoi bisogni generali],
   [Utente], [Visualizzare la pagina sulle informazioni di chi gestisce "Casa Otium"],
   [Utente], [Ricercare un animale specifico per nome oppure filtrare per tipo (reale oppure fantasy)],
-  [Logged-in], [Effettuare il logout],
-  [Logged-in], [Aggiungere o rimuovere animali dalla lista dei preferiti (possibile farlo sia dalla schermata degli animali, sia nella schermata di dettaglio animale, sia dalla sezione dei preferiti)],
+  [Logged-in, Admin], [Effettuare il logout],
+  [Logged-in], [Aggiungere o rimuovere animali dalla lista dei preferiti (è possibile farlo solo nella schermata di dettaglio animale, questo serve a non incoraggiare l'aggiunta ai preferiti se non vi è un reale interesse)],
   [Logged-in], [Visualizzare la lista dei preferiti],
   [Logged-in], ["Adottare" un animale],
   [Admin], [Aggiungere un nuovo animale],

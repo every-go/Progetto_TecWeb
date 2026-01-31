@@ -2,14 +2,15 @@
 
 La progettazione è stata studiata per essere intuitiva e semplice.
 
-Essendo comunque questo un sito web molto semplice, abbiamo optato per mantenere un'ampiezza di 4, per le pagine "Chi Siamo", "Animali", "Preferiti" (se logged-in), "Login/Logout".
+Essendo comunque questo un sito web molto semplice, abbiamo optato per mantenere un'ampiezza di 4, per le pagine "Chi Siamo", "Animali", "Area Personale" (se logged-in), "Login/Logout".
 
 La pagina "Crediti" è accessibile solo dalla mappa della navigazione presente in fondo a ogni pagina, poiché quella è solo una pagina che ringrazia i creatori delle icone utilizzate nel sito.
 
-La massima profondità è di 4 livelli, percorribile solo dall'Admin, tramite il percorso Home>>Animali>>Animale>>Modifica.
+La massima profondità è di 4 livelli (5 se logged-in), percorribile solo dall'Admin, tramite il percorso Home>>Animali>>Animale>>Modifica.
 
 #figure(caption: "Albero delle interazioni nel sito web")[
-  #image("../images/albero.png", width: 80%)
+    #image("../images/albero.png", width: 80%)
+
 ]
 
 Da notare che, per semplicità, non sono state rappresentate le pagine di errore (401, 404, 500) e i collegamenti dal livello 3 e 4 verso le pagine "Crediti" e "Chi Siamo" (l'Admin non può accedere a "Login" essendo già loggato e "Preferiti").
