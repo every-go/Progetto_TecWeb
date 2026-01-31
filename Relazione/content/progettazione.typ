@@ -13,7 +13,7 @@ La massima profondità è di 4 livelli (5 se logged-in), percorribile solo dall'
 
 ]
 
-Da notare che, per semplicità, non sono state rappresentate le pagine di errore (401, 404, 500) e i collegamenti dal livello 3 e 4 verso le pagine "Crediti" e "Chi Siamo" (l'Admin non può accedere a "Login" essendo già loggato e "Preferiti").
+Da notare che, per semplicità, non sono state rappresentate le pagine di errore (401, 404, 500) e i collegamenti dal livello 3 e 4 verso le pagine del livello 1 e 2 (accessibili tramite header e footer).
 
 Ogni linea ha un'etichetta che rappresenta chi può effettuare quella interazione, da una pagina all'altra è possibile spostarsi tramite link o bottoni.
 
