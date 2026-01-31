@@ -161,8 +161,9 @@ tbody tr td:last-child {
     width: 100%;
 }
 
-.img-cutter img{
+.img-cutter img {
     width: 100%;
+    object-fit: cover;
 }
 
 #animale-name {
@@ -214,7 +215,7 @@ a#pulsante-torna-su {
     flex-direction: column;
 }
 
-#form-main .radio-item label{
+#form-main .radio-item label {
     min-width: 44px;
     min-height: 44px;
 }
@@ -314,14 +315,14 @@ footer #disclaimer {
         content: '';
         position: absolute;
         inset: 0;
-    
+
         background-color: var(--primary-bg);
-    
+
         mask-image: url("../images/png/menu.png");
         mask-repeat: no-repeat;
         mask-position: center;
         mask-size: contain;
-    
+
         pointer-events: none;
     }
 
