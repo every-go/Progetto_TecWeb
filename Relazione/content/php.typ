@@ -36,20 +36,17 @@ Il tasto aggiungi hai preferiti è visibile ma non utilizzabile, per non nascond
 
 Non è previsto che un account admin possa avere una lista dei preferiti, quindi anche a agli account con role admin viene nascosto il tasto dei preferiti.
 
-== Pagina animali
+=== Pagina animali
 Mostra la lista degli animali adottabili.
 
 È possibile eseguire una ricerca per nome, ritornando una corrispondenza positiva se trova una sottostringa uguale ai termini di ricerca.
 Ad esempio se si cerca "Lunare" trova sia "Cavallo Lunare" che "Medusa Lunare" sono tra i risultati di ricerca.
 
-== Pagina animale singolo
+=== Pagina animale singolo
 Nell'eventualità che un animale sia stato già adottato da un altro utente nella pagina animale compare un'avviso che segnala tale fatto all'utente.
-
-L'utente con disabilità visive lo nota subito al primo tab con un aiuto speciale che specifica che l'animale è stato già adottato e rimanda alla sezione che descrive l'adozione già completa. 
+L'utente con disabilità visive lo nota subito al primo tab con un aria-alert sulla sezione che spiega che l'animale è già stato adottato.
 
 L'utente che non usa gli aiuti alla navigazione lo nota leggendo la sezione dedicata all'adozione.
-
-Negli aiuti alla navigazione viene inserito come prima voce un link interno all'avviso. Essendo la prima voce un utente che si avvale di screen reader saprà fin da subito che l'animale è stato adottato.
 
 Questa situazione si verifica solo quando un animale è stato inserito tra i preferiti di un utente, poiché nella lista degli animali non c'è possibilità di vedere animali già adottati.
 
@@ -60,7 +57,7 @@ Rimane comunque la possibilità dell'utente di togliere l'animale fra i preferit
 === Breadcrumb nella pagina animale
 Per garantire una qualità di navigazione accettabile le breadcrumb della pagina animale.php e area_personale.php rimandano alla medesima pagina da cui si è arrivati.
 
-Ad esempio se l'utente stava svolgendo una ricerca e dopo aver visualizzato un animale vuole proseguire con l'esplorazione i termini di ricerca e la pagina corrente sono mantenuti.
+Ad esempio se l'utente stava svolgendo una ricerca e dopo aver visualizzato un animale vuole proseguire con l'esplorazione i termini di ricerca e la pagina corrente (ad esempio pagina 2) sono mantenuti.
 
 Se si era arrivati dalla pagina Area Personale la breadcrumb mostra la pagina Area Personale.
 
