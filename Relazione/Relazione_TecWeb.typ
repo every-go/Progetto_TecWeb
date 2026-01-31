@@ -122,5 +122,3 @@ table.header([Nome],[Matricola]),
 #include "content/form.typ"
 
 #include "content/test.typ"
-
-#include "content/note.typ"
