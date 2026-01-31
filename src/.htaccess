@@ -1,6 +1,6 @@
 # 1. Gestione Errori Personalizzata
-ErrorDocument 500 /500.php
-ErrorDocument 404 /404.php
+ErrorDocument 500 /Progetto_TecWeb/src/500.php
+ErrorDocument 404 /Progetto_TecWeb/src/404.php
 ErrorDocument 401 /401.php
 
 # 2. SICUREZZA: Blocca l'accesso alla cartella DB
