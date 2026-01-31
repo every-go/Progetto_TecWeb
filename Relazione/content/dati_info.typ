@@ -45,7 +45,7 @@ Queste keyword sono sempre presenti poiché Casa Otium è principalmente un sito
 Inoltre Casa Otium è fondamentale mantenerla poiché, siccome è il nome del sito, non si può non pensare che un utente possa cercare il nostro sito con il nome del sito.
 
 Le altre keyword utilizzate con la relativa spiegazione sono descritte nella seguente tabella:
-
+#figure(caption:"Schema delle funzionalità principali del sito web")[
 #table(
   columns: (0.15fr, 0.25fr, 0.6fr),
   inset: 10pt,
@@ -56,7 +56,7 @@ Le altre keyword utilizzate con la relativa spiegazione sono descritte nella seg
   table.header(
     [*Pagina*],[*Keywords*], [*Descrizione*],
   ),
-  [Home],[Rifugio, Amici, Felice],[Rifugio e Felice sono compresi nelle intestazioni. Siccome Rifugio è anche una parola che può indicare un posto in cui gli animali si nascondono, abbiamo deciso di tenerlo come metafora per il nostro sito. Amici è necessario per la description poiché si sa che gli animali sono anche amici dell'uomo (o dei maghi in questo caso) ed era coerente con il significato della pagina.],
+  [Home],[Rifugio, Amici, Felice, Amico],[Rifugio e Felice sono compresi nelle intestazioni. Siccome Rifugio è anche una parola che può indicare un posto in cui gli animali si nascondono, abbiamo deciso di tenerlo come metafora per il nostro sito. Amici è necessario per la description poiché si sa che gli animali sono anche amici dell'uomo (o dei maghi in questo caso) ed era coerente con il significato della pagina.],
   [Login],[Login, Accesso],[Qui le due keyword aggiuntive erano implicite dal significato della pagina, poiché un utente può ricercare la pagina di login per accedere ai servizi di Casa Otium],
   [Chi Siamo],[Volontari, Intervento, contatti],[Questa pagina descrive come i volontari di casa Otium intervongono con la loro dedizione, di conseguenza le parole volontari ed intervento erano naturali e abbiamo pensato che potessero essere ricercate per capire più informazioni sull'operato dei volontari. 
   
@@ -64,24 +64,22 @@ Le altre keyword utilizzate con la relativa spiegazione sono descritte nella seg
   La tabella utilizza la tecnica della linearizzazione di Aaron Gustafson per trasformare la tabella al ridursi della dimensione dello schermo.
   ],
   [401],[Errore 401, Non autorizzato], table.cell(rowspan:3)[Non essendo le pagine di errore effettivamente ricercabili, abbiamo deciso solo di inserire il nome e la breve descrizione del tipo di errore.],
-  [404],[Errore 404, Non trovato],
-  [500],[Errore 500, Server],
+  [404],[Errore 404, Pagina svanita],
+  [500],[Errore 500, Server, Problema],
   [Animale],[Bisogni, Descrizione, Storia],[Questa pagina difficilmente è ricercata direttamente da un utente per la prima volta, poiché sarebbe necessario sapere già quale animale si va a ricercare. Però, per migliorare l'utilizzo delle keyword, abbiamo ritenuto naturale l'utilizzo delle parole chiave menzionate, poiché ogni animale ha dei propri bisogni, una propria descrizione e una propria storia, tutto introdotto dalle intestazioni ],
   [Animali],[Amico],[In questa pagina le keyword "universali" erano molto sufficienti, l'unica parole chiave non ancora utilizzata utile era amico, per lo stesso discorso fatto nella descrizione delle keywords della "Home"],
-  [Crediti],[Crediti, Ringraziamenti],[Anche qui le nuove parole chiave vengono naturali, un utente può essere incuriosito chi Casa Otium ringrazia, sia per l'utilizzo nel sito web (come nel nostro caso) oppure di altre persone (non nel nostro caso), ma in entrambi i casi la ricerca dei ringraziamenti e dei crediti può portare a questa pagina senza clickbait],
-  [Area Personale],[Preferiti, Adottati],[Anche questa è una pagina come gli errori, ovvero non dovrebbe essere direttamente raggiungibile da una semplice ricerca alla prima volta, poiché è un'area personale che si crea almeno dopo la prima volta in cui si entra. Le uniche parole chiave adatte al caso sono proprio quelle che rappresentano il contenuto della pagina, ovvero gli animali preferiti e adottati fino a quel momento grazie a Casa Otium],
-  [Ispeziona Animale],[Aggiungi, Modifica],[Questa è stata una pagina in cui abbiamo fatto un po' fatica a trovare altre keyword, poiché dovrebbe essere una pagina accessibile solo da un admin e non da un utente comune. Comunque abbiamo optato per quelle parole chiave affinché richiamino l'effettivo scopo della pagina, ovvero aggiungere oppure modificare un animale],
+  [Crediti],[Crediti, Ringraziamento, Immagini, Icone],[Anche qui le nuove parole chiave vengono naturali, un utente può essere incuriosito chi Casa Otium ringrazia, sia per l'utilizzo nel sito web (come nel nostro caso) oppure di altre persone (non nel nostro caso), ma in entrambi i casi la ricerca dei ringraziamenti e dei crediti può portare a questa pagina senza clickbait],
+  [Area Personale],[Preferiti, Adottati],[Anche questa è una pagina come gli errori, ovvero non dovrebbe essere direttamente raggiungibile da una semplice ricerca alla prima volta, poiché è un'area personale che si crea almeno dopo la prima volta in cui si entra. Le uniche parole chiave adatte al caso sono proprio quelle che rappresentano il contenuto della pagina, ovvero gli animali preferiti e adottati fino a quel momento grazie a Casa Otium ],
+  [Aggiungi],table.cell(rowspan:2)[Amministratore, Aggiungi, Modifica],table.cell(rowspan:2)[Quese 2 pagine condividono lo stesso template html.
+  
+  Su queste pagine abbiamo fatto un po' fatica a trovare altre keyword, poiché dovrebbe essere una pagina accessibile solo da un admin e non da un utente comune. Comunque abbiamo optato per quelle parole chiave affinché richiamino l'effettivo scopo della pagina, ovvero aggiungere oppure modificare un animale],
+  [Modifica]
 )
-#v(8pt)
-#align(center)[
-  #block(width: 80%)[
-    #text(style: "italic")[Schema delle funzionalità principali del sito web]
-  ]
 ]
 
 == Generazione ed alternativa testuale delle immagini
-Per la generazione delle immagini degli animali fantasy, ci siamo affidati alla AI specializzate per la generazione animale come Grok.
+Per la generazione delle immagini degli animali, ci siamo affidati ad AI generative (Grok, Gemini), vi sono anche immagini di animali reali appartenenti ai membri del gruppo o immagini reperite online (in tal caso sono riportate nella pagina dei crediti).
 
 Per l'alternativa testuale delle immagini, abbiamo inserito nel DB l'attributo alt che va a inserire l'alternativa testuale per ogni immagine.
 
-Questa si differenzia dalla descrizione dell'animale, perché l'idea è che l'alternativa testuale descriva fisicamente l'animale, per permettere a chiunque di comprendere com'è fatto l'animale, mentre la descrizione è di tipo caratteriale.
+Questa si differenzia dalla descrizione dell'animale, perché l'idea è che l'alternativa testuale descriva fisicamente l'animale e in modo , per permettere a chiunque di comprendere com'è fatto l'animale, mentre la descrizione è di tipo caratteriale.

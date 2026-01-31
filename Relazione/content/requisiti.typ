@@ -26,6 +26,7 @@ Da notare che tutte le funzionalità dell'utente non autenticato sono disponibil
 
   [Utente], [Design responsive e accessibile],
   [Utente], [Visualizzare gli animali disponibili per l'adozione],
+  [Admin], [Visualizzare tutti gli animali, adottati e non.],
   [Utente], [Visualizzare i dettagli di un animale specifico],
   [Utente], [Effettuare il login],
   [Utente], [Visualizzare le informazioni su come adottare un animale, sui suoi bisogni generali],

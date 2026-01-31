@@ -2,7 +2,7 @@
 <php>
 
 == Header e footer
-Le pagine che ne hanno bisogno hanno un header e un footer dinamico che cambiano in base all'accesso "logged-in", admin oppure utente.
+Le pagine hanno un header e un footer dinamico che cambia in base all'accesso "logged-in", admin oppure utente e in base alla pagina corrente (per evitare link circolari).
 
 Infatti, nel caso della navbar nell'header questa ha come elementi 
 + Home
@@ -26,23 +26,23 @@ L'unica differenza è che nel footer è presente il link anche alla pagina dei c
 Da notare però che la pagina Area Personale è l'unica a non avere header e footer dinamici, in quanto per accederci bisogna essere un utente "logged-in", e in quanto tale si ha a disposizione la navbar menzionata precedentemente per gli utenti che hanno effettuato il login.
 
 === Pagine di errore
-Queste pagine per scelta non hanno la navbar ma dispongono del footer, il quale è un elemento che deve rimanere in qualunque parte del sito web.
+Queste pagine per scelta non hanno la breadcrumb.
+Dipsongono comunque di header, footer e link/pulsanti che rimandano a pagine rilevanti (ad esempio login nella pagina di errore 401)
 
 == Animali ed Animale
 Anche qui, è possibile visualizzare completamente qualsiasi animale nel dettaglio oppure l'elenco degli animali senza aver effettuato il login.
 
-Ma abbiamo deciso, per scelta stilistica e di coerenza, di non permettere la visualizzazione del tasto per aggiungere un animale ai preferiti agli utenti che non hanno effettuato il login.
-
-Ovviamente questo tasto comparirà quando un utente effettua il login.
+Il tasto aggiungi hai preferiti è visibile ma non utilizzabile, per non nascondere una funzionalità a un utente che sta esplorando.
 
 Non è previsto che un account admin possa avere una lista dei preferiti, quindi anche a agli account con role admin viene nascosto il tasto dei preferiti.
+
 == Pagina animali
 Mostra la lista degli animali adottabili.
 
 È possibile eseguire una ricerca per nome, ritornando una corrispondenza positiva se trova una sottostringa uguale ai termini di ricerca.
 Ad esempio se si cerca "Lunare" trova sia "Cavallo Lunare" che "Medusa Lunare" sono tra i risultati di ricerca.
 
-== Pagina animale
+== Pagina animale singolo
 Nell'eventualità che un animale sia stato già adottato da un altro utente nella pagina animale compare un'avviso che segnala tale fatto all'utente.
 
 L'utente con disabilità visive lo nota subito al primo tab con un aiuto speciale che specifica che l'animale è stato già adottato e rimanda alla sezione che descrive l'adozione già completa. 

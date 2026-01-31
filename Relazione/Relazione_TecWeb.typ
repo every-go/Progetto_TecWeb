@@ -1,6 +1,7 @@
 #set page(paper:"a4")
 #set text(size: 10pt,lang:"IT")
 
+#show figure: set block(breakable: true)
 
 #show link:set text(blue)
 #show ref:set text(blue) 
