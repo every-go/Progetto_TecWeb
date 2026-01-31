@@ -1,26 +1,60 @@
 const menu = document.getElementById("menu");
-const links = menu.querySelector("ul")
+const hamburger = document.getElementById("hamburger");
+const links = menu.querySelector("ul");
 
-hamburger.addEventListener("click", (ev) => {
-    aperto = menu.classList.toggle("aperto");
-    if (aperto) {
-        hamburger.setAttribute("aria-label", "Chiudi menù");
-    } else {
-        hamburger.setAttribute("aria-label", "Apri menù");
-    }
-    links.toggleAttribute("inert", !aperto);
-});
+let aperto = false;
 
-function aggiornaMenu() {
-    if (window.innerWidth <= 731) {
-        if (!menu.classList.contains("aperto")) {
-            links.setAttribute("inert", "");
-        }
-    }
-    else {
-        links.removeAttribute("inert");
+function openMenu() {
+    aperto = true;
+    menu.classList.add("aperto");
+    hamburger.setAttribute("aria-label", "Chiudi menù");
+    if (links) links.removeAttribute("inert");
+}
+
+function closeMenu() {
+    aperto = false;
+    menu.classList.remove("aperto");
+    hamburger.setAttribute("aria-label", "Apri menù");
+    if (window.innerWidth <= 731 && links) {
+        links.setAttribute("inert", "");
     }
 }
 
-aggiornaMenu()
-window.addEventListener("resize", aggiornaMenu)
+function toggleMenu(ev) {
+    if (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+    }
+    aperto ? closeMenu() : openMenu();
+}
+
+hamburger.ontouchend = toggleMenu;
+hamburger.onclick = toggleMenu;
+
+document.ontouchend = (ev) => {
+    if (!aperto) return;
+    if (!menu.contains(ev.target) && !hamburger.contains(ev.target)) {
+        closeMenu();
+    }
+};
+
+document.onclick = (ev) => {
+    if (!aperto) return;
+    if (!menu.contains(ev.target) && !hamburger.contains(ev.target)) {
+        closeMenu();
+    }
+};
+
+function aggiornaMenu() {
+    if (window.innerWidth <= 731) {
+        if (!aperto && links) {
+            links.setAttribute("inert", "");
+        }
+    } else {
+        if (links) links.removeAttribute("inert");
+        if (aperto) closeMenu();
+    }
+}
+
+aggiornaMenu();
+window.addEventListener("resize", aggiornaMenu);

@@ -237,11 +237,6 @@ footer #disclaimer {
     width: 100%;
 }
 
-/* 
-Linearizzazione di Aaron Gustafson
-*/
-
-/* al momento non stiamo usando tfoot, ma ne dubbio lo lascio */
 #tabella-contatti thead,
 #tabella-contatti tfoot {
     display: none;
@@ -311,7 +306,6 @@ Linearizzazione di Aaron Gustafson
         outline: 3px solid var(--arancione);
     }
 
-    /* Pseudo-elemento per la maschera dell'icona */
     #hamburger::before {
         content: '';
         position: absolute;
