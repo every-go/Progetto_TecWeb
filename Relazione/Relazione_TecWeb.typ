@@ -25,8 +25,6 @@
   ]
 )
 
-
-
 #align(center)[
 #image("images/logo_Unipd.png", width: 30%)
 Università degli Studi di Padova

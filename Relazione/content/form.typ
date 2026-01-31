@@ -51,5 +51,10 @@ Una volta che un animale è adottato non si può ritornare in alcun modo allo st
 #table(
   columns: (1fr, 1fr, 1fr),
   table.header([Campo],[Regex],[Motivazione]),
-  []
+  [Nome],"/^[\p{L} ]{2,24}$/u",[Il nome di un animale può contenere solo lettere (anche accentate) e spazi.],
+  [Età],"/^(0|[1-9][0-9]{0,4})$/",[L'età deve essere un numero valido da 0 a 99999 senza zeri iniziali. Abbiamo pensato che i nostri animali possono essere vecchi ma non ultra millenari.],
+  [Alt],"/^[\p{L}0-9 ,:;'’ʼʻ`′.\"()]{1,1024}$/u",[Il testo alternativo di un'immagine può contenere le lettere anche accentate, spazi e i principali tipi di punteggiatura ma non permette di andare a capo, perché se fosse possibile rovinerebbe il senso dell'attributo alt.],
+  [Luogo],"/^[\p{L}0-9 ,/'’ʼʻ`′\"]{1,100}$/u",[Non abbiamo reso il luogo particolarmente lungo (difficile trovare un luogo realistico con più di 100 caratteri) permettendo sempre l'utilizzo delle lettere anche accentate e dei principali tipi di punteggiatura (magari si vuole inserire l'indirizzo di casa).],
+  [Descrizione, Bisogni],"/^[\p{L}0-9 ,:;'’ʼʻ`′.\"()?!\s]{1,1024}$/u",[La descrizione e i bisogni permettono di inserire tutte le lettere anche accentate, i numeri, i principali segni di punteggiatura ed è permesso di andare a capo in quanto ci si trova all'interno di una textarea.],
+  [Storia],"/^[\p{L}0-9 ,:;'’ʼʻ`′.\"()?!\s]{0,1024}$/u",[La storia ha gli stessi identici "parametri" per descrizione e bisogni, l'unica cosa che cambia è che essendo un campo facoltativo è permesso l'inserimento di una stringa vuota.]
 )

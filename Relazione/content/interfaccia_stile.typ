@@ -32,7 +32,6 @@ Per quanto riguarda la progettazione mobile non sono stati fatti grandissimi cam
 <notifiche>
 Il nostro sito è dotato di un metodo di redirect, descritto nella @redirect, il quale è susseguito da una notifica. Questa notifica ha una progress bar che viene considerato come un indicatore visivo non essenziale, animato via CSS, disattivabile tramite prefers-reduced-motion. La notifica è temporanea (meno di 5 secondi) e non richiede azioni, dunque non necessità di pulsanti di stop o pausa
 
-
 == Colore e Contrasti
 <colore>
 
@@ -98,7 +97,6 @@ table.cell(fill: rgb("000000"))[],
 [1.89:1],[9.21:1],[14.56:1],[18.92:1],[1.74:1],[X],
 )
 ]
-
 
 I contrasti sono stati calcolati utilizzando lo strumento online "Contrast Checker" disponibile all'indirizzo web #link("https://webaim.org/resources/contrastchecker/")[https://webaim.org/resources/contrastchecker/].
 

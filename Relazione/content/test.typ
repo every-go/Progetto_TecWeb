@@ -14,7 +14,7 @@ Questo è stato molto utile per trovare rapidamente errori banali e non accumula
 
 Chiaramente quando ce n'era la possibilità TotalValidator lo abbiamo utilizzato in laboratorio per testare se sono stati riscontrati problemi non trovati dai siti appena menzionati. Infatti l'ultimo test effettuato è stato il giorno prima della consegna per essere sicuri della bontà della validazione.
 
-Per tutelarci da SQL Injection e Script malevoli abbiamo fatto delle occorrenze particolari nel codice PHP per evitare questo.
+Per tutelarci da SQL Injection e Script malevoli abbiamo fatto delle occorrenze particolari nel codice PHP.
 
 Per la SQL Injection abbiamo inserito gli statement (?) in ogni query. Ad esempio SELECT id FROM animali WHERE id = ? e non SELECT id FROM animali WHERE id = {id}.
 
