@@ -9,7 +9,21 @@ Utilizzando flex sarebbe stato un po' più complesso dato che avremmo dovuto met
 
 In "animale" abbiamo usato le grid per il layout perché nella fase di design avevamo disegnato la pagina in modo che venisse poi naturale l'utilizzo di una grid.
 
-La stessa cosa vale per "ispeziona_animale", dato che è una variante della pagina "animale" e quindi il design originale.
+La stessa cosa vale per "ispeziona_animale" in cui è stato inserito il grid nel form per come avevamo progettato il design.
+
+== Utilizzo delle flex
+Flex è stato sfruttato per realizzare design-responsive sopratutto da mobile.
+
+Il flex più degno di nota è quello utilizzato nelle pagine "Animali" e "Area Personale": la lista delle card è un "flex-wrap:wrap" che permette alle card di disporsi automaticamente in base allo spazio disponibile della viewport.
+
+== Utilizzo delle media query
+La media query principale identifica il mobile.css, identificato per dispositivi con larghezza massima di 800px.
+
+Lì sono contenute tutte le regole CSS che dovevano essere riscritte per il dispositivo in modo da evitare lo scroll orizzontale e mantenere una visione dei contenuti ottimale anche sul mobile.
+
+Nel desktop.css ci sono regole con punto di massimo 1200px scritte appositamente per quelle sezioni che hanno come sfondo il verde scuro (1B4332), in modo da occupare completamente lo schermo.
+
+Inoltre la navbar ad hamburger compare quando la dimensione dello schermo è <=731px poiché è stato identificato come miglior punto di rottura per lo scopo.
 
 == Progettazione mobile
 Per quanto riguarda la progettazione mobile non sono stati fatti grandissimi cambiamenti tranne quelli utili all'evitare lo scroll orizzontale. È però da segnalare il fatto che il menù ad hamburger è stato fatto ad altezza pollice propiziando l'utilizzo da parte dell'utente. Infatti la convenzione esterna è rotta ma è portato ad una convenzione interna che rende molto più comodo l'utilizzo ad una mano del nostro sito web.
@@ -108,6 +122,6 @@ I link visitati invece sono di colore arancione (B45000) su sfondo beige (FAF3DD
 
 Il colore delle icone nello sfondo verde chiaro (A3B18A) è il verde scuro (1B4332, rapporto 4.86:1).
 
-In alcune situazioni viene utilizzato il contrasto fra rosso (E45000) e il color panna (FAF3DD) per indicare campi obbligatori nel form oppure come colore per la classe errorSuggestion. Il loro rapporto è 4.5:1.
+In alcune situazioni viene utilizzato il contrasto fra rosso (E10000) e il color panna (FAF3DD) per indicare campi obbligatori nel form oppure come colore per la classe errorSuggestion. Il loro rapporto è 4.5:1.
 
 Il logo dell'Università degli Studi di Padova, utilizzato nel disclaimer, non è in contrasto con i colori da noi utilizzati. Purtroppo, il manuale di identità visiva non fornisce alternative per il logo, costringendoci a mantenere il logo originale. Siamo comunque consapevoli del fatto che non mantiene i contrasti corretti.
