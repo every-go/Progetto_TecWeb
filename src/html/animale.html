@@ -20,7 +20,7 @@
 </head>
 
 <body id="top" onload="caricaGestoriEventi()">
-    <a class="aiuti" href="#animale-main">Vai al contenuto</a>
+    <a class="aiuti" href="#main-content">Vai al contenuto</a>
     <header id="container-menu">
         <a href="./index.php" tabindex="-1" aria-hidden="true"><img src="./images/png/gatto_logo.png" alt="" /></a>
         <h1 id="title">Casa Otium</h1>
@@ -40,47 +40,50 @@
 
     [adottaMessage]
 
-    <main id="animale-main">
+    <main id="main-content">
         [messaggio]
-        <div class="img-cutter img-container">
-            <img src="[PATH_IMMAGINE]" alt="[ALT_IMMAGINE]" />
+        <h1>Informazioni animale</h1>
+        <div id="animale-main">
+            <div class="img-cutter img-container">
+                <img src="[PATH_IMMAGINE]" alt="[ALT_IMMAGINE]" />
+            </div>
+            <div id="info-principali">
+                <dl>
+                    <dt>Nome:</dt>
+                    <dd>[NOME]</dd>
+
+                    <dt>Età:</dt>
+                    <dd>[ETA]</dd>
+
+                    <dt>Luogo:</dt>
+                    <dd>[LUOGO]</dd>
+
+                    <dt>Carattere:</dt>
+                    <dd>[CARATTERE]</dd>
+
+                    <dt>Sesso:</dt>
+                    <dd>[SESSO_ANIMALE]</dd>
+                </dl>
+            </div>
+            <section id="description">
+                <header>
+                    <h2>Di più su [NOME]:</h2>
+                    [PULSANTE_PREFERITI]
+                </header>
+                <dl>
+                    <dt>La descrizione:</dt>
+                    <dd>[DESCRIZIONE]</dd>
+
+                    <dt>I suoi bisogni:</dt>
+                    <dd>[BISOGNI]</dd>
+
+                    <dt>La storia:</dt>
+                    <dd>[STORIA]</dd>
+                </dl>
+                [pulsanti]
+            </section>
+            [adottami]
         </div>
-        <div id="info-principali">
-            <dl>
-                <dt>Nome:</dt>
-                <dd>[NOME]</dd>
-
-                <dt>Età:</dt>
-                <dd>[ETA]</dd>
-
-                <dt>Luogo:</dt>
-                <dd>[LUOGO]</dd>
-
-                <dt>Carattere:</dt>
-                <dd>[CARATTERE]</dd>
-
-                <dt>Sesso:</dt>
-                <dd>[SESSO_ANIMALE]</dd>
-            </dl>
-        </div>
-        <section id="description">
-            <header>
-                <h2>Di più su [NOME]:</h2>
-                [PULSANTE_PREFERITI]
-            </header>
-            <dl>
-                <dt>La descrizione:</dt>
-                <dd>[DESCRIZIONE]</dd>
-
-                <dt>I suoi bisogni:</dt>
-                <dd>[BISOGNI]</dd>
-
-                <dt>La storia:</dt>
-                <dd>[STORIA]</dd>
-            </dl>
-            [pulsanti]
-        </section>
-        [adottami]
     </main>
 
     <div id="modal-avviso" class="modal" role="dialog" aria-label="Funzionalità non disponibile" aria-describedby="modal-descrizione-avviso" aria-modal="true">
