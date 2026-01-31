@@ -108,4 +108,6 @@ I link visitati invece sono di colore arancione (B45000) su sfondo beige (FAF3DD
 
 Il colore delle icone nello sfondo verde chiaro (A3B18A) è il verde scuro (1B4332, rapporto 4.86:1).
 
+In alcune situazioni viene utilizzato il contrasto fra rosso (E45000) e il color panna (FAF3DD) per indicare campi obbligatori nel form oppure come colore per la classe errorSuggestion. Il loro rapporto è 4.5:1.
+
 Il logo dell'Università degli Studi di Padova, utilizzato nel disclaimer, non è in contrasto con i colori da noi utilizzati. Purtroppo, il manuale di identità visiva non fornisce alternative per il logo, costringendoci a mantenere il logo originale. Siamo comunque consapevoli del fatto che non mantiene i contrasti corretti.

@@ -161,6 +161,10 @@ tbody tr td:last-child {
     width: 100%;
 }
 
+.img-cutter img{
+    width: 100%;
+}
+
 #animale-name {
     text-align: center;
 }

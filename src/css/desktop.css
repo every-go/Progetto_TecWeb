@@ -557,6 +557,9 @@ td:last-child {
     ANIMALI
 */
 
+#amico-animali{
+    margin-top: 0.5em;
+}
 
 #search-container {
     display: flex;
@@ -851,6 +854,7 @@ button[type="submit"]:hover {
 
 
 #animale-main {
+    margin-top: 2em;
     display: grid;
     grid-template-columns: 2fr 1fr;
     row-gap: 3em;
@@ -1172,6 +1176,10 @@ body.modal-open {
 
 /* Form ispeziona_animale */
 
+#azione{
+    margin-top: 0.5em;
+}
+
 #form-main {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1373,6 +1381,18 @@ input[type="submit"]:focus {
 }
 
 /*
+    AREA PERSONALE
+*/
+
+#preferiti-content{
+    margin-top: 1em;
+}
+
+#adottati-content{
+    margin-top: 1em;
+}
+
+/*
     CREDITI 
 */
 #lista-crediti {
@@ -1424,6 +1444,7 @@ input[type="submit"]:focus {
 }
 
 #paragraph-crediti {
+    margin-top: 0.5em;
     text-align: center;
 }
 
