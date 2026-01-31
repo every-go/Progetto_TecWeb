@@ -15,22 +15,29 @@
     <link rel="stylesheet" href="./css/print.css" type="text/css" media="print">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Milonga&display=swap" rel="stylesheet">
+    <script src="javascript/menu.js" defer></script>
 </head>
 
 <body>
-    <header>
-        <a class="aiuti" href="#main-content"> Vai al contenuto </a>
+    <a class="aiuti" href="#main-content"> Vai al contenuto </a>
+    <header id="container-menu">
+        <a href="./index.php" tabindex="-1" aria-hidden="true"><img src="./images/png/gatto_logo.png" alt="" /></a>
+        <h1 id="title">Casa Otium</h1>
+        
+        <nav id="menu" aria-label="Menù">
+            <button id="hamburger" aria-label="Apri menù">
+            </button>
+            [listaMenu]
+        </nav>
     </header>
     <main id="main-content">
         <div id="container">
-            <div id="left-panel">
+            <aside id="left-panel">
                 <img class="screen-only" src="./images/jpg/error_gatto_giocoso.jpg" alt="" />
                 <img class="print-only" src="./images/png/error_gatto_giocoso.png" alt="" />
-            </div>
+            </aside>
 
             <div id="errore">
-                <a href="./index.php" tabindex="-1" aria-hidden="true"><img id="logo" src="./images/png/gatto_logo.png" alt="" /></a>
-                <h1 id="title">Casa Otium</h1>
                 <h2>Per tutte le code... Questa pagina è svanita!</h2>
                 <p>Abbiamo chiesto a draghi, cani, unicorni, gatti e grifoni, ma nessuno ha visto la pagina smarrita.</p>
                 <p>Forse si è nascosta dentro un portale dimensionale (succede più spesso di quanto pensi).</p>

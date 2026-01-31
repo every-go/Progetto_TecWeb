@@ -1,7 +1,7 @@
 # 1. Gestione Errori Personalizzata
 ErrorDocument 500 /Progetto_TecWeb/src/500.php
 ErrorDocument 404 /Progetto_TecWeb/src/404.php
-ErrorDocument 401 /401.php
+ErrorDocument 401 /Progetto_TecWeb/src/401.php
 
 # 2. SICUREZZA: Blocca l'accesso alla cartella DB
 # Nota: <Directory> non funziona nei file .htaccess, si usa RewriteRule

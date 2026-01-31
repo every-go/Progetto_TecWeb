@@ -10,6 +10,9 @@ class UrlHelper
         'ispeziona_animale.php',
         'aggiungiAnimale.php',
         'modificaAnimale.php',
+        '404.php',
+        '401.php',
+        '500.php',
     ];
 
 

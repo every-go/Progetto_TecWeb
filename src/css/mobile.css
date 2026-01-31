@@ -210,6 +210,11 @@ a#pulsante-torna-su {
     flex-direction: column;
 }
 
+#form-main .radio-item label{
+    min-width: 44px;
+    min-height: 44px;
+}
+
 footer {
     display: flex;
     flex-direction: column;
@@ -232,11 +237,6 @@ footer #disclaimer {
     width: 100%;
 }
 
-/* 
-Linearizzazione di Aaron Gustafson
-*/
-
-/* al momento non stiamo usando tfoot, ma ne dubbio lo lascio */
 #tabella-contatti thead,
 #tabella-contatti tfoot {
     display: none;
@@ -306,7 +306,6 @@ Linearizzazione di Aaron Gustafson
         outline: 3px solid var(--arancione);
     }
 
-    /* Pseudo-elemento per la maschera dell'icona */
     #hamburger::before {
         content: '';
         position: absolute;
