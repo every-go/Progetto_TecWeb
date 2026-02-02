@@ -21,4 +21,4 @@ Per la SQL Injection abbiamo inserito gli statement (?) in ogni query. Ad esempi
 
 Per proteggerci dagli script malevoli abbiamo utilizzato htmlspecialchars e innerHTML nei punti opportuni.
 
-Per quanto riguarda velocità di caricamento e SEO abbiamo usato lighthouse (i risultati sono consultabili in appendice @test_lh)
+Per quanto riguarda velocità di caricamento e SEO abbiamo usato lighthouse (i risultati sono consultabili in appendice @test_lh), un modo per migliorare la performance è l'uso di css mimificato, ma che è stato detto di evitare nell'ambito di questo progetto. 
