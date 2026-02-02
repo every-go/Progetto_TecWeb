@@ -557,7 +557,7 @@ td:last-child {
     ANIMALI
 */
 
-#amico-animali{
+#amico-animali {
     margin-top: 0.5em;
 }
 
@@ -1176,7 +1176,7 @@ body.modal-open {
 
 /* Form ispeziona_animale */
 
-#azione{
+#azione {
     margin-top: 0.5em;
 }
 
@@ -1214,7 +1214,7 @@ input[type="radio"] {
     font-size: 1.5em;
 }
 
-#immagine{
+#immagine {
     min-height: 24px;
     min-width: 24px;
 }
@@ -1246,7 +1246,7 @@ input[type="radio"] {
     align-items: center;
 }
 
-#form-main .radio-item label{
+#form-main .radio-item label {
     min-width: 24px;
     min-height: 24px;
 }
@@ -1307,7 +1307,7 @@ input[type="submit"]:focus {
     outline-offset: 3px;
 }
 
-#immagineCorrente{
+#immagineCorrente {
     max-height: 25em;
 }
 
@@ -1384,11 +1384,11 @@ input[type="submit"]:focus {
     AREA PERSONALE
 */
 
-#preferiti-content{
+#preferiti-content {
     margin-top: 1em;
 }
 
-#adottati-content{
+#adottati-content {
     margin-top: 1em;
 }
 
