@@ -33,11 +33,14 @@ I titoli sono stati costruiti con la regola generale che dice esplicitamente "Da
 
 Per questo tutte le pagine sono della forma "Nome Pagina - Casa Otium" per permettere all'utente un'ottima navigazione.
 
-L'unica cosa che necessita una menzione particolare è la navigazione nelle pagine del singolo animale, il cui titolo è gestito con PHP scrivendo "NomeAnimale - Casa Otium". 
+Le uniche menzioni particolari sono la navigazione nelle pagine del singolo animale, il cui titolo è gestito con PHP scrivendo "NOME_ANIMALE - Casa Otium" e nella pagina animali vengono riportati il numero di pagina corrente e il testo della ricerca (Se effettuata va a rimpiazzare la stringa Animali nel title) "Animali - PAGINA_CORRENTE - Casa Otium". 
 
 Anche questo è stato necessario per permettere il miglioramento dell'orientamento dell'utente.
 
-== Keywords e description nelle pagine
+
+Per coerenza formale sono state inserite anche le keyword di pagine che non andrebbero normalmente indicizzate (Pagine di errore ad esempio)
+
+== Keywords e description nelle pagine <keyword>
 Tutte le pagine contengono diverse parole chiave, tranne 3 keyword sempre presenti, ovvero Casa Otium, animali ed adozione.
 
 Queste keyword sono sempre presenti poiché Casa Otium è principalmente un sito per cercare animali ed adottarli, il che porta immediatamente a pensare alle 2 keyword menzionate.
@@ -76,7 +79,11 @@ Le altre keyword utilizzate con la relativa spiegazione sono descritte nella seg
   [Modifica]
 )
 ]
-
+Le ricerche principali a cui il sito dovra rispondere sono
+- Casa Otium
+- adozione animali
+- sito animali
+- sito adozione
 == Generazione ed alternativa testuale delle immagini
 Per la generazione delle immagini degli animali, ci siamo affidati ad AI generative (Grok, Gemini), vi sono anche immagini di animali reali appartenenti ai membri del gruppo o immagini reperite online (in tal caso sono riportate nella pagina dei crediti).
 

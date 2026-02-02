@@ -6,7 +6,7 @@ Essendo comunque questo un sito web molto semplice, abbiamo optato per mantenere
 
 La pagina "Crediti" è accessibile solo dalla mappa della navigazione presente in fondo a ogni pagina, poiché quella è solo una pagina che ringrazia i creatori delle icone utilizzate nel sito.
 
-La massima profondità è di 4 livelli (5 se logged-in), percorribile solo dall'Admin, tramite il percorso Home>>Animali>>Animale>>Modifica.
+La massima profondità è di 4 livelli, percorribile solo dall'Admin, tramite il percorso Home>>Animali>>Animale>>Modifica.
 
 #figure(caption: "Albero delle interazioni nel sito web")[
     #image("../images/albero.png", width: 80%)

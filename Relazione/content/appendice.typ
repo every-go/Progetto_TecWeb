@@ -16,7 +16,7 @@
   // Partiamo da 90deg (in alto) e andiamo in senso orario (negativo)
   let end-angle = -360deg * (val-int / 100)
 
-  box(width: 80pt, height: 180pt)[
+  box(width: 80pt)[
     #align(center)[
       #cetz.canvas({
         import cetz.draw: *

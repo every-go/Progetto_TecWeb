@@ -1,6 +1,7 @@
 = Analisi dei Requisiti
 
 Il sito web deve offrire un'esperienza utente semplice e intuitiva, permettendo agli utenti di navigare facilmente tra le varie sezioni del sito.
+Si rivolge a un pubblico eterogeneo.
 
 == Funzionalità principali
 Per comodità, divideremo in 3 categorie la seguente tabella per indicare le funzionalità.
@@ -51,6 +52,8 @@ Da notare che tutte le funzionalità dell'utente non autenticato sono disponibil
 Il sito web è studiato per essere disponibile solamente in Italia, quindi l'unica lingua supportata è l'italiano.
 
 == Hardware minimo
-Per il nostro sito non è richiesto un hardware minimo necessario per la visualizzazione delle pagine, poiché il nostro JavaScript non è per niente invasivo ed eventuali problematiche del browser sull'interpretazione degli script non comprometterebbe la corretta visualizzazione del sito web.
-
-Tuttavia, anche se oggi ormai impensabile, un browser che non riesce a funzionare con il PhP corromperebbe completamente il nostro sito impedendo una visualizzazione adeguata e corretta.
+Per il nostro sito non è richiesto un hardware minimo necessario per la visualizzazione delle pagine.
+L'architettura del sito segue il principio del *Progressive Enhancement*:
+- *Client-side:* L'uso di JavaScript è limitato e non critico; ciò garantisce che il sito rimanga fruibile anche su dispositivi datati o con browser con risorse limitate.
+- *Server-side:* Poiché la logica di business è gestita interamente lato server tramite PHP, l'utente riceve codice HTML standard, garantendo la massima compatibilità cross-browser. 
+- *Requisiti:* È richiesto un browser moderno con supporto a CSS3 (per il layout responsive) e una connessione internet stabile per il caricamento dei contenuti multimediali.

@@ -21,3 +21,8 @@ Contiene delle breve descrizioni nella home sul come si può adottare un animale
 La lista dei preferiti e degli adottati può averla solo chi effettua un login nel sito, altrimenti c'è comunque la possibilità di vedere gli animali e imparare come adottarli.
 
 In seguito nel documento, descriveremo in maniera dettagliata le funzionalità del sito, i requisiti, i serivizi, l'accessibilità, i colori scelti i test effettuati.
+
+== Note di esportazione
+Il codice caricato sul server di tecweb e quello consegnato tramite il moodle del referente differiscono in 2 punti:
+- .htaccess, è stato necessario inserire la root del server per far funzionare le pagine di errore
+- ConnectionDB.php, le credenziali usate nel server tecweb sono diverse da quelle usate nel testing locale 
