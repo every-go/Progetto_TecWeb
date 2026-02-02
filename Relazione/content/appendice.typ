@@ -27,7 +27,7 @@
         // 2. Arco del punteggio (colorato)
         // Nota: cap: "round" rende le estremità arrotondate
           arc((0,0),anchor: "origin", start: 90deg, delta: end-angle, radius: 1.5, stroke: (thickness: 8pt, paint: color, cap: "round"))
-        content((0,0), text(size: 40pt, weight: "bold", fill: color, font: "Roboto")[#value])
+        content((0,0), text(size: 2em, weight: "bold", fill: color, font: "Roboto")[#calc.round(value,digits: 2)])
       })
       
       #v(10pt)
@@ -108,16 +108,67 @@
         )
     }
   )
+  #let sink=risultati_test_desktop.remove(0)
 
+  #let sink=risultati_test_mobile.remove(0)
 
+#let tot_pagine=risultati_test_mobile.len()
+
+#let tot_desktop=(
+        Performance:
+          risultati_test_desktop.map(
+            it=>{
+              int(it.Performance)
+            }
+          ).sum()/tot_pagine,
+        Accessibility:risultati_test_desktop.map(
+            it=>{
+              int(it.Accessibility)
+            }
+          ).sum()/tot_pagine,
+        Best_Practices:risultati_test_desktop.map(
+            it=>{
+              int(it.Best_Practices)
+            }
+          ).sum()/tot_pagine,
+        SEO:risultati_test_desktop.map(
+            it=>{
+              int(it.SEO)
+            }
+          ).sum()/tot_pagine,
+)
+#let tot_mobile=(
+        Performance:
+          risultati_test_mobile.map(
+            it=>{
+              int(it.Performance)
+            }
+          ).sum()/tot_pagine,
+        Accessibility:risultati_test_mobile.map(
+            it=>{
+              int(it.Accessibility)
+            }
+          ).sum()/tot_pagine,
+        Best_Practices:risultati_test_mobile.map(
+            it=>{
+              int(it.Best_Practices)
+            }
+          ).sum()/tot_pagine,
+        SEO:risultati_test_mobile.map(
+            it=>{
+              int(it.SEO)
+            }
+          ).sum()/tot_pagine,
+)
 
 = Appendice
 == Risultati lighthouse <test_lh>
+#score_card("",tot_desktop,tot_mobile)
 
-#let row=1
-#while  row< risultati_test_desktop.len()-1{
+// #let row=1
+// #while  row< risultati_test_desktop.len()-1{
 
-score_card(risultati_test_desktop.at(row).pagina,risultati_test_desktop.at(row),risultati_test_mobile.at(row))
-pagebreak()
-row=row+1
-}
+// score_card(risultati_test_desktop.at(row).pagina,risultati_test_desktop.at(row),risultati_test_mobile.at(row))
+// pagebreak()
+// row=row+1
+// }
