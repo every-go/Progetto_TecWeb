@@ -23,7 +23,7 @@ Una cosa molto simile succede al footer, "introducendo" il link alla pagina dell
 L'unica differenza è che nel footer è presente il link anche alla pagina dei crediti.
 
 === Area Personale
-Da notare però che la pagina Area Personale è l'unica a non avere header e footer dinamici, in quanto per accederci bisogna essere un utente "logged-in", e in quanto tale si ha a disposizione la navbar menzionata precedentemente per gli utenti che hanno effettuato il login.
+Da notare però che la pagina Area Personale è l'unica a non avere header e footer dinamici, in quanto per accederci bisogna essere un utente "logged-in", e in quanto tale si ha a disposizione la navbar per gli utenti che hanno effettuato il login.
 
 === Pagine di errore
 Queste pagine per scelta non hanno la breadcrumb.
@@ -32,21 +32,17 @@ Dipsongono comunque di header, footer e link/pulsanti che rimandano a pagine ril
 == Animali ed Animale
 Anche qui, è possibile visualizzare completamente qualsiasi animale nel dettaglio oppure l'elenco degli animali senza aver effettuato il login.
 
-Il tasto aggiungi hai preferiti è visibile ma non utilizzabile, per non nascondere una funzionalità a un utente che sta esplorando.
+Il tasto aggiungi ai preferiti è visibile ma non utilizzabile, per non nascondere una funzionalità a un utente che sta esplorando.
 
-Non è previsto che un account admin possa avere una lista dei preferiti, quindi anche a agli account con role admin viene nascosto il tasto dei preferiti.
+Non è previsto che un account admin possa avere una lista dei preferiti, quindi agli account con role admin viene nascosto il tasto dei preferiti.
 
 === Pagina animali
 Mostra la lista degli animali adottabili.
 
 È possibile eseguire una ricerca per nome, ritornando una corrispondenza positiva se trova una sottostringa uguale ai termini di ricerca.
-Ad esempio se si cerca "Lunare" trova sia "Cavallo Lunare" che "Medusa Lunare" sono tra i risultati di ricerca.
 
 === Pagina animale singolo
-Nell'eventualità che un animale sia stato già adottato da un altro utente nella pagina animale compare un'avviso che segnala tale fatto all'utente.
-L'utente con disabilità visive lo nota subito al primo tab con un aria-alert sulla sezione che spiega che l'animale è già stato adottato.
-
-L'utente che non usa gli aiuti alla navigazione lo nota leggendo la sezione dedicata all'adozione.
+Nell'eventualità che un animale sia stato già adottato da un altro utente nella pagina animale la sezione di adozione viene modificata, descrivendo il fatto che l'animale è stato adottato.
 
 Questa situazione si verifica solo quando un animale è stato inserito tra i preferiti di un utente, poiché nella lista degli animali non c'è possibilità di vedere animali già adottati.
 
@@ -66,7 +62,7 @@ Per limitare la quantità di dati inviati all'apertura della lista degli animali
 
 La lista degli animali generale e anche quella risultato di una ricerca sono divise in pagine e il server invia all'utente solo una sezione della lista.
 
-La pagina Area Personale non è soggetta a paginazione, si assume che l'utente abbia un numero ragionevole di animali salvati tra i preferiti
+La pagina Area Personale non è soggetta a impaginazione, si assume che l'utente abbia un numero ragionevole di animali salvati tra i preferiti.
 
 Al termine della lista vi è un menù di navigazione implementato con un nav contenente una ul di link, è strutturato nel seguente modo: \
 #align(center)[
@@ -92,12 +88,11 @@ Al termine della lista vi è un menù di navigazione implementato con un nav con
 
 *Gestione di link non validi e circolari* 
 
-La freccia di pagina successiva sparisce all'ultima pagina e 
-la freccia di pagina precedente sparisce alla prima pagina.
+La freccia di pagina successiva sparisce all'ultima pagina e la freccia di pagina precedente sparisce alla prima pagina.
 
-I link di pagina numerata non sono doppi, a esempio alla prima pagina vengono visualizzate solo le pagine 1, 2 e 3
+I link di pagina numerata non sono doppi, a esempio alla prima pagina vengono visualizzate solo le pagine 1, 2 e 3.
 
-Come l'utente si aspetta, il passaggio tra le pagine non cancella i termini di ricerca impostati
+Come l'utente si aspetta, il passaggio tra le pagine non cancella i termini di ricerca impostati.
 
 La Pagina corrente non è un link e contiene una label che la segnala come pagina corrente.
 
@@ -105,4 +100,4 @@ La Pagina corrente non è un link e contiene una label che la segnala come pagin
 <redirect>
 Abbiamo deciso di adottare una nostra convenzione interna non presente su tutti i siti, ovvero che, ogni volta che si esegue il login o il logout da una pagina, si viene reindirizzati alla pagina da cui si è arrivati.
 
-Ad esempio se sono nella pagina "Chi siamo" ed eseguo il login comparirà la notifica "Login avvenuto con successo" però mi ritrovo nella pagina "Chi siamo" senza essere reindirizzato alla home.
+Ad esempio se sono nella pagina "Chi siamo" ed eseguo il login comparirà la notifica "Login avvenuto con successo", ritrovandomi successivamente nella pagina "Chi siamo" senza essere reindirizzato alla home.

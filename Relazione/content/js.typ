@@ -7,8 +7,6 @@ Il cuore pieno indica che l'animale è ora aggiunto alla pagina dei preferiti, i
 
 In caso di successo lo script JavaScript modifica l'icona del pulsante e ne cambia l'alt per segnalare anche agli utenti che usano uno screen reader il cambio di stato.
 
-Questo è comunque segnalato all'utente tramite un messaggio di conferma.
-
 == Ricerca
 Per la ricerca abbiamo optato di inserire il pulsante che cerca gli animali solo al click/tap.
 

@@ -18,34 +18,40 @@ Questi sono:
 
 Inoltre gli attributi "Adottato" e "Admin" per la tabella Utenti sono boolean.
 
-Questo indica che, se un animale ha il bool "Adottato" a true, allora questo non sarà più visualizzabile da altri utenti nella pagina degli animali, ma sarà visualizzabile solo dall'utente che l'ha effettivamente adottato nella pagina dedicata all'Area Personale.
+Questo indica che, se un animale ha il bool "Adottato" a true, allora questo non sarà più visualizzabile da altri utenti nella pagina degli animali, ma sarà visualizzabile solo dall'utente che l'ha effettivamente adottato nella pagina dedicata all'Area Personale e dall'Amministratore se deve effettuare piccole modifiche (anche se realisticamente inutile in quanto l'animale è stato già adottato).
 
 Questo è consentito dal controllo di PhP, descritto meglio nella sezione PhP, che visualizza solo gli animali non ancora adottati.
 
 Tutti gli altri attributi sono int, text oppure varchar.
 
-Gli unici elementi che permettono il valore NULL sono "Storia" ed "Immagine", tutti gli altri elementi sono obbligatori all'inserimento di un nuovo animale.
-
-Per quest'ultimo abbiamo preso questa scelta poiché non vogliamo permettere all'admin di inserire animali senza informazioni dettagliate per l'adozione.
+L'unico elemento che permette il valore NULL è "Storia", tutti gli altri elementi sono obbligatori all'inserimento di un nuovo animale.
 
 == Titoli
-I titoli sono stati costruiti con la regola generale che dice esplicitamente "Dal particolare al generale".
+I titoli sono stati costruiti "Dal particolare al generale".
 
-Per questo tutte le pagine sono della forma "Nome Pagina - Casa Otium" per permettere all'utente un'ottima navigazione.
+Per questo tutte le pagine sono della forma "Nome Pagina - Casa Otium" per permettere all'utente un'ottima navigazione tramite visione delle schede.
 
-Le uniche menzioni particolari sono la navigazione nelle pagine del singolo animale, il cui titolo è gestito con PHP scrivendo "NOME_ANIMALE - Casa Otium" e nella pagina animali vengono riportati il numero di pagina corrente e il testo della ricerca (Se effettuata va a rimpiazzare la stringa Animali nel title) "Animali - PAGINA_CORRENTE - Casa Otium". 
+Le uniche menzioni particolari sono:
++ la navigazione nelle pagine del singolo animale, il cui titolo è gestito con PHP scrivendo "NOME_ANIMALE - Casa Otium"
++ nella pagina animali vengono riportati il numero di pagina corrente e il testo della ricerca (Se effettuata va a rimpiazzare la stringa Animali nel title) "Animali - PAGINA_CORRENTE - Casa Otium". 
++ la sezione dell'admin per modificare o inserire un animale viene definita come Modifica o Aggiungi
 
 Anche questo è stato necessario per permettere il miglioramento dell'orientamento dell'utente.
 
-
-Per coerenza formale sono state inserite anche le keyword di pagine che non andrebbero normalmente indicizzate (Pagine di errore ad esempio)
+Per coerenza sono state inserite anche le keyword di pagine che non andrebbero normalmente indicizzate come le pagine di errore
 
 == Keywords e description nelle pagine <keyword>
 Tutte le pagine contengono diverse parole chiave, tranne 3 keyword sempre presenti, ovvero Casa Otium, animali ed adozione.
 
 Queste keyword sono sempre presenti poiché Casa Otium è principalmente un sito per cercare animali ed adottarli, il che porta immediatamente a pensare alle 2 keyword menzionate.
 
-Inoltre Casa Otium è fondamentale mantenerla poiché, siccome è il nome del sito, non si può non pensare che un utente possa cercare il nostro sito con il nome del sito.
+Inoltre Casa Otium è fondamentale mantenerla poiché, siccome è il nome del sito, non si può non pensare che un utente possa cercare il nostro sito con il suo stesso nome.
+
+Le ricerche principali a cui il sito dovrà rispondere sono
+- Casa Otium
+- adozione animali
+- sito animali
+- sito adozione
 
 Le altre keyword utilizzate con la relativa spiegazione sono descritte nella seguente tabella:
 #figure(caption:"Schema delle funzionalità principali del sito web")[
@@ -59,7 +65,7 @@ Le altre keyword utilizzate con la relativa spiegazione sono descritte nella seg
   table.header(
     [*Pagina*],[*Keywords*], [*Descrizione*],
   ),
-  [Home],[Rifugio, Amici, Felice, Amico],[Rifugio e Felice sono compresi nelle intestazioni. Siccome Rifugio è anche una parola che può indicare un posto in cui gli animali si nascondono, abbiamo deciso di tenerlo come metafora per il nostro sito. Amici è necessario per la description poiché si sa che gli animali sono anche amici dell'uomo (o dei maghi in questo caso) ed era coerente con il significato della pagina.],
+  [Home],[Rifugio, Amici, Felice, Amico],[Siccome Rifugio è anche una parola che può indicare un posto in cui gli animali si nascondono, abbiamo deciso di tenerlo come metafora per il nostro sito. Amici è necessario poiché gli animali sono anche amici dell'uomo (anche dei maghi in questo caso) ed era coerente con il significato della pagina.],
   [Login],[Login, Accesso],[Qui le due keyword aggiuntive erano implicite dal significato della pagina, poiché un utente può ricercare la pagina di login per accedere ai servizi di Casa Otium],
   [Chi Siamo],[Volontari, Intervento, contatti],[Questa pagina descrive come i volontari di casa Otium intervongono con la loro dedizione, di conseguenza le parole volontari ed intervento erano naturali e abbiamo pensato che potessero essere ricercate per capire più informazioni sull'operato dei volontari. 
   
@@ -70,8 +76,8 @@ Le altre keyword utilizzate con la relativa spiegazione sono descritte nella seg
   [404],[Errore 404, Pagina svanita],
   [500],[Errore 500, Server, Problema],
   [Animale],[Bisogni, Descrizione, Storia],[Questa pagina difficilmente è ricercata direttamente da un utente per la prima volta, poiché sarebbe necessario sapere già quale animale si va a ricercare. Però, per migliorare l'utilizzo delle keyword, abbiamo ritenuto naturale l'utilizzo delle parole chiave menzionate, poiché ogni animale ha dei propri bisogni, una propria descrizione e una propria storia, tutto introdotto dalle intestazioni ],
-  [Animali],[Amico],[In questa pagina le keyword "universali" erano molto sufficienti, l'unica parole chiave non ancora utilizzata utile era amico, per lo stesso discorso fatto nella descrizione delle keywords della "Home"],
-  [Crediti],[Crediti, Ringraziamento, Immagini, Icone],[Anche qui le nuove parole chiave vengono naturali, un utente può essere incuriosito chi Casa Otium ringrazia, sia per l'utilizzo nel sito web (come nel nostro caso) oppure di altre persone (non nel nostro caso), ma in entrambi i casi la ricerca dei ringraziamenti e dei crediti può portare a questa pagina senza clickbait],
+  [Animali],[Amico],[In questa pagina le keyword "universali" erano sufficienti, l'unica parole chiave non ancora utilizzata utile era amico, per lo stesso discorso fatto nella descrizione delle keywords della "Home"],
+  [Crediti],[Crediti, Ringraziamento, Immagini, Icone],[Anche qui le nuove parole chiave vengono naturali, un utente può essere incuriosito chi Casa Otium ringrazia, quindi la ricerca dei ringraziamenti e dei crediti può portare a questa pagina senza clickbait],
   [Area Personale],[Preferiti, Adottati],[Anche questa è una pagina come gli errori, ovvero non dovrebbe essere direttamente raggiungibile da una semplice ricerca alla prima volta, poiché è un'area personale che si crea almeno dopo la prima volta in cui si entra. Le uniche parole chiave adatte al caso sono proprio quelle che rappresentano il contenuto della pagina, ovvero gli animali preferiti e adottati fino a quel momento grazie a Casa Otium ],
   [Aggiungi],table.cell(rowspan:2)[Amministratore, Aggiungi, Modifica],table.cell(rowspan:2)[Quese 2 pagine condividono lo stesso template html.
   
@@ -79,14 +85,10 @@ Le altre keyword utilizzate con la relativa spiegazione sono descritte nella seg
   [Modifica]
 )
 ]
-Le ricerche principali a cui il sito dovra rispondere sono
-- Casa Otium
-- adozione animali
-- sito animali
-- sito adozione
+
 == Generazione ed alternativa testuale delle immagini
 Per la generazione delle immagini degli animali, ci siamo affidati ad AI generative (Grok, Gemini), vi sono anche immagini di animali reali appartenenti ai membri del gruppo o immagini reperite online (in tal caso sono riportate nella pagina dei crediti).
 
 Per l'alternativa testuale delle immagini, abbiamo inserito nel DB l'attributo alt che va a inserire l'alternativa testuale per ogni immagine.
 
-Questa si differenzia dalla descrizione dell'animale, perché l'idea è che l'alternativa testuale descriva fisicamente l'animale e in modo , per permettere a chiunque di comprendere com'è fatto l'animale, mentre la descrizione è di tipo caratteriale.
+Questa si differenzia dalla descrizione dell'animale, perché l'idea è che l'alternativa testuale descriva fisicamente l'animale per permettere a chiunque di comprendere com'è fatto l'animale, mentre la descrizione è di tipo caratteriale.

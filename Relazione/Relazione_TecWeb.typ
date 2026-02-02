@@ -12,12 +12,6 @@
     
 
     #align(center + horizon)[
-    // #counter(page).display(
-    //   (x,y)=>{
-    //     str(x)+" di "+ str(y)
-    //   },
-    //   both: true,
-    // )
     #counter(page).display()
         #place(left+horizon)[#image("images/gatto_logo.png",width: 3em, alt: "")]
         #place(right+horizon)[#image("images/gatto_logo.png",width: 3em, alt: "")]
@@ -121,6 +115,6 @@ table.header([Nome],[Matricola]),
 
 #include "content/test.typ"
 
-#include "content/divisione_lavoro.typ"
-#pagebreak()
 #include "content/appendice.typ"
+
+#include "content/divisione_lavoro.typ"

@@ -161,14 +161,4 @@
           ).sum()/tot_pagine,
 )
 
-= Appendice
-== Risultati lighthouse <test_lh>
 #score_card("",tot_desktop,tot_mobile)
-
-// #let row=1
-// #while  row< risultati_test_desktop.len()-1{
-
-// score_card(risultati_test_desktop.at(row).pagina,risultati_test_desktop.at(row),risultati_test_mobile.at(row))
-// pagebreak()
-// row=row+1
-// }

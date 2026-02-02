@@ -4,7 +4,7 @@ I test effettuati durante lo svolgimento del progetto sono molteplici.
 
 Il principale è la visualizzazione dell'andamento dell'interfaccia durante la scrittura codice, ispezionando anche col browser per vedere gli eventuali problemi, questo sia da computer che da smartphone per verificare il front-end mobile.
 
-Un altro test effettuato molto spesso è l'utilizzo di NVDA alla fine della scrittura di una pagina, in modo da permetterci di capire come sta proseguendo la scrittura in termini di accessibilità tramite screen reader.
+Un altro test effettuato molto spesso è l'utilizzo di NVDA alla fine della scrittura o modifica di una pagina, in modo da permetterci di capire come sta proseguendo la scrittura in termini di accessibilità tramite screen reader.
 
 Uno dei test effettuati, menzionati nella @colore, è il calcolo dei contrasti.
 
@@ -12,8 +12,8 @@ Un altro test effettuato, non avendo TotalValidator ufficiale a casa, è l'utili
 
 Questo è stato molto utile per trovare rapidamente errori banali e non accumulare debito tecnico nel corso del progetto.
 
+Quando possibile è stato comunque utilizzato TotalValidator in modo da continuare a controllare che il progetto stesse andando nella direzione giusta.
 
-Per tutelarci da SQL Injection e Script malevoli abbiamo fatto delle occorrenze particolari nel codice PHP.
 Chiaramente quando ce n'era la possibilità TotalValidator lo abbiamo utilizzato in laboratorio per testare se sono stati riscontrati problemi non trovati dai siti appena menzionati. Infatti l'ultimo test effettuato è stato il giorno prima della consegna per essere sicuri della bontà della validazione.
 Total validator ha segnalato solo un possibile errore legato a un link senza testo, il gruppo ha deciso di conformarsi alla convenzione esterna che dice che il logo è un link alla home, questo è stato nascosto a navigazione con tab e screen reader in quanto ridondante con l'immediatamente successivo link alla home del menù principale del sito.
 
@@ -21,4 +21,6 @@ Per la SQL Injection abbiamo inserito gli statement (?) in ogni query. Ad esempi
 
 Per proteggerci dagli script malevoli abbiamo utilizzato htmlspecialchars e innerHTML nei punti opportuni.
 
-Per quanto riguarda velocità di caricamento e SEO abbiamo usato lighthouse (i risultati sono consultabili in appendice @test_lh), un modo per migliorare la performance è l'uso di css mimificato, ma che è stato detto di evitare nell'ambito di questo progetto. 
+Per quanto riguarda velocità di caricamento e SEO abbiamo usato lighthouse, il cui risultato medio è il seguente: \
+#linebreak()
+#linebreak()

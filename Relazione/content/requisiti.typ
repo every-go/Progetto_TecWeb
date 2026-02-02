@@ -1,7 +1,6 @@
 = Analisi dei Requisiti
 
 Il sito web deve offrire un'esperienza utente semplice e intuitiva, permettendo agli utenti di navigare facilmente tra le varie sezioni del sito.
-Si rivolge a un pubblico eterogeneo.
 
 == Funzionalità principali
 Per comodità, divideremo in 3 categorie la seguente tabella per indicare le funzionalità.
@@ -12,22 +11,19 @@ Per comodità, divideremo in 3 categorie la seguente tabella per indicare le fun
 
 Da notare che tutte le funzionalità dell'utente non autenticato sono disponibili anche per l'utente autenticato e per l'amministratore.
 
-#set figure(placement: auto) // Opzionale: permette il posizionamento automatico
+#set figure(placement: auto)
 
 #table(
   columns: (0.3fr, 1fr),
   inset: 10pt,
   align: (center, left),
-  fill: (x, y) => if y == 0 { gray.lighten(60%) }, // Header colorato (opzionale)
-  
-  // Intestazione che si ripete su ogni pagina
+  fill: (x, y) => if y == 0 { gray.lighten(60%) },
   table.header(
     [*Ruolo*], [*Funzionalità*],
   ),
 
   [Utente], [Design responsive e accessibile],
   [Utente], [Visualizzare gli animali disponibili per l'adozione],
-  [Admin], [Visualizzare tutti gli animali, adottati e non.],
   [Utente], [Visualizzare i dettagli di un animale specifico],
   [Utente], [Effettuare il login],
   [Utente], [Visualizzare le informazioni su come adottare un animale, sui suoi bisogni generali],
@@ -36,8 +32,9 @@ Da notare che tutte le funzionalità dell'utente non autenticato sono disponibil
   [Logged-in, Admin], [Effettuare il logout],
   [Logged-in], [Aggiungere o rimuovere animali dalla lista dei preferiti (è possibile farlo solo nella schermata di dettaglio animale, questo serve a non incoraggiare l'aggiunta ai preferiti se non vi è un reale interesse)],
   [Logged-in], [Visualizzare la lista dei preferiti],
-  [Logged-in], ["Adottare" un animale],
+  [Logged-in], [Adottare un animale],
   [Admin], [Aggiungere un nuovo animale],
+  [Admin], [Visualizzare tutti gli animali, adottati e non],
   [Admin], [Modificare le informazioni di un animale esistente],
   [Admin], [Eliminare un animale esistente]
 )

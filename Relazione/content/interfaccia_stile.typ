@@ -5,9 +5,9 @@ Le grid non sono state molto utilizzate poiché peggiorano il rendering, ma sono
 
 Nelle card di "animali" e "area personale" abbiamo messo una grid nelle informazioni dell'animale perché volevamo mantenere fisso il layout 2x2 delle informazioni.
 
-Utilizzando flex sarebbe stato un po' più complesso dato che avremmo dovuto mettere un div per ogni riga.
+Utilizzando flex sarebbe stato un po' più complesso dato che avremmo dovuto mettere un contenitore per ogni riga.
 
-In "animale" abbiamo usato le grid per il layout perché nella fase di design avevamo disegnato la pagina in modo che venisse poi naturale l'utilizzo di una grid.
+In "animale" abbiamo usato le grid per il layout perché nella fase di design avevamo disegnato la pagina in modo che venisse più naturale l'utilizzo di una grid, dividendo in base al "settore".
 
 La stessa cosa vale per "ispeziona_animale" in cui è stato inserito il grid nel form per come avevamo progettato il design.
 
@@ -25,12 +25,14 @@ Nel desktop.css ci sono regole con punto di massimo 1200px scritte appositamente
 
 Inoltre la navbar ad hamburger compare quando la dimensione dello schermo è <=731px poiché è stato identificato come miglior punto di rottura per lo scopo.
 
+L'altra media query importante è quella per il media=\"print\" che richiama il print.css.
+
 == Progettazione mobile
 Per quanto riguarda la progettazione mobile non sono stati fatti grandissimi cambiamenti tranne quelli utili all'evitare lo scroll orizzontale. È però da segnalare il fatto che il menù ad hamburger è stato fatto ad altezza pollice propiziando l'utilizzo da parte dell'utente. Infatti la convenzione esterna è rotta ma è portato ad una convenzione interna che rende molto più comodo l'utilizzo ad una mano del nostro sito web.
 
 == Sistema di notifiche
 <notifiche>
-Il nostro sito è dotato di un metodo di redirect, descritto nella @redirect, il quale è susseguito da una notifica. Questa notifica ha una progress bar che viene considerato come un indicatore visivo non essenziale, animato via CSS, disattivabile tramite prefers-reduced-motion. La notifica è temporanea (meno di 5 secondi) e non richiede azioni, dunque non necessità di pulsanti di stop o pausa
+Il nostro sito è dotato di un metodo di redirect, descritto nella @redirect, il quale è susseguito da una notifica. Questa notifica ha una progress bar che viene considerato come un indicatore visivo non essenziale, animato via CSS, disattivabile tramite prefers-reduced-motion. La notifica è temporanea (meno di 5 secondi) e non richiede azioni. Non necessità di pulsanti di stop o pausa in quanto l'animazione non è invasiva.
 
 == Colore e Contrasti
 <colore>
@@ -100,7 +102,7 @@ table.cell(fill: rgb("000000"))[],
 
 I contrasti sono stati calcolati utilizzando lo strumento online "Contrast Checker" disponibile all'indirizzo web #link("https://webaim.org/resources/contrastchecker/")[https://webaim.org/resources/contrastchecker/].
 
-Il rapporto fra colore e testo deve essere almeno di 4.5:1 per il testo piccolo, di 3:1 per il testo grande.
+In alcune situazioni viene utilizzato il contrasto fra rosso (E10000) e il color panna (FAF3DD) per indicare campi obbligatori nel form oppure come colore per la classe errorSuggestion. Il loro rapporto è 4.5:1.
 
 I contrasti non rispettati non vengono mai utilizzati nel sito web.
 
@@ -112,14 +114,10 @@ Sul beige (FAF3DD) vengono utilizzati il marrone (4D2F24, rapporto 10.83:1), il 
 
 A volte viene anche utilizzato il verde chiaro (A3B18A) come sfondo. In questo caso, il testo è di colore nero (000000, rapporto 9.21:1).
 
-Il rapporto nei link deve essere 3:1 con il testo, 4.5:1 con lo sfondo. 
-
 I link non visitati sono sottolineati, in modo da sistemare eventuali problemi di contrasto.
 
 I link visitati invece sono di colore arancione (B45000) su sfondo beige (FAF3DD, rapporto 4.63:1) e vicino al testo nero (000000, rapporto 4.08:1). Vicino al marrone (4D2F24) c'è un rapporto di 2.33:1, ma non essendo affianco al testo dei link non crea problemi di accessibilità
 
 Il colore delle icone nello sfondo verde chiaro (A3B18A) è il verde scuro (1B4332, rapporto 4.86:1).
-
-In alcune situazioni viene utilizzato il contrasto fra rosso (E10000) e il color panna (FAF3DD) per indicare campi obbligatori nel form oppure come colore per la classe errorSuggestion. Il loro rapporto è 4.5:1.
 
 Il logo dell'Università degli Studi di Padova, utilizzato nel disclaimer, non è in contrasto con i colori da noi utilizzati. Purtroppo, il manuale di identità visiva non fornisce alternative per il logo, costringendoci a mantenere il logo originale. Siamo comunque consapevoli del fatto che non mantiene i contrasti corretti.

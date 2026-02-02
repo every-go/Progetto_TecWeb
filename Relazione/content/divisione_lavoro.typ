@@ -2,7 +2,7 @@
 Il gruppo non ha applicato rigide divisioni del lavoro.
 Molte parti del progetto sono state sviluppate e rielaborate da parte di più persone e in base alle loro disponibilità temporali.
 
-Di seguito si evidenziano i contributi dei membri.
+Di seguito si evidenziano i contributi principali dei membri.
 #figure()[
   #align(left)[
 
@@ -12,7 +12,7 @@ Di seguito si evidenziano i contributi dei membri.
         #emph("Major")  \
         *Php*: Validazione dei dati e gestione dei messaggi di errore del form; aggiunta di transazioni durante la comunicazione col DB \
         *Javascript*: Validazione del form e gestione dei messaggi di errore \
-        *Altro*:Scrittura della relazione e testing (@test)
+        *Altro*: Scrittura della relazione e testing (@test)
 
 
         #colbreak()
@@ -29,7 +29,7 @@ Di seguito si evidenziano i contributi dei membri.
     ([Marco Brunello],[
       #columns()[
         #emph("Major") \
-        *Css*:Definizione della maggior parte delle regole stilistiche applicate alla visualizzazione Desktop e Mobile. \
+        *Css*: Definizione della maggior parte delle regole stilistiche applicate alla visualizzazione Desktop e Mobile. \
         *Javascript*: Realizzazione del menù ad hamburger e avvisi Javascript\
         *HTML*: Scrittura di gran parte delle pagine
         #colbreak()
@@ -46,11 +46,12 @@ Di seguito si evidenziano i contributi dei membri.
         #emph("Major") \
         *Css*: Definizione della maggior parte delle regole stilistiche applicate alla stampa \
         *Php*: Sviluppo di alcune feature: comunicazione col database, ricerca, ecc... \
-        *Javascript*:Creazione dei menù per la richiesta di conferma. \
+        *Javascript*: Creazione dei menù per la richiesta di conferma. \
         #colbreak()
 
         #emph("Minor") \
-        *HTML*: Scrittura di alcune pagine
+        *HTML*: Scrittura di alcune pagine \
+        *Ricerca*: Scrittura del codice per la ricerca
       ]
     ]),
     ([Davide Lorenzon],[
@@ -62,8 +63,8 @@ Di seguito si evidenziano i contributi dei membri.
         #emph("Minor") \
         *HTML*: Scrittura di alcune pagine
         \
-        *Css*:scrittura di alcune clausole e correzioni \
-        *Javascript*:Aggiunta ai preferiti senza ricarica della pagina \
+        *Css*: Scrittura di alcune clausole e correzioni \
+        *Javascript*: Aggiunta ai preferiti senza ricarica della pagina \
         *Altro*: Relazione
 
       ]
