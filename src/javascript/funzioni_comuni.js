@@ -21,18 +21,6 @@ export function caricamento(dettagli_form) {
         });
     });
 
-    // AGGIUNTO: Event listener per il campo file
-    const fileInput = form.querySelector('input[type="file"]');
-
-    if (fileInput) {
-
-        if (dettagli_form[fileInput.id]) {
-            fileInput.addEventListener("blur", function () {
-                const risultato = validazioneCampo(this, dettagli_form);
-            });
-        }
-    }
-
     const radios = form.querySelectorAll('input[type="radio"]');
     const radioGroups = {};
     radios.forEach(radio => {
@@ -91,14 +79,13 @@ export function validazioneCampo(input, dettagli_form) {
 
     const node = document.getElementById(dettagli_form[key][3]);
 
-    if (!valido) {
-        node.innerHTML = dettagli_form[key][2];
-    } else {
+    if (valido) {
         node.textContent = "";
+    } else {
+        node.innerHTML = dettagli_form[key][2];
     }
 
-
-    return true;
+    return valido;
 }
 
 export function validazioneCampoRadio(group, dettagli_form) {
@@ -111,11 +98,11 @@ export function validazioneCampoRadio(group, dettagli_form) {
 
     const almenoUnoSelezionato = group.some(r => r.checked);
 
-    if (!almenoUnoSelezionato) {
+    if (almenoUnoSelezionato) {
+        node.textContent = "";
+    } else {
         node.innerHTML = dettagli_form[groupName][2];
         return false;
-    } else {
-        node.textContent = "";
     }
 
     return true;

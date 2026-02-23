@@ -6,8 +6,8 @@ let elementoPrecedenteAvviso = null;
 
 function apriModalAvviso() {
     elementoPrecedenteAvviso = document.activeElement;
-    modalAvviso.style.display = 'flex';
     document.body.classList.add('modal-open');
+    document.body.classList.remove('modal-close');
  
     setTimeout(() => {
         if (btnAccedi) {
@@ -20,8 +20,8 @@ function apriModalAvviso() {
 }
 
 function chiudiModalAvviso() {
-    modalAvviso.style.display = 'none';
     document.body.classList.remove('modal-open');
+    document.body.classList.add('modal-close');
     
     if (elementoPrecedenteAvviso) {
         elementoPrecedenteAvviso.focus();
@@ -129,8 +129,8 @@ if (btnAnnullaConferma) {
 
 function apriModalConferma() {
     elementoPrecedenteConferma = document.activeElement;
-    modalConferma.style.display = 'flex';
     document.body.classList.add('modal-open');
+    document.body.classList.remove('modal-close');
 
     setTimeout(() => {
         if (btnConferma) {
@@ -143,8 +143,8 @@ function apriModalConferma() {
 }
 
 function chiudiModalConferma() {
-    modalConferma.style.display = 'none';
     document.body.classList.remove('modal-open');
+    document.body.classList.add('modal-close');
     
     if (elementoPrecedenteConferma) {
         elementoPrecedenteConferma.focus();

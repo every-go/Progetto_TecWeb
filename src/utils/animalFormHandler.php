@@ -201,7 +201,7 @@ function replaceTextPlaceholder($html, $placeholders)
             $html = str_replace("[$key]", $value, $html);
         }
         else{
-            $html = str_replace("[$key]", "0", $html);
+            $html = str_replace("[$key]", is_numeric($value) ? $value : 0, $html);
         }
     }
     return $html;

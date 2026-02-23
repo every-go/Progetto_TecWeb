@@ -1,7 +1,7 @@
 setTimeout(function () {
-    var avviso = document.getElementById('avviso');
+    let avviso = document.getElementById('avviso');
     if (avviso) {
-        avviso.style.opacity = '0';
+        avviso.classList.add('opacitaAvviso');
         setTimeout(function () {
             avviso.remove();
         }, 500);
