@@ -233,7 +233,7 @@ header h1 {
     align-items: center;
 }
 
-#currentlink::before{
+#currentlink::before {
     content: '';
     margin-right: .3em;
     display: inline-block;
@@ -821,27 +821,6 @@ button[type="submit"]:hover {
     text-indent: -99999em;
 }
 
-.pages-buttons {
-    display: flex;
-    gap: 3em;
-    margin-top: 3em;
-}
-
-.pages-buttons a {
-    color: var(--secondary-bg);
-    cursor: pointer;
-    border: none;
-}
-
-.pages-buttons a:focus {
-    outline: 2px solid var(--grigio);
-    outline-offset: 2px;
-}
-
-.pages-buttons .disabled {
-    cursor: not-allowed;
-}
-
 .pagination {
     display: flex;
     list-style: none;
@@ -1062,7 +1041,6 @@ button[type="submit"]:hover {
 }
 
 .modal {
-    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -1103,12 +1081,12 @@ button[type="submit"]:hover {
     text-align: center;
 }
 
-body.modal-open {
+.modal-open {
     overflow: hidden;
     display: flex;
 }
 
-body.modal-close {
+.modal-close {
     display: none;
 }
 
@@ -1611,7 +1589,7 @@ a#pulsante-torna-su:focus {
     font-size: 0.9em;
 }
 
-.opacitaAvviso{
+.opacitaAvviso {
     opacity: 0;
 }
 

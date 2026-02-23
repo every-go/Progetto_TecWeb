@@ -6,27 +6,27 @@ let elementoPrecedenteAvviso = null;
 
 function apriModalAvviso() {
     elementoPrecedenteAvviso = document.activeElement;
-    document.body.classList.add('modal-open');
-    document.body.classList.remove('modal-close');
- 
+    modalAvviso.classList.add('modal-open');
+    modalAvviso.classList.remove('modal-close');
+
     setTimeout(() => {
         if (btnAccedi) {
             btnAccedi.focus();
         }
     }, 100);
-    
+
     modalAvviso.addEventListener('keydown', gestisciTastieraAvviso);
     document.addEventListener('keydown', chiudiConEscapeAvviso);
 }
 
 function chiudiModalAvviso() {
-    document.body.classList.remove('modal-open');
-    document.body.classList.add('modal-close');
-    
+    modalAvviso.classList.remove('modal-open');
+    modalAvviso.classList.add('modal-close');
+
     if (elementoPrecedenteAvviso) {
         elementoPrecedenteAvviso.focus();
     }
-    
+
     modalAvviso.removeEventListener('keydown', gestisciTastieraAvviso);
     document.removeEventListener('keydown', chiudiConEscapeAvviso);
 }
@@ -36,14 +36,14 @@ function gestisciTastieraAvviso(e) {
         const elementiFocusabili = modalAvviso.querySelectorAll(
             'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled])'
         );
-        
+
         const primoElemento = elementiFocusabili[0];
         const ultimoElemento = elementiFocusabili[elementiFocusabili.length - 1];
-        
+
         if (e.shiftKey && document.activeElement === primoElemento) {
             e.preventDefault();
             ultimoElemento.focus();
-        } 
+        }
         else if (!e.shiftKey && document.activeElement === ultimoElemento) {
             e.preventDefault();
             primoElemento.focus();
@@ -58,7 +58,7 @@ function chiudiConEscapeAvviso(e) {
 }
 
 if (modalAvviso) {
-    modalAvviso.addEventListener('click', function(e) {
+    modalAvviso.addEventListener('click', function (e) {
         if (e.target === modalAvviso) {
             chiudiModalAvviso();
         }
@@ -66,10 +66,10 @@ if (modalAvviso) {
 }
 
 if (btnAccedi) {
-    btnAccedi.addEventListener('click', function() {
-        
+    btnAccedi.addEventListener('click', function () {
+
         const path = window.location.pathname;
-        
+
         const search = window.location.search;
 
         const relativeUrl = path + search;
@@ -80,7 +80,7 @@ if (btnAccedi) {
     });
 }
 if (btnAnnullaAvviso) {
-    btnAnnullaAvviso.addEventListener('click', function() {
+    btnAnnullaAvviso.addEventListener('click', function () {
         chiudiModalAvviso();
     });
 }
@@ -93,9 +93,9 @@ let formDaInviare = null;
 let elementoPrecedenteConferma = null;
 
 document.querySelectorAll('.form-adozione').forEach(form => {
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         fetch('./api/verifica_sessione.php')
             .then(response => response.json())
             .then(data => {
@@ -129,30 +129,30 @@ if (btnAnnullaConferma) {
 
 function apriModalConferma() {
     elementoPrecedenteConferma = document.activeElement;
-    document.body.classList.add('modal-open');
-    document.body.classList.remove('modal-close');
+    modalConferma.classList.add('modal-open');
+    modalConferma.classList.remove('modal-close');
 
     setTimeout(() => {
         if (btnConferma) {
             btnConferma.focus();
         }
     }, 100);
-    
+
     modalConferma.addEventListener('keydown', gestisciTastieraConferma);
     document.addEventListener('keydown', chiudiConEscapeConferma);
 }
 
 function chiudiModalConferma() {
-    document.body.classList.remove('modal-open');
-    document.body.classList.add('modal-close');
-    
+    modalConferma.classList.remove('modal-open');
+    modalConferma.classList.add('modal-close');
+
     if (elementoPrecedenteConferma) {
         elementoPrecedenteConferma.focus();
     }
-    
+
     modalConferma.removeEventListener('keydown', gestisciTastieraConferma);
     document.removeEventListener('keydown', chiudiConEscapeConferma);
-    
+
     formDaInviare = null;
 }
 
@@ -161,14 +161,14 @@ function gestisciTastieraConferma(e) {
         const elementiFocusabili = modalConferma.querySelectorAll(
             'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled])'
         );
-        
+
         const primoElemento = elementiFocusabili[0];
         const ultimoElemento = elementiFocusabili[elementiFocusabili.length - 1];
-        
+
         if (e.shiftKey && document.activeElement === primoElemento) {
             e.preventDefault();
             ultimoElemento.focus();
-        } 
+        }
         else if (!e.shiftKey && document.activeElement === ultimoElemento) {
             e.preventDefault();
             primoElemento.focus();
@@ -183,7 +183,7 @@ function chiudiConEscapeConferma(e) {
 }
 
 if (modalConferma) {
-    modalConferma.addEventListener('click', function(e) {
+    modalConferma.addEventListener('click', function (e) {
         if (e.target === modalConferma) {
             chiudiModalConferma();
         }
@@ -195,7 +195,7 @@ function caricaGestoriEventi() {
     var btn = document.getElementById('bottone-preferiti');
 
     if (btn) {
-        btn.onclick = function() {
+        btn.onclick = function () {
             var idAnimale = this.getAttribute('data-id');
             togglePreferiti(idAnimale);
         };
@@ -204,32 +204,32 @@ function caricaGestoriEventi() {
 
 
 function togglePreferiti(idAnimale) {
-    var icona = document.getElementById('icona-preferiti'); 
-    
+    var icona = document.getElementById('icona-preferiti');
+
     fetch('./api/modifica_preferiti.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_animale: idAnimale })
     })
-    .then(response => response.json())
-    .then(data => {
-        
-        if (data.success) {
-            if (data.action === 'added') {
-                icona.src = "./images/png/heart_filled.png";
-                icona.alt = "Rimuovi dai preferiti";
+        .then(response => response.json())
+        .then(data => {
+
+            if (data.success) {
+                if (data.action === 'added') {
+                    icona.src = "./images/png/heart_filled.png";
+                    icona.alt = "Rimuovi dai preferiti";
+                } else {
+                    icona.src = "./images/png/heart.png";
+                    icona.alt = "Aggiungi ai preferiti";
+                }
             } else {
-                icona.src = "./images/png/heart.png";
-                icona.alt = "Aggiungi ai preferiti";
+                if (data.error === 'Devi essere autenticato') {
+                    apriModalAvviso();
+                } else {
+                    console.error('Errore:', data.error);
+                    alert("Errore: " + data.error);
+                }
             }
-        } else {
-            if (data.error === 'Devi essere autenticato') {
-                apriModalAvviso();
-            } else {
-                console.error('Errore:', data.error);
-                alert("Errore: " + data.error);
-            }
-        }
-    })
-    .catch(error => console.error('Errore di rete:', error));
+        })
+        .catch(error => console.error('Errore di rete:', error));
 }
