@@ -27,7 +27,7 @@ Università degli Studi di Padova
 A.A. 2025-2026
 
 #strong()[Indirizzo del sito:] \
-#link("https://caa.studenti.math.unipd.it/mmazzare/")
+#link("https://caa.studenti.math.unipd.it/mmazzare/")[caa.studenti.math.unipd.it/mmazzare/]
 
 #strong()[Mail referente:] \
 #link("mailto:matteo.mazzaretto@studenti.unipd.it")[matteo.mazzaretto\@studenti.unipd.it]
@@ -46,8 +46,9 @@ A.A. 2025-2026
 #table(
   columns: (1fr, 1fr, 1fr),
 table.header([Ruolo],[Username],[Password]),
-[Utente],[user],[],
-[Amministratore],[admin],[],
+[Utente],[user],[user],
+[Amministratore],[admin],[admin],
+[Utente],[username],[User_Saf3]
 )
 #strong()[Autori:]
 #set table(
@@ -72,9 +73,6 @@ table.header([Nome],[Matricola]),
 
 #set heading(numbering: "1.")
 
-// #outline(title: "Indice")
-
-// #pagebreak()
 #context counter(page).update(1)
 
 #set page(
@@ -95,3 +93,9 @@ table.header([Nome],[Matricola]),
   ]
   ]
 )
+
+#include "content/intro.typ"
+
+#include "content/test.typ"
+
+#include "content/appendice.typ"
